@@ -15,5 +15,9 @@ public class MainActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
+    public void a()
+    {
+    	
+    }
 
 }
