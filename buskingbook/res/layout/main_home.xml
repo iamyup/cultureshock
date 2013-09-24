@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dosirak="http://schemas.android.com/apk/res/com.ktmusic.geniemusic"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#282828"
+    android:orientation="vertical" >
+    
+
+    <!-- 타이틀 -->
+     <FrameLayout 
+         android:id="@+id/title"
+         android:layout_width="match_parent"
+         android:layout_height="40dip">
+		<ImageView
+            android:id="@+id/title_btn_menu"
+            android:layout_width="49dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dip"
+            android:background="@drawable/btn_top_menu_normal"/>
+		<TextView
+	       android:id="@+id/test_main"
+	       android:layout_gravity="center"
+	       android:text="타이틀"
+	       android:layout_width="wrap_content" 
+	       android:layout_height="wrap_content"/>
+	</FrameLayout>
+	<android.support.v4.view.ViewPager
+				    android:id="@+id/viewpager"
+				    android:layout_below="@+id/title"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent" 
+				    android:layout_gravity="center"/>
+	
+</RelativeLayout>

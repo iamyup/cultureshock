@@ -1,120 +1,93 @@
 package com.cultureshock.buskingbook.main;
 
-import java.util.ArrayList;
 
-import org.json.JSONObject;
-
-import com.cultureshock.buskingbook.framework.BaseActivity;
-
-import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.widget.Toast;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.AttributeSet;
+import android.view.View;
+
+import com.cultureshock.buskingbook.R;
+import com.cultureshock.buskingbook.framework.BaseActivity;
+import com.cultureshock.buskingbook.page.MainHomeFragment;
 
 public class MainActivity extends BaseActivity {
-
+    private Context mContext;
+    private static MainActivity mInstance;
+    
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
+        return super.onCreateView(parent, name, context, attrs);
+    }
+
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        mContext = this;
+        mInstance = this;
+        
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return true;
+    protected void onNewIntent(Intent intent) {
+       
+        super.onNewIntent(intent);
+
     }
-    /**
-     * Åë½ÅÇüÅÂ 
-     * ¼­ºñ½ºÅ¸ÀÔ À¸·Î ±¸ºÐ ÈÄ 
-     * ÆÄ¶ó¹ÌÅÍ Áý¾î³Ö°í
-     * loginservice.doAsyncExecute(this)½ÇÇàÇÏ¸é µÞ´Ü¿¡¼­ ¸ðµç Ã³¸®ÇÏ°í 
-     * onResponseReceived(String resContent) ¿©±â·Î Á¦ÀÌ½¼ °ª string ÇüÅÂ·Î ³Ñ¾î¿È 
-     * ±×¸®°í ½ºÅ¸Æ® ÇÁ·Î±×·¡½º¹Ù ½ÃÀÛÇÏ¸é ÇÁ·Î±×·¡½º¹Ù µ¹¾Æ°¨ 
-     */
-//    public void requestJoin()
-//	{
-//		//È¸¿ø°¡ÀÔ ¿äÃ»
-//		HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_JOIN);
-//		ArrayList<Params> loginParams = new ArrayList<Params>();
-//		loginParams.add(new Params("id", m_oEditTextId.getText().toString()));
-//		loginParams.add(new Params("pwd", m_oEditTextPwd.getText().toString()));
-//		loginParams.add(new Params("name", m_oEditTextName.getText().toString()));
-//		loginParams.add(new Params("phone", m_oEditTextPhone.getText().toString()));
-//		loginParams.add(new Params("thum", m_oStrImgThum));
-//		loginService.setParam(loginParams);
-//		loginService.doAsyncExecute(this);
-//		startProgressDialog();
-//	}
-    /**
-     * ¿©±â¼­ ½ºÅéÇÁ·Î±×·¡½º¹Ù ÇÏ¸éµÊ Åë½Å ÀÌÈÄ ÀÌÂÊÀ¸·Î ¿È 
-     */
+
+   
+    public static MainActivity getInstance() {
+        return mInstance;
+    }
+
+  
     @Override
-	public void onResponseReceived(String resContent)  {
-		// TODO Auto-generated method stub
-    	/**
-    	 * ´ëÃæ Åë½Å ÇÏ´Â¹ý ¿¹½Ã 
-    	 */
-//    	try{
-//			Object o = resContent;
-//			JSONObject object = new JSONObject(resContent);
-//			if(object.getJSONObject("result").optString("type").equals("ServiceType.MSG_JOIN_DOUBLE_ID"))
-//			{
-//				String result = object.getJSONObject("data").optString("result","");
-//				if(result.equals("true"))
-//				{
-//					//Áßº¹µÇ´Â¾ÆÀÌµð°¡ ¾øÀ»½Ã
-//					m_oTxtDoble.setText("»ç¿ë °¡´ÉÇÑ ¾ÆÀÌµð ÀÔ´Ï´Ù.");
-//					Toast.makeText(this, "»ç¿ë °¡´ÉÇÑ ¾ÆÀÌµð ÀÔ´Ï´Ù.", Toast.LENGTH_SHORT).show();
-//					checkDouble = true;
-//				}
-//				else
-//				{
-//					m_oTxtDoble.setText("Áßº¹µÈ ¾ÆÀÌµð°¡ ÀÖ½À´Ï´Ù.");
-//					Toast.makeText(this, "Áßº¹µÈ ¾ÆÀÌµð°¡ ÀÖ½À´Ï´Ù.", Toast.LENGTH_SHORT).show();
-//					checkDouble = false;
-//					//¾ó¶ù Áßº¹µÇ´Ï ´Ù½Ã ÀÔ·Â¹Ù¶ø´Ï´Ù.
-//				}
-//			}
-//			else if(object.getJSONObject("result").optString("type").equals("ServiceType.MSG.JOIN"))
-//			{
-//				String result = object.getJSONObject("data").optString("result","");
-//				if(result.equals("true"))
-//				{
-//					//¼º°ø
-//					Toast.makeText(this, "È¸¿ø°¡ÀÔ µÇ¼Ì½À´Ï´Ù.", Toast.LENGTH_SHORT).show();
-//					finish();
-//				}
-//				else
-//				{
-//					//½ÇÆÐ
-//					Toast.makeText(this, "È¸¿ø°¡ÀÔ¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.", Toast.LENGTH_SHORT).show();
-//					finish();
-//				}
-//			}
-//		}
-//		catch(Exception e )
-//		{
-//			e.printStackTrace();
-//		}
-//		finally
-//		{
-//			stopProgressDialog() ;
-//		}
-	}
-	@Override
-	public void setUi() {
-		// TODO Auto-generated method stub
-		
-	}
+    protected void onResume() {
+        super.onResume();
 
-	@Override
-	public void initValue() {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public void clearUi() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        //ï¿½ï¿½Îµï¿½Ä³ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+    }
+
+    @Override
+    protected void onDestroy() {
+       
+        super.onDestroy();
+    }
+    public void replaceFragment(Class<?> clss, Bundle bundle, boolean isAddStack) {
+        Fragment fragment = Fragment.instantiate(this, clss.getName(), bundle);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, fragment);
+        if ( isAddStack ) {
+            ft.addToBackStack(null);
+        }
+        ft.commitAllowingStateLoss();
+        MainActivity.getInstance().showContent();
+    }
+
+    public Fragment getCurFragment() {
+        Fragment frg = getSupportFragmentManager().findFragmentById(R.id.content_frame);
+        return frg;
+    }
+    public  void goHomeFragment(Context context) {
+        if ( context instanceof MainActivity ) {
+            FragmentManager fm = ((FragmentActivity) context).getSupportFragmentManager();
+            fm.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            Fragment frg = fm.findFragmentById(R.id.content_frame);
+            if ( frg.getClass() != MainHomeFragment.class ) {
+                replaceFragment(MainHomeFragment.class, null, false);
+            }
+        }
+    }
 }
