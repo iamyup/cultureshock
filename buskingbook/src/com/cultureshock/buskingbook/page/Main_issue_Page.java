@@ -9,13 +9,13 @@ import com.cultureshock.buskingbook.R;
 
 
 
-public class TwoPage extends LinearLayout{
+public class Main_issue_Page extends LinearLayout{
 	
 	private Context mContext;
 	private View v = null;
 	
 	Dialog dialog;
-	public TwoPage(Context context) {
+	public Main_issue_Page(Context context) {
 		// TODO Auto-generated constructor stub
 		super(context);
 		mContext = context;
@@ -35,7 +35,7 @@ public class TwoPage extends LinearLayout{
 		// TODO Auto-generated method stub
 		
 		LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		v = inflater.inflate(R.layout.two, null);
+		v = inflater.inflate(R.layout.main_issue, null);
 		this.addView(v);
 //		dialog = new Dialog(mContext, R.style.Dialog);
 //		dialog.addContentView(this, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));

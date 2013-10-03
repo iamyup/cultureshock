@@ -15,8 +15,9 @@ import android.widget.TextView;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.ViewPagerAdapter;
 import com.cultureshock.buskingbook.main.MainActivity;
+import com.cultureshock.buskingbook.net.HttpClientNet;
 
-public class MainHomeFragment extends Fragment implements OnClickListener {
+public class MainHomeFragment extends Fragment implements OnClickListener{
     private FragmentActivity mContext;
     private static MainHomeFragment mInstance;
     private TextView m_oBtnTest;
@@ -43,6 +44,10 @@ public class MainHomeFragment extends Fragment implements OnClickListener {
         setPager();
     }
 
+    public void setTitle(String txt)
+    {
+    	m_oBtnTest.setText(txt);
+    }
     public void setPager() {
         m_oViewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity());
@@ -106,8 +111,8 @@ public class MainHomeFragment extends Fragment implements OnClickListener {
         }
 
         }
-        // �ֽ�����
 
     }
+
 
 }

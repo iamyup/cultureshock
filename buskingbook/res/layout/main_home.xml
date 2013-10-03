@@ -11,7 +11,8 @@
      <FrameLayout 
          android:id="@+id/title"
          android:layout_width="match_parent"
-         android:layout_height="40dip">
+         android:layout_height="40dip"
+         android:background="#38bdd1">
 		<ImageView
             android:id="@+id/title_btn_menu"
             android:layout_width="49dp"
@@ -23,7 +24,8 @@
 	       android:layout_gravity="center"
 	       android:text="타이틀"
 	       android:layout_width="wrap_content" 
-	       android:layout_height="wrap_content"/>
+	       android:layout_height="wrap_content"
+	       android:textColor="#ffffff"/>
 	</FrameLayout>
 	<android.support.v4.view.ViewPager
 				    android:id="@+id/viewpager"
@@ -31,5 +33,6 @@
 				    android:layout_width="match_parent"
 				    android:layout_height="match_parent" 
 				    android:layout_gravity="center"/>
+	
 	
 </RelativeLayout>

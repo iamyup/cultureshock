@@ -9,14 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.cultureshock.buskingbook.page.FourPage;
-import com.cultureshock.buskingbook.page.OnePage;
+import com.cultureshock.buskingbook.page.Main_LineUp_Page;
 import com.cultureshock.buskingbook.page.ThreePage;
-import com.cultureshock.buskingbook.page.TwoPage;
+import com.cultureshock.buskingbook.page.Main_issue_Page;
 
 public class ViewPagerAdapter extends PagerAdapter implements
         View.OnClickListener {
     // private AsyncImageLoader m_oAsyncImageLoader = new AsyncImageLoader();
-    public static final int NUM_ITEMS = 4;
+    public static final int NUM_ITEMS = 2;
     private Context m_Context = null;
     private LayoutInflater inflater = null;
     private View v = null;
@@ -57,21 +57,22 @@ public class ViewPagerAdapter extends PagerAdapter implements
         final int pos = position;
         if (position == 0) {
             // v = inflater.inflate(R.layout.one, null);
-            v = new OnePage(m_Context);
-            Log.d("0", "0");
+            v = new Main_LineUp_Page(m_Context);
+//            Log.d("0", "0");
         } else if (position == 1) {
             // v = inflater.inflate(R.layout.two, null);
-            v = new TwoPage(m_Context);
-            Log.d("1", "1");
-        } else if (position == 2) {
-            // v = inflater.inflate(R.layout.three, null);
-            v = new ThreePage(m_Context);
-            Log.d("2", "2");
-        } else if (position == 3) {
-            // v = inflater.inflate(R.layout.four, null);
-            v = new FourPage(m_Context);
-            Log.d("3", "3");
+            v = new Main_issue_Page(m_Context);
         }
+//            Log.d("1", "1");
+//        } else if (position == 2) {
+//            // v = inflater.inflate(R.layout.three, null);
+//            v = new ThreePage(m_Context);
+//            Log.d("2", "2");
+//        } else if (position == 3) {
+//            // v = inflater.inflate(R.layout.four, null);
+//            v = new FourPage(m_Context);
+//            Log.d("3", "3");
+//        }
 
         // mainImg.setTag(R.id.imageId, position);
         ((ViewPager) pager).addView(v, 0);
