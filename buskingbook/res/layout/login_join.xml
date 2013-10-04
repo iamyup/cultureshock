@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dosirak="http://schemas.android.com/apk/res/com.ktmusic.geniemusic"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+   <LinearLayout
+       android:layout_width="match_parent" 
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:gravity="center">
+       <LinearLayout
+           android:id="@+id/btn_join_facebook"
+           android:layout_width="200dip"
+           android:layout_height="50dip"
+           android:background="#5591ff"
+           android:gravity="center"
+           android:layout_marginBottom="15dip">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Facebook 으로 가입하기"
+               android:textSize="15dip"
+               android:textColor="#ffffff"/>
+       </LinearLayout>
+       <LinearLayout
+           android:id="@+id/btn_join_email"
+           android:layout_width="200dip"
+           android:layout_height="50dip"
+           android:background="#80e6d2"
+           android:gravity="center"
+           android:layout_marginBottom="15dip">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="E-Mail 로 가입하기"
+               android:textSize="15dip"
+               android:textColor="#ffffff"/>
+       </LinearLayout>
+       <LinearLayout
+           android:id="@+id/btn_login"
+           android:layout_width="200dip"
+           android:layout_height="50dip"
+           android:background="#eff2f1"
+           android:gravity="center">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="로그인"
+               android:textSize="15dip"
+               android:textColor="#80e6d2"/>
+       </LinearLayout>
+   </LinearLayout>
+
+</RelativeLayout>
