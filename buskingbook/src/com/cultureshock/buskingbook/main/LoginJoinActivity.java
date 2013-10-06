@@ -84,14 +84,12 @@ public class LoginJoinActivity extends Activity implements View.OnClickListener 
 		{
 			Intent intent =  new Intent(this.getApplicationContext(), JoinActivity.class);
 			startActivity(intent);
-			finish();
 			break;
 		}
 		case R.id.btn_login : 
 		{
 			Intent intent =  new Intent(this.getApplicationContext(), LoginActivity.class);
 			startActivity(intent);
-			finish();
 			break;
 		}
 		}

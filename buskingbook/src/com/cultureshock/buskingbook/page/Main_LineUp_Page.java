@@ -62,12 +62,12 @@ public class Main_LineUp_Page extends LinearLayout implements View.OnClickListen
 		m_oBtnSearchAll.setOnClickListener(this);
 		m_oBtnSearchLike = (LinearLayout)v.findViewById(R.id.select_like);
 		m_oBtnSearchLike.setOnClickListener(this);
-		MainHomeFragment.getInstance().setTitle("¶óÀÎ¾÷");
+		MainHomeFragment.getInstance().setTitle("ë¼ì¸ì—…");
 		ArrayList<LineUpObject> lineUpArr = new ArrayList<LineUpObject>();
-		lineUpArr.add(new LineUpObject("2010","08","13","14:00","È­","È«´ë³îÀÌÅÍ","¹ö½ºÄ¿¹ö½ºÄ¿","5"));
-		lineUpArr.add(new LineUpObject("2010","08","13","16:00","È­","È«´ë³îÀÌÅÍ","¹ö½ºÄ¿¹ö½ºÄ¿","5"));
-		lineUpArr.add(new LineUpObject("2010","08","14","14:00","È­","È«´ë³îÀÌÅÍ","¹ö½ºÄ¿¹ö½ºÄ¿","5"));
-		lineUpArr.add(new LineUpObject("2010","08","15","14:00","È­","È«´ë³îÀÌÅÍ","¹ö½ºÄ¿¹ö½ºÄ¿","5"));
+		lineUpArr.add(new LineUpObject("2010","08","13","14:00","í™”","í™ëŒ€ë†€ì´í„°","ë²„ìŠ¤ì»¤ë²„ìŠ¤ì»¤","5"));
+		lineUpArr.add(new LineUpObject("2010","08","13","16:00","í™”","í™ëŒ€ë†€ì´í„°","ë²„ìŠ¤ì»¤ë²„ìŠ¤ì»¤","5"));
+		lineUpArr.add(new LineUpObject("2010","08","14","14:00","í™”","í™ëŒ€ë†€ì´í„°","ë²„ìŠ¤ì»¤ë²„ìŠ¤ì»¤","5"));
+		lineUpArr.add(new LineUpObject("2010","08","15","14:00","í™”","í™ëŒ€ë†€ì´í„°","ë²„ìŠ¤ì»¤ë²„ìŠ¤ì»¤","5"));
 		
 		if(lineUpListView == null)
 		{
@@ -90,7 +90,7 @@ public class Main_LineUp_Page extends LinearLayout implements View.OnClickListen
 		{
 			case R.id.top_search :
 			{
-				//¿©±â¼­ °Ë»ö 
+				//ì—¬ê¸°ì„œ ê²€ìƒ‰ 
 				break;
 			}
 			case R.id.select_all : 

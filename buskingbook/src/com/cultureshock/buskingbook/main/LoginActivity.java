@@ -1,6 +1,10 @@
 package com.cultureshock.buskingbook.main;
 
 
+import java.util.ArrayList;
+
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,15 +18,21 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.cultureshock.buskingbook.R;
+import com.cultureshock.buskingbook.component.LoadingPopup;
 import com.cultureshock.buskingbook.framework.BaseActivity;
+import com.cultureshock.buskingbook.net.HttpClientNet;
+import com.cultureshock.buskingbook.net.Params;
+import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
+import com.cultureshock.buskingbook.service.ServiceType;
 
-public class LoginActivity extends Activity implements View.OnClickListener {
+public class LoginActivity extends Activity implements View.OnClickListener, HttpClientNet.OnResponseListener {
     private Context mContext;
     private static LoginActivity mInstance;
-    
+    private LoadingPopup loading;
     private EditText m_oEmail;
     private EditText m_oPassword;
     private LinearLayout m_oBtnFacebookConfirm;
@@ -76,7 +86,34 @@ public class LoginActivity extends Activity implements View.OnClickListener {
        
         super.onDestroy();
     }
-
+    public void requestLogin()
+	{
+		HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_LOGIN);
+		ArrayList<Params> loginParams = new ArrayList<Params>();
+		loginParams.add(new Params("id",m_oEmail.getText().toString()));
+		loginParams.add(new Params("pwd",m_oPassword.getText().toString()));
+		loginService.setParam(loginParams);
+		loginService.doAsyncExecute(this);
+		startProgressDialog();
+	}
+	
+	public void startProgressDialog() 
+	{
+		if( loading == null )
+		{
+			loading = new LoadingPopup(this);
+			loading.start();
+		}
+	}
+	
+	public void stopProgressDialog() 
+	{
+		if( loading != null )
+		{
+			loading.stop();
+			loading = null;
+		}
+	}
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
@@ -88,13 +125,69 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 			}
 			case R.id.btn_login : 
 			{
-				Intent intent =  new Intent(this.getApplicationContext(), MainActivity.class);
-				startActivity(intent);
-				finish();
+				if(m_oEmail.getText().toString().equals(""))
+				{
+					Toast.makeText(this, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show();
+				}
+				else if(m_oPassword.getText().toString().equals("") )
+				{
+					Toast.makeText(this, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
+				}
+				else
+				{
+					requestLogin();
+				}
 				break;
 			}
 		}
 		
+	}
+
+	@Override
+	public void onResponseReceived(String resContent) {
+		// TODO Auto-generated method stub
+		try{
+		Object o = resContent;
+		JSONObject object = new JSONObject(resContent);
+		if(object.getJSONObject("result").optString("type").equals("ServiceType.MSG_LOGIN"))
+		{
+			String result = object.getJSONObject("data").optString("result","");
+			String reason = object.getJSONObject("data").optString("reason","");
+			if(result.equals("true"))
+			{
+				String id = object.getJSONObject("data").optString("id","");
+				String pwd = object.getJSONObject("data").optString("pwd","");
+				String name = object.getJSONObject("data").optString("name","");
+				String phone = object.getJSONObject("data").optString("phone","");
+				String myImg = object.getJSONObject("data").optString("myImg","");
+				String likeTeamList = object.getJSONObject("data").optString("likeTeamList","");
+				String myteam = object.getJSONObject("data").optString("myteam","");
+				String[] likeTeam = likeTeamList.split(",");
+				ArrayList<String> likeTeamArrayList = new ArrayList<String>();
+				for(int i = 0 ; i < likeTeam.length ; i++)
+				{
+					likeTeamArrayList.add(likeTeam[i]);
+				}
+				LoginInfoObject.getInstance().setLogin(id, pwd, name, phone, myImg, likeTeamArrayList, myteam);
+				Intent intent =  new Intent(this.getApplicationContext(), MainActivity.class);
+				startActivity(intent);
+				LoginJoinActivity.getInstance().finish();
+				finish();
+			}
+			else
+			{
+				Toast.makeText(this, reason, Toast.LENGTH_LONG).show();
+			}
+		}
+	}
+	catch(Exception e )
+	{
+		e.printStackTrace();
+	}
+	finally
+	{
+		stopProgressDialog() ;
+	}
 	}
    
 }

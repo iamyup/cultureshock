@@ -115,6 +115,21 @@
                android:password="true"
                android:textColor="#e0e0e0"/>
        </LinearLayout>
+        <LinearLayout
+           android:id="@+id/btn_double"
+           android:layout_width="200dip"
+           android:layout_height="50dip"
+           android:background="#80e6d2"
+           android:gravity="center"
+           android:layout_marginBottom="15dip">
+           <TextView
+               android:id="@+id/text_double"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="중복체크"
+               android:textSize="20dip"
+               android:textColor="#ffffff"/>
+       </LinearLayout>   
        <LinearLayout
            android:id="@+id/btn_confirm"
            android:layout_width="200dip"
