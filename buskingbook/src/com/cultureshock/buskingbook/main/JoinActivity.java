@@ -1,6 +1,8 @@
 package com.cultureshock.buskingbook.main;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONObject;
@@ -8,7 +10,11 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -29,6 +35,9 @@ import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.service.ServiceType;
 
 public class JoinActivity extends Activity implements View.OnClickListener , HttpClientNet.OnResponseListener{
+    private static final int REQ_PICK_IMAGE = 0;
+    private static final String TEMP_PHOTO_FILE = "tmp_profile.jpg";
+
     private Context mContext;
     private static JoinActivity mInstance;
     
@@ -142,6 +151,12 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
 			}
 			case R.id.img_upload : 
 			{
+			    Intent intent = new Intent(Intent.ACTION_PICK);
+			    intent.setType("image/*");
+			    intent.putExtra("crop", "true");
+			    intent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
+			    intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+			    startActivityForResult(intent, REQ_PICK_IMAGE);
 				break;
 			}
 			case R.id.btn_confirm : 
@@ -248,5 +263,35 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
 			loading = null;
 		}
 	}
-   
+
+	private Uri getTempUri() {
+	    return Uri.fromFile(getProfileImage());
+	}
+
+	private File getProfileImage() {
+	    File file = new File(Environment.getExternalStorageDirectory(), TEMP_PHOTO_FILE);
+	    try {
+	        file.createNewFile();
+	    } catch (IOException e) {
+	        
+	    }
+	    return file;
+	}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch(requestCode) {
+        case REQ_PICK_IMAGE:
+            if (resultCode == RESULT_OK) {
+                if (data != null) {
+                    
+                }
+            }
+            break;
+        }
+    }
+
+	
 }
