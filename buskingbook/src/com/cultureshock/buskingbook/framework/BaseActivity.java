@@ -4,6 +4,7 @@ package com.cultureshock.buskingbook.framework;
 import java.util.ArrayList;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.cultureshock.buskingbook.main.BuskingMainActivity;
 import com.cultureshock.buskingbook.object.TeamObject;
@@ -34,6 +35,7 @@ public class BaseActivity extends BuskingMainActivity {
 
 	public static void setTeamObject(ArrayList<TeamObject> teamObject) {
 		BaseActivity.teamObject = teamObject;
+		Log.d("TEST", "aaa");
 	}
 	public static TeamObject searchTeam(String teamName)
 	{
