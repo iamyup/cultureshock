@@ -35,7 +35,6 @@ public class BaseActivity extends BuskingMainActivity {
 
 	public static void setTeamObject(ArrayList<TeamObject> teamObject) {
 		BaseActivity.teamObject = teamObject;
-		Log.d("TEST", "aaa");
 	}
 	public static TeamObject searchTeam(String teamName)
 	{
