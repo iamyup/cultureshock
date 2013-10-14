@@ -37,7 +37,9 @@ public class LoginActivity extends Activity implements View.OnClickListener, Htt
     private EditText m_oPassword;
     private LinearLayout m_oBtnFacebookConfirm;
     private LinearLayout m_oBtnConfirm;
-    
+    private LinearLayout m_oBtnAutoLogin;
+    private ImageView m_oImgAutoLogin;
+    private boolean checkAutoLogin = false;
     
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
@@ -60,7 +62,9 @@ public class LoginActivity extends Activity implements View.OnClickListener, Htt
     	m_oPassword = (EditText)findViewById(R.id.login_password);
     	m_oBtnConfirm = (LinearLayout)findViewById(R.id.btn_login);
     	m_oBtnFacebookConfirm = (LinearLayout)findViewById(R.id.btn_facebook_login);
-    	
+    	m_oBtnAutoLogin  = (LinearLayout)findViewById(R.id.btn_autologin);
+    	m_oImgAutoLogin = (ImageView)findViewById(R.id.auto_login_check);
+    	m_oBtnAutoLogin.setOnClickListener(this);
     	m_oBtnFacebookConfirm.setOnClickListener(this);
     	m_oBtnConfirm.setOnClickListener(this);
     }
@@ -119,6 +123,19 @@ public class LoginActivity extends Activity implements View.OnClickListener, Htt
 		// TODO Auto-generated method stub
 		switch(v.getId())
 		{
+			case R.id.btn_autologin :
+			{
+				if(checkAutoLogin)
+				{
+					m_oImgAutoLogin.setBackgroundResource(R.drawable.checkbox);
+					checkAutoLogin = false;
+				}
+				else
+				{
+					m_oImgAutoLogin.setBackgroundResource(R.drawable.checkbox_o);
+					checkAutoLogin = true;
+				}
+			}
 			case R.id.btn_facebook_login : 
 			{
 				break;
@@ -161,12 +178,15 @@ public class LoginActivity extends Activity implements View.OnClickListener, Htt
 				String phone = object.getJSONObject("data").optString("phone","");
 				String myImg = object.getJSONObject("data").optString("myImg","");
 				String likeTeamList = object.getJSONObject("data").optString("likeTeamList","");
-				String myteam = object.getJSONObject("data").optString("myteam","");
+ 				String myteam = object.getJSONObject("data").optString("myteam","");
 				String[] likeTeam = likeTeamList.split(",");
 				ArrayList<String> likeTeamArrayList = new ArrayList<String>();
-				for(int i = 0 ; i < likeTeam.length ; i++)
+				if(!likeTeam[0].equals(""))
 				{
-					likeTeamArrayList.add(likeTeam[i]);
+					for(int i = 0 ; i < likeTeam.length ; i++)
+					{
+						likeTeamArrayList.add(likeTeam[i]);
+					}
 				}
 				LoginInfoObject.getInstance().setLogin(id, pwd, name, phone, myImg, likeTeamArrayList, myteam);
 				Intent intent =  new Intent(this.getApplicationContext(), MainActivity.class);

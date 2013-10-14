@@ -168,6 +168,7 @@ public class LoginInfoObject {
 		this.name = "";
 		this.phone = "";
 		this.myImg = "";
+		this.myteam = "";
 		this.likeTeamList.clear();
 		checkLogin = false;
 	}

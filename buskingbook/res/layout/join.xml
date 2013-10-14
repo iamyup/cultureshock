@@ -17,7 +17,7 @@
            android:text="가입하기"
            android:textSize="20dip"
            android:textStyle="bold"
-           android:textColor="#80e6d2"
+           android:textColor="#01d0d2"
            android:layout_marginBottom="10dip"/>
        <RelativeLayout
            android:layout_width="72dip"
@@ -119,7 +119,7 @@
            android:id="@+id/btn_double"
            android:layout_width="200dip"
            android:layout_height="50dip"
-           android:background="#80e6d2"
+           android:background="#01d0d2"
            android:gravity="center"
            android:layout_marginBottom="15dip">
            <TextView
@@ -134,7 +134,7 @@
            android:id="@+id/btn_confirm"
            android:layout_width="200dip"
            android:layout_height="50dip"
-           android:background="#80e6d2"
+           android:background="#01d0d2"
            android:gravity="center"
            android:layout_marginBottom="15dip">
            <TextView

@@ -5,20 +5,25 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dip"
+        android:gravity="center">
+        <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="로그인"
+           android:textSize="20dip"
+           android:textStyle="bold"
+           android:textColor="#01d0d2"/>
+    </LinearLayout>
 
    <LinearLayout
        android:layout_width="match_parent" 
        android:layout_height="match_parent"
        android:orientation="vertical"
        android:gravity="center">
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="로그인"
-           android:textSize="20dip"
-           android:textStyle="bold"
-           android:textColor="#80e6d2"
-           android:layout_marginBottom="10dip"/>
+       
      
        <LinearLayout
            android:id="@+id/btn_login_email"
@@ -59,7 +64,7 @@
            android:id="@+id/btn_login"
            android:layout_width="200dip"
            android:layout_height="50dip"
-           android:background="#80e6d2"
+           android:background="#01d0d2"
            android:gravity="center"
            android:layout_marginBottom="15dip">
            <TextView
@@ -92,16 +97,18 @@
            android:background="#ffffff"
            android:gravity="center"
            android:layout_marginBottom="15dip">
-           <CheckBox
+           <ImageView
                android:id="@+id/auto_login_check"
                android:layout_width="wrap_content"
-               android:layout_height="wrap_content"/>
+               android:layout_height="wrap_content"
+               android:background="@drawable/checkbox"/>
            <TextView
                android:id="@+id/facebook_login"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:text="자동 로그인"
                android:textSize="20dip"
+               android:layout_marginLeft="5dip"
                android:textColor="#000000"/>
        </LinearLayout>   
    </LinearLayout>

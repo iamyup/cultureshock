@@ -9,7 +9,8 @@
     <RelativeLayout
         android:id="@+id/top_search"
         android:layout_width="match_parent"
-        android:layout_height="30dip">
+        android:layout_height="30dip"
+        android:background="#01d0d2">
         <TextView 
             android:id="@+id/top_search_text"
             android:layout_width="wrap_content"
@@ -17,7 +18,7 @@
             android:text="현재 위치 : "
             android:textSize="15dip"
             android:layout_centerVertical="true"
-            android:textColor="#f36201"/>
+            android:textColor="#ffffff"/>
         <TextView 
             android:id="@+id/top_search_place"
             android:layout_width="wrap_content"
@@ -26,17 +27,16 @@
             android:textSize="15dip"
             android:layout_toRightOf="@+id/top_search_text"
             android:layout_centerVertical="true"
-            android:textColor="#f36201"/>
-        <TextView 
+            android:textColor="#ffffff"/>
+        <ImageView 
             android:id="@+id/top_search"
-            android:layout_width="100dip"
-            android:layout_height="match_parent"
-            android:text="다른 장소 검색"
-            android:textSize="15dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:textColor="#000000"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_marginRight="15dip"
+            android:background="@xml/lineup_search"/>
         
     </RelativeLayout>
     <LinearLayout
@@ -57,8 +57,9 @@
             android:layout_height="50dip"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:background="#38bdd1">
+            android:background="#01d0d2">
             <TextView
+                android:id="@+id/select_all_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="모두보기"
@@ -71,13 +72,14 @@
             android:layout_height="50dip"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:background="#a3a3a3">
+            android:background="#eaeaea">
             <TextView
+                android:id="@+id/select_like_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="즐겨찾기"
                 android:textSize="15dip"
-                android:textColor="#ffffff"/> 
+                android:textColor="#01d0d2"/> 
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

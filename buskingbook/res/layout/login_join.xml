@@ -29,7 +29,7 @@
            android:id="@+id/btn_join_email"
            android:layout_width="200dip"
            android:layout_height="50dip"
-           android:background="#80e6d2"
+           android:background="#01d0d2"
            android:gravity="center"
            android:layout_marginBottom="15dip">
            <TextView
@@ -50,7 +50,7 @@
                android:layout_height="wrap_content"
                android:text="로그인"
                android:textSize="15dip"
-               android:textColor="#80e6d2"/>
+               android:textColor="#01d0d2"/>
        </LinearLayout>
    </LinearLayout>
 

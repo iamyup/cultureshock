@@ -1,15 +1,16 @@
 package com.cultureshock.buskingbook.object;
 
 public class LineUpObject {
-	private String year; // 년
-	private String month; //월
-	private String day; // 날
-	private String time; // 시간
-	private String dayOfweek; //요일
-	private String place;// 장소
-	private String teamName; //팀 네임
+	private String year; 
+	private String month; 
+	private String day; 
+	private String time; 
+	private String dayOfweek; 
+	private String place;
+	private String teamName; 
 	private String joinCount;
 	private String ranking;
+	private String imgAddress;
 	public LineUpObject()
 	{
 		
@@ -51,6 +52,22 @@ public class LineUpObject {
 		this.teamName = teamName;
 		this.joinCount = joinCount;
 		this.ranking = ranking;
+	}
+	
+	public LineUpObject(String year, String month, String day, String time,
+			String dayOfweek, String place, String teamName, String joinCount,
+			String ranking, String imgAddress) {
+		super();
+		this.year = year;
+		this.month = month;
+		this.day = day;
+		this.time = time;
+		this.dayOfweek = dayOfweek;
+		this.place = place;
+		this.teamName = teamName;
+		this.joinCount = joinCount;
+		this.ranking = ranking;
+		this.imgAddress = imgAddress;
 	}
 	public String getYear() {
 		return year;
@@ -105,6 +122,12 @@ public class LineUpObject {
 	}
 	public void setRanking(String ranking) {
 		this.ranking = ranking;
+	}
+	public String getImgAddress() {
+		return imgAddress;
+	}
+	public void setImgAddress(String imgAddress) {
+		this.imgAddress = imgAddress;
 	}
 	
 

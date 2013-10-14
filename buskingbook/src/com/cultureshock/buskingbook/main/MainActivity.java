@@ -12,12 +12,14 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.cultureshock.buskingbook.R;
+import com.cultureshock.buskingbook.component.LoadingPopup;
 import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 
 public class MainActivity extends BaseActivity {
     private Context mContext;
     private static MainActivity mInstance;
+    private LoadingPopup loading;
     
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
@@ -57,7 +59,6 @@ public class MainActivity extends BaseActivity {
     protected void onPause() {
         // TODO Auto-generated method stub
         super.onPause();
-        //��ε�ĳ��Ʈ ����
     }
 
     @Override
@@ -90,4 +91,29 @@ public class MainActivity extends BaseActivity {
             }
         }
     }
+    public void startProgressDialog() 
+	{
+		if( loading == null )
+		{
+			loading = new LoadingPopup(this);
+			loading.start();
+		}
+	}
+    @Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		//super.onBackPressed();
+		 finish();
+		 BaseActivity.getTeamObject().clear();
+		 System.exit(0);
+		
+	}
+	public void stopProgressDialog() 
+	{
+		if( loading != null )
+		{
+			loading.stop();
+			loading = null;
+		}
+	}
 }
