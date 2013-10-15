@@ -2,6 +2,7 @@ package com.cultureshock.buskingbook.main;
 
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -157,7 +159,7 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
 			    intent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
 			    intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
 			    startActivityForResult(intent, REQ_PICK_IMAGE);
-				break;
+			    break;
 			}
 			case R.id.btn_confirm : 
 			{
@@ -286,7 +288,13 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
         case REQ_PICK_IMAGE:
             if (resultCode == RESULT_OK) {
                 if (data != null) {
-                    
+                    Bitmap bitmap;
+                    try {
+                        bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + "/" + TEMP_PHOTO_FILE);
+                        m_oImage.setImageBitmap(bitmap);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
             break;

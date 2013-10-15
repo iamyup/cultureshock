@@ -15,6 +15,7 @@ import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoadingPopup;
 import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
+import com.cultureshock.buskingbook.page.PaperFragment;
 
 public class MainActivity extends BaseActivity {
     private Context mContext;
@@ -91,6 +92,7 @@ public class MainActivity extends BaseActivity {
             }
         }
     }
+
     public void startProgressDialog() 
 	{
 		if( loading == null )
@@ -116,4 +118,13 @@ public class MainActivity extends BaseActivity {
 			loading = null;
 		}
 	}
+
+    public void showPaper() {
+        FragmentManager fm = getSupportFragmentManager();
+        fm.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        Fragment frg = fm.findFragmentById(R.id.content_frame);
+        if ( frg.getClass() != PaperFragment.class ) {
+            replaceFragment(PaperFragment.class, null, false);
+        }
+    }
 }

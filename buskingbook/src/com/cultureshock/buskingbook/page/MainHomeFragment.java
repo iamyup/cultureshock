@@ -9,13 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.ViewPagerAdapter;
 import com.cultureshock.buskingbook.main.MainActivity;
-import com.cultureshock.buskingbook.net.HttpClientNet;
 
 public class MainHomeFragment extends Fragment implements OnClickListener{
     private FragmentActivity mContext;
@@ -42,6 +42,9 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
                 .findViewById(R.id.title_btn_menu);
         m_oBtnList.setOnClickListener(this);
         setPager();
+
+        ImageButton paper_btn = (ImageButton) getActivity().findViewById(R.id.paper_btn);
+        paper_btn.setOnClickListener(this);
     }
 
     public void setTitle(String txt)
@@ -105,14 +108,12 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
         // bundle, true);
         // break;
         // }
-        case R.id.title_btn_menu: {
+        case R.id.title_btn_menu:
             MainActivity.getInstance().showMenu();
             break;
+        case R.id.paper_btn:
+            MainActivity.getInstance().showPaper();
+            break;
         }
-
-        }
-
     }
-
-
 }

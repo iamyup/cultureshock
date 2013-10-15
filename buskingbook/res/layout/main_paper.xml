@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#282828"
+    android:orientation="vertical" >
+
+    <!-- 타이틀 -->
+    <FrameLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:background="#01d0d2" >
+
+        <ImageView
+            android:id="@+id/paper_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="5dip"
+            android:background="@xml/menu" />
+
+        <TextView
+            android:id="@+id/paper_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/paper"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/paper_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:text="@string/complete"
+            android:layout_marginRight="5dip"
+            android:textColor="#ffffff" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/paper_space"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/paper_team_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dip"
+            android:text="@string/paper"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/paper_string"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="30dp"
+            android:gravity="top|left"
+            android:hint="@string/inner_140" />
+
+        <LinearLayout
+            android:id="@+id/paper_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dip" >
+
+            <LinearLayout
+                android:id="@+id/paper_sticker"
+                android:layout_width="0dip"
+                android:layout_height="50dip"
+                android:layout_weight="0.5"
+                android:background="@color/selector_textbg_color"
+                android:gravity="center" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sticker"
+                    android:textColor="@color/selector_text_color"
+                    android:textSize="15dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paper_handwriting"
+                android:layout_width="0dip"
+                android:layout_height="50dip"
+                android:layout_weight="0.5"
+                android:background="@color/selector_textbg_color"
+                android:gravity="center" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/handwriting"
+                    android:textColor="@color/selector_text_color"
+                    android:textSize="15dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    
+</LinearLayout>

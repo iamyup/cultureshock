@@ -13,5 +13,10 @@
     <string name="favorite">즐겨찾기</string>
     <string name="logout">logout</string>
     <string name="app_id">1388316628071354</string>
+    <string name="paper">롤링페이퍼</string>
+    <string name="complete">완료</string>
+    <string name="inner_140">140자 이내</string>
+    <string name="sticker">스티커</string>
+    <string name="handwriting">손글씨</string>
 
 </resources>
