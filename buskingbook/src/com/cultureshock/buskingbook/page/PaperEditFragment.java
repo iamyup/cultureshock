@@ -36,6 +36,7 @@ public class PaperEditFragment extends Fragment implements OnClickListener{
         mContext.findViewById(R.id.paper_complete).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                MainActivity.getInstance().replaceFragment(PaperDisplayFragment.class, null, false);
             }
         });
         mContext.findViewById(R.id.paper_btn_sticker).requestFocus();
