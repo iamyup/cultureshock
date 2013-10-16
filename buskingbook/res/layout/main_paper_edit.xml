@@ -67,37 +67,32 @@
             android:layout_width="match_parent"
             android:layout_height="50dip" >
 
-            <LinearLayout
-                android:id="@+id/paper_sticker"
+            <TextView
+                android:id="@+id/paper_btn_sticker"
                 android:layout_width="0dip"
-                android:layout_height="50dip"
+                android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:background="@color/selector_textbg_color"
-                android:gravity="center" >
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:text="@string/sticker"
+                android:textColor="@color/selector_text_color"
+                android:gravity="center"
+                android:textSize="15dip" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sticker"
-                    android:textColor="@color/selector_text_color"
-                    android:textSize="15dip" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/paper_handwriting"
+            <TextView
+                android:id="@+id/paper_btn_handwriting"
                 android:layout_width="0dip"
-                android:layout_height="50dip"
+                android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:background="@color/selector_textbg_color"
-                android:gravity="center" >
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:text="@string/handwriting"
+                android:textColor="@color/selector_text_color"
+                android:gravity="center"
+                android:textSize="15dip" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/handwriting"
-                    android:textColor="@color/selector_text_color"
-                    android:textSize="15dip" />
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     
