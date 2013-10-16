@@ -62,13 +62,15 @@
 		    android:layout_marginBottom="10dip">
 		  <LinearLayout
 		      android:id="@+id/musician_page"
-		      android:layout_width="100dip"
+		      android:layout_width="130dip"
 		      android:layout_height="30dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
 		          android:layout_width="wrap_content"
-		          android:layout_height="wrap_content"/>
+		          android:layout_height="wrap_content"
+		          android:background="@drawable/busker_page_btn"
+		          android:layout_marginRight="10dip"/>
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
@@ -78,29 +80,34 @@
 		  </LinearLayout>
 		  <LinearLayout
 		      android:id="@+id/musician_busking_join"
-		      android:layout_width="100dip"
+		      android:layout_width="130dip"
 		      android:layout_height="30dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
 		          android:layout_width="wrap_content"
-		          android:layout_height="wrap_content"/>
+		          android:layout_height="wrap_content"
+		          android:background="@drawable/add_per_btn"
+		          android:layout_marginRight="10dip"/>
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
 		          android:text="공연등록"
 		          android:textSize="15dip"
-		          android:textColor="#00ffff"/>
+		          android:textColor="#00ffff"
+		          />
 		  </LinearLayout>
 		  <LinearLayout
 		      android:id="@+id/musician_partner"
-		      android:layout_width="100dip"
+		      android:layout_width="130dip"
 		      android:layout_height="30dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
 		          android:layout_width="wrap_content"
-		          android:layout_height="wrap_content"/>
+		          android:layout_height="wrap_content"
+		          android:background="@drawable/findb_btn"
+		          android:layout_marginRight="10dip"/>
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
@@ -122,13 +129,15 @@
 		    android:layout_marginBottom="10dip"/>
 		  <LinearLayout
 		      android:id="@+id/musician_busker_search"
-		      android:layout_width="100dip"
+		      android:layout_width="130dip"
 		      android:layout_height="30dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
 		          android:layout_width="wrap_content"
-		          android:layout_height="wrap_content"/>
+		          android:layout_height="wrap_content"
+		          android:background="@drawable/find_btn_o"
+		          android:layout_marginRight="10dip"/>
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
@@ -138,13 +147,15 @@
 		  </LinearLayout>
 		  <LinearLayout
 		      android:id="@+id/musician_like_search"
-		      android:layout_width="100dip"
+		      android:layout_width="130dip"
 		      android:layout_height="30dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
 		          android:layout_width="wrap_content"
-		          android:layout_height="wrap_content"/>
+		          android:layout_height="wrap_content"
+		          android:background="@drawable/like_btn"
+		          android:layout_marginRight="10dip" />
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
@@ -154,13 +165,15 @@
 		  </LinearLayout>
 		  <LinearLayout
 		      android:id="@+id/musician_alarm"
-		      android:layout_width="100dip"
+		      android:layout_width="130dip"
 		      android:layout_height="30dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
 		          android:layout_width="wrap_content"
-		          android:layout_height="wrap_content"/>
+		          android:layout_height="wrap_content"
+		          android:background="@drawable/alarm_btn"
+		          android:layout_marginRight="10dip" />
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
@@ -170,13 +183,15 @@
 		  </LinearLayout>
 		  <LinearLayout
 		      android:id="@+id/musician_info"
-		      android:layout_width="100dip"
+		      android:layout_width="130dip"
 		      android:layout_height="30dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
 		          android:layout_width="wrap_content"
-		          android:layout_height="wrap_content"/>
+		          android:layout_height="wrap_content"
+		          android:background="@drawable/privacy_btn_o"
+		          android:layout_marginRight="10dip" />
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
@@ -188,17 +203,20 @@
 	</LinearLayout>
 	<LinearLayout
 	    android:id="@+id/busker_join_btn"
-	    android:layout_width="match_parent"
+	    android:layout_width="130dip"
 	    android:layout_height="50dip"
-	    android:layout_above="@+id/logout_layout">
+	    android:layout_above="@+id/logout_layout"
+	    android:layout_marginLeft="15dip"
+	    android:layout_marginBottom="10dip">
 		<ImageView
 		          android:layout_width="wrap_content"
-		          android:layout_height="wrap_content"/>
+		          android:layout_height="wrap_content"
+		          android:background="@drawable/add_per_btn_o"
+		          android:layout_marginRight="10dip"/>
 		<TextView
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:text="버스커\n등록하기"
-		    android:layout_marginLeft="15dip"
 		    android:textSize="15dip"
 		    android:textColor="#ffffff"/>
 	</LinearLayout>

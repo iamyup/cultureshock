@@ -33,7 +33,7 @@ public class ListSlidingActivity extends SlidingFragmentActivity {
         // customize the SlidingMenu
         SlidingMenu sm = getSlidingMenu();
         sm.setShadowWidthRes(R.dimen.shadow_width);
-        sm.setShadowDrawable(R.drawable.shadow);
+        sm.setShadowDrawable(R.drawable.shadow2);
         sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
         sm.setFadeDegree(0.35f);
         sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);

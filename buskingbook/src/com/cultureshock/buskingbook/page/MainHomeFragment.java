@@ -112,7 +112,7 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
             MainActivity.getInstance().showMenu();
             break;
         case R.id.paper_btn:
-            MainActivity.getInstance().showPaper();
+        	MainActivity.getInstance().replaceFragment(PaperFragment.class, null, false);
             break;
         }
     }

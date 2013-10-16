@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
+import com.cultureshock.buskingbook.page.BuskerJoinFragment;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.util.AsyncImageLoader;
 
@@ -189,11 +190,13 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     	if(LoginInfoObject.getInstance().getMyteam().equals("") )
         {
         	m_LayoutMusician.setVisibility(View.GONE);
-        	m_BtnBuskerRegister.setVisibility(View.GONE);
+        	m_oTxtMyTeam.setText("");
+        	m_BtnBuskerRegister.setVisibility(View.VISIBLE);
         }
         else
         {
         	m_LayoutMusician.setVisibility(View.VISIBLE);
+        	m_oTxtMyTeam.setText(LoginInfoObject.getInstance().getMyteam());
         	m_BtnBuskerRegister.setVisibility(View.GONE);
         }
     	
@@ -233,6 +236,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
 	    	}
 	    	case R.id.busker_join_btn:
 	    	{
+	    		MainActivity.getInstance().replaceFragment(BuskerJoinFragment.class, null, false);
 	    		break;
 	    	}
 	    	case R.id.logout_layout:

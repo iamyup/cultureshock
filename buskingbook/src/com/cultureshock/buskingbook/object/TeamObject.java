@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class TeamObject {
 	private String teamName;
 	private ArrayList<TeamMemberObject> teamMember;
-	private String teamThum; // ???ë¯¸ì? ì£¼ì?
-	private int likeCount; //ì¢?????«ì?
+	private String teamThum; // ???ë¯¸ï¿½? ì£¼ï¿½?
+	private int likeCount; //ï¿½?????ï¿½ï¿½?
 	private String teamComent;
 	private String teamSong ; 
 	private String teamMembers;
@@ -30,6 +30,17 @@ public class TeamObject {
 	public TeamObject(String teamName, String teamMembers,String teamSong,String teamComent,String teamThum) {
 		super();
 		this.teamName = teamName;
+		this.teamMembers = teamMembers;
+		this.teamThum = teamThum;
+		this.likeCount = 0;
+		this.teamComent = teamComent;
+		this.teamSong = teamSong;
+		setList();
+	}
+	public TeamObject(String teamName, ArrayList<TeamMemberObject> teamMember,String teamMembers,String teamSong,String teamComent,String teamThum) {
+		super();
+		this.teamName = teamName;
+		this.teamMember = teamMember;
 		this.teamMembers = teamMembers;
 		this.teamThum = teamThum;
 		this.likeCount = 0;
