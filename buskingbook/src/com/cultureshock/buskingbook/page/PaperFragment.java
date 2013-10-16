@@ -32,6 +32,8 @@ public class PaperFragment extends Fragment implements OnClickListener{
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
         mInstance = this;
+
+        mContext.findViewById(R.id.paper_btn_sticker).requestFocus();
     }
 
     public static PaperFragment getInstance() {
