@@ -9,7 +9,7 @@
         android:id="@+id/step_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 	     <FrameLayout 
 	         android:id="@+id/busker_title"
 	         android:layout_width="match_parent"
@@ -144,7 +144,7 @@
         android:id="@+id/step_2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="gone">
 	     <FrameLayout 
 	         android:id="@+id/busker_title"
 	         android:layout_width="match_parent"

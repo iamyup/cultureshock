@@ -54,6 +54,11 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 	private AsyncImageLoader m_oAsyncImageLoader = new AsyncImageLoader();
 	private ArrayList<LineUpObject> lineUpArr = new ArrayList<LineUpObject>();
 	private TeamObject m_oSelectTeam;
+	private boolean checkToday = false;
+	private int year ;
+	private int month ;
+	private int day;
+	private String week;
 	public LineUpListView(Context context) {
 		super(context);
 		mContext = context;
@@ -65,6 +70,26 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 		mContext = context;
 		
 		initListView();
+	}
+	public void checkToday()
+	{
+		GregorianCalendar calendar = new GregorianCalendar();
+		year = calendar.get(Calendar.YEAR);
+		month = calendar.get(Calendar.MONTH) +1;
+		day = calendar.get(Calendar.DATE);
+		int wod = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+		String[] weeks ={"일", "월", "화", "수", "목", "금", "토"};
+		week = weeks[wod];
+		for( int i = 0 ; i<lineUpArr.size() ; i++)
+		{
+			if(year == Integer.parseInt(lineUpArr.get(i).getYear())&&
+					month == Integer.parseInt(lineUpArr.get(i).getMonth())&&
+					day == Integer.parseInt(lineUpArr.get(i).getDay()))
+			{
+				checkToday = true;
+			}
+		}
+		
 	}
 	
 		
@@ -79,8 +104,9 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 	public void setListData(ArrayList<LineUpObject> arrayData) 
 	{
 		this.lineUpArr = arrayData;
+		checkToday();
 		listAdapter = new IntromTeamListAdapter(lineUpArr);
-		setAdapter(listAdapter);;
+		setAdapter(listAdapter);
 	}
 
 	
@@ -104,8 +130,10 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 		private ImageView mLikeImg;
 		private TextView mLikeCount;
 		private ImageView mTeamInfo;
+		private TextView mFirstCalendar;
+		private TextView mFirstCalendarWeek;
 		
-		private LinearLayout mNoDataLayout;
+		private RelativeLayout mNoDataLayout;
 		private LinearLayout mDataLayout;
 		private LinearLayout mBottomLayout;
 		
@@ -121,25 +149,8 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 			super(mContext, 0, objects);
 		}
 		
-		public boolean checkData(LineUpObject object)
-		{
-			GregorianCalendar calendar = new GregorianCalendar();
-			int year = calendar.get(Calendar.YEAR);
-			int month = calendar.get(Calendar.MONTH)+1;
-			int day = calendar.get(Calendar.DATE);
-			
-			if(year == Integer.parseInt(object.getYear())&& 
-					month == Integer.parseInt(object.getMonth())&&
-					day == Integer.parseInt(object.getDay()))
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-			
-		}
+		
+		
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView == null) {
 				LayoutInflater inflater = LayoutInflater.from(mContext);
@@ -157,9 +168,13 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 				mLikeCount= (TextView) convertView.findViewById(R.id.item_lineup_bottom_likecount);
 				mTeamInfo = (ImageView) convertView.findViewById(R.id.item_lineup_bottom_likecount_img_o);
 				mBottomLayout = (LinearLayout)convertView.findViewById(R.id.item_lineup_bottom);
-				mNoDataLayout = (LinearLayout)convertView.findViewById(R.id.item_lineup_nolineup);
+				mNoDataLayout = (RelativeLayout)convertView.findViewById(R.id.item_lineup_nolineup);
 				mDataLayout = (LinearLayout)convertView.findViewById(R.id.item_lineup_time_layout);
+				mFirstCalendar = (TextView)convertView.findViewById(R.id.item_lineup_calendar_2);
+				mFirstCalendarWeek = (TextView)convertView.findViewById(R.id.item_lineup_calendar_day_of_week_2);
 				holder = new ViewHolder();
+				holder.firstCalendar = mFirstCalendar;
+				holder.firstCalendarWeek = mFirstCalendarWeek;
 				holder.layoutCalendar = mLayoutCalendar;
 				holder.calendarWeek = mCalendarWeek;
 				holder.calendar = mCalendar;
@@ -188,22 +203,24 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 			convertView.setTag(R.id.imageId, position);
 			if(position == 0 )
 			{
-				holder.calendar.setText(itemObject.getYear()+"."+itemObject.getMonth()+"."+itemObject.getDay()+" ");
-				holder.calendarWeek.setText(itemObject.getDayOfweek());
-				if(checkData(itemObject))
+				if(checkToday)
 				{
 					holder.dataLayout.setVisibility(View.VISIBLE);
 					holder.bottomLayout.setVisibility(View.VISIBLE);
 					holder.noDataLayout.setVisibility(View.GONE);
 					holder.layoutCalendar.setVisibility(View.VISIBLE);
-					
 				}
 				else
 				{
-					holder.dataLayout.setVisibility(View.GONE);
-					holder.bottomLayout.setVisibility(View.GONE);
+					holder.calendar.setText(year+"."+month+"."+day+" ");
+					holder.calendarWeek.setText(week);
+					holder.layoutCalendar.setVisibility(View.VISIBLE);
 					holder.noDataLayout.setVisibility(View.VISIBLE);
+					holder.dataLayout.setVisibility(View.VISIBLE);
+					holder.bottomLayout.setVisibility(View.VISIBLE);
 				}
+				holder.calendar.setText(itemObject.getYear()+"."+itemObject.getMonth()+"."+itemObject.getDay()+" ");
+				holder.calendarWeek.setText(itemObject.getDayOfweek());
 			}
 			else
 			{
@@ -301,8 +318,11 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 		private ImageView teamInfo;
 		
 		private LinearLayout bottomLayout;
-		private LinearLayout noDataLayout;
+		private RelativeLayout noDataLayout;
 		private LinearLayout dataLayout;
+		
+		private TextView firstCalendar;
+		private TextView firstCalendarWeek;
 	}
 
 	public void notifyData()
