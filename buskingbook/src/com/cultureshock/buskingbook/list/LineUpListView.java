@@ -20,6 +20,7 @@ import com.cultureshock.buskingbook.net.Params;
 import com.cultureshock.buskingbook.object.LineUpObject;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.object.TeamObject;
+import com.cultureshock.buskingbook.page.TeamPageFragment;
 import com.cultureshock.buskingbook.service.ServiceType;
 import com.cultureshock.buskingbook.util.AsyncImageLoader;
 import com.cultureshock.buskingbook.util.Util;
@@ -29,6 +30,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
@@ -129,7 +131,7 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 		private TextView mRanking;
 		private ImageView mLikeImg;
 		private TextView mLikeCount;
-		private ImageView mTeamInfo;
+		private LinearLayout mTeamInfo;
 		private TextView mFirstCalendar;
 		private TextView mFirstCalendarWeek;
 		
@@ -166,7 +168,7 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 				mLike = (LinearLayout) convertView.findViewById(R.id.like_select);
 				mLikeImg = (ImageView) convertView.findViewById(R.id.item_lineup_bottom_likecount_img);
 				mLikeCount= (TextView) convertView.findViewById(R.id.item_lineup_bottom_likecount);
-				mTeamInfo = (ImageView) convertView.findViewById(R.id.item_lineup_bottom_likecount_img_o);
+				mTeamInfo = (LinearLayout) convertView.findViewById(R.id.team_page);
 				mBottomLayout = (LinearLayout)convertView.findViewById(R.id.item_lineup_bottom);
 				mNoDataLayout = (RelativeLayout)convertView.findViewById(R.id.item_lineup_nolineup);
 				mDataLayout = (LinearLayout)convertView.findViewById(R.id.item_lineup_time_layout);
@@ -199,6 +201,7 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 			}
 			convertView.setTag(R.id.imageId, position);
 			holder.like.setTag(R.id.imageId, position);
+			holder.teamInfo.setTag(R.id.imageId, position);
 			LineUpObject itemObject = getItem(position);
 			convertView.setTag(R.id.imageId, position);
 			if(position == 0 )
@@ -212,8 +215,8 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 				}
 				else
 				{
-					holder.calendar.setText(year+"."+month+"."+day+" ");
-					holder.calendarWeek.setText(week);
+					holder.firstCalendar.setText(year+"."+month+"."+day+" ");
+					holder.firstCalendarWeek.setText(week);
 					holder.layoutCalendar.setVisibility(View.VISIBLE);
 					holder.noDataLayout.setVisibility(View.VISIBLE);
 					holder.dataLayout.setVisibility(View.VISIBLE);
@@ -242,12 +245,22 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 			Drawable default1 = null;
 	    	default1 =  mContext.getResources().getDrawable(R.drawable.default_a);
 			
-	    	m_oAsyncImageLoader.setImageDrawableAsync(holder.img,itemObject.getImgAddress(),default1,default1,mContext);
+	    	
 			holder.teamname.setText(itemObject.getTeamName());
 			holder.time.setText(itemObject.getTime());
 			holder.place.setText(itemObject.getPlace());
-			holder.ranking.setText(itemObject.getRanking());
-			holder.likeCount.setText(itemObject.getJoinCount());
+			
+			
+			for(int i = 0 ; i < BaseActivity.getTeamObject().size() ; i++)
+			{
+				if(itemObject.getTeamName().equals(BaseActivity.getTeamObject().get(i).getTeamName()))
+				{
+					m_oAsyncImageLoader.setImageDrawableAsync(holder.img,BaseActivity.getTeamObject().get(i).getTeamThum(),default1,default1,mContext);
+					holder.ranking.setText("TOP"+(i+1));
+					holder.likeCount.setText(BaseActivity.getTeamObject().get(i).getLikeCount()+"");
+					break;
+				}
+			}
 			for(int i = 0 ; i< LoginInfoObject.getInstance().getLikeTeamList().size() ; i++)
 			{
 				if(LoginInfoObject.getInstance().getLikeTeamList().get(i).equals(itemObject.getTeamName()))
@@ -256,7 +269,16 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 					break;
 				}
 			}
-			
+			holder.teamInfo.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					int pos = (Integer) v.getTag(R.id.imageId);
+					Bundle o = new Bundle();
+					o.putString("object", getItem(pos).getTeamName());
+					MainActivity.getInstance().replaceFragment(TeamPageFragment.class, o, true);
+				}
+			});
 			holder.like.setOnClickListener(new OnClickListener() {
 				
 				@Override
@@ -315,7 +337,7 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 		private TextView ranking;
 		private ImageView likeImg;
 		private TextView likeCount;
-		private ImageView teamInfo;
+		private LinearLayout teamInfo;
 		
 		private LinearLayout bottomLayout;
 		private RelativeLayout noDataLayout;

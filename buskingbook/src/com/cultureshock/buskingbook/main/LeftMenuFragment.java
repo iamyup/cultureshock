@@ -18,6 +18,8 @@ import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.page.BuskerJoinFragment;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
+import com.cultureshock.buskingbook.page.TeamPageFragment;
+import com.cultureshock.buskingbook.page.TimeJoinFragment;
 import com.cultureshock.buskingbook.util.AsyncImageLoader;
 
 public class LeftMenuFragment extends Fragment implements View.OnClickListener {
@@ -208,10 +210,14 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     	{
 	    	case R.id.musician_page:
 	    	{
+	    		Bundle o = new Bundle();
+	    		o.putString("object", LoginInfoObject.getInstance().getMyteam());
+	    		MainActivity.getInstance().replaceFragment(TeamPageFragment.class, o, true);
 	    		break;
 	    	}
 	    	case R.id.musician_busking_join:
 	    	{
+	    		MainActivity.getInstance().replaceFragment(TimeJoinFragment.class, null, false);
 	    		break;
 	    	}
 	    	case R.id.musician_partner:

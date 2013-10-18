@@ -93,6 +93,7 @@ public class Main_LineUp_Page extends LinearLayout implements View.OnClickListen
 		try{
 			Object o = resContent;
 			JSONObject object = new JSONObject(resContent);
+			GregorianCalendar calendar = new GregorianCalendar();
 			if(object.getJSONObject("result").optString("type").equals("ServiceType.MSG_TIME_TABLE"))
 			{
 				JSONArray todayTime = object.getJSONArray("data");
@@ -107,15 +108,25 @@ public class Main_LineUp_Page extends LinearLayout implements View.OnClickListen
 					String place = jsonObject.optString("place");
 					String teamname = jsonObject.optString("teamname");
 					String joincount = jsonObject.optString("joincount");
-					lineUpArr.add(new LineUpObject(year,month,day,time,dayOfweek,place,teamname,joincount));
-					
-					if(lineUpListView == null)
+					if(Integer.parseInt(year) == calendar.get(Calendar.YEAR))
 					{
-						lineUpListView = new LineUpListView(mContext);
-						lineUpListView.setListData(lineUpArr);
+						if(Integer.parseInt(month) == calendar.get(Calendar.MONTH)+1)
+						{
+							if(Integer.parseInt(day) >= calendar.get(Calendar.DATE))
+							{
+								lineUpArr.add(new LineUpObject(year,month,day,time,dayOfweek,place,teamname,joincount));
+							}
+						}
 					}
-					m_oLayoutListView.addView(lineUpListView);
+					
+					
 				}
+				if(lineUpListView == null)
+				{
+					lineUpListView = new LineUpListView(mContext);
+					lineUpListView.setListData(lineUpArr);
+				}
+				m_oLayoutListView.addView(lineUpListView);
 			}
 			else if (object.getJSONObject("result").optString("type").equals("ServiceType.MSG.TIME_TABLE_SEND"))
 			{
