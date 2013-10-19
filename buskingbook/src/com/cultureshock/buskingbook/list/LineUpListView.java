@@ -195,130 +195,131 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 				convertView.setTag(holder);
 				
 		        mRecycleList.add(new WeakReference<View>(convertView));
-				
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-			convertView.setTag(R.id.imageId, position);
-			holder.like.setTag(R.id.imageId, position);
-			holder.teamInfo.setTag(R.id.imageId, position);
-			LineUpObject itemObject = getItem(position);
-			convertView.setTag(R.id.imageId, position);
-			if(position == 0 )
-			{
-				if(checkToday)
+				convertView.setTag(R.id.imageId, position);
+				holder.like.setTag(R.id.imageId, position);
+				holder.teamInfo.setTag(R.id.imageId, position);
+				LineUpObject itemObject = getItem(position);
+				convertView.setTag(R.id.imageId, position);
+				if(position == 0 )
 				{
-					holder.dataLayout.setVisibility(View.VISIBLE);
-					holder.bottomLayout.setVisibility(View.VISIBLE);
-					holder.noDataLayout.setVisibility(View.GONE);
-					holder.layoutCalendar.setVisibility(View.VISIBLE);
-				}
-				else
-				{
-					holder.firstCalendar.setText(year+"."+month+"."+day+" ");
-					holder.firstCalendarWeek.setText(week);
-					holder.layoutCalendar.setVisibility(View.VISIBLE);
-					holder.noDataLayout.setVisibility(View.VISIBLE);
-					holder.dataLayout.setVisibility(View.VISIBLE);
-					holder.bottomLayout.setVisibility(View.VISIBLE);
-				}
-				holder.calendar.setText(itemObject.getYear()+"."+itemObject.getMonth()+"."+itemObject.getDay()+" ");
-				holder.calendarWeek.setText(itemObject.getDayOfweek());
-			}
-			else
-			{
-				LineUpObject beforeObject = getItem(position-1);
-				
-				if(itemObject.getYear().equals(beforeObject.getYear()) &&
-						itemObject.getMonth().equals(beforeObject.getMonth()) &&
-						itemObject.getDay().equals(beforeObject.getDay()))
-				{
-					holder.layoutCalendar.setVisibility(View.GONE);
-				}
-				else
-				{
-					holder.layoutCalendar.setVisibility(View.VISIBLE);
-					holder.calendar.setText(itemObject.getYear()+"."+itemObject.getMonth()+"."+itemObject.getDay()+" ");
-					holder.calendarWeek.setText(itemObject.getDayOfweek());
-				}
-			}
-			Drawable default1 = null;
-	    	default1 =  mContext.getResources().getDrawable(R.drawable.default_a);
-			
-	    	
-			holder.teamname.setText(itemObject.getTeamName());
-			holder.time.setText(itemObject.getTime());
-			holder.place.setText(itemObject.getPlace());
-			
-			
-			for(int i = 0 ; i < BaseActivity.getTeamObject().size() ; i++)
-			{
-				if(itemObject.getTeamName().equals(BaseActivity.getTeamObject().get(i).getTeamName()))
-				{
-					m_oAsyncImageLoader.setImageDrawableAsync(holder.img,BaseActivity.getTeamObject().get(i).getTeamThum(),default1,default1,mContext);
-					holder.ranking.setText("TOP"+(i+1));
-					holder.likeCount.setText(BaseActivity.getTeamObject().get(i).getLikeCount()+"");
-					break;
-				}
-			}
-			for(int i = 0 ; i< LoginInfoObject.getInstance().getLikeTeamList().size() ; i++)
-			{
-				if(LoginInfoObject.getInstance().getLikeTeamList().get(i).equals(itemObject.getTeamName()))
-				{
-					holder.likeImg.setBackgroundResource(R.drawable.heart_o);
-					break;
-				}
-			}
-			holder.teamInfo.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					int pos = (Integer) v.getTag(R.id.imageId);
-					Bundle o = new Bundle();
-					o.putString("object", getItem(pos).getTeamName());
-					MainActivity.getInstance().replaceFragment(TeamPageFragment.class, o, true);
-				}
-			});
-			holder.like.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					if(LoginInfoObject.getInstance().isLogin())
+					if(checkToday)
 					{
-						int pos = (Integer) v.getTag(R.id.imageId);
-						TeamObject itemObject = null;
-						if(BaseActivity.searchTeam(getItem(pos).getTeamName()) != null)
-						{
-							 itemObject = BaseActivity.searchTeam(getItem(pos).getTeamName());
-							 int check = 0;
-							 for(int i = 0 ; i< itemObject.getLikeMans().size() ; i++)
-							 {
-									if(itemObject.getLikeMans().get(i).equals(LoginInfoObject.getInstance().getId()))
-									{
-										Toast.makeText(mContext, "이미 좋아하는 팀입니다.", Toast.LENGTH_SHORT).show();
-										check = 1;
-										break;
-									}
-							 }
-						 	 if(check != 1)
-						 	 { 
-								//통신이후 좋아요 카운트 하나 늘리면됨 
-								m_oSelectTeam = itemObject;
-								requestTeamLikeUp();
-							 }
-						}
-						else
-						{
-							//팀이 없습니다 
-						}
+						holder.dataLayout.setVisibility(View.VISIBLE);
+						holder.bottomLayout.setVisibility(View.VISIBLE);
+						holder.noDataLayout.setVisibility(View.GONE);
+						holder.layoutCalendar.setVisibility(View.VISIBLE);
 					}
 					else
 					{
-						new LoginAlertPopup(mContext);
+						holder.firstCalendar.setText(year+"."+month+"."+day+" ");
+						holder.firstCalendarWeek.setText(week);
+						holder.layoutCalendar.setVisibility(View.VISIBLE);
+						holder.noDataLayout.setVisibility(View.VISIBLE);
+						holder.dataLayout.setVisibility(View.VISIBLE);
+						holder.bottomLayout.setVisibility(View.VISIBLE);
+					}
+					holder.calendar.setText(itemObject.getYear()+"."+itemObject.getMonth()+"."+itemObject.getDay()+" ");
+					holder.calendarWeek.setText(itemObject.getDayOfweek());
+				}
+				else
+				{
+					LineUpObject beforeObject = getItem(position-1);
+					
+					if(itemObject.getYear().equals(beforeObject.getYear()) &&
+							itemObject.getMonth().equals(beforeObject.getMonth()) &&
+							itemObject.getDay().equals(beforeObject.getDay()))
+					{
+						holder.layoutCalendar.setVisibility(View.GONE);
+					}
+					else
+					{
+						holder.layoutCalendar.setVisibility(View.VISIBLE);
+						holder.calendar.setText(itemObject.getYear()+"."+itemObject.getMonth()+"."+itemObject.getDay()+" ");
+						holder.calendarWeek.setText(itemObject.getDayOfweek());
 					}
 				}
-			});
+				Drawable default1 = null;
+		    	default1 =  mContext.getResources().getDrawable(R.drawable.default_a);
+				
+		    	
+				holder.teamname.setText(itemObject.getTeamName());
+				holder.time.setText(itemObject.getTime());
+				holder.place.setText(itemObject.getPlace());
+				
+				
+				for(int i = 0 ; i < BaseActivity.getTeamObject().size() ; i++)
+				{
+					if(itemObject.getTeamName().equals(BaseActivity.getTeamObject().get(i).getTeamName()))
+					{
+						m_oAsyncImageLoader.setImageDrawableAsync(holder.img,BaseActivity.getTeamObject().get(i).getTeamThum(),default1,default1,mContext);
+						holder.ranking.setText("TOP"+(i+1));
+						holder.likeCount.setText(BaseActivity.getTeamObject().get(i).getLikeCount()+"");
+						break;
+					}
+				}
+				for(int i = 0 ; i< LoginInfoObject.getInstance().getLikeTeamList().size() ; i++)
+				{
+					if(LoginInfoObject.getInstance().getLikeTeamList().get(i).equals(itemObject.getTeamName()))
+					{
+						holder.likeImg.setBackgroundResource(R.drawable.heart_o);
+						break;
+					}
+				}
+				holder.teamInfo.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						int pos = (Integer) v.getTag(R.id.imageId);
+						Bundle o = new Bundle();
+						o.putString("object", getItem(pos).getTeamName());
+						MainActivity.getInstance().replaceFragment(TeamPageFragment.class, o, true);
+					}
+				});
+				holder.like.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						if(LoginInfoObject.getInstance().isLogin())
+						{
+							int pos = (Integer) v.getTag(R.id.imageId);
+							TeamObject itemObject = null;
+							if(BaseActivity.searchTeam(getItem(pos).getTeamName()) != null)
+							{
+								 itemObject = BaseActivity.searchTeam(getItem(pos).getTeamName());
+								 int check = 0;
+								 for(int i = 0 ; i< itemObject.getLikeMans().size() ; i++)
+								 {
+										if(itemObject.getLikeMans().get(i).equals(LoginInfoObject.getInstance().getId()))
+										{
+											Toast.makeText(mContext, "이미 좋아하는 팀입니다.", Toast.LENGTH_SHORT).show();
+											check = 1;
+											break;
+										}
+								 }
+							 	 if(check != 1)
+							 	 { 
+									//통신이후 좋아요 카운트 하나 늘리면됨 
+									m_oSelectTeam = itemObject;
+									requestTeamLikeUp();
+								 }
+							}
+							else
+							{
+								//팀이 없습니다 
+							}
+						}
+						else
+						{
+							new LoginAlertPopup(mContext);
+						}
+					}
+				});
+			
+			
 			return convertView;
 		}
 	}

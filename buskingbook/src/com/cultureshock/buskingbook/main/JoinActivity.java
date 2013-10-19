@@ -23,6 +23,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -43,7 +44,6 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
     private Context mContext;
     private static JoinActivity mInstance;
     
-    private LinearLayout m_oBtnDoble;
     private LinearLayout m_oImageUpload;
     private ImageView m_oImage;
     private EditText m_oUserName;
@@ -51,6 +51,7 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
     private EditText m_oPassword;
     private EditText m_oPasswordConfirm;
     private LinearLayout m_oBtnConfirm;
+    private ImageView m_oImgDoubleCheck;
     
     private String m_oStrImgThum = "";
     private boolean checkDouble = false; 
@@ -80,9 +81,29 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
     	m_oPassword = (EditText)findViewById(R.id.join_password);
     	m_oPasswordConfirm = (EditText)findViewById(R.id.join_password_confirm);
     	m_oBtnConfirm = (LinearLayout)findViewById(R.id.btn_confirm);
-    	m_oBtnDoble = (LinearLayout)findViewById(R.id.btn_double);
+    	m_oImgDoubleCheck = (ImageView)findViewById(R.id.double_check_img);
+    	m_oEmail.setOnFocusChangeListener(new OnFocusChangeListener() {
+			
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				// TODO Auto-generated method stub
+				if(hasFocus==false)
+				{
+					if((m_oEmail.getText().toString().equals("")))
+					{
+						//아이디 입력해주세요
+						
+						Toast.makeText(JoinActivity.this, "이메일을 입력해주세요", Toast.LENGTH_SHORT).show();
+					}
+					else
+					{
+						reqeustDoubleId();
+					}
+				}
+				
+			}
+		});
     	
-    	m_oBtnDoble.setOnClickListener(this);
     	m_oImageUpload.setOnClickListener(this);
     	m_oBtnConfirm.setOnClickListener(this);
     }
@@ -137,20 +158,6 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
 		// TODO Auto-generated method stub
 		switch(v.getId())
 		{
-			case R.id.btn_double:
-			{
-				if((m_oEmail.getText().toString().equals("")))
-				{
-					//아이디 입력해주세요
-					
-					Toast.makeText(this, "이메일을 입력해주세요", Toast.LENGTH_SHORT).show();
-				}
-				else
-				{
-					reqeustDoubleId();
-				}
-				break;
-			}
 			case R.id.img_upload : 
 			{
 			    Intent intent = new Intent(Intent.ACTION_PICK);
@@ -213,6 +220,7 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
 //					m_oTxtDoble.setText("사용 가능한 아이디 입니다.");
 					Toast.makeText(this, "사용 가능한 이메일 입니다.", Toast.LENGTH_SHORT).show();
 					checkDouble = true;
+					m_oImgDoubleCheck.setBackgroundResource(R.drawable.check_double);
 				}
 				else
 				{
@@ -220,6 +228,7 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
 					Toast.makeText(this, "중복된 이메일이 있습니다.", Toast.LENGTH_SHORT).show();
 					checkDouble = false;
 					//얼랏 중복되니 다시 입력바랍니다.
+					m_oImgDoubleCheck.setBackgroundResource(R.drawable.check_double_no);
 				}
 			}
 			else if(object.getJSONObject("result").optString("type").equals("ServiceType.MSG.JOIN"))

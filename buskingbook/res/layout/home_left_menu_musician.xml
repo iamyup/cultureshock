@@ -31,28 +31,27 @@
 		    android:paddingBottom="20dp"
 		    android:scaleType="fitXY"
 		    android:layout_marginTop="15dip"
-		    android:src="@drawable/image_default" />
+		    android:src="@drawable/default_pf" />
 	
 		<LinearLayout
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:orientation="vertical"
-		    android:paddingBottom="10dip" >
+		    android:paddingBottom="10dip"
+		    android:gravity="center" >
 		
 		<TextView
 		    android:id="@+id/name_home_left"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:text="신한솔님"
-		    android:textColor="#ffffff"
-		    android:layout_marginLeft="15dip" />
+		    android:textColor="#ffffff" />
 		<TextView
 		    android:id="@+id/team_name_home_left"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:text="seoul 소속"
-		    android:textColor="#00ffff"
-		    android:layout_marginLeft="15dip"  />
+		    android:textColor="#00ffff" />
 		</LinearLayout>
 		<LinearLayout
 		    android:id="@+id/musician_join"
@@ -63,7 +62,7 @@
 		  <LinearLayout
 		      android:id="@+id/musician_page"
 		      android:layout_width="130dip"
-		      android:layout_height="30dip"
+		      android:layout_height="40dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
@@ -76,12 +75,13 @@
 		          android:layout_height="wrap_content"
 		          android:text="버스커페이지"
 		          android:textSize="15dip"
+		          android:textStyle="bold"
 		          android:textColor="#00ffff"/>
 		  </LinearLayout>
 		  <LinearLayout
 		      android:id="@+id/musician_busking_join"
 		      android:layout_width="130dip"
-		      android:layout_height="30dip"
+		      android:layout_height="40dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
@@ -94,13 +94,14 @@
 		          android:layout_height="wrap_content"
 		          android:text="공연등록"
 		          android:textSize="15dip"
+		          android:textStyle="bold"
 		          android:textColor="#00ffff"
 		          />
 		  </LinearLayout>
 		  <LinearLayout
 		      android:id="@+id/musician_partner"
 		      android:layout_width="130dip"
-		      android:layout_height="30dip"
+		      android:layout_height="40dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
@@ -113,6 +114,7 @@
 		          android:layout_height="wrap_content"
 		          android:text="동료찾기"
 		          android:textSize="15dip"
+		          android:textStyle="bold"
 		          android:textColor="#00ffff"/>
 		  </LinearLayout>
 		</LinearLayout>
@@ -130,7 +132,7 @@
 		  <LinearLayout
 		      android:id="@+id/musician_busker_search"
 		      android:layout_width="130dip"
-		      android:layout_height="30dip"
+		      android:layout_height="40dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
@@ -148,7 +150,7 @@
 		  <LinearLayout
 		      android:id="@+id/musician_like_search"
 		      android:layout_width="130dip"
-		      android:layout_height="30dip"
+		      android:layout_height="40dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
@@ -166,7 +168,7 @@
 		  <LinearLayout
 		      android:id="@+id/musician_alarm"
 		      android:layout_width="130dip"
-		      android:layout_height="30dip"
+		      android:layout_height="40dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView

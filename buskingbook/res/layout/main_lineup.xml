@@ -9,13 +9,17 @@
     <RelativeLayout
         android:id="@+id/top_search"
         android:layout_width="match_parent"
-        android:layout_height="30dip"
-        android:background="#01d0d2">
+        android:layout_height="40dip"
+        android:background="#58595b">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
         <TextView 
             android:id="@+id/top_search_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="현재 위치 : "
+            android:text="장소 :  "
             android:textSize="15dip"
             android:layout_centerVertical="true"
             android:textColor="#ffffff"/>
@@ -23,22 +27,28 @@
             android:id="@+id/top_search_place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="상수동 "
+            android:text="전체보기 "
             android:textSize="15dip"
             android:layout_toRightOf="@+id/top_search_text"
             android:layout_centerVertical="true"
             android:textColor="#ffffff"/>
+        </LinearLayout>
         <ImageView 
             android:id="@+id/top_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="15dip"
+            android:layout_height="15dip"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:gravity="center"
             android:layout_marginRight="15dip"
             android:background="@xml/lineup_search"/>
-        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#717274"
+            android:layout_alignParentBottom="true"/>
     </RelativeLayout>
+    
     <LinearLayout
         android:id="@+id/lineup_list"
         android:layout_width="match_parent"
@@ -46,6 +56,130 @@
         android:orientation="vertical"
         android:layout_above="@+id/lineup_bottom"
         android:layout_below="@+id/top_search"/>
+    <LinearLayout
+        android:id="@+id/lineup_list_no"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_above="@+id/lineup_bottom"
+        android:layout_below="@+id/top_search"
+        android:gravity="center"
+        android:visibility="gone">
+        <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="공연이 없습니다."
+	        android:textSize="15dip"
+	        android:textColor="#000000"/>
+        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/top_search_place_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/top_search"
+        android:visibility="gone">
+        <RelativeLayout
+	        android:id="@+id/top_place_1"
+	        android:layout_width="match_parent"
+	        android:layout_height="30dip"
+	        android:background="#a8a9ad">
+	        <LinearLayout
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true">
+	        <TextView 
+	            android:id="@+id/top_search_place_1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="홍대"
+	            android:textSize="15dip"
+	            android:layout_toRightOf="@+id/top_search_text"
+	            android:layout_centerVertical="true"
+	            android:textColor="#ffffff"/>
+	        </LinearLayout>	
+	         <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="1dip"
+	            android:background="#717274"
+	            android:layout_alignParentBottom="true"/>
+    	</RelativeLayout>
+        <RelativeLayout
+	        android:id="@+id/top_place_2"
+	        android:layout_width="match_parent"
+	        android:layout_height="30dip"
+	        android:background="#a8a9ad">
+	        <LinearLayout
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true">
+	        <TextView 
+	            android:id="@+id/top_search_place_2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="청계천"
+	            android:textSize="15dip"
+	            android:layout_toRightOf="@+id/top_search_text"
+	            android:layout_centerVertical="true"
+	            android:textColor="#ffffff"/>
+	        </LinearLayout>	
+	         <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="1dip"
+	            android:background="#717274"
+	            android:layout_alignParentBottom="true"/>
+    	</RelativeLayout>
+    	<RelativeLayout
+	        android:id="@+id/top_place_3"
+	        android:layout_width="match_parent"
+	        android:layout_height="30dip"
+	        android:background="#a8a9ad">
+	        <LinearLayout
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true">
+	        <TextView 
+	            android:id="@+id/top_search_place_3"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="여의도 한강 시민 공원"
+	            android:textSize="15dip"
+	            android:layout_toRightOf="@+id/top_search_text"
+	            android:layout_centerVertical="true"
+	            android:textColor="#ffffff"/>
+	        </LinearLayout>	
+	         <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="1dip"
+	            android:background="#717274"
+	            android:layout_alignParentBottom="true"/>
+    	</RelativeLayout>
+    	<RelativeLayout
+	        android:id="@+id/top_place_4"
+	        android:layout_width="match_parent"
+	        android:layout_height="30dip"
+	        android:background="#a8a9ad">
+	        <LinearLayout
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true">
+	        <TextView 
+	            android:id="@+id/top_search_place_4"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="이태원"
+	            android:textSize="15dip"
+	            android:layout_toRightOf="@+id/top_search_text"
+	            android:layout_centerVertical="true"
+	            android:textColor="#ffffff"/>
+	        </LinearLayout>	
+	         <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="1dip"
+	            android:background="#717274"
+	            android:layout_alignParentBottom="true"/>
+    	</RelativeLayout>
+    </LinearLayout>
     <LinearLayout 
         android:id="@+id/lineup_bottom"
         android:layout_width="match_parent"

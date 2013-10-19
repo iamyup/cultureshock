@@ -65,6 +65,7 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
 	
 	private LinearLayout mListTime;
 	private LinearLayout mListFacebook;
+	private boolean checkTeamHost = false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -79,6 +80,10 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
         requestTimeTable();
         Bundle bundle = getArguments();
         teamName = bundle.getString("object");
+        if(teamName.equals(LoginInfoObject.getInstance().getMyteam()))
+        {
+        	checkTeamHost = true;
+        }
         for(int i = 0 ; i < BaseActivity.getTeamObject().size() ; i++)
 		{
 			if(teamName.equals(BaseActivity.getTeamObject().get(i).getTeamName()))
@@ -128,9 +133,16 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
     	mTeamname.setText(selectMyTeam.getTeamName());
     	mGenre.setText(selectMyTeam.getTeamSong());
     	mTeamInfo.setText(selectMyTeam.getTeamComent());
-    	mRanking.setText(ranking);
+    	mRanking.setText("TOP " + ranking);
     	mLikeCount.setText(selectMyTeam.getLikeCount()+"");
-    	
+    	if(checkTeamHost)
+    	{
+    		m_oBtnSettingTeam.setVisibility(View.VISIBLE);
+    	}
+    	else
+    	{
+    		m_oBtnSettingTeam.setVisibility(View.GONE);
+    	}
     	
     	
     }
@@ -161,7 +173,9 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
 	        }
 		    case R.id.myteam_btn:
 		    {
-		        MainActivity.getInstance().showMenu();
+		    	Bundle o = new Bundle();
+	    		o.putString("object", teamName);
+	    		MainActivity.getInstance().replaceFragment(TeamPageSettingFragment.class, o, true);
 		        break;
 		    }
 		    case R.id.like_select : 
@@ -303,7 +317,7 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
 				if(lineUpObject.size() != 0)
 		    	{
 		    		String str = lineUpObject.get(0).getMonth()+"/"+lineUpObject.get(0).getDay() 
-		    				+" " +lineUpObject.get(0).getTime()+"        @"+lineUpObject.get(0).getPlace();
+		    				+" " +lineUpObject.get(0).getTime()+"               @"+lineUpObject.get(0).getPlace();
 		    		mTimeInfo.setText(str);
 		    	}
 		    	else

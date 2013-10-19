@@ -98,7 +98,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     		m_oLayoutLogin.setVisibility(View.VISIBLE);
     		m_oImgMy = (ImageView)getActivity().findViewById(R.id.profile_image);
     		Drawable default1;
-    		default1 = getActivity().getResources().getDrawable(R.drawable.image_default);
+    		default1 = getActivity().getResources().getDrawable(R.drawable.default_pf);
     		m_oAsyncImageLoader.setImageDrawableAsync(m_oImgMy,LoginInfoObject.getInstance().getMyImg(),default1,default1,getActivity());
         	m_oTxtMyName = (TextView)getActivity().findViewById(R.id.name_home_left);
         	m_oTxtMyName.setText(LoginInfoObject.getInstance().getName());

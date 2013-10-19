@@ -17,7 +17,7 @@
         android:layout_height="25dip"
         android:layout_marginTop="5dip"
         android:layout_marginBottom="5dip"
-        android:gravity="center_vertical">
+        android:gravity="center">
         <TextView
             android:id="@+id/item_lineup_calendar_2"
             android:layout_width="wrap_content"
@@ -25,7 +25,6 @@
             android:text="9월 15일"
             android:textSize="15dip"
             android:textStyle="bold"
-            android:layout_marginLeft="15dip"
             android:textColor="#565656"/>
         <TextView
             android:id="@+id/item_lineup_calendar_day_of_week_2"
@@ -57,9 +56,8 @@
 		        android:id="@+id/item_lineup_calendar_layout"
 		        android:layout_width="match_parent"
 		        android:layout_height="25dip"
-		        android:layout_marginTop="5dip"
 		        android:layout_alignParentBottom="true"
-		        android:gravity="center_vertical">
+		        android:gravity="center">
 		        <TextView
 		            android:id="@+id/item_lineup_calendar"
 		            android:layout_width="wrap_content"
@@ -67,7 +65,6 @@
 		            android:text="9월 15일"
 		            android:textSize="15dip"
 		            android:textStyle="bold"
-		            android:layout_marginLeft="15dip"
 		            android:textColor="#565656"/>
 		        <TextView
 		            android:id="@+id/item_lineup_calendar_day_of_week"
@@ -181,12 +178,12 @@
             android:layout_width="120dip"
             android:layout_height="40dip"
             android:gravity="center"
-            android:layout_marginLeft="50dip">
+            android:layout_marginLeft="60dip">
 	        <ImageView
 	            android:id="@+id/item_lineup_bottom_likecount_img_o"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:background="@xml/home"/>
+	            android:background="@drawable/home"/>
 	        <TextView
 	            android:id="@+id/item_lineup_bottom_likecount"
 	            android:layout_width="wrap_content"
