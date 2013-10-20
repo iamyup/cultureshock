@@ -1,4 +1,4 @@
-package com.cultureshock.buskingbook.main;
+package com.cultureshock.buskingbook;
 
 
 import java.util.ArrayList;
@@ -7,9 +7,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -26,8 +28,11 @@ import android.widget.Toast;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoadingPopup;
 import com.cultureshock.buskingbook.framework.BaseActivity;
+import com.cultureshock.buskingbook.main.LoginJoinActivity;
+import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
 import com.cultureshock.buskingbook.net.Params;
+import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.object.TeamObject;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.service.ServiceType;
@@ -37,7 +42,7 @@ public class FirstStartActivity extends Activity implements View.OnClickListener
     private Context mContext;
     private static FirstStartActivity mInstance;
     public static String regId;
-
+    private boolean netCheck = false;
     private LoadingPopup loading;
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
@@ -49,20 +54,23 @@ public class FirstStartActivity extends Activity implements View.OnClickListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_start);
-        GCMRegistrar.checkDevice(this);
-        GCMRegistrar.checkManifest(this);
-        regId = GCMRegistrar.getRegistrationId(this);
-        if("".equals(regId))  
-        {//구글 가이드에는 regId.equals("")로 되어 있는데 Exception을 피하기 위해 수정
-              GCMRegistrar.register(this, "949552179833");
-        }
-        else
-              Log.d("==============", regId);
+        registGCM();
         mContext = this;
         mInstance = this;
         setUi();
         requestTeam();
        
+    }
+    private void registGCM() {
+		GCMRegistrar.checkDevice(this);
+		GCMRegistrar.checkManifest(this);
+		
+		regId = GCMRegistrar.getRegistrationId(this);
+		
+		if("".equals(regId))   //구글 가이드에는 regId.equals("")로 되어 있는데 Exception을 피하기 위해 수정
+			GCMRegistrar.register(this, GCMIntentService.SEND_ID);
+		else
+			Log.d("==============", regId);
     }
 	public void requestTeam()
 	{
@@ -111,6 +119,7 @@ public class FirstStartActivity extends Activity implements View.OnClickListener
 	public void onResponseReceived(String resContent) {
 		// TODO Auto-generated method stub
 		try{
+			netCheck = true;
 			Object o = resContent;
 			JSONObject object = new JSONObject(resContent);
 			if(object.getJSONObject("result").optString("type").equals("ServiceType.MSG_TEAM_SELECT"))
@@ -137,9 +146,60 @@ public class FirstStartActivity extends Activity implements View.OnClickListener
 					}
 					BaseActivity.getTeamObject().add(new TeamObject(teamName,teamMember,teamThum,likeCount,teamComent,teamSong,likeMans));
 				}
-				Intent intent =  new Intent(FirstStartActivity.this.getApplicationContext(), LoginJoinActivity.class);
-				startActivity(intent);
-				finish();
+				SharedPreferences sp = getSharedPreferences("autologin", MODE_PRIVATE);
+				if(sp.getBoolean("autologinboolean", false))
+				{
+					if(sp.getString("id", "").equals(""))
+					{
+						Intent intent =  new Intent(FirstStartActivity.this.getApplicationContext(), LoginJoinActivity.class);
+						startActivity(intent);
+						finish();
+					}
+					else
+					{
+						netCheck = false;
+						requestLogin(sp.getString("id", ""), sp.getString("pwd", ""));
+					}
+				}
+				else
+				{
+					Intent intent =  new Intent(FirstStartActivity.this.getApplicationContext(), LoginJoinActivity.class);
+					startActivity(intent);
+					finish();
+				}
+				
+			}
+			else if(object.getJSONObject("result").optString("type").equals("ServiceType.MSG_LOGIN"))
+			{
+				String result = object.getJSONObject("data").optString("result","");
+				String reason = object.getJSONObject("data").optString("reason","");
+				if(result.equals("true"))
+				{
+					String id = object.getJSONObject("data").optString("id","");
+					String pwd = object.getJSONObject("data").optString("pwd","");
+					String name = object.getJSONObject("data").optString("name","");
+					String phone = object.getJSONObject("data").optString("phone","");
+					String myImg = object.getJSONObject("data").optString("myImg","");
+					String likeTeamList = object.getJSONObject("data").optString("likeTeamList","");
+	 				String myteam = object.getJSONObject("data").optString("myteam","");
+					String[] likeTeam = likeTeamList.split(",");
+					ArrayList<String> likeTeamArrayList = new ArrayList<String>();
+					if(!likeTeam[0].equals(""))
+					{
+						for(int i = 0 ; i < likeTeam.length ; i++)
+						{
+							likeTeamArrayList.add(likeTeam[i]);
+						}
+					}
+					LoginInfoObject.getInstance().setLogin(id, pwd, name, phone, myImg, likeTeamArrayList, myteam);
+					Intent intent =  new Intent(this.getApplicationContext(), MainActivity.class);
+					startActivity(intent);
+					finish();
+				}
+				else
+				{
+					Toast.makeText(this, reason, Toast.LENGTH_LONG).show();
+				}
 			}
 		}
 		catch(Exception e )
@@ -148,7 +208,10 @@ public class FirstStartActivity extends Activity implements View.OnClickListener
 		}
 		finally
 		{
-			stopProgressDialog();
+			if(netCheck)
+			{
+				stopProgressDialog();
+			}
 		}
 		
 	}
@@ -169,5 +232,14 @@ public class FirstStartActivity extends Activity implements View.OnClickListener
 			loading = null;
 		}
 	}
-   
+	public void requestLogin(String id, String pwd)
+	{
+			HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_LOGIN);
+			ArrayList<Params> loginParams = new ArrayList<Params>();
+			loginParams.add(new Params("id",id));
+			loginParams.add(new Params("pwd",pwd));
+			loginService.setParam(loginParams);
+			loginService.doAsyncExecute(this);
+			startProgressDialog();
+	}
 }

@@ -2,6 +2,7 @@ package com.cultureshock.buskingbook.main;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cultureshock.buskingbook.FirstStartActivity;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.page.BuskerJoinFragment;
@@ -46,7 +48,8 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     private LinearLayout m_BtnInfo;
     private LinearLayout m_BtnBuskerRegister;
     private RelativeLayout m_BtnLogout;
-    
+    private ImageView m_oImgAutoLogin;
+    private boolean autoLogin = false;
 
     public static LeftMenuFragment getInstance() {
         if (mInstance == null) {
@@ -116,7 +119,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
             m_BtnAlarm = (LinearLayout)getActivity().findViewById(R.id.musician_alarm);
             m_BtnInfo = (LinearLayout)getActivity().findViewById(R.id.musician_info);
             m_BtnBuskerRegister = (LinearLayout)getActivity().findViewById(R.id.busker_join_btn);
-          
+            m_oImgAutoLogin = (ImageView)getActivity().findViewById(R.id.musician_privacy_auto);
             
             m_BtnBuskerPage.setOnClickListener(this);
             m_BtnBuskerJoin.setOnClickListener(this);
@@ -137,6 +140,17 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
             	m_LayoutMusician.setVisibility(View.VISIBLE);
             	m_BtnBuskerRegister.setVisibility(View.GONE);
             }
+            SharedPreferences sp = mActivity.getSharedPreferences("autologin", mActivity.MODE_PRIVATE);
+            if(sp.getBoolean("autologinboolean", false))
+    		{
+    			autoLogin = false;
+    			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn);
+    		}
+    		else
+    		{
+    			autoLogin = true;
+    			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn_o);
+    		}
     	}
     	
         
@@ -201,6 +215,17 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
         	m_oTxtMyTeam.setText(LoginInfoObject.getInstance().getMyteam());
         	m_BtnBuskerRegister.setVisibility(View.GONE);
         }
+    	SharedPreferences sp = mActivity.getSharedPreferences("autologin", mActivity.MODE_PRIVATE);
+		if(sp.getBoolean("autologinboolean", false))
+		{
+			autoLogin = false;
+			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn);
+		}
+		else
+		{
+			autoLogin = true;
+			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn_o);
+		}
     	
     }
 
@@ -238,6 +263,31 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
 	    	}
 	    	case R.id.musician_info:
 	    	{
+	    		if(autoLogin)
+	    		{
+	    			SharedPreferences sp = mActivity.getSharedPreferences("autologin", mActivity.MODE_PRIVATE);
+					SharedPreferences.Editor editer = sp.edit();
+					editer.putBoolean("autologinboolean", true);
+					editer.putString("id", LoginInfoObject.getInstance().getId());
+					editer.putString("pwd", LoginInfoObject.getInstance().getPwd());
+					editer.commit();
+	    			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn);
+	    			autoLogin = false;
+	    			
+	    		}
+	    		else
+	    		{
+	    			SharedPreferences sp = mActivity.getSharedPreferences("autologin", mActivity.MODE_PRIVATE);
+					SharedPreferences.Editor editer = sp.edit();
+					editer.putBoolean("autologinboolean", false);
+					editer.remove("id");
+					editer.remove("pwd");
+					editer.commit();
+	    			
+	    			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn_o);
+	    			autoLogin = true;
+	    		}
+	    		
 	    		break;
 	    	}
 	    	case R.id.busker_join_btn:

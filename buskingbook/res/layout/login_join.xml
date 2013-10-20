@@ -14,7 +14,7 @@
        <ImageView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:background="@drawable/join_busker_title"
+           android:background="@drawable/logo"
            android:layout_marginBottom="30dip"/>
        <LinearLayout
            android:id="@+id/btn_join_facebook"

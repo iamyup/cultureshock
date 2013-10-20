@@ -18,6 +18,7 @@ public class ServiceType {
     public static final int MSG_TEAM_LIKE_UP = 10;
     public static final int MSG_MYTEAM_UP = 11;
     public static final int MSG_GCM_ID_JOIN = 12;
+    public static final int MSG_GCM_GO_EVENT= 13;
 
     private static final String URL_LOGIN 				 = 	 ROOT_DOMAIN + "login.php";
     private static final String URL_TOP12				 =	 ROOT_DOMAIN + "top12.php";
@@ -31,6 +32,7 @@ public class ServiceType {
     private static final String URL_TEAM_LIKE_UP 		 = 	 ROOT_DOMAIN + "team_like_up.php";
     private static final String URL_MYTEAM_UP 			 = 	 ROOT_DOMAIN + "myteam_up.php";
     private static final String URL_GCM_ID_JOIN 		 = 	 ROOT_DOMAIN + "gcm_id_join.php";
+    private static final String URL_GCM_GO_EVNET		 = 	 ROOT_DOMAIN + "gcm_go_event.php";
 
     private Hashtable<Integer, String> msgURLTbl = new Hashtable<Integer, String>();
 
@@ -49,6 +51,7 @@ public class ServiceType {
         msgURLTbl.put(new Integer(MSG_TEAM_LIKE_UP), URL_TEAM_LIKE_UP);
         msgURLTbl.put(new Integer(MSG_MYTEAM_UP), URL_MYTEAM_UP);
         msgURLTbl.put(new Integer(MSG_GCM_ID_JOIN), URL_GCM_ID_JOIN);
+        msgURLTbl.put(new Integer(MSG_GCM_GO_EVENT), URL_GCM_GO_EVNET);
     }
 
     public static ServiceType getInstance() {

@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -132,6 +133,7 @@ public class LoginActivity extends Activity implements View.OnClickListener, Htt
 				}
 				else
 				{
+					
 					m_oImgAutoLogin.setBackgroundResource(R.drawable.checkbox_o);
 					checkAutoLogin = true;
 				}
@@ -193,6 +195,25 @@ public class LoginActivity extends Activity implements View.OnClickListener, Htt
 				startActivity(intent);
 				LoginJoinActivity.getInstance().finish();
 				finish();
+				if(checkAutoLogin)
+				{
+					SharedPreferences sp = getSharedPreferences("autologin", MODE_PRIVATE);
+					SharedPreferences.Editor editer = sp.edit();
+					editer.putBoolean("autologinboolean", true);
+					editer.putString("id", id);
+					editer.putString("pwd", pwd);
+					editer.commit();
+				}
+				else
+				{
+					SharedPreferences sp = getSharedPreferences("autologin", MODE_PRIVATE);
+					SharedPreferences.Editor editer = sp.edit();
+					editer.putBoolean("autologinboolean", false);
+					editer.remove("id");
+					editer.remove("pwd");
+					editer.commit();
+				}
+				
 			}
 			else
 			{

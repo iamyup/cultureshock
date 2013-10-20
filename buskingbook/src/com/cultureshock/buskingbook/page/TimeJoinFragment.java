@@ -85,9 +85,14 @@ private LinearLayout m_oBtnConfirm;
 	private Spinner m_oSpinnerPlace;
 	private String place;
 	private EditText m_oEditTextDay;
-	private EditText m_oEditTextHour;
+	private Spinner m_oEditTextHour;
+	private ArrayList<String> m_FlagHour;
+	private String hour;
 	private EditText m_oEditTextMin;
+	private ImageView  m_oBtnList ;
 
+	private String buskerTime ;
+	private String buskerPlace;
 	private GregorianCalendar today = new GregorianCalendar(); 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -113,6 +118,9 @@ private LinearLayout m_oBtnConfirm;
 	}
     public void setUi()
     {
+    	 m_oBtnList = (ImageView) getActivity()
+                 .findViewById(R.id.title_btn_menu);
+         m_oBtnList.setOnClickListener(this);
     	m_oBtnConfirm = (LinearLayout)getActivity().findViewById(R.id.popup_modify_myalbum_btn_confirm);
     	m_oBtnConfirm.setOnClickListener(this);
     	m_oTimeYear = (TextView)getActivity().findViewById(R.id.time_table_year);
@@ -132,7 +140,25 @@ private LinearLayout m_oBtnConfirm;
         m_oSpinnerPlace.setAdapter(spinitem);
         m_oSpinnerPlace.setOnItemSelectedListener(selectedListener);
 //		m_oEditTextTime = (EditText)findViewById(R.id.popup_send_edit_time);
-		m_oEditTextHour = (EditText)getActivity().findViewById(R.id.time_join_time_hour);
+		m_oEditTextHour = (Spinner)getActivity().findViewById(R.id.time_join_time_hour);
+		m_FlagHour = new ArrayList<String>();
+		
+		for(int i = 1 ;i <=24 ; i ++)
+		{
+			if( i < 10)
+			{
+				m_FlagHour.add("0"+i);
+			}
+			else
+			{
+				m_FlagHour.add(i+"");
+			}
+			
+		}
+		ArrayAdapter<String> spinitem2 = new ArrayAdapter<String>(mContext, R.layout.spinner_item_2, m_FlagHour);
+        spinitem2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        m_oEditTextHour.setAdapter(spinitem2);
+        m_oEditTextHour.setOnItemSelectedListener(selectedListener2);
 		m_oEditTextMin = (EditText)getActivity().findViewById(R.id.time_join_time_min);
 		m_oEditTextDay = (EditText)getActivity().findViewById(R.id.time_join_calendar);
 		m_oEditTextDay.setEnabled(false);
@@ -148,6 +174,25 @@ private LinearLayout m_oBtnConfirm;
             if ( m_FlagPlace.size() > 0 )
             {
             	place = m_oSpinnerPlace.getSelectedItem().toString();
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> arg0) 
+        {
+            // TODO Auto-generated method stub
+
+        }
+    };
+    private OnItemSelectedListener selectedListener2 = new OnItemSelectedListener() 
+    {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) 
+        {
+            // TODO Auto-generated method stub
+            if ( m_FlagHour.size() > 0 )
+            {
+            	hour = m_oEditTextHour.getSelectedItem().toString();
             }
         }
 
@@ -178,13 +223,16 @@ private LinearLayout m_oBtnConfirm;
     {
         switch (v.getId()) 
         {
+        case R.id.title_btn_menu:
+            MainActivity.getInstance().showMenu();
+            break;
         case R.id.popup_modify_myalbum_btn_confirm :
         {
 			if(m_oEditTextDay.getText().toString().equals(""))
 			{
 				Toast.makeText(mContext, "날짜를 선택해주세요", Toast.LENGTH_SHORT );
 			}
-			else if(m_oEditTextHour.getText().toString().equals("")||m_oEditTextMin.getText().toString().equals(""))
+			else if(hour.equals("")||m_oEditTextMin.getText().toString().equals(""))
 			{
 				Toast.makeText(mContext, "시간을 입력해주세요", Toast.LENGTH_SHORT );
 			}
@@ -204,7 +252,7 @@ private LinearLayout m_oBtnConfirm;
 				today[0] = today[0].trim();
 				GregorianCalendar calendar = new GregorianCalendar(Integer.parseInt(year[0]),Integer.parseInt(month[0]),Integer.parseInt(today[0])); //해당 월 의 첫날 
 				int dayOfweek = calendar.get(Calendar.DAY_OF_WEEK) - 1; // 첫날의 요일 결정
-				requestAddCalendar(year[0],month[0],today[0],m_oEditTextHour.getText().toString()+":"+m_oEditTextMin.getText().toString(),week[dayOfweek],place,LoginInfoObject.getInstance().getMyteam() );
+				requestAddCalendar(year[0],month[0],today[0],hour+":"+m_oEditTextMin.getText().toString(),week[dayOfweek],place,LoginInfoObject.getInstance().getMyteam() );
 //				dialog.dismiss();
 			}
         }
@@ -377,6 +425,8 @@ private LinearLayout m_oBtnConfirm;
 		GregorianCalendar calendar = new GregorianCalendar();
 		HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_TIME_TABLE_SEND);
 		ArrayList<Params> loginParams = new ArrayList<Params>();
+		buskerPlace = place;
+		buskerTime = month+"/"+day+" "+time+" "+dayOfweek;
 		loginParams.add(new Params("year", year));
 		loginParams.add(new Params("month", month));
 		loginParams.add(new Params("day", day));
@@ -387,6 +437,7 @@ private LinearLayout m_oBtnConfirm;
 		loginService.setParam(loginParams);
 		loginService.doAsyncExecute(this);
 		MainActivity.getInstance().startProgressDialog();
+		
 	}
 
 	@Override
@@ -440,6 +491,7 @@ private LinearLayout m_oBtnConfirm;
 			else if (object.getJSONObject("result").optString("type").equals("ServiceType.MSG.TIME_TABLE_SEND"))
 			{
 				Toast.makeText(mContext, "일정을 등록하였습니다", Toast.LENGTH_SHORT );
+				requestGcm();
 				MainActivity.getInstance().replaceFragment(MainHomeFragment.class, null, false);
 				LeftMenuFragment.getInstance().loginSatatus();
 			}
@@ -454,6 +506,17 @@ private LinearLayout m_oBtnConfirm;
 		}
 
 	}
-		
+	public void requestGcm()
+	{
+		GregorianCalendar calendar = new GregorianCalendar();
+		HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_GCM_GO_EVENT);
+		ArrayList<Params> loginParams = new ArrayList<Params>();
+		loginParams.add(new Params("teamname", LoginInfoObject.getInstance().getMyteam()));
+		loginParams.add(new Params("time", buskerTime));
+		loginParams.add(new Params("place", buskerPlace));
+		loginService.setParam(loginParams);
+		loginService.doAsyncExecute(this);
+		MainActivity.getInstance().startProgressDialog();
+	}	
 
 }

@@ -1,5 +1,6 @@
 package com.cultureshock.buskingbook.page;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -9,6 +10,8 @@ import org.json.JSONObject;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -23,7 +26,11 @@ import com.cultureshock.buskingbook.net.Params;
 import com.cultureshock.buskingbook.object.LineUpObject;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.service.ServiceType;
+import com.cultureshock.buskingbook.FirstStartActivity;
 import com.cultureshock.buskingbook.R;
+import com.google.android.gcm.server.Message;
+import com.google.android.gcm.server.Result;
+import com.google.android.gcm.server.Sender;
 
 
 
@@ -180,6 +187,7 @@ public class Main_LineUp_Page extends LinearLayout implements View.OnClickListen
 		loginService.doAsyncExecute(this);
 		MainActivity.getInstance().startProgressDialog();
 	}
+	
 
 	public ArrayList<LineUpObject> sortPlaceLineUp (String name)
 	{
@@ -287,6 +295,7 @@ public class Main_LineUp_Page extends LinearLayout implements View.OnClickListen
 			}
 			case R.id.select_all : 
 			{
+				
 				m_oTxtPlace.setText("모두보기");
 				m_oBtnSearchAll.setBackgroundColor(0xff01d0d2);
 				m_oBtnSearchLike.setBackgroundColor(0xffeaeaea);

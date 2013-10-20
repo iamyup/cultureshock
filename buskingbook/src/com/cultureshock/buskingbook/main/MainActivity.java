@@ -1,6 +1,7 @@
 package com.cultureshock.buskingbook.main;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONObject;
@@ -13,18 +14,24 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.cultureshock.buskingbook.FirstStartActivity;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoadingPopup;
 import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
 import com.cultureshock.buskingbook.net.Params;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
+import com.cultureshock.buskingbook.page.BuskerJoinFragment;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.page.PaperEditFragment;
 import com.cultureshock.buskingbook.service.ServiceType;
+import com.google.android.gcm.server.Message;
+import com.google.android.gcm.server.Result;
+import com.google.android.gcm.server.Sender;
 
 public class MainActivity extends BaseActivity implements HttpClientNet.OnResponseListener {
     private Context mContext;
@@ -56,6 +63,7 @@ public class MainActivity extends BaseActivity implements HttpClientNet.OnRespon
 		loginService.doAsyncExecute(this);
 		startProgressDialog();
     }
+
     @Override
     protected void onNewIntent(Intent intent) {
        
@@ -124,9 +132,18 @@ public class MainActivity extends BaseActivity implements HttpClientNet.OnRespon
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 		//super.onBackPressed();
-		 finish();
-		 BaseActivity.getTeamObject().clear();
-		 System.exit(0);
+    	Log.d("sf",getCurFragment().getClass().getName());
+    	if(getCurFragment().getClass().getName().equals("com.cultureshock.buskingbook.page.MainHomeFragment"))
+    	{
+    		finish();
+   		 	BaseActivity.getTeamObject().clear();
+   		 	System.exit(0);
+    	}
+    	else
+    	{
+    		MainActivity.getInstance().replaceFragment(MainHomeFragment.class, null, false);
+    	}
+		 
 		
 	}
 	public void stopProgressDialog() 
@@ -159,7 +176,7 @@ public class MainActivity extends BaseActivity implements HttpClientNet.OnRespon
 				String reason = object.getJSONObject("data").optString("reason","");
 				if(result.equals("true"))
 				{
-					
+//					Toast.makeText(this, "레그아이디등록", Toast.LENGTH_LONG).show();
 				}
 				else
 				{
@@ -177,4 +194,5 @@ public class MainActivity extends BaseActivity implements HttpClientNet.OnRespon
 		}
 
 	}
+	
 }

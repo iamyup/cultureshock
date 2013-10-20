@@ -1265,14 +1265,15 @@
 			        android:textSize="15dip"
 			        android:textColor="#000000"
 			        android:layout_marginRight="15dip"/>
-	            <EditText 
+			    <Spinner
 	                android:id="@+id/time_join_time_hour"
 	                android:layout_width="50dip"
 	                android:layout_height="25dip"
-	                android:textSize="12dip"
-	                android:paddingLeft="10dip"
-	                android:background="#ffffff"
-	                android:textColor="#000000"/>
+	                android:singleLine="true"
+	      			android:hint=""
+	      			android:background="@drawable/inputbox_290b"
+	                android:textColor="#000000"
+	                android:textSize="12dip"/>
 	            <TextView 
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
@@ -1288,6 +1289,7 @@
 	                android:background="#ffffff"
 	                android:layout_height="25dip"
 	                android:textSize="12dip"
+	                android:inputType="number"
 	                android:textColor="#000000"/>
 	            <TextView 
 			        android:layout_width="wrap_content"

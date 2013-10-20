@@ -226,6 +226,7 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 				}
 				else
 				{
+					holder.noDataLayout.setVisibility(View.GONE);
 					LineUpObject beforeObject = getItem(position-1);
 					
 					if(itemObject.getYear().equals(beforeObject.getYear()) &&
