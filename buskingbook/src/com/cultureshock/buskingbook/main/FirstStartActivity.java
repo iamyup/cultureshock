@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,10 +31,12 @@ import com.cultureshock.buskingbook.net.Params;
 import com.cultureshock.buskingbook.object.TeamObject;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.service.ServiceType;
+import com.google.android.gcm.GCMRegistrar;
 
 public class FirstStartActivity extends Activity implements View.OnClickListener , HttpClientNet.OnResponseListener{
     private Context mContext;
     private static FirstStartActivity mInstance;
+    public static String regId;
 
     private LoadingPopup loading;
     @Override
@@ -45,6 +49,15 @@ public class FirstStartActivity extends Activity implements View.OnClickListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_start);
+        GCMRegistrar.checkDevice(this);
+        GCMRegistrar.checkManifest(this);
+        regId = GCMRegistrar.getRegistrationId(this);
+        if("".equals(regId))  
+        {//구글 가이드에는 regId.equals("")로 되어 있는데 Exception을 피하기 위해 수정
+              GCMRegistrar.register(this, "949552179833");
+        }
+        else
+              Log.d("==============", regId);
         mContext = this;
         mInstance = this;
         setUi();
