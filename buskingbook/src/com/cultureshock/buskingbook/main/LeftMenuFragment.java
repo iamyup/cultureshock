@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cultureshock.buskingbook.FirstStartActivity;
+import com.cultureshock.buskingbook.GCMIntentService;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.page.BuskerJoinFragment;
@@ -50,6 +51,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     private RelativeLayout m_BtnLogout;
     private ImageView m_oImgAutoLogin;
     private boolean autoLogin = false;
+    private ImageView m_oImgAlarm;
 
     public static LeftMenuFragment getInstance() {
         if (mInstance == null) {
@@ -120,7 +122,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
             m_BtnInfo = (LinearLayout)getActivity().findViewById(R.id.musician_info);
             m_BtnBuskerRegister = (LinearLayout)getActivity().findViewById(R.id.busker_join_btn);
             m_oImgAutoLogin = (ImageView)getActivity().findViewById(R.id.musician_privacy_auto);
-            
+            m_oImgAlarm = (ImageView)getActivity().findViewById(R.id.busker_alarm_img);
             m_BtnBuskerPage.setOnClickListener(this);
             m_BtnBuskerJoin.setOnClickListener(this);
             m_BtnPartnerSearch.setOnClickListener(this);
@@ -151,6 +153,17 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     			autoLogin = true;
     			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn_o);
     		}
+            SharedPreferences sp2 = mActivity.getSharedPreferences("isPopup", mActivity.MODE_PRIVATE);
+        	GCMIntentService.isPopup = sp2.getBoolean("autologinboolean", true);
+        	
+            if(GCMIntentService.isPopup)
+            {
+            	m_oImgAlarm.setBackgroundResource(R.drawable.alarm_btn);
+            }
+            else
+            {
+            	m_oImgAlarm.setBackgroundResource(R.drawable.alarm_btn_o);
+            }
     	}
     	
         
@@ -185,7 +198,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     		m_oLayoutNoLogin.setVisibility(View.VISIBLE);
     		m_oLayoutLogin.setVisibility(View.GONE);
     		Drawable default1;
-    		default1 = getActivity().getResources().getDrawable(R.drawable.image_default);
+    		default1 = getActivity().getResources().getDrawable(R.drawable.default_pf);
     		m_oAsyncImageLoader.setImageDrawableAsync(m_oImgMy,LoginInfoObject.getInstance().getMyImg(),default1,default1,getActivity());
         	m_oTxtMyName.setText(LoginInfoObject.getInstance().getName());
         	m_oTxtMyTeam.setText(LoginInfoObject.getInstance().getMyteam());
@@ -197,7 +210,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     		m_oLayoutLogin.setVisibility(View.VISIBLE);
     		
     		Drawable default1;
-    		default1 = getActivity().getResources().getDrawable(R.drawable.image_default);
+    		default1 = getActivity().getResources().getDrawable(R.drawable.default_pf);
     		m_oAsyncImageLoader.setImageDrawableAsync(m_oImgMy,LoginInfoObject.getInstance().getMyImg(),default1,default1,getActivity());
         	m_oTxtMyName.setText(LoginInfoObject.getInstance().getName());
         	m_oTxtMyTeam.setText(LoginInfoObject.getInstance().getMyteam());
@@ -215,6 +228,8 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
         	m_oTxtMyTeam.setText(LoginInfoObject.getInstance().getMyteam());
         	m_BtnBuskerRegister.setVisibility(View.GONE);
         }
+    	
+    	
     	SharedPreferences sp = mActivity.getSharedPreferences("autologin", mActivity.MODE_PRIVATE);
 		if(sp.getBoolean("autologinboolean", false))
 		{
@@ -259,6 +274,24 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
 	    	}
 	    	case R.id.musician_alarm:
 	    	{
+	    		if(GCMIntentService.isPopup)
+	            {
+	    			SharedPreferences sp = mActivity.getSharedPreferences("isPopup", mActivity.MODE_PRIVATE);
+					SharedPreferences.Editor editer = sp.edit();
+					editer.putBoolean("isPopupboolean", false);
+					editer.commit();
+	    			GCMIntentService.isPopup = false;
+	            	m_oImgAlarm.setBackgroundResource(R.drawable.alarm_btn_o);
+	            }
+	            else
+	            {
+	            	SharedPreferences sp = mActivity.getSharedPreferences("isPopup", mActivity.MODE_PRIVATE);
+					SharedPreferences.Editor editer = sp.edit();
+					editer.putBoolean("isPopupboolean", true);
+					editer.commit();
+	            	GCMIntentService.isPopup = true;
+	            	m_oImgAlarm.setBackgroundResource(R.drawable.alarm_btn);
+	            }
 	    		break;
 	    	}
 	    	case R.id.musician_info:
