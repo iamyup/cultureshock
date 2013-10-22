@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.cultureshock.buskingbook.page.FourPage;
+import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.page.Main_LineUp_Page;
 import com.cultureshock.buskingbook.page.ThreePage;
 import com.cultureshock.buskingbook.page.Main_issue_Page;
@@ -58,10 +59,12 @@ public class ViewPagerAdapter extends PagerAdapter implements
         if (position == 0) {
             // v = inflater.inflate(R.layout.one, null);
             v = new Main_LineUp_Page(m_Context);
+            MainHomeFragment.getInstance().setTitle("라인 UP");
 //            Log.d("0", "0");
         } else if (position == 1) {
             // v = inflater.inflate(R.layout.two, null);
             v = new Main_issue_Page(m_Context);
+//            MainHomeFragment.getInstance().setTitle("이슈 UP");
         }
 //            Log.d("1", "1");
 //        } else if (position == 2) {

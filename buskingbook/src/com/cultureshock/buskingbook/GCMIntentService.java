@@ -63,7 +63,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 	//	         context.startActivity(popupIntent);
 	//	     }
 		    NotificationManager nm = (NotificationManager) context.getSystemService( Context.NOTIFICATION_SERVICE );
-		    Notification notification = new Notification(R.drawable.ic_launcher, value, System.currentTimeMillis());
+		    Notification notification = new Notification(R.drawable.ic_stat_36, value, System.currentTimeMillis());
 		 
 		    PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent( context, FirstStartActivity.class ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
 		    notification.setLatestEventInfo(context, "버스킹알림!", value, pendingIntent);

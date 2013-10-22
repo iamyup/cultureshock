@@ -146,6 +146,18 @@ public class FirstStartActivity extends Activity implements View.OnClickListener
 					}
 					BaseActivity.getTeamObject().add(new TeamObject(teamName,teamMember,teamThum,likeCount,teamComent,teamSong,likeMans));
 				}
+				for(int i = 0 ; i<BaseActivity.getTeamObject().size()-1 ; i ++)
+				{
+					for( int j = i+1 ; j <BaseActivity.getTeamObject().size() ;j++)
+					{
+						if(BaseActivity.getTeamObject().get(i).getLikeCount() < BaseActivity.getTeamObject().get(j).getLikeCount())
+						{
+							TeamObject tempobejct = BaseActivity.getTeamObject().get(i);
+							BaseActivity.getTeamObject().set(i, BaseActivity.getTeamObject().get(j));
+							BaseActivity.getTeamObject().set(j, tempobejct);
+						}
+					}
+				}
 				SharedPreferences sp = getSharedPreferences("autologin", MODE_PRIVATE);
 				if(sp.getBoolean("autologinboolean", false))
 				{

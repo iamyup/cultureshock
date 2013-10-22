@@ -27,6 +27,7 @@ import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
 import com.cultureshock.buskingbook.net.Params;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
+import com.cultureshock.buskingbook.object.TeamObject;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.service.ServiceType;
 
@@ -195,6 +196,7 @@ public class LoginActivity extends Activity implements View.OnClickListener, Htt
 				startActivity(intent);
 				LoginJoinActivity.getInstance().finish();
 				finish();
+				ArrayList<TeamObject> obj = BaseActivity.getTeamObject();
 				if(checkAutoLogin)
 				{
 					SharedPreferences sp = getSharedPreferences("autologin", MODE_PRIVATE);

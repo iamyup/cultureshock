@@ -70,6 +70,7 @@ public class Main_LineUp_Page extends LinearLayout implements View.OnClickListen
 		// TODO Auto-generated constructor stub
 		super(context);
 		mContext = context;
+		MainHomeFragment.getInstance().setTitle("라인 UP");
 		initView();
 		requestTimeTable();
 	}

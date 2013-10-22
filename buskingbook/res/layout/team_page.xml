@@ -69,7 +69,7 @@
 		            android:layout_height="60dip" 
 		            android:layout_alignParentBottom="true"
 		            android:gravity="center_vertical"
-		            android:background="#aa000000"
+		            android:background="#55000000"
 		            android:orientation="vertical">
 		            <RelativeLayout
 		                android:layout_width="match_parent"
