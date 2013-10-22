@@ -18,5 +18,10 @@
     <string name="inner_140">140자 이내</string>
     <string name="sticker">스티커</string>
     <string name="handwriting">손글씨</string>
+    <string name="paper_next_step">다음단계</string>
+    <string name="next">다음</string>
+    <string name="writing">글쓰기</string>
+    <string name="decorate">꾸미기</string>
+    <string name="please_input">입력해주세요.</string>
 
 </resources>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#282828"
+    android:orientation="vertical" >
+
+    <!-- 타이틀 -->
+    <FrameLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:background="#01d0d2" >
+
+        <ImageView
+            android:id="@+id/paper_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="5dip"
+            android:background="@xml/menu" />
+
+        <TextView
+            android:id="@+id/paper_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/paper"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/paper_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:text="@string/complete"
+            android:layout_marginRight="5dip"
+            android:textColor="#ffffff" />
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#000000"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/writing"
+            android:gravity="center"
+            android:textColor="#ffffff" />
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/decorate"
+            android:gravity="center"
+            android:textColor="#01d0d2" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/paper_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#eaeaea"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/paper_string"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="30dp"
+            android:gravity="top|left"
+            android:hint="@string/inner_140" />
+
+        <LinearLayout
+            android:id="@+id/paper_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dip" >
+
+            <TextView
+                android:id="@+id/paper_btn_sticker"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@color/selector_textbg_color"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:text="@string/sticker"
+                android:textColor="@color/selector_text_color"
+                android:gravity="center"
+                android:textSize="15dip" />
+
+            <TextView
+                android:id="@+id/paper_btn_handwriting"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@color/selector_textbg_color"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:text="@string/handwriting"
+                android:textColor="@color/selector_text_color"
+                android:gravity="center"
+                android:textSize="15dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout 
+            android:id="@+id/paper_sticker_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <ImageView
+                android:id="@+id/paper_sticker_icon_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper_btn_o" />
+            <ImageView
+                android:id="@+id/paper_sticker_icon_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper_btn_o" />
+            <ImageView
+                android:id="@+id/paper_sticker_icon_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper_btn_o" />
+            <ImageView
+                android:id="@+id/paper_sticker_icon_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper_btn_o" />
+            <ImageView
+                android:id="@+id/paper_sticker_icon_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper_btn_o" />
+            <ImageView
+                android:id="@+id/paper_sticker_icon_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper_btn_o" />
+    </LinearLayout>
+    <LinearLayout 
+            android:id="@+id/paper_sticker_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <ImageView
+                android:id="@+id/paper_sticker_icon_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper_btn_o" />
+            <ImageView
+                android:id="@+id/paper_sticker_icon_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper_btn_o" />
+            <ImageView
+                android:id="@+id/paper_sticker_icon_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper_btn_o" />
+            <ImageView
+                android:id="@+id/paper_sticker_icon_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper_btn_o" />
+            <ImageView
+                android:id="@+id/paper_sticker_icon_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper_btn_o" />
+            <ImageView
+                android:id="@+id/paper_sticker_icon_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper_btn_o" />
+    </LinearLayout>
+</LinearLayout>
