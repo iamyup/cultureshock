@@ -65,7 +65,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 		    NotificationManager nm = (NotificationManager) context.getSystemService( Context.NOTIFICATION_SERVICE );
 		    Notification notification = new Notification(R.drawable.ic_stat_36, value, System.currentTimeMillis());
 		 
-		    PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent( context, FirstStartActivity.class ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+		    PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent( context, FirstStartActivity.class ), 0);
 		    notification.setLatestEventInfo(context, "버스킹알림!", value, pendingIntent);
 		    //해당 메세지 선택시 상태바 아이콘 삭제
 		    notification.flags = Notification.FLAG_AUTO_CANCEL;

@@ -12,10 +12,50 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout 
-            android:id="@+id/issue_rolling"
+            android:id="@+id/issue_acticle"
             android:layout_width="match_parent"
             android:layout_height="200dip"
-            android:visibility="gone">
+            android:visibility="visible">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                 <ImageView
+			            android:id="@+id/busker_join_article_img"
+			            android:layout_width="match_parent"
+			            android:layout_height="match_parent"
+			            android:scaleType="fitXY"/>
+	                 <LinearLayout
+	                     android:layout_width="180dip"
+	                     android:layout_height="match_parent"
+	                     android:background="#77000000"
+	                     android:gravity="center"
+	                     android:layout_marginLeft="180dip">
+	                     <LinearLayout
+	                         android:layout_width="150dip"
+	                         android:layout_height="wrap_content"
+	                         android:orientation="vertical"
+	                         android:gravity="center">
+		                     <TextView
+		                         android:layout_width="wrap_content"
+		                         android:layout_height="wrap_content"
+		                         android:text="Busker 인터뷰"
+		                         android:textSize="18dip"
+		                         android:textStyle="bold"
+		                         android:textColor="#ffffff"
+		                         android:maxLines="5"/>
+		                     <TextView
+		                         android:id="@+id/issue_aricle"
+		                         android:layout_width="wrap_content"
+		                         android:layout_height="wrap_content"
+		                         android:layout_marginTop="5dip"
+		                         android:text=" 홍대는 우리가 접수한다 !! \n        광운대 핫 아이콘\n        \'5학년 1학기\'\n 그들의 이야기 시작합니다"
+		                          
+		                         android:textSize="13dip"
+		                         android:textColor="#ffffff"
+		                         android:maxLines="5"/>
+	                     </LinearLayout>
+                 </LinearLayout>
+            </RelativeLayout>
             
         </LinearLayout>
         
@@ -300,20 +340,6 @@
   		  </RelativeLayout>
   		  
    </LinearLayout>
-   <LinearLayout
-	      android:id="@+id/gg"
-           android:layout_width="match_parent"
-           android:layout_height="40dip"
-           android:background="#58595b"
-           android:gravity="center">
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="새로운 버스커"
-               android:textSize="15dip"
-               android:textColor="#ffffff"
-               android:textStyle="bold"/>
-       </LinearLayout>
 	  <LinearLayout
         android:id="@+id/lineup_list"
         android:layout_width="match_parent"

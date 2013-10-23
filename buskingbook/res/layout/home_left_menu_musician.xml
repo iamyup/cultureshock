@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#6d7278"
+    android:background="#363636"
     android:orientation="vertical" >
     <LinearLayout
         android:id="@+id/left_menu_no_login"
@@ -22,54 +22,68 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical">
-	
-		<ImageView
-		    android:id="@+id/profile_image"
-		    android:layout_width="100dip"
-		    android:layout_height="100dip"
-		    android:layout_gravity="center"
-		    android:paddingBottom="20dp"
-		    android:scaleType="fitXY"
-		    android:layout_marginTop="15dip"
-		    android:src="@drawable/default_pf" />
-	
 		<LinearLayout
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:orientation="vertical"
-		    android:paddingBottom="10dip"
-		    android:gravity="center" >
+		    android:gravity="center_vertical"
+		    android:layout_marginTop="30dip"
+		    android:layout_marginBottom="30dip">
+			<ImageView
+			    android:id="@+id/profile_image"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="30dip"
+			    android:scaleType="fitXY"
+			    android:src="@drawable/default_pf" />
 		
-		<TextView
-		    android:id="@+id/name_home_left"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="신한솔님"
-		    android:textColor="#ffffff" />
-		<TextView
-		    android:id="@+id/team_name_home_left"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="seoul 소속"
-		    android:textColor="#00ffff" />
+			<RelativeLayout
+			    android:layout_width="120dip"
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical"
+			    android:paddingBottom="10dip"
+			    android:gravity="center"
+			    android:layout_marginTop="15dip" >
+			
+			<TextView
+			    android:id="@+id/name_home_left"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="신한솔님"
+			    android:textColor="#ffffff" />
+			<TextView
+			    android:id="@+id/team_name_home_left"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="seoul 소속"
+			    android:layout_below="@+id/name_home_left"
+			    android:layout_alignLeft="@+id/name_home_left"
+			    android:textColor="#00ffff" />
+			</RelativeLayout>
 		</LinearLayout>
 		<LinearLayout
 		    android:id="@+id/musician_join"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:orientation="vertical"
-		    android:layout_marginBottom="10dip">
+		     android:visibility="visible">
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="1dip"
+			    android:background="#3c3c3c"/>
 		  <LinearLayout
 		      android:id="@+id/musician_page"
-		      android:layout_width="130dip"
-		      android:layout_height="40dip"
+		      android:layout_width="match_parent"
+		      android:layout_height="55dip"
 		      android:gravity="center_vertical"
-		      android:layout_marginLeft="15dip">
+		      android:layout_marginLeft="15dip"
+		     >
+			
 		      <ImageView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
 		          android:background="@drawable/busker_page_btn"
-		          android:layout_marginRight="10dip"/>
+		          android:layout_marginLeft="20dip"
+		          android:layout_marginRight="20dip"/>
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
@@ -79,16 +93,22 @@
 		          android:textColor="#00ffff"/>
 		  </LinearLayout>
 		  <LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="1dip"
+			    android:background="#3c3c3c"/>
+		  <LinearLayout
 		      android:id="@+id/musician_busking_join"
-		      android:layout_width="130dip"
-		      android:layout_height="40dip"
+		      android:layout_width="match_parent"
+		      android:layout_height="55dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
+		      
 		      <ImageView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
 		          android:background="@drawable/add_per_btn"
-		          android:layout_marginRight="10dip"/>
+		           android:layout_marginLeft="20dip"
+		          android:layout_marginRight="20dip"/>
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
@@ -99,16 +119,21 @@
 		          />
 		  </LinearLayout>
 		  <LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="1dip"
+			    android:background="#3c3c3c"/>
+		  <LinearLayout
 		      android:id="@+id/musician_partner"
-		      android:layout_width="130dip"
-		      android:layout_height="40dip"
+		      android:layout_width="match_parent"
+		      android:layout_height="55dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
 		          android:background="@drawable/findb_btn"
-		          android:layout_marginRight="10dip"/>
+		          android:layout_marginLeft="20dip"
+		          android:layout_marginRight="20dip"/>
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
@@ -117,29 +142,29 @@
 		          android:textStyle="bold"
 		          android:textColor="#00ffff"/>
 		  </LinearLayout>
+		 
 		</LinearLayout>
 		<LinearLayout
 		    android:id="@+id/musician_join"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:orientation="vertical"
-		    android:layout_marginBottom="10dip">
-		  <LinearLayout
-		    android:layout_width="match_parent"
-		    android:layout_height="1dip"
-		    android:background="#ffffff"
-		    android:layout_marginBottom="10dip"/>
+		    android:orientation="vertical">
+		   <LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="1dip"
+			    android:background="#3c3c3c"/>
 		  <LinearLayout
 		      android:id="@+id/musician_busker_search"
-		      android:layout_width="130dip"
-		      android:layout_height="40dip"
+		      android:layout_width="match_parent"
+		      android:layout_height="55dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
-		          android:background="@drawable/find_btn_o"
-		          android:layout_marginRight="10dip"/>
+		          android:background="@drawable/find_btn"
+		          android:layout_marginLeft="20dip"
+		          android:layout_marginRight="20dip"/>
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
@@ -147,18 +172,24 @@
 		          android:textStyle="bold"
 		          android:textSize="15dip"
 		          android:textColor="#ffffff"/>
+		      
 		  </LinearLayout>
 		  <LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="1dip"
+			    android:background="#3c3c3c"/>
+		  <LinearLayout
 		      android:id="@+id/musician_like_search"
-		      android:layout_width="130dip"
-		      android:layout_height="40dip"
+		      android:layout_width="match_parent"
+		      android:layout_height="55dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
 		          android:background="@drawable/like_btn"
-		          android:layout_marginRight="10dip" />
+		          android:layout_marginLeft="20dip"
+		          android:layout_marginRight="20dip" />
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
@@ -168,9 +199,13 @@
 		          android:textColor="#ffffff"/>
 		  </LinearLayout>
 		  <LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="1dip"
+			    android:background="#3c3c3c"/>
+		  <RelativeLayout
 		      android:id="@+id/musician_alarm"
-		      android:layout_width="130dip"
-		      android:layout_height="40dip"
+		      android:layout_width="match_parent"
+		      android:layout_height="55dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
@@ -178,75 +213,108 @@
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
 		          android:background="@drawable/alarm_btn"
-		          android:layout_marginRight="10dip" />
+		          android:layout_marginLeft="20dip"
+		          android:layout_marginRight="20dip" />
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
 		          android:text="공연알림받기"
 		          android:textStyle="bold"
+		          android:layout_toRightOf="@+id/busker_alarm_img"
 		          android:textSize="15dip"
 		          android:textColor="#ffffff"/>
-		  </LinearLayout>
+		       <ImageView
+		          android:id="@+id/busker_alarm_img_two"
+		          android:layout_width="wrap_content"
+		          android:layout_height="wrap_content"
+		          android:layout_alignParentRight="true"
+		          android:background="@drawable/on_btn"
+		          android:layout_marginRight="25dip" />
+		  </RelativeLayout>
 		  <LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="1dip"
+			    android:background="#3c3c3c"/>
+		  <RelativeLayout
 		      android:id="@+id/musician_info"
-		      android:layout_width="130dip"
-		      android:layout_height="40dip"
+		      android:layout_width="match_parent"
+		      android:layout_height="55dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
 		          android:id="@+id/musician_privacy_auto"
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
-		          android:background="@drawable/privacy_btn_o"
-		          android:layout_marginRight="10dip" />
+		          android:background="@drawable/key_btn"
+		          android:layout_marginLeft="20dip"
+		          android:layout_marginRight="20dip" />
 		      <TextView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
 		          android:text="자동로그인"
 		          android:textStyle="bold"
+		          android:layout_toRightOf="@+id/musician_privacy_auto"
 		          android:textSize="15dip"
 		          android:textColor="#ffffff"/>
-		  </LinearLayout>
+		       <ImageView
+		          android:id="@+id/musician_privacy_auto_two"
+		          android:layout_width="wrap_content"
+		          android:layout_height="wrap_content"
+		          android:layout_alignParentRight="true"
+		          android:background="@drawable/on_btn"
+		          android:layout_marginRight="25dip" />
+		  </RelativeLayout>
+		  <LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="1dip"
+			    android:background="#3c3c3c"/>
+		  <LinearLayout
+		    android:id="@+id/busker_join_btn"
+		    android:layout_width="match_parent"
+		    android:layout_height="55dip"
+		    android:gravity="center_vertical"
+		    android:layout_marginLeft="15dip">
+				<ImageView
+		          android:layout_width="wrap_content"
+		          android:layout_height="wrap_content"
+		          android:background="@drawable/add_per_btn_o_busker"
+		          android:layout_marginLeft="20dip"
+		          android:layout_marginRight="20dip"/>
+				<TextView
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="버스커 등록하기"
+				    android:textSize="15dip"
+				    android:textColor="#ffffff"/>
+			</LinearLayout>
 		</LinearLayout>
+		<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="1dip"
+			    android:background="#3c3c3c"/>
 	</LinearLayout>
-	<LinearLayout
-	    android:id="@+id/busker_join_btn"
-	    android:layout_width="130dip"
-	    android:layout_height="50dip"
-	    android:layout_above="@+id/logout_layout"
-	    android:layout_marginLeft="15dip"
-	    android:layout_marginBottom="10dip">
+	<RelativeLayout
+	    android:id="@+id/logout_layout"
+	    android:layout_width="match_parent"
+	    android:layout_height="55dip"
+	    android:layout_alignParentBottom="true"
+	    android:orientation="horizontal">
+		<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="2dip"
+			    android:background="#3c3c3c"/>
 		<ImageView
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
 		          android:background="@drawable/add_per_btn_o"
-		          android:layout_marginRight="10dip"/>
-		<TextView
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="버스커\n등록하기"
-		    android:textSize="15dip"
-		    android:textColor="#ffffff"/>
-	</LinearLayout>
-	
-	<RelativeLayout
-	    android:id="@+id/logout_layout"
-	    android:layout_width="match_parent"
-	    android:layout_height="50dip"
-	    android:layout_alignParentBottom="true"
-	    android:orientation="horizontal">
-		<LinearLayout
-		    android:id="@+id/busker_line_line"
-		    android:layout_width="match_parent"
-		    android:layout_height="1dip"
-		    android:background="#ffffff"
-		    android:layout_alignParentTop="true"/>
+		          android:layout_marginRight="20dip"
+		          android:visibility="invisible"/>
 		<TextView
 		    android:id="@+id/logout_text"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:layout_centerHorizontal="true"
 		    android:layout_centerInParent="true"
+		    android:layout_marginLeft="73dip"
 		    android:textSize="15dip"
 		    android:text="로그아웃"
 		    android:textColor="#ffffff" />

@@ -87,8 +87,11 @@ private LinearLayout m_oBtnConfirm;
 	private EditText m_oEditTextDay;
 	private Spinner m_oEditTextHour;
 	private ArrayList<String> m_FlagHour;
+	private ArrayList<String> m_FlagMin;
 	private String hour;
-	private EditText m_oEditTextMin;
+	private String min;
+	private String ampm;
+	private Spinner m_oEditTextMin;
 	private ImageView  m_oBtnList ;
 
 	private String buskerTime ;
@@ -159,7 +162,20 @@ private LinearLayout m_oBtnConfirm;
         spinitem2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         m_oEditTextHour.setAdapter(spinitem2);
         m_oEditTextHour.setOnItemSelectedListener(selectedListener2);
-		m_oEditTextMin = (EditText)getActivity().findViewById(R.id.time_join_time_min);
+		m_oEditTextMin = (Spinner)getActivity().findViewById(R.id.time_join_time_min);
+		m_FlagMin = new ArrayList<String>();
+		
+		m_FlagMin.add("00");
+		m_FlagMin.add("10");
+		m_FlagMin.add("20");
+		m_FlagMin.add("30");
+		m_FlagMin.add("40");
+		m_FlagMin.add("50");
+		
+		ArrayAdapter<String> spinitem3 = new ArrayAdapter<String>(mContext, R.layout.spinner_item_2, m_FlagMin);
+        spinitem3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        m_oEditTextMin.setAdapter(spinitem3);
+        m_oEditTextMin.setOnItemSelectedListener(selectedListener3);
 		m_oEditTextDay = (EditText)getActivity().findViewById(R.id.time_join_calendar);
 		m_oEditTextDay.setEnabled(false);
 		m_oBtnNext.setOnClickListener(this);
@@ -193,6 +209,34 @@ private LinearLayout m_oBtnConfirm;
             if ( m_FlagHour.size() > 0 )
             {
             	hour = m_oEditTextHour.getSelectedItem().toString();
+            	if(Integer.parseInt(hour) > 12)
+            	{
+            		ampm = "PM";
+            		hour = (Integer.parseInt(hour)-12)+"";
+            	}
+            	else
+            	{
+            		ampm = "AM";
+            	}
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> arg0) 
+        {
+            // TODO Auto-generated method stub
+
+        }
+    };
+    private OnItemSelectedListener selectedListener3 = new OnItemSelectedListener() 
+    {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) 
+        {
+            // TODO Auto-generated method stub
+            if ( m_FlagMin.size() > 0 )
+            {
+            	min = m_oEditTextMin.getSelectedItem().toString();
             }
         }
 
@@ -232,7 +276,7 @@ private LinearLayout m_oBtnConfirm;
 			{
 				Toast.makeText(mContext, "날짜를 선택해주세요", Toast.LENGTH_SHORT );
 			}
-			else if(hour.equals("")||m_oEditTextMin.getText().toString().equals(""))
+			else if(hour.equals("")||min.equals(""))
 			{
 				Toast.makeText(mContext, "시간을 입력해주세요", Toast.LENGTH_SHORT );
 			}
@@ -252,7 +296,7 @@ private LinearLayout m_oBtnConfirm;
 				today[0] = today[0].trim();
 				GregorianCalendar calendar = new GregorianCalendar(Integer.parseInt(year[0]),Integer.parseInt(month[0]),Integer.parseInt(today[0])); //해당 월 의 첫날 
 				int dayOfweek = calendar.get(Calendar.DAY_OF_WEEK) - 1; // 첫날의 요일 결정
-				requestAddCalendar(year[0],month[0],today[0],hour+":"+m_oEditTextMin.getText().toString(),week[dayOfweek],place,LoginInfoObject.getInstance().getMyteam() );
+				requestAddCalendar(year[0],month[0],today[0],hour+":"+min+" "+ampm,week[dayOfweek],place,LoginInfoObject.getInstance().getMyteam() );
 //				dialog.dismiss();
 			}
         }

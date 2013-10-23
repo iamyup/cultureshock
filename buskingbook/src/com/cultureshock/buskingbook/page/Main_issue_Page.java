@@ -74,6 +74,10 @@ public class Main_issue_Page extends LinearLayout implements View.OnClickListene
 	private int check2 ;
 	private boolean checkbestissue = false;
 	private IssueNewListView listView;
+	
+	private LinearLayout m_oLayoutArticle;
+	private ImageView m_oImgArticle;
+	private TextView m_oTxtArticle;
 	public Main_issue_Page(Context context) {
 		// TODO Auto-generated constructor stub
 		super(context);
@@ -148,6 +152,11 @@ public class Main_issue_Page extends LinearLayout implements View.OnClickListene
 		mGoteamPage2.setOnClickListener(this);
 		mTime2 = (TextView)v.findViewById(R.id.team_time_info_3);
 		m_oLayoutNew = (LinearLayout) v.findViewById(R.id.lineup_list);
+		
+		m_oLayoutArticle = (LinearLayout) v.findViewById(R.id.issue_acticle);
+		m_oLayoutArticle.setOnClickListener(this);
+		m_oTxtArticle = (TextView)v.findViewById(R.id.issue_aricle);
+		m_oImgArticle = (ImageView) v.findViewById(R.id.busker_join_article_img);
 //		if(listView == null)
 //		{
 //			listView = new IssueNewListView(mContext);
@@ -178,6 +187,17 @@ public class Main_issue_Page extends LinearLayout implements View.OnClickListene
 		{
 			e.printStackTrace();
 		}
+		localArticle();
+	}
+	public void localArticle()
+	{
+		Drawable default1 = null;
+    	default1 =  mContext.getResources().getDrawable(R.drawable.default_a);
+    	m_oImgArticle.setImageResource(R.drawable.asdp);
+//		m_oAsyncImageLoader.setImageDrawableAsync(m_oImgArticle,bestTeam.getTeamThum(),default1,default1,mContext);
+//    	m_oTxtArticle.setText("  지금 당장 드루와~\n우리는 5학년 1학기\n" +
+//    			"    그들의 이야기  " +
+//    			"    자유와 로맨틱  ");
 	}
 	 public void dataUiset()
 	    {
@@ -215,6 +235,10 @@ public class Main_issue_Page extends LinearLayout implements View.OnClickListene
 		// TODO Auto-generated method stub
 		switch(v.getId())
 		{
+			case R.id.issue_acticle :
+			{
+				break;
+			}
 			case R.id.like_select:
 			{
 				// TODO Auto-generated method stub

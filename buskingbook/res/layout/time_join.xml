@@ -1267,12 +1267,14 @@
 			        android:layout_marginRight="15dip"/>
 			    <Spinner
 	                android:id="@+id/time_join_time_hour"
-	                android:layout_width="50dip"
+	                android:layout_width="70dip"
 	                android:layout_height="25dip"
 	                android:singleLine="true"
 	      			android:hint=""
+	      			android:layout_gravity="center"
 	      			android:background="@drawable/inputbox_290b"
 	                android:textColor="#000000"
+	                android:paddingLeft="5dip"
 	                android:textSize="12dip"/>
 	            <TextView 
 			        android:layout_width="wrap_content"
@@ -1282,15 +1284,18 @@
 			        android:layout_marginLeft="5dip"
 			        android:layout_marginRight="10dip"
 			        android:textColor="#000000"/>
-	            <EditText 
+	            
+	             <Spinner
 	                android:id="@+id/time_join_time_min"
-	                android:layout_width="50dip"
-	                android:paddingLeft="10dip"
-	                android:background="#ffffff"
+	                android:layout_width="70dip"
 	                android:layout_height="25dip"
-	                android:textSize="12dip"
-	                android:inputType="number"
-	                android:textColor="#000000"/>
+	                android:singleLine="true"
+	      			android:hint=""
+	      			android:layout_gravity="center"
+	      			android:background="@drawable/inputbox_290b"
+	                android:textColor="#000000"
+	                android:paddingLeft="5dip"
+	                android:textSize="12dip"/>
 	            <TextView 
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"

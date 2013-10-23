@@ -12,7 +12,12 @@
         android:layout_height="165dip"
         android:visibility="gone">
         <LinearLayout
-        android:id="@+id/item_lineup_calendar_layout_2"
+            android:id="@+id/item_lineup_calendar_layout_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <LinearLayout
+        
         android:layout_width="match_parent"
         android:layout_height="25dip"
         android:layout_marginTop="5dip"
@@ -35,6 +40,19 @@
             android:textColor="#565656"
             android:layout_marginLeft="10dip"/>
   	  </LinearLayout>
+  	  <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="1dip"
+		        android:background="#f7f7f7"/>
+		     <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="1dip"
+		        android:background="#d9dad5"/>
+		      <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="1dip"
+		        android:background="#e3e2de"/>
+		      </LinearLayout>
 	    <LinearLayout
 	        android:layout_width="match_parent"
 	        android:layout_height="140dip"
@@ -53,30 +71,48 @@
 	    </LinearLayout>
     </RelativeLayout>
     <LinearLayout
-		        android:id="@+id/item_lineup_calendar_layout"
+        android:id="@+id/item_lineup_calendar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+	    <LinearLayout
+			        
+			        android:layout_width="match_parent"
+			        android:layout_height="25dip"
+			        android:layout_alignParentBottom="true"
+			        android:layout_marginTop="5dip"
+	       			android:layout_marginBottom="5dip"
+			        android:gravity="center">
+			        <TextView
+			            android:id="@+id/item_lineup_calendar"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text="9월 15일"
+			            android:textSize="15dip"
+			            android:textStyle="bold"
+			            android:textColor="#565656"/>
+			        <TextView
+			            android:id="@+id/item_lineup_calendar_day_of_week"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text="월"
+			            android:textSize="15dip"
+			            android:textColor="#565656"
+			            android:layout_marginLeft="10dip"/>
+		    </LinearLayout>
+		    <LinearLayout
 		        android:layout_width="match_parent"
-		        android:layout_height="25dip"
-		        android:layout_alignParentBottom="true"
-		        android:layout_marginTop="5dip"
-       			android:layout_marginBottom="5dip"
-		        android:gravity="center">
-		        <TextView
-		            android:id="@+id/item_lineup_calendar"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:text="9월 15일"
-		            android:textSize="15dip"
-		            android:textStyle="bold"
-		            android:textColor="#565656"/>
-		        <TextView
-		            android:id="@+id/item_lineup_calendar_day_of_week"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:text="월"
-		            android:textSize="15dip"
-		            android:textColor="#565656"
-		            android:layout_marginLeft="10dip"/>
-	    </LinearLayout>
+		        android:layout_height="1dip"
+		        android:background="#f7f7f7"/>
+		     <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="1dip"
+		        android:background="#d9dad5"/>
+		      <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="1dip"
+		        android:background="#e3e2de"/>
+	      </LinearLayout>
     <LinearLayout
         android:id="@+id/item_lineup_time_layout"
         android:layout_width="match_parent"
@@ -96,10 +132,10 @@
 	            android:background="@drawable/myinfo_background"/>
 	        <LinearLayout 
 	            android:layout_width="match_parent"
-	            android:layout_height="50dip" 
+	            android:layout_height="40dip" 
 	            android:layout_alignParentBottom="true"
 	            android:gravity="center_vertical"
-	            android:background="#55000000">
+	            android:background="#99000000">
 	            <TextView 
 		            android:id="@+id/item_lineup_bottom_ranking"
 		            android:layout_width="wrap_content"
@@ -108,6 +144,7 @@
 		            android:singleLine="true"
 		            android:ellipsize="end"
 		            android:textSize="15dip"
+		            android:textStyle="bold"
 		            android:textColor="#01d0d2"
 		            android:layout_marginLeft="15dip"/>
 	            <TextView
@@ -117,83 +154,103 @@
 	                android:singleLine="true"
 	                android:ellipsize="end"
 	                android:text="버스커버스커"
+	                android:textStyle="bold"
 	                android:textColor="#ffffff"
 	                android:textSize="15dip"
 	                android:layout_marginLeft="10dip"/>
 	            <TextView
 	                android:id="@+id/item_lineup_time"
-	                android:layout_width="100dip"
+	                android:layout_width="65dip"
 	                android:layout_height="wrap_content"
 	                android:singleLine="true"
 	                android:ellipsize="end"
-	                android:text="21:00 pm"
+	                android:text="21:00 PM"
 	                android:textColor="#ffffff"
 	                android:textSize="15dip"/>
+	            
+	            
 	            <TextView
 	                android:id="@+id/item_lineup_place"
 	                android:layout_width="100dip"
 	                android:layout_height="wrap_content"
 	                android:singleLine="true"
 	                android:ellipsize="end"
+	                android:textStyle="bold"
 	                android:text="홍대 놀이터"
+	                android:layout_marginLeft="50dip"
 	                android:textColor="#ffffff"
 	                android:textSize="15dip"/>
 	        </LinearLayout>
 	    </RelativeLayout>
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="1dip"
+	        android:background="#e3e2de"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/item_lineup_bottom"
         android:layout_width="match_parent"
-        android:layout_height="45dip"
-        android:gravity="center_vertical"
-        android:background="#eaeaea">
-	     <LinearLayout
-	         android:id="@+id/like_select"
-	         android:layout_width="wrap_content"
-	         android:layout_height="40dip"
-	         android:gravity="center_vertical">
-	        <ImageView
-	            android:id="@+id/item_lineup_bottom_likecount_img"
-	            android:layout_width="15dip"
-	            android:layout_height="15dip"
-	            android:background="@drawable/heart"
-	            android:layout_marginLeft="10dip"/>
-	        <TextView
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="Like it"
-	            android:textSize="15dip"
-	            android:layout_marginLeft="5dip"
-	            android:textColor="#838383"/>
+        android:layout_height="46dip"
+        android:orientation="vertical">
+	    <LinearLayout
+	        android:id="@+id/item_lineup_bottom"
+	        android:layout_width="match_parent"
+	        android:layout_height="45dip"
+	        android:gravity="center_vertical"
+	        android:background="#eaeaea">
+		     <LinearLayout
+		         android:id="@+id/like_select"
+		         android:layout_width="wrap_content"
+		         android:layout_height="40dip"
+		         android:gravity="center_vertical">
+		        <ImageView
+		            android:id="@+id/item_lineup_bottom_likecount_img"
+		            android:layout_width="15dip"
+		            android:layout_height="15dip"
+		            android:background="@drawable/heart"
+		            android:layout_marginLeft="10dip"/>
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="Like it"
+		            android:textSize="15dip"
+		            android:layout_marginLeft="5dip"
+		            android:textColor="#838383"/>
+		        </LinearLayout>
+		        <TextView
+		            android:id="@+id/item_lineup_bottom_likecount"
+		            android:layout_width="100dip"
+		            android:layout_height="wrap_content"
+		            android:text="213"
+		            android:textSize="15dip"
+		            android:layout_marginLeft="5dip"
+		            android:textColor="#01d0d2"/>
+	        
+	        <LinearLayout
+	            android:id="@+id/team_page"
+	            android:layout_width="120dip"
+	            android:layout_height="40dip"
+	            android:gravity="center"
+	            android:layout_marginLeft="60dip">
+		        <ImageView
+		            android:id="@+id/item_lineup_bottom_likecount_img_o"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:background="@drawable/home_o"/>
+		        <TextView
+		            android:id="@+id/item_lineup_bottom_likecount"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="Team Page"
+		            android:textSize="15dip"
+		            android:layout_marginLeft="5dip"
+		            android:textColor="#838383"/>
 	        </LinearLayout>
-	        <TextView
-	            android:id="@+id/item_lineup_bottom_likecount"
-	            android:layout_width="100dip"
-	            android:layout_height="wrap_content"
-	            android:text="213"
-	            android:textSize="15dip"
-	            android:layout_marginLeft="5dip"
-	            android:textColor="#01d0d2"/>
-        
-        <LinearLayout
-            android:id="@+id/team_page"
-            android:layout_width="120dip"
-            android:layout_height="40dip"
-            android:gravity="center"
-            android:layout_marginLeft="60dip">
-	        <ImageView
-	            android:id="@+id/item_lineup_bottom_likecount_img_o"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:background="@drawable/home"/>
-	        <TextView
-	            android:id="@+id/item_lineup_bottom_likecount"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="Team Page"
-	            android:textSize="15dip"
-	            android:layout_marginLeft="5dip"
-	            android:textColor="#838383"/>
-        </LinearLayout>
+	         
+	    </LinearLayout>
+	    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="1dip"
+		        android:background="#a5a3a4"/>
     </LinearLayout>
+   
 </LinearLayout>

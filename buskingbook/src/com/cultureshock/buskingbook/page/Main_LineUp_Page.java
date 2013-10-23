@@ -151,13 +151,26 @@ public class Main_LineUp_Page extends LinearLayout implements View.OnClickListen
 					
 					
 				}
-				
 				if(lineUpListView == null)
 				{
 					lineUpListView = new LineUpListView(mContext);
-					lineUpListView.setListData(lineUpArr);
+					
 				}
+				lineUpListView.setListData(lineUpArr);
 				m_oLayoutListView.addView(lineUpListView);
+				if(lineUpArr.size() == 0)
+				{
+					m_oNoBusker.setVisibility(View.VISIBLE);
+					
+				}
+				else
+				{
+					m_oNoBusker.setVisibility(View.GONE);
+					
+				}
+				
+				
+				
 			}
 			else if (object.getJSONObject("result").optString("type").equals("ServiceType.MSG.TIME_TABLE_SEND"))
 			{

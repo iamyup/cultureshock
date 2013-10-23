@@ -33,6 +33,17 @@
 		    android:layout_height="wrap_content"
 		    android:layout_gravity="center_vertical|right"
 		    android:background="@drawable/selector_paper_btn" />
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dip"
+		    android:background="#0ea7a5"
+		    android:gravity="bottom"
+		    android:layout_marginBottom="1dip"/>
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dip"
+		    android:background="#376263"
+		    android:gravity="bottom"/>
 	</FrameLayout>
 	<android.support.v4.view.ViewPager
 				    android:id="@+id/viewpager"

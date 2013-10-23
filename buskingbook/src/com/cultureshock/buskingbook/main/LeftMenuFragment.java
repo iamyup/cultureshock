@@ -45,8 +45,8 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     private LinearLayout m_BtnPartnerSearch;
     private LinearLayout m_BtnBuskerSearch;
     private LinearLayout m_BtnLikeSearh;
-    private LinearLayout m_BtnAlarm;
-    private LinearLayout m_BtnInfo;
+    private RelativeLayout m_BtnAlarm;
+    private RelativeLayout m_BtnInfo;
     private LinearLayout m_BtnBuskerRegister;
     private RelativeLayout m_BtnLogout;
     private ImageView m_oImgAutoLogin;
@@ -118,11 +118,11 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
             
             m_BtnBuskerSearch = (LinearLayout)getActivity().findViewById(R.id.musician_busker_search); 
             m_BtnLikeSearh = (LinearLayout)getActivity().findViewById(R.id.musician_like_search);
-            m_BtnAlarm = (LinearLayout)getActivity().findViewById(R.id.musician_alarm);
-            m_BtnInfo = (LinearLayout)getActivity().findViewById(R.id.musician_info);
+            m_BtnAlarm = (RelativeLayout)getActivity().findViewById(R.id.musician_alarm);
+            m_BtnInfo = (RelativeLayout)getActivity().findViewById(R.id.musician_info);
             m_BtnBuskerRegister = (LinearLayout)getActivity().findViewById(R.id.busker_join_btn);
-            m_oImgAutoLogin = (ImageView)getActivity().findViewById(R.id.musician_privacy_auto);
-            m_oImgAlarm = (ImageView)getActivity().findViewById(R.id.busker_alarm_img);
+            m_oImgAutoLogin = (ImageView)getActivity().findViewById(R.id.musician_privacy_auto_two);
+            m_oImgAlarm = (ImageView)getActivity().findViewById(R.id.busker_alarm_img_two);
             m_BtnBuskerPage.setOnClickListener(this);
             m_BtnBuskerJoin.setOnClickListener(this);
             m_BtnPartnerSearch.setOnClickListener(this);
@@ -146,23 +146,23 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
             if(sp.getBoolean("autologinboolean", false))
     		{
     			autoLogin = false;
-    			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn);
+    			m_oImgAutoLogin.setBackgroundResource(R.drawable.on_btn);
     		}
     		else
     		{
     			autoLogin = true;
-    			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn_o);
+    			m_oImgAutoLogin.setBackgroundResource(R.drawable.off_btn);
     		}
             SharedPreferences sp2 = mActivity.getSharedPreferences("isPopup", mActivity.MODE_PRIVATE);
         	GCMIntentService.isPopup = sp2.getBoolean("autologinboolean", true);
         	
             if(GCMIntentService.isPopup)
             {
-            	m_oImgAlarm.setBackgroundResource(R.drawable.alarm_btn);
+            	m_oImgAlarm.setBackgroundResource(R.drawable.on_btn);
             }
             else
             {
-            	m_oImgAlarm.setBackgroundResource(R.drawable.alarm_btn_o);
+            	m_oImgAlarm.setBackgroundResource(R.drawable.off_btn);
             }
     	}
     	
@@ -234,12 +234,12 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
 		if(sp.getBoolean("autologinboolean", false))
 		{
 			autoLogin = false;
-			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn);
+			m_oImgAutoLogin.setBackgroundResource(R.drawable.on_btn);
 		}
 		else
 		{
 			autoLogin = true;
-			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn_o);
+			m_oImgAutoLogin.setBackgroundResource(R.drawable.off_btn);
 		}
     	
     }
@@ -281,7 +281,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
 					editer.putBoolean("isPopupboolean", false);
 					editer.commit();
 	    			GCMIntentService.isPopup = false;
-	            	m_oImgAlarm.setBackgroundResource(R.drawable.alarm_btn_o);
+	            	m_oImgAlarm.setBackgroundResource(R.drawable.off_btn);
 	            }
 	            else
 	            {
@@ -290,7 +290,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
 					editer.putBoolean("isPopupboolean", true);
 					editer.commit();
 	            	GCMIntentService.isPopup = true;
-	            	m_oImgAlarm.setBackgroundResource(R.drawable.alarm_btn);
+	            	m_oImgAlarm.setBackgroundResource(R.drawable.on_btn);
 	            }
 	    		break;
 	    	}
@@ -304,7 +304,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
 					editer.putString("id", LoginInfoObject.getInstance().getId());
 					editer.putString("pwd", LoginInfoObject.getInstance().getPwd());
 					editer.commit();
-	    			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn);
+	    			m_oImgAutoLogin.setBackgroundResource(R.drawable.on_btn);
 	    			autoLogin = false;
 	    			
 	    		}
@@ -317,7 +317,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
 					editer.remove("pwd");
 					editer.commit();
 	    			
-	    			m_oImgAutoLogin.setBackgroundResource(R.drawable.privacy_btn_o);
+	    			m_oImgAutoLogin.setBackgroundResource(R.drawable.off_btn);
 	    			autoLogin = true;
 	    		}
 	    		
