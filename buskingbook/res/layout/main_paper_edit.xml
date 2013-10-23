@@ -29,30 +29,59 @@
             android:textColor="#ffffff" />
 
         <TextView
-            android:id="@+id/paper_complete"
+            android:id="@+id/paper_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|right"
-            android:text="@string/complete"
+            android:text="@string/next"
             android:layout_marginRight="5dip"
             android:textColor="#ffffff" />
     </FrameLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#000000"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/writing"
+            android:gravity="center"
+            android:textColor="#01d0d2" />
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/decorate"
+            android:gravity="center"
+            android:textColor="#ffffff" />
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/paper_space"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
+        android:background="#eaeaea"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/paper_team_name"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dip"
-            android:text="@string/paper"
-            android:textColor="#000000" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dip"
+            android:background="@drawable/red_ribbon"
+            android:gravity="center" >
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/paper"
+               android:textSize="20dip"
+               android:textStyle="bold"
+               android:textColor="#ffffff"
+               android:layout_marginBottom="10dip"/>
+       </LinearLayout>
 
         <EditText
             android:id="@+id/paper_string"
@@ -63,37 +92,19 @@
             android:hint="@string/inner_140" />
 
         <LinearLayout
-            android:id="@+id/paper_bottom"
             android:layout_width="match_parent"
-            android:layout_height="50dip" >
-
-            <TextView
-                android:id="@+id/paper_btn_sticker"
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:background="@color/selector_textbg_color"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:text="@string/sticker"
-                android:textColor="@color/selector_text_color"
+            android:layout_height="match_parent"
+            android:gravity="bottom" >
+                        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#ffffff"
                 android:gravity="center"
-                android:textSize="15dip" />
-
-            <TextView
-                android:id="@+id/paper_btn_handwriting"
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:background="@color/selector_textbg_color"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:text="@string/handwriting"
-                android:textColor="@color/selector_text_color"
-                android:gravity="center"
-                android:textSize="15dip" />
-
+                android:text="@string/paper_next_step"
+                android:textColor="#01d0d2" />
+            
         </LinearLayout>
-    </LinearLayout>
+
+</LinearLayout>
     
 </LinearLayout>
