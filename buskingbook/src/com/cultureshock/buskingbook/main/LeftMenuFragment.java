@@ -3,8 +3,12 @@ package com.cultureshock.buskingbook.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -104,7 +108,13 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     		m_oLayoutLogin.setVisibility(View.VISIBLE);
     		m_oImgMy = (ImageView)getActivity().findViewById(R.id.profile_image);
     		Drawable default1;
-    		default1 = getActivity().getResources().getDrawable(R.drawable.default_pf);
+    		
+    		Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + "/tmp_profile.jpg");
+    		if (bitmap != null) {
+    		    default1 = new BitmapDrawable(getResources(), bitmap);
+    		} else {
+    		    default1 = getActivity().getResources().getDrawable(R.drawable.default_pf);
+    		}
     		m_oAsyncImageLoader.setImageDrawableAsync(m_oImgMy,LoginInfoObject.getInstance().getMyImg(),default1,default1,getActivity());
         	m_oTxtMyName = (TextView)getActivity().findViewById(R.id.name_home_left);
         	m_oTxtMyName.setText(LoginInfoObject.getInstance().getName());
