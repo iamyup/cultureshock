@@ -71,15 +71,16 @@ public class ArticleFragment extends Fragment implements View.OnClickListener, H
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
         mInstance = this;
-        try{
-        Bundle bundle = getArguments();
-        teamname = bundle.getString("object");
-        }
-        catch(Exception e)
-        {
-        	e.printStackTrace();
-        }
         
+        
+        Bundle bundle = getArguments();
+        if(bundle !=null)
+        {
+			if( bundle.getString("object")!= null)
+			{
+				  teamname = bundle.getString("object");
+			}
+        }
         m_oBtnList = (ImageView) getActivity()
                 .findViewById(R.id.title_btn_menu);
         m_oBtnList.setOnClickListener(this);
@@ -100,7 +101,7 @@ public class ArticleFragment extends Fragment implements View.OnClickListener, H
         m_oA4 = (TextView)getActivity().findViewById(R.id.main_article_a4);
         m_oA5 = (TextView)getActivity().findViewById(R.id.main_article_a5);
         
-        
+        requestAricle();
     }
     public static ArticleFragment getInstance() {
         return mInstance;
@@ -159,7 +160,7 @@ public class ArticleFragment extends Fragment implements View.OnClickListener, H
 				String a3 = object.getJSONObject("data").optString("a3","");
 				String a4 = object.getJSONObject("data").optString("a4","");
 				String a5 = object.getJSONObject("data").optString("a5","");
-				articleObject = new ArticleObject(img,title,date,subTitle,introQ,introA,q1,q2,a3,a4,a5,a1,a2,a3,a4,a5);
+				articleObject = new ArticleObject(img,title,date,subTitle,introQ,introA,q1,q2,q3,q4,q5,a1,a2,a3,a4,a5);
 				setData();
 			}
 		}
