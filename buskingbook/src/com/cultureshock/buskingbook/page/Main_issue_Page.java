@@ -188,18 +188,9 @@ public class Main_issue_Page extends LinearLayout implements View.OnClickListene
 		{
 			e.printStackTrace();
 		}
-		localArticle();
+		requestAricle();
 	}
-	public void localArticle()
-	{
-		Drawable default1 = null;
-    	default1 =  mContext.getResources().getDrawable(R.drawable.default_a);
-    	m_oImgArticle.setImageResource(R.drawable.asdp);
-//		m_oAsyncImageLoader.setImageDrawableAsync(m_oImgArticle,bestTeam.getTeamThum(),default1,default1,mContext);
-//    	m_oTxtArticle.setText("  지금 당장 드루와~\n우리는 5학년 1학기\n" +
-//    			"    그들의 이야기  " +
-//    			"    자유와 로맨틱  ");
-	}
+	
 	 public void dataUiset()
 	    {
 	    	for(int i = 0 ; i< LoginInfoObject.getInstance().getLikeTeamList().size() ; i++)
@@ -211,7 +202,7 @@ public class Main_issue_Page extends LinearLayout implements View.OnClickListene
 				}
 			}
 	    	Drawable default1 = null;
-	    	default1 =  mContext.getResources().getDrawable(R.drawable.default_a);
+	    	default1 =  mContext.getResources().getDrawable(R.drawable.default_busker);
 	    	m_oAsyncImageLoader.setImageDrawableAsync(mImg,bestTeam.getTeamThum(),default1,default1,mContext);
 	    	mTeamname.setText(bestTeam.getTeamName());
 	    	mRanking.setText("TOP " + 1);
@@ -419,7 +410,27 @@ public class Main_issue_Page extends LinearLayout implements View.OnClickListene
 			loginService.doAsyncExecute(this);
 			((MainActivity)mContext).startProgressDialog();
 		}
-
+	    public void requestAricle()
+		{
+			GregorianCalendar calendar = new GregorianCalendar();
+			HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_ARTICLE);
+			ArrayList<Params> loginParams = new ArrayList<Params>();
+			loginParams.add(new Params("teamname",""));
+			loginService.setParam(loginParams);
+			loginService.doAsyncExecute(this);
+			MainActivity.getInstance().startProgressDialog();
+		}
+	    public void localArticle(String img, String title, String subtile)
+		{
+			Drawable default1 = null;
+	    	default1 =  mContext.getResources().getDrawable(R.drawable.default_busker);
+	    	
+			m_oAsyncImageLoader.setImageDrawableAsync(m_oImgArticle,img,default1,default1,mContext);
+			m_oTxtArticle.setText(title+"\n"+subtile);
+//	    	m_oTxtArticle.setText("  지금 당장 드루와~\n우리는 5학년 1학기\n" +
+//	    			"    그들의 이야기  " +
+//	    			"    자유와 로맨틱  ");
+		}
 		@Override
 		public void onResponseReceived(String resContent) {
 			// TODO Auto-generated method stub
@@ -473,6 +484,14 @@ public class Main_issue_Page extends LinearLayout implements View.OnClickListene
 					{
 						Toast.makeText(mContext, "좋아요 실패했습니다", Toast.LENGTH_LONG).show();
 					}
+				}
+				else if(object.getJSONObject("result").optString("type").equals("ServiceType.MSG_ARTICLE"))
+				{
+					article_team = object.getJSONObject("data").optString("teamname","");
+					String img = object.getJSONObject("data").optString("img","");
+					String title = object.getJSONObject("data").optString("title","");
+					String subTitle = object.getJSONObject("data").optString("subTitle","");
+					localArticle(img,title,subTitle);
 				}
 //				else if(object.getJSONObject("result").optString("type").equals("ServiceType.MSG_TIME_TABLE"))
 //				{

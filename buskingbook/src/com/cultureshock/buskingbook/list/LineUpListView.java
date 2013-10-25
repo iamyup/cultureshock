@@ -263,7 +263,7 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 					}
 				}
 				Drawable default1 = null;
-		    	default1 =  mContext.getResources().getDrawable(R.drawable.default_a);
+		    	default1 =  mContext.getResources().getDrawable(R.drawable.default_busker);
 				
 		    	
 				holder.teamname.setText(itemObject.getTeamName());

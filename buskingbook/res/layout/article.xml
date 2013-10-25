@@ -49,8 +49,164 @@
 		    android:id="@+id/article"
 		    android:layout_width="match_parent"
 		    android:layout_height="match_parent" 
-		    android:layout_gravity="center">
-			
+		    android:orientation="vertical">
+		    <ImageView
+		        android:id="@+id/main_article_img"
+		        android:layout_width="match_parent"
+		        android:layout_height="200dip"
+		        android:scaleType="fitXY"
+		        android:layout_marginTop="10dip"
+		        android:layout_marginBottom="20dip"
+		        android:layout_marginLeft="10dip"
+		        android:layout_marginRight="10dip"
+		        android:background="@drawable/default_a"/>
+		    <RelativeLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent">
+				<TextView
+				    android:id="@+id/main_article_title"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:textSize="20dip"
+				    android:textColor="#000000"
+				    android:textStyle="bold"
+				    android:layout_marginLeft="15dip"
+				    android:text="요즘 가장 뜨거운 5학년 1학기"
+				    android:maxLines="2"/>
+				<TextView
+				    android:id="@+id/main_article_calendar"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:textSize="15dip"
+				    android:textColor="#000000"
+				    android:layout_marginTop="15dip"
+				    android:layout_alignLeft="@+id/main_article_title"
+				    android:layout_below="@+id/main_article_title"
+				    android:text="2013. 10. 25"/>
+				<LinearLayout 
+				    android:id="@+id/under_line"
+				    android:layout_width="match_parent"
+				    android:layout_height="1dip"
+				    android:layout_marginRight="15dip"
+				    android:layout_marginBottom="20dip"
+				    android:layout_marginTop="10dip"
+				    android:layout_alignLeft="@+id/main_article_calendar"
+				    android:layout_below="@+id/main_article_calendar"
+				    android:background="#d5d5d5"/>
+				<LinearLayout
+				    android:id="@+id/main_body"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent"
+				    android:layout_marginLeft="15dip"
+				    android:layout_marginRight="15dip"
+				    android:layout_below="@+id/under_line"
+				    android:orientation="vertical">
+				    <TextView
+					    android:id="@+id/main_article_intro"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="18dip"
+					    android:textColor="#000000"
+					    android:layout_marginTop="15dip"
+					    android:text="가을 그리고 5학년1학기 추위에 아랑곳하지 않고 요즘 가장 덥다는 그들을 찾아봤습니다!!"/>
+					<TextView
+					    android:id="@+id/main_article_start"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="15dip"
+					    android:textColor="#ff1111"
+					    android:layout_marginTop="15dip"
+					    android:text="안녕하세요~"/>
+					<TextView
+					    android:id="@+id/main_article_start_a"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="15dip"
+					    android:textColor="#000000"
+					    android:layout_marginTop="15dip"
+					    android:text="> 반갑습니다 저는 5학년 1학기 보컬 김현빈 입니다~"/>
+					<TextView
+					    android:id="@+id/main_article_q1"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="15dip"
+					    android:textColor="#ff1111"
+					    android:layout_marginTop="15dip"
+					    android:text="Q.버스킹 하는 이유가 있나요??"/>
+					<TextView
+					    android:id="@+id/main_article_a1"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="15dip"
+					    android:textColor="#000000"
+					    android:layout_marginTop="15dip"
+					    android:text="> 우리의 노래로 사람들과 호흡하며 힘을 주고싶어서요~"/>
+					<TextView
+					    android:id="@+id/main_article_q2"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="15dip"
+					    android:textColor="#ff1111"
+					    android:layout_marginTop="15dip"
+					    android:text="Q.버스킹 중에 어떠할때 가장 재밌나요??"/>
+					<TextView
+					    android:id="@+id/main_article_a2"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="15dip"
+					    android:textColor="#000000"
+					    android:layout_marginTop="15dip"
+					    android:text="> 관람해주는 관객분들께서 우리와 같이 노래할때요~!"/>
+					<TextView
+					    android:id="@+id/main_article_q3"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="15dip"
+					    android:textColor="#ff1111"
+					    android:layout_marginTop="15dip"
+					    android:text="Q.버스킹 중 가장 최악일떄는요??"/>
+					<TextView
+					    android:id="@+id/main_article_a3"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="15dip"
+					    android:textColor="#000000"
+					    android:layout_marginTop="15dip"
+					    android:text="> 버스킹을 하는데.. 민원이 들어와서 그만해야할떄요.. 미워요..ㅠ.ㅠ"/>
+					<TextView
+					    android:id="@+id/main_article_q4"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="15dip"
+					    android:textColor="#ff1111"
+					    android:layout_marginTop="15dip"
+					    android:text="Q.버스킹 중 에피소드 하나만 이야기해주세요~"/>
+					<TextView
+					    android:id="@+id/main_article_a4"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="15dip"
+					    android:textColor="#000000"
+					    android:layout_marginTop="15dip"
+					    android:text="> 최근 여의도에서 버스킹을 한적이 있는데요 남자친구가 여자친구에게 세레나데를 해주고 싶다는 애기에 대략 한 30분동안 여자친구분 핸드폰으로 영화 찍듯이 즉석에서 세레나데를 만들었어요. 뭔가 새롭고 즐거운 기억이네요 하하하"/>
+				  	<TextView
+					    android:id="@+id/main_article_q5"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="15dip"
+					    android:textColor="#ff1111"
+					    android:layout_marginTop="15dip"
+					    android:text="Q.마지막으로 하고싶으신말 ~"/>
+					<TextView
+					    android:id="@+id/main_article_a5"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:textSize="15dip"
+					    android:textColor="#000000"
+					    android:layout_marginTop="15dip"
+					    android:text="> 여러분 5학년 1학기와 후끈하게 즐겨요 ~!"/>
+				  </LinearLayout>
+		   </RelativeLayout>
 		</LinearLayout>
 	</ScrollView>
 </RelativeLayout>

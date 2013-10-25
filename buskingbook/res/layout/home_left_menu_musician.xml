@@ -30,8 +30,8 @@
 		    android:layout_marginBottom="30dip">
 			<ImageView
 			    android:id="@+id/profile_image"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
+			    android:layout_width="97dip"
+			    android:layout_height="97dip"
 			    android:layout_marginLeft="30dip"
 			    android:scaleType="fitXY"
 			    android:src="@drawable/default_pf" />
@@ -296,7 +296,7 @@
 	<RelativeLayout
 	    android:id="@+id/logout_layout"
 	    android:layout_width="match_parent"
-	    android:layout_height="65dip"
+	    android:layout_height="55dip"
 	    android:layout_alignParentBottom="true"
 	    android:orientation="horizontal">
 		<LinearLayout
