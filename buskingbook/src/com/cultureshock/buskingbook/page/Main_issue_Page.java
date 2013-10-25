@@ -78,6 +78,7 @@ public class Main_issue_Page extends LinearLayout implements View.OnClickListene
 	private LinearLayout m_oLayoutArticle;
 	private ImageView m_oImgArticle;
 	private TextView m_oTxtArticle;
+	private String article_team;
 	public Main_issue_Page(Context context) {
 		// TODO Auto-generated constructor stub
 		super(context);
@@ -237,6 +238,9 @@ public class Main_issue_Page extends LinearLayout implements View.OnClickListene
 		{
 			case R.id.issue_acticle :
 			{
+				Bundle o = new Bundle();
+				o.putString("object", article_team);
+				MainActivity.getInstance().replaceFragment(ArticleFragment.class, null, false);
 				break;
 			}
 			case R.id.like_select:

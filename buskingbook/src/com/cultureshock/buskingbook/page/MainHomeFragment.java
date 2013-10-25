@@ -100,19 +100,12 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
     @Override
     public synchronized void onClick(View v) {
         switch (v.getId()) {
-        // case R.id.test_main :
-        // {
-        // Bundle bundle = new Bundle();
-        // bundle.putString("album_id", "");
-        // MainActivity.getInstance().replaceFragment(MusicChartFragment.class,
-        // bundle, true);
-        // break;
-        // }
         case R.id.title_btn_menu:
             MainActivity.getInstance().showMenu();
             break;
         case R.id.paper_btn:
-            MainActivity.getInstance().replaceFragment(PaperEditFragment.class, null, false);
+        	
+//            MainActivity.getInstance().replaceFragment(PaperEditFragment.class, null, false);
             break;
         }
     }

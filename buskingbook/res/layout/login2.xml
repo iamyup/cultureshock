@@ -3,7 +3,7 @@
     xmlns:dosirak="http://schemas.android.com/apk/res/com.ktmusic.geniemusic"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e6e7e9"
+    android:background="#ffffff"
     android:orientation="vertical" >
        <LinearLayout
            android:layout_width="wrap_content"
@@ -36,22 +36,24 @@
            android:layout_height="50dip"
            android:background="#f2f2f2"
            android:gravity="center"
-           android:layout_marginBottom="3dip">
+           android:layout_marginBottom="3dip"
+           android:layout_marginTop="50dip">
            <EditText
                android:id="@+id/login_email"
                android:layout_width="250dip"
                android:layout_height="50dip"
                android:hint="이메일"
                android:textSize="15dip"
+               android:singleLine="true"
                android:paddingLeft="5dip"
-               android:background="#e6e7e9"
+               android:background="#ffffff"
                android:textColor="#000000"/>
            
        </LinearLayout>
        <LinearLayout
                android:layout_width="250dip"
                android:layout_height="1dip"
-               android:background="#ffffff"/>
+               android:background="#ededed"/>
        <LinearLayout
            android:id="@+id/btn_login_password"
            android:layout_width="250dip"
@@ -67,13 +69,14 @@
                android:textSize="15dip"
                android:password="true"
                android:paddingLeft="5dip"
-               android:background="#e6e7e9"
+               android:singleLine="true"
+               android:background="#ffffff"
                android:textColor="#000000"/>
        </LinearLayout>
        <LinearLayout
                android:layout_width="250dip"
                android:layout_height="1dip"
-               android:background="#ffffff"
+               android:background="#ededed"
                android:layout_marginBottom="30dip"/>
        <LinearLayout
            android:id="@+id/btn_login"
@@ -109,19 +112,20 @@
            android:layout_height="50dip"
            android:background="#ffffff"
            android:gravity="center"
+           android:layout_marginTop="10dip"
            android:layout_marginBottom="15dip">
            <ImageView
                android:id="@+id/auto_login_check"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:background="@drawable/checkbox"/>
+               android:background="@drawable/checkbox_o"/>
            <TextView
                android:id="@+id/facebook_login"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:text="자동 로그인"
                android:textSize="14dip"
-               android:layout_marginLeft="5dip"
+               android:layout_marginLeft="15dip"
                android:textColor="#000000"/>
        </LinearLayout>   
    </LinearLayout>

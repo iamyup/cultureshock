@@ -23,6 +23,7 @@ import com.cultureshock.buskingbook.page.BuskerJoinFragment;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.page.TeamPageFragment;
 import com.cultureshock.buskingbook.page.TimeJoinFragment;
+import com.cultureshock.buskingbook.page.LikeTeamFragment;
 import com.cultureshock.buskingbook.util.AsyncImageLoader;
 
 public class LeftMenuFragment extends Fragment implements View.OnClickListener {
@@ -270,6 +271,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
 	    	}
 	    	case R.id.musician_like_search:
 	    	{
+	    		MainActivity.getInstance().replaceFragment(LikeTeamFragment.class, null, false);
 	    		break;
 	    	}
 	    	case R.id.musician_alarm:

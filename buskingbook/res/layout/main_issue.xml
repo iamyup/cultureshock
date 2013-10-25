@@ -24,6 +24,11 @@
 			            android:layout_width="match_parent"
 			            android:layout_height="match_parent"
 			            android:scaleType="fitXY"/>
+                 <ImageView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:background="@drawable/interview_busker"/>
+                   
 	                 <LinearLayout
 	                     android:layout_width="180dip"
 	                     android:layout_height="match_parent"
@@ -76,19 +81,7 @@
 		        android:gravity="center"
 		        android:orientation="vertical"
 		        android:background="#e6e7e9">
-		        <LinearLayout
-		            android:layout_width="match_parent"
-		            android:layout_height="40dip"
-		            android:background="#58595b"
-		            android:gravity="center">
-		            <TextView
-		                android:layout_width="wrap_content"
-		                android:layout_height="wrap_content"
-		                android:text="최고의 버스커"
-		                android:textSize="15dip"
-		                android:textColor="#ffffff"
-		                android:textStyle="bold"/>
-		        </LinearLayout>
+		        
 		        <RelativeLayout
 		        android:layout_width="match_parent"
 		        android:layout_height="match_parent" >
@@ -98,6 +91,10 @@
 		            android:layout_width="match_parent"
 		            android:layout_height="match_parent"
 		            android:scaleType="fitXY"/>
+		        <ImageView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:background="@drawable/best_busker"/>
 		        <LinearLayout 
 		            android:layout_width="match_parent"
 		            android:layout_height="30dip" 
@@ -116,27 +113,24 @@
 				            android:singleLine="true"
 				            android:ellipsize="end"
 				            android:textSize="15dip"
+				            android:textStyle="bold"
 				            android:textColor="#01d0d2"
+				            android:layout_toLeftOf="@+id/busker_join_teamname_2"
 				            android:layout_marginLeft="15dip"/>
 			            <TextView
 			                android:id="@+id/busker_join_teamname_2"
-			                android:layout_width="130dip"
+			                android:layout_width="wrap_content"
 			                android:layout_height="wrap_content"
 			                android:singleLine="true"
 			                android:ellipsize="end"
 			                android:text="버스커버스커"
 			                android:textColor="#ffffff"
 			                android:textSize="15dip"
-			                android:layout_toRightOf="@+id/busker_join_ranking_2"
+			                android:textStyle="bold"
+			                android:layout_marginRight="10dip"
+			                android:layout_alignParentRight="true"
 			                android:layout_marginLeft="5dip"/>
-			            <TextView
-			          	android:id="@+id/team_time_info"
-			            android:layout_width="180dip"
-			            android:layout_height="wrap_content"
-			            android:text=""
-			            android:layout_toRightOf="@+id/busker_join_teamname_2"
-			            android:textSize="15dip"
-			            android:textColor="#ffffff"/>
+			            
 		            </RelativeLayout>
 		            
 		        </LinearLayout>
@@ -216,19 +210,7 @@
 		        android:gravity="center"
 		        android:orientation="vertical"
 		        android:background="#e6e7e9">
-		        <LinearLayout
-		            android:layout_width="match_parent"
-		            android:layout_height="40dip"
-		            android:background="#58595b"
-		            android:gravity="center">
-		            <TextView
-		                android:layout_width="wrap_content"
-		                android:layout_height="wrap_content"
-		                android:text="금주의 이슈 버스커"
-		                android:textSize="15dip"
-		                android:textColor="#ffffff"
-		                android:textStyle="bold"/>
-		        </LinearLayout>
+		        
 		        <RelativeLayout
 		        android:layout_width="match_parent"
 		        android:layout_height="match_parent" >
@@ -238,6 +220,10 @@
 		            android:layout_width="match_parent"
 		            android:layout_height="match_parent"
 		            android:scaleType="fitXY"/>
+		        <ImageView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:background="@drawable/issue_busker"/>
 		        <LinearLayout 
 		            android:layout_width="match_parent"
 		            android:layout_height="30dip" 
@@ -257,17 +243,21 @@
 				            android:ellipsize="end"
 				            android:textSize="15dip"
 				            android:textColor="#01d0d2"
+				            android:layout_toLeftOf="@+id/busker_join_teamname_3"
+				            android:textStyle="bold"
 				            android:layout_marginLeft="15dip"/>
 			            <TextView
 			                android:id="@+id/busker_join_teamname_3"
-			                android:layout_width="130dip"
+			                android:layout_width="wrap_content"
 			                android:layout_height="wrap_content"
 			                android:singleLine="true"
 			                android:ellipsize="end"
 			                android:text="버스커버스커"
 			                android:textColor="#ffffff"
 			                android:textSize="15dip"
-			                android:layout_toRightOf="@+id/busker_join_ranking_3"
+			                android:layout_alignParentRight="true"
+			                android:layout_marginRight="10dip"
+			                android:textStyle="bold"
 			                android:layout_marginLeft="5dip"/>
 			            <TextView
 			          	android:id="@+id/team_time_info_3"

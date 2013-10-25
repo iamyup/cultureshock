@@ -56,11 +56,11 @@ private LinearLayout m_oBtnConfirm;
 			R.id.calendar_txt_27,R.id.calendar_txt_28,R.id.calendar_txt_29,R.id.calendar_txt_30,R.id.calendar_txt_31,R.id.calendar_txt_32,R.id.calendar_txt_33,R.id.calendar_txt_34,R.id.calendar_txt_35,
 			R.id.calendar_txt_36,R.id.calendar_txt_37,R.id.calendar_txt_38,R.id.calendar_txt_39,R.id.calendar_txt_40,R.id.calendar_txt_41,R.id.calendar_txt_42};
 	
-	private int[] joinCount = {R.id.calendar_txt_join_1,R.id.calendar_txt_join_2,R.id.calendar_txt_join_3,R.id.calendar_txt_join_4,R.id.calendar_txt_join_5,R.id.calendar_txt_join_6,R.id.calendar_txt_join_7,R.id.calendar_txt_join_8,
-			R.id.calendar_txt_join_9,R.id.calendar_txt_join_10,R.id.calendar_txt_join_11,R.id.calendar_txt_join_12,R.id.calendar_txt_join_13,R.id.calendar_txt_join_14,R.id.calendar_txt_join_15,R.id.calendar_txt_join_16,R.id.calendar_txt_join_17,
-			R.id.calendar_txt_join_18,R.id.calendar_txt_join_19,R.id.calendar_txt_join_20,R.id.calendar_txt_join_21,R.id.calendar_txt_join_22,R.id.calendar_txt_join_23,R.id.calendar_txt_join_24,R.id.calendar_txt_join_25,R.id.calendar_txt_join_26,
-			R.id.calendar_txt_join_27,R.id.calendar_txt_join_28,R.id.calendar_txt_join_29,R.id.calendar_txt_join_30,R.id.calendar_txt_join_31,R.id.calendar_txt_join_32,R.id.calendar_txt_join_33,R.id.calendar_txt_join_34,R.id.calendar_txt_join_35,
-			R.id.calendar_txt_join_36,R.id.calendar_txt_join_37,R.id.calendar_txt_join_38,R.id.calendar_txt_join_39,R.id.calendar_txt_join_40,R.id.calendar_txt_join_41,R.id.calendar_txt_join_42};
+//	private int[] joinCount = {R.id.calendar_txt_join_1,R.id.calendar_txt_join_2,R.id.calendar_txt_join_3,R.id.calendar_txt_join_4,R.id.calendar_txt_join_5,R.id.calendar_txt_join_6,R.id.calendar_txt_join_7,R.id.calendar_txt_join_8,
+//			R.id.calendar_txt_join_9,R.id.calendar_txt_join_10,R.id.calendar_txt_join_11,R.id.calendar_txt_join_12,R.id.calendar_txt_join_13,R.id.calendar_txt_join_14,R.id.calendar_txt_join_15,R.id.calendar_txt_join_16,R.id.calendar_txt_join_17,
+//			R.id.calendar_txt_join_18,R.id.calendar_txt_join_19,R.id.calendar_txt_join_20,R.id.calendar_txt_join_21,R.id.calendar_txt_join_22,R.id.calendar_txt_join_23,R.id.calendar_txt_join_24,R.id.calendar_txt_join_25,R.id.calendar_txt_join_26,
+//			R.id.calendar_txt_join_27,R.id.calendar_txt_join_28,R.id.calendar_txt_join_29,R.id.calendar_txt_join_30,R.id.calendar_txt_join_31,R.id.calendar_txt_join_32,R.id.calendar_txt_join_33,R.id.calendar_txt_join_34,R.id.calendar_txt_join_35,
+//			R.id.calendar_txt_join_36,R.id.calendar_txt_join_37,R.id.calendar_txt_join_38,R.id.calendar_txt_join_39,R.id.calendar_txt_join_40,R.id.calendar_txt_join_41,R.id.calendar_txt_join_42};
 	
 	private int[] timeTableLayout = {R.id.calendar_1,R.id.calendar_2,R.id.calendar_3,R.id.calendar_4,R.id.calendar_5,R.id.calendar_6,R.id.calendar_7,R.id.calendar_8,
 			R.id.calendar_9,R.id.calendar_10,R.id.calendar_11,R.id.calendar_12,R.id.calendar_13,R.id.calendar_14,R.id.calendar_15,R.id.calendar_16,R.id.calendar_17,
@@ -402,9 +402,14 @@ private LinearLayout m_oBtnConfirm;
 				{
 					if(today.get(Calendar.DATE) + startDay - 1 == i)
 					{
-						TextView k = (TextView)getActivity().findViewById(timeTable[i]);
+						LinearLayout k = (LinearLayout)getActivity().findViewById(timeTableLayout[i]);
 						k.setBackgroundColor(0xf01d0d2);
 					}
+				}
+				else
+				{
+					LinearLayout k = (LinearLayout)getActivity().findViewById(timeTableLayout[i]);
+					k.setBackgroundResource(R.drawable.c_100px);
 				}
 			}
 			o.setOnClickListener(new OnClickListener() {
@@ -438,12 +443,12 @@ private LinearLayout m_oBtnConfirm;
 	}
     public void reset()
 	{
-		for( int i = 0 ;i < 42 ; i++)
-		{
-			count[i] = 0 ;
-			TextView k = (TextView)getActivity().findViewById(joinCount[i]);
-			k.setText("");
-		}
+//		for( int i = 0 ;i < 42 ; i++)
+//		{
+//			count[i] = 0 ;
+//			TextView k = (TextView)getActivity().findViewById(joinCount[i]);
+//			k.setText("");
+//		}
 		if(timeTableObjectList.size() != 0)
 		{
 			timeTableObjectList.clear();

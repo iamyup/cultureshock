@@ -41,7 +41,7 @@ public class LoginActivity extends Activity implements View.OnClickListener, Htt
     private LinearLayout m_oBtnConfirm;
     private LinearLayout m_oBtnAutoLogin;
     private ImageView m_oImgAutoLogin;
-    private boolean checkAutoLogin = false;
+    private boolean checkAutoLogin = true;
     
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {

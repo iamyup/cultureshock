@@ -8,10 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.cultureshock.buskingbook.page.FourPage;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.page.Main_LineUp_Page;
-import com.cultureshock.buskingbook.page.ThreePage;
 import com.cultureshock.buskingbook.page.Main_issue_Page;
 
 public class ViewPagerAdapter extends PagerAdapter implements
@@ -35,10 +33,6 @@ public class ViewPagerAdapter extends PagerAdapter implements
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    // public void setTeamObjectPagerData(ArrayList<TeamObject> datas)
-    // {
-    // m_oTeamObject = datas;
-    // }
 
     @Override
     public int getCount() {
@@ -51,33 +45,17 @@ public class ViewPagerAdapter extends PagerAdapter implements
         ((ViewPager) pager).removeView((View) view);
     }
 
-    // ??????��????��????��?
     @Override
     public Object instantiateItem(View pager, int position) {
         // TODO Auto-generated method stub
         final int pos = position;
         if (position == 0) {
-            // v = inflater.inflate(R.layout.one, null);
-            v = new Main_LineUp_Page(m_Context);
-            MainHomeFragment.getInstance().setTitle("라인 UP");
-//            Log.d("0", "0");
+            v = new Main_LineUp_Page(m_Context); 
+           MainHomeFragment.getInstance().setTitle("라인 UP");
         } else if (position == 1) {
-            // v = inflater.inflate(R.layout.two, null);
             v = new Main_issue_Page(m_Context);
-//            MainHomeFragment.getInstance().setTitle("이슈 UP");
+            MainHomeFragment.getInstance().setTitle("라인 UP");
         }
-//            Log.d("1", "1");
-//        } else if (position == 2) {
-//            // v = inflater.inflate(R.layout.three, null);
-//            v = new ThreePage(m_Context);
-//            Log.d("2", "2");
-//        } else if (position == 3) {
-//            // v = inflater.inflate(R.layout.four, null);
-//            v = new FourPage(m_Context);
-//            Log.d("3", "3");
-//        }
-
-        // mainImg.setTag(R.id.imageId, position);
         ((ViewPager) pager).addView(v, 0);
         return v;
     }

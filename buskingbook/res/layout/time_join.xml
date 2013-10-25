@@ -3,7 +3,7 @@
     xmlns:dosirak="http://schemas.android.com/apk/res/com.ktmusic.geniemusic"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ececec"
+    android:background="#f2f2f2"
     android:orientation="vertical" >
     
 
@@ -27,24 +27,23 @@
 	       android:layout_width="wrap_content" 
 	       android:layout_height="wrap_content"
 	       android:textColor="#ffffff"/>
-		shadow2
 	</FrameLayout>
+	<ScrollView
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_below="@+id/title">
 	<RelativeLayout
 		    android:layout_width="match_parent"
-		    android:layout_height="match_parent"
-		    android:layout_below="@+id/title">
+		    android:layout_height="match_parent">
 	<LinearLayout
 		    android:id="@+id/popup_time_table_list"
 		    android:layout_width="match_parent"
-		    android:layout_height="350dip" 
+		    android:layout_height="370dip" 
 		    android:orientation="vertical"
-		    
-		    android:layout_marginLeft="2dip"
-		    android:layout_marginRight="2dip"
 		    android:visibility="visible">
 		    <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dip"
+            android:layout_height="400dip"
             android:orientation="vertical">
 	        <RelativeLayout
 	            android:layout_width="match_parent"
@@ -67,9 +66,9 @@
 	                android:layout_height="wrap_content"
 	                android:text="이전달"
 	                android:textSize="13dip"
-	                android:layout_marginRight="50dip"
-	                android:layout_alignTop="@+id/time_table_month"
-	                android:layout_toLeftOf="@+id/time_table_month"
+	                android:layout_centerVertical="true"
+	                android:layout_alignParentLeft="true"
+	                android:layout_marginLeft="15dip"
 	                android:textColor="#000000"/>
 	            <TextView
 	                android:id="@+id/time_table_month"
@@ -78,6 +77,7 @@
 	                android:text=""
 	                android:textSize="18dip"
 	                android:textColor="#000000"
+	                android:layout_marginLeft="15dip"
 	                android:layout_centerInParent="true"/>
 	            <TextView
 	                android:id="@+id/time_table_next"
@@ -85,15 +85,16 @@
 	                android:layout_height="wrap_content"
 	                android:text="다음달"
 	                android:textSize="13dip"
-	                android:layout_marginLeft="50dip"
-	                android:layout_alignTop="@+id/time_table_month"
-	                android:layout_toRightOf="@+id/time_table_month"
+	                android:layout_marginRight="15dip"
+	                android:layout_centerVertical="true"
+	                android:layout_alignParentRight="true"
 	                android:textColor="#000000"/>
 	        </RelativeLayout>
 	        <LinearLayout
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:layout_marginTop="12dip">
+	            android:layout_marginTop="12dip"
+	            android:layout_marginBottom="5dip">
 	            <LinearLayout 
 	                android:layout_width="50dip" 
 	                android:layout_height="wrap_content"
@@ -181,11 +182,13 @@
 	        <LinearLayout
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:layout_marginTop="12dip">
+	            android:layout_marginLeft="5dip"
+	            android:layout_marginRight="5dip"
+	            android:background="@drawable/calendar_7">
 	            <LinearLayout 
 	                android:id="@+id/calendar_1"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:orientation="vertical"
 	                android:gravity="center">
 	                <TextView
@@ -194,22 +197,12 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#ff0000"
-	                   	android:textSize="12dip"
-	               		android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_1"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
+	                   	android:textSize="15dip"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_2"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -218,23 +211,14 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_2"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	                
 	            </LinearLayout> 
 	            <LinearLayout 
 	                android:id="@+id/calendar_3"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -243,22 +227,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_3"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_4"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -267,22 +242,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_4"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_5"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -291,22 +257,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_5"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_6"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -315,22 +272,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_6"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_7"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -339,27 +287,20 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#01d0d2"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_7"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	        </LinearLayout>
 	        <LinearLayout
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:layout_marginTop="12dip">
+	            android:layout_marginLeft="5dip"
+	            android:layout_marginRight="5dip"
+	            android:background="@drawable/calendar_7">
 	            <LinearLayout 
 	                android:id="@+id/calendar_8"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -368,22 +309,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#ff0000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	               		android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_8"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_9"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -392,22 +324,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_9"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout> 
 	            <LinearLayout 
 	                android:id="@+id/calendar_10"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -416,22 +339,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_10"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_11"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -440,22 +354,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_11"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_12"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -464,22 +369,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_12"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_13"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -488,22 +384,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_13"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_14"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -512,27 +399,20 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#01d0d2"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_14"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	        </LinearLayout>
 	        <LinearLayout
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:layout_marginTop="12dip">
+	            android:background="@drawable/calendar_7"
+	            android:layout_marginLeft="5dip"
+	            android:layout_marginRight="5dip">
 	            <LinearLayout 
 	                android:id="@+id/calendar_15"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -541,22 +421,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#ff0000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	               		android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_15"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_16"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -565,22 +436,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_16"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout> 
 	            <LinearLayout 
 	                android:id="@+id/calendar_17"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -589,22 +451,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_17"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_18"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -613,22 +466,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_18"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_19"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -637,22 +481,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_19"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_20"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -661,22 +496,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_20"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_21"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -685,27 +511,20 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#01d0d2"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_21"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	        </LinearLayout>
 	        <LinearLayout
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:layout_marginTop="12dip">
+	            android:layout_marginLeft="5dip"
+	            android:layout_marginRight="5dip"
+	            android:background="@drawable/calendar_7">
 	            <LinearLayout 
 	                android:id="@+id/calendar_22"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -714,22 +533,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#ff0000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	               		android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_22"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_23"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -738,22 +548,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_23"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout> 
 	            <LinearLayout 
 	                android:id="@+id/calendar_24"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -762,22 +563,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_24"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_25"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -786,22 +578,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_25"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_26"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -810,22 +593,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_26"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_27"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -834,22 +608,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_27"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_28"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -858,27 +623,20 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#01d0d2"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_28"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	        </LinearLayout>
 	        <LinearLayout
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:layout_marginTop="12dip">
+	            android:layout_marginLeft="5dip"
+	            android:layout_marginRight="5dip"
+	            android:background="@drawable/calendar_7">
 	            <LinearLayout 
 	                android:id="@+id/calendar_29"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -887,22 +645,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#ff0000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	               		android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_29"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_30"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -911,22 +660,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_30"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout> 
 	            <LinearLayout 
 	                android:id="@+id/calendar_31"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -935,22 +675,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_31"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_32"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -959,22 +690,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_32"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_33"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -983,22 +705,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_33"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_34"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -1007,22 +720,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_34"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_35"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -1031,27 +735,20 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#01d0d2"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_35"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	        </LinearLayout>
 	        <LinearLayout
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:layout_marginTop="12dip">
+	            android:layout_marginLeft="5dip"
+	            android:layout_marginRight="5dip"
+	            android:background="@drawable/calendar_7">
 	            <LinearLayout 
 	                android:id="@+id/calendar_36"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -1060,22 +757,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#ff0000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	               		android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_36"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_37"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -1084,22 +772,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_37"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout> 
 	            <LinearLayout 
 	                android:id="@+id/calendar_38"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -1108,22 +787,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_38"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_39"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -1132,22 +802,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_39"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_40"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -1156,22 +817,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_40"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_41"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -1180,22 +832,13 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#000000"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_41"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	                android:id="@+id/calendar_42"
 	                android:layout_width="50dip" 
-	                android:layout_height="wrap_content"
+	                android:layout_height="50dip"
 	                android:gravity="center"
 	                android:orientation="vertical">
 	                <TextView
@@ -1204,17 +847,8 @@
 	                    android:layout_height="wrap_content"
 	                    android:text=""
 	                   	android:textColor="#01d0d2"
-	                   	android:textSize="12dip"
+	                   	android:textSize="15dip"
 	                    android:layout_gravity="center"/>
-	                <TextView
-	                    android:id="@+id/calendar_txt_join_42"
-	                    android:layout_width="50dip"
-	                    android:layout_height="wrap_content"
-	                    android:text=""
-	                   	android:textColor="#d9d9d9"
-	                   	android:textSize="10dip"
-	                   	android:gravity="center"
-	               		android:singleLine="true"/>
 	            </LinearLayout>
 	        </LinearLayout>
         </LinearLayout>
@@ -1311,7 +945,7 @@
 			    <TextView 
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
-			        android:text="공연장소  : "
+			        android:text="공연장소  :  "
 			        android:textSize="15dip"
 			        android:textColor="#000000"
 			        android:layout_marginLeft="30dip"
@@ -1328,6 +962,9 @@
 	        </LinearLayout>
 	        
 	</LinearLayout>
+	
+	</RelativeLayout>
+	</ScrollView>
 	<LinearLayout
 	            android:id="@+id/popup_modify_myalbum_btn_confirm"
 	            android:layout_width="match_parent"
@@ -1342,6 +979,4 @@
 	                android:textSize="15dip"
 	                android:textColor="#ffffff"/>
 	        </LinearLayout>
-	</RelativeLayout>
-	
 </RelativeLayout>

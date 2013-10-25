@@ -296,7 +296,7 @@
 	<RelativeLayout
 	    android:id="@+id/logout_layout"
 	    android:layout_width="match_parent"
-	    android:layout_height="55dip"
+	    android:layout_height="65dip"
 	    android:layout_alignParentBottom="true"
 	    android:orientation="horizontal">
 		<LinearLayout

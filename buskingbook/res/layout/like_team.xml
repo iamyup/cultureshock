@@ -3,7 +3,7 @@
     xmlns:dosirak="http://schemas.android.com/apk/res/com.ktmusic.geniemusic"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#282828"
+    android:background="#ffffff"
     android:orientation="vertical" >
     
 
@@ -23,17 +23,11 @@
 		<TextView
 	       android:id="@+id/test_main"
 	       android:layout_gravity="center"
-	       android:text="타이틀"
+	       android:text="즐겨찾기"
 	       android:layout_width="wrap_content" 
 	       android:layout_height="wrap_content"
 	       android:textColor="#ffffff"/>
-		<ImageButton
-		    android:id="@+id/paper_btn"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_gravity="center_vertical|right"
-		    android:layout_marginRight="5dip"
-		    android:background="@drawable/hot" />
+		
 		<LinearLayout
 		    android:layout_width="match_parent"
 		    android:layout_height="1dip"
@@ -46,12 +40,24 @@
 		    android:background="#376263"
 		    android:gravity="bottom"/>
 	</FrameLayout>
-	<android.support.v4.view.ViewPager
-				    android:id="@+id/viewpager"
-				    android:layout_below="@+id/title"
-				    android:layout_width="match_parent"
-				    android:layout_height="match_parent" 
-				    android:layout_gravity="center"/>
+	<LinearLayout
+	    android:id="@+id/like_team_list"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_below="@+id/title"
+	    android:orientation="vertical"/>
+	<LinearLayout
+	    android:id="@+id/no_like_team"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center">
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="좋아하는 팀이 없습니다."
+	        android:textSize="15dip"
+	        android:textColor="#000000"/>
+	</LinearLayout>
 	
 	
 </RelativeLayout>

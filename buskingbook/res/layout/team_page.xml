@@ -83,6 +83,7 @@
 				            android:ellipsize="end"
 				            android:textSize="15dip"
 				            android:textColor="#01d0d2"
+				            android:textStyle="bold"
 				            android:layout_marginLeft="15dip"/>
 			            <TextView
 			                android:id="@+id/busker_join_teamname_2"
@@ -93,6 +94,7 @@
 			                android:text="버스커버스커"
 			                android:textColor="#ffffff"
 			                android:textSize="15dip"
+			                android:textStyle="bold"
 			                android:layout_toRightOf="@+id/busker_join_ranking_2"
 			                android:layout_marginLeft="5dip"/>
 			            <TextView
@@ -173,9 +175,11 @@
 		            android:layout_marginLeft="15dip"/>
 		      <TextView
 		          	android:id="@+id/team_time_info"
-		            android:layout_width="wrap_content"
+		            android:layout_width="230dip"
 		            android:layout_height="wrap_content"
 		            android:text=""
+		            android:singleLine="true"
+		            android:ellipsize="end"
 		            android:textSize="15dip"
 		            android:textColor="#000000"
 		            android:layout_marginLeft="15dip"/>

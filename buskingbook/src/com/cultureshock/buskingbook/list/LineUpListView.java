@@ -133,12 +133,12 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 		private TextView mLikeCount;
 		private LinearLayout mTeamInfo;
 		private TextView mFirstCalendar;
-		private TextView mFirstCalendarWeek;
+		//private TextView mFirstCalendarWeek;
 		
 		private RelativeLayout mNoDataLayout;
 		private LinearLayout mDataLayout;
 		private LinearLayout mBottomLayout;
-		
+		private LinearLayout mTodayLayout;
 	    private List<WeakReference<View>> mRecycleList = new ArrayList<WeakReference<View>>();
 		
 		public void recycle() {
@@ -173,12 +173,13 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 				mNoDataLayout = (RelativeLayout)convertView.findViewById(R.id.item_lineup_nolineup);
 				mDataLayout = (LinearLayout)convertView.findViewById(R.id.item_lineup_time_layout);
 				mFirstCalendar = (TextView)convertView.findViewById(R.id.item_lineup_calendar_2);
-				mFirstCalendarWeek = (TextView)convertView.findViewById(R.id.item_lineup_calendar_day_of_week_2);
+				mTodayLayout = (LinearLayout)convertView.findViewById(R.id.today_layout_real);
+				
 				holder = new ViewHolder();
 				holder.firstCalendar = mFirstCalendar;
-				holder.firstCalendarWeek = mFirstCalendarWeek;
 				holder.layoutCalendar = mLayoutCalendar;
 				holder.calendarWeek = mCalendarWeek;
+				holder.firstLayout = mTodayLayout;
 				holder.calendar = mCalendar;
 				holder.img = mImg;
 				holder.teamname = mTeamname;
@@ -207,26 +208,45 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 				{
 					if(checkToday)
 					{
+						holder.firstLayout.setBackgroundResource(R.drawable.lineup_back);
+						
 						holder.dataLayout.setVisibility(View.VISIBLE);
 						holder.bottomLayout.setVisibility(View.VISIBLE);
 						holder.noDataLayout.setVisibility(View.GONE);
 						holder.layoutCalendar.setVisibility(View.VISIBLE);
+						holder.calendar.setText("오늘의공연");
+						holder.calendar.setTextColor(0xff01d0d2);
+						holder.calendarWeek.setVisibility(View.GONE);
+						holder.calendarWeek.setText("");
 					}
 					else
 					{
-						holder.firstCalendar.setText(year+"."+month+"."+day+" ");
-						holder.firstCalendarWeek.setText(week);
+						holder.firstLayout.setBackgroundColor(0xffffffff);
+						
+						
+//						holder.firstCalendar.setText(year+"."+month+"."+day+" ");
 						holder.layoutCalendar.setVisibility(View.VISIBLE);
 						holder.noDataLayout.setVisibility(View.VISIBLE);
 						holder.dataLayout.setVisibility(View.VISIBLE);
 						holder.bottomLayout.setVisibility(View.VISIBLE);
+						holder.calendar.setText(itemObject.getYear()+"."+itemObject.getMonth()+"."+itemObject.getDay()+" ");
+						holder.calendarWeek.setVisibility(View.VISIBLE);
+						holder.calendarWeek.setText(itemObject.getDayOfweek());
+						
+						holder.calendar.setTextColor(0xff000000);
 					}
-					holder.calendar.setText(itemObject.getYear()+"."+itemObject.getMonth()+"."+itemObject.getDay()+" ");
-					holder.calendarWeek.setText(itemObject.getDayOfweek());
+					
 				}
 				else
 				{
+//					holder.firstLayout.setBackgroundResource(R.drawable.lineup_back);
+					holder.firstLayout.setBackgroundColor(0xffffffff);
+//					holder.calendar.setTextColor(0xff01d0d2);
+					holder.calendar.setTextColor(0xff000000);
+					
 					holder.noDataLayout.setVisibility(View.GONE);
+					holder.calendarWeek.setVisibility(View.VISIBLE);
+					holder.calendarWeek.setTextColor(0xff000000);
 					LineUpObject beforeObject = getItem(position-1);
 					
 					if(itemObject.getYear().equals(beforeObject.getYear()) &&
@@ -344,9 +364,8 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 		private LinearLayout bottomLayout;
 		private RelativeLayout noDataLayout;
 		private LinearLayout dataLayout;
-		
+		private LinearLayout firstLayout;
 		private TextView firstCalendar;
-		private TextView firstCalendarWeek;
 	}
 
 	public void notifyData()

@@ -317,8 +317,8 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
 				}
 				if(lineUpObject.size() != 0)
 		    	{
-		    		String str = lineUpObject.get(0).getMonth()+"/"+lineUpObject.get(0).getDay() 
-		    				+" " +lineUpObject.get(0).getTime()+"               @"+lineUpObject.get(0).getPlace();
+		    		String str = lineUpObject.get(0).getMonth()+"/"+lineUpObject.get(0).getDay()+" "+lineUpObject.get(0).getDayOfweek() 
+		    				+" " +lineUpObject.get(0).getTime()+"     @"+lineUpObject.get(0).getPlace();
 		    		mTimeInfo.setText(str);
 		    	}
 		    	else
