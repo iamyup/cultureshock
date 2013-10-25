@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -78,7 +79,15 @@ public class LoginJoinActivity extends Activity implements View.OnClickListener 
               // callback when session changes state
               @Override
               public void call(Session session, SessionState state, Exception exception) {
-
+                  if (session.isOpened()) {
+                      Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
+                        @Override
+                        public void onCompleted(GraphUser user, Response response) {
+                        }
+                    });
+                  } else {
+                      
+                  }
               }
             });
             break;
