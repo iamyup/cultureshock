@@ -20,6 +20,8 @@ public class ServiceType {
     public static final int MSG_GCM_ID_JOIN = 12;
     public static final int MSG_GCM_GO_EVENT= 13;
     public static final int MSG_ARTICLE= 14;
+    public static final int MSG_PARTNER_SEARCH= 15;
+    public static final int MSG_PARTNER_SEARCH_ADD= 16;
 
     private static final String URL_LOGIN 				 = 	 ROOT_DOMAIN + "login.php";
     private static final String URL_TOP12				 =	 ROOT_DOMAIN + "top12.php";
@@ -35,6 +37,8 @@ public class ServiceType {
     private static final String URL_GCM_ID_JOIN 		 = 	 ROOT_DOMAIN + "gcm_id_join.php";
     private static final String URL_GCM_GO_EVNET		 = 	 ROOT_DOMAIN + "gcm_go_event.php";
     private static final String URL_ARTICLE				 = 	 ROOT_DOMAIN + "article.php";
+    private static final String URL_PARTNER_SEARCH	     = 	 ROOT_DOMAIN + "partner_search.php";
+    private static final String URL_PARTNER_SEARCH_ADD	 = 	 ROOT_DOMAIN + "partner_search_add.php";
 
     private Hashtable<Integer, String> msgURLTbl = new Hashtable<Integer, String>();
 
@@ -55,6 +59,8 @@ public class ServiceType {
         msgURLTbl.put(new Integer(MSG_GCM_ID_JOIN), URL_GCM_ID_JOIN);
         msgURLTbl.put(new Integer(MSG_GCM_GO_EVENT), URL_GCM_GO_EVNET);
         msgURLTbl.put(new Integer(MSG_ARTICLE), URL_ARTICLE);
+        msgURLTbl.put(new Integer(MSG_PARTNER_SEARCH), URL_PARTNER_SEARCH);
+        msgURLTbl.put(new Integer(MSG_PARTNER_SEARCH_ADD), URL_PARTNER_SEARCH_ADD);
     }
 
     public static ServiceType getInstance() {

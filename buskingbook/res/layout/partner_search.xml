@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+    
+
+    <!-- 타이틀 -->
+     <FrameLayout 
+         android:id="@+id/title"
+         android:layout_width="match_parent"
+         android:layout_height="40dip"
+         android:background="#01d0d2">
+		<ImageView
+            android:id="@+id/title_btn_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@xml/menu"
+            android:layout_marginLeft="5dip"
+            android:layout_gravity="center_vertical|left"/>
+		<TextView
+	       android:id="@+id/test_main"
+	       android:layout_gravity="center"
+	       android:text="동료찾기"
+	       android:layout_width="wrap_content" 
+	       android:layout_height="wrap_content"
+	       android:textColor="#ffffff"/>
+		<ImageButton
+		    android:id="@+id/write_search"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|right"
+		    android:layout_marginRight="5dip"
+		    
+		    android:background="@drawable/write_btn" />
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dip"
+		    android:background="#0ea7a5"
+		    android:gravity="bottom"
+		    android:layout_marginBottom="1dip"/>
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dip"
+		    android:background="#376263"
+		    android:gravity="bottom"/>
+	</FrameLayout>
+	<LinearLayout
+	    android:id="@+id/line_1"
+	    android:layout_width="match_parent"
+	    android:layout_height="1dip"
+	    android:background="#baf4f4"
+	    android:layout_below="@+id/title"/>
+	<RelativeLayout
+	    android:id="@+id/firend_search_top"
+	    android:layout_width="match_parent"
+	    android:layout_height="50dip"
+	    android:layout_below="@+id/line_1">
+		<ImageView
+		    android:id="@+id/top_img"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="15dip"
+		    android:layout_centerVertical="true"
+		    android:background="@drawable/messege_box_ic"/>
+		<TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="메세지함"
+		    android:layout_centerVertical="true"
+		    android:layout_toRightOf="@+id/top_img"
+		    android:textColor="#5cc8ca"
+		    android:layout_marginLeft="10dip"
+		    android:textSize="15dip"
+		    android:textStyle="bold"/>
+		<TextView
+		    android:id="@+id/top_message_new_o"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="새로운 메세지가 있습니다"
+		    android:layout_centerVertical="true"
+		    android:layout_alignParentRight="true"
+		    android:textColor="#5cc8ca"
+		    android:layout_marginRight="10dip"
+		    android:textSize="15dip"
+		    android:textStyle="bold"/>
+	</RelativeLayout>
+	<LinearLayout
+	    android:id="@+id/line_2"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/firend_search_top"
+	    android:orientation="vertical">
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dip"
+		    android:background="#bfbfbf"/>
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dip"
+		    android:background="#afafaf"/>
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dip"
+		    android:background="#b7b7b7"/>
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dip"
+		    android:background="#bbbbbb"/>
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dip"
+		    android:background="#c6c6c6"/>
+		
+				
+	</LinearLayout>
+	<LinearLayout
+	    android:id="@+id/firend_search_body"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:layout_below="@+id/line_2">
+	    
+	</LinearLayout>
+	
+	
+</RelativeLayout>

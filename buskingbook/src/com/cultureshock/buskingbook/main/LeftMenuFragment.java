@@ -24,6 +24,7 @@ import com.cultureshock.buskingbook.GCMIntentService;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.page.BuskerJoinFragment;
+import com.cultureshock.buskingbook.page.PartnerSearchFragment;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.page.TeamPageFragment;
 import com.cultureshock.buskingbook.page.TimeJoinFragment;
@@ -47,7 +48,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     private LinearLayout m_LayoutMusician;
     private LinearLayout m_BtnBuskerPage;
     private LinearLayout m_BtnBuskerJoin;
-    private LinearLayout m_BtnPartnerSearch;
+    private RelativeLayout m_BtnPartnerSearch;
     private LinearLayout m_BtnBuskerSearch;
     private LinearLayout m_BtnLikeSearh;
     private RelativeLayout m_BtnAlarm;
@@ -125,7 +126,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
         	
             m_BtnBuskerPage = (LinearLayout)getActivity().findViewById(R.id.musician_page);
             m_BtnBuskerJoin = (LinearLayout)getActivity().findViewById(R.id.musician_busking_join);
-            m_BtnPartnerSearch = (LinearLayout)getActivity().findViewById(R.id.musician_partner);
+            m_BtnPartnerSearch = (RelativeLayout)getActivity().findViewById(R.id.musician_partner);
             
             m_BtnBuskerSearch = (LinearLayout)getActivity().findViewById(R.id.musician_busker_search); 
             m_BtnLikeSearh = (LinearLayout)getActivity().findViewById(R.id.musician_like_search);
@@ -273,6 +274,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
 	    	}
 	    	case R.id.musician_partner:
 	    	{
+	    		MainActivity.getInstance().replaceFragment(PartnerSearchFragment.class, null, false);
 	    		break;
 	    	}
 	    	case R.id.musician_busker_search:

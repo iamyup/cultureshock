@@ -122,13 +122,14 @@
 			    android:layout_width="match_parent"
 			    android:layout_height="1dip"
 			    android:background="#3c3c3c"/>
-		  <LinearLayout
+		  <RelativeLayout
 		      android:id="@+id/musician_partner"
 		      android:layout_width="match_parent"
 		      android:layout_height="55dip"
 		      android:gravity="center_vertical"
 		      android:layout_marginLeft="15dip">
 		      <ImageView
+		          android:id="@+id/image_message_partner"
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
 		          android:background="@drawable/findb_btn"
@@ -140,8 +141,16 @@
 		          android:text="동료찾기"
 		          android:textSize="15dip"
 		          android:textStyle="bold"
+		          android:layout_toRightOf="@+id/image_message_partner"
 		          android:textColor="#00ffff"/>
-		  </LinearLayout>
+		      <ImageView
+		          android:id="@+id/message_check"
+		          android:layout_width="wrap_content"
+		          android:layout_height="wrap_content"
+		          android:layout_alignParentRight="true"
+		          android:layout_marginRight="25dip"
+		          android:background="@drawable/contact_ic_o_w"/>
+		  </RelativeLayout>
 		 
 		</LinearLayout>
 		<LinearLayout
@@ -296,7 +305,7 @@
 	<RelativeLayout
 	    android:id="@+id/logout_layout"
 	    android:layout_width="match_parent"
-	    android:layout_height="55dip"
+	    android:layout_height="65dip"
 	    android:layout_alignParentBottom="true"
 	    android:orientation="horizontal">
 		<LinearLayout
