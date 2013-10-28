@@ -92,26 +92,7 @@
 	    android:layout_height="wrap_content"
 	    android:layout_below="@+id/firend_search_top"
 	    android:orientation="vertical">
-		<LinearLayout
-		    android:layout_width="match_parent"
-		    android:layout_height="1dip"
-		    android:background="#bfbfbf"/>
-		<LinearLayout
-		    android:layout_width="match_parent"
-		    android:layout_height="1dip"
-		    android:background="#afafaf"/>
-		<LinearLayout
-		    android:layout_width="match_parent"
-		    android:layout_height="1dip"
-		    android:background="#b7b7b7"/>
-		<LinearLayout
-		    android:layout_width="match_parent"
-		    android:layout_height="1dip"
-		    android:background="#bbbbbb"/>
-		<LinearLayout
-		    android:layout_width="match_parent"
-		    android:layout_height="1dip"
-		    android:background="#c6c6c6"/>
+		
 		
 				
 	</LinearLayout>

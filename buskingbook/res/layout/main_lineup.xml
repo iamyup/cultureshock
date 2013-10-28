@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/top_search"
         android:layout_width="match_parent"
-        android:layout_height="40dip"
+        android:layout_height="45dip"
         android:background="#58595b">
         <LinearLayout
             android:layout_width="wrap_content"
@@ -97,8 +97,11 @@
         <RelativeLayout
 	        android:id="@+id/top_place_1"
 	        android:layout_width="match_parent"
-	        android:layout_height="30dip"
-	        android:background="#a8a9ad">
+	        android:layout_height="45dip"
+	        android:background="@xml/change">
+        	<ImageView
+        	    android:layout_width="match_parent"
+        	    android:layout_height="45dip"/>
 	        <LinearLayout
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
@@ -122,8 +125,11 @@
         <RelativeLayout
 	        android:id="@+id/top_place_2"
 	        android:layout_width="match_parent"
-	        android:layout_height="30dip"
-	        android:background="#a8a9ad">
+	        android:layout_height="45dip"
+	        android:background="@xml/change">
+	         <ImageView
+        	    android:layout_width="match_parent"
+        	    android:layout_height="45dip"/>
 	        <LinearLayout
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
@@ -147,8 +153,11 @@
     	<RelativeLayout
 	        android:id="@+id/top_place_3"
 	        android:layout_width="match_parent"
-	        android:layout_height="30dip"
-	        android:background="#a8a9ad">
+	        android:layout_height="45dip"
+	        android:background="@xml/change">
+	         <ImageView
+        	    android:layout_width="match_parent"
+        	    android:layout_height="45dip"/>
 	        <LinearLayout
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
@@ -172,8 +181,8 @@
     	<RelativeLayout
 	        android:id="@+id/top_place_4"
 	        android:layout_width="match_parent"
-	        android:layout_height="30dip"
-	        android:background="#a8a9ad">
+	        android:layout_height="45dip"
+	        android:background="@xml/change">
 	        <LinearLayout
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"

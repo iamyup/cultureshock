@@ -26,13 +26,13 @@
 	       android:layout_width="wrap_content" 
 	       android:layout_height="wrap_content"
 	       android:textColor="#ffffff"/>
-		<ImageButton
-		    android:id="@+id/paper_btn"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_gravity="center_vertical|right"
-		    android:layout_marginRight="5dip"
-		    android:background="@drawable/hot" />
+<!-- 		<ImageButton -->
+<!-- 		    android:id="@+id/paper_btn" -->
+<!-- 		    android:layout_width="wrap_content" -->
+<!-- 		    android:layout_height="wrap_content" -->
+<!-- 		    android:layout_gravity="center_vertical|right" -->
+<!-- 		    android:layout_marginRight="5dip" -->
+<!-- 		    android:background="@drawable/hot" /> -->
 		<LinearLayout
 		    android:layout_width="match_parent"
 		    android:layout_height="1dip"

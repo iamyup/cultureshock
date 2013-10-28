@@ -129,7 +129,7 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
 			}
 		}
     	Drawable default1 = null;
-    	default1 =  mContext.getResources().getDrawable(R.drawable.default_busker);
+    	default1 =  mContext.getResources().getDrawable(R.drawable.loading_new_2);
     	m_oAsyncImageLoader.setImageDrawableAsync(mImg,selectMyTeam.getTeamThum(),default1,default1,mContext);
     	mTeamname.setText(selectMyTeam.getTeamName());
     	mGenre.setText(selectMyTeam.getTeamSong());

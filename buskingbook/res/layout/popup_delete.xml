@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#99000000"
+    android:orientation="vertical"
+    android:gravity="center">	
+    
+    <FrameLayout 
+		android:layout_width="320dip"    
+	    android:layout_height="42dip"
+	    android:background="@drawable/title">
+	    
+        <TextView
+            android:layout_width="wrap_content"    
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            android:textSize="17dip"
+            android:textColor="#ffffff"
+            android:paddingLeft="10dip"
+            android:layout_gravity="center_vertical"/>
+	</FrameLayout>
+	
+    
+    <LinearLayout 
+        android:layout_width="wrap_content"    
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@drawable/bg_popup_myalbum02" >
+		<LinearLayout
+		    android:id="@+id/popup_time_table_list"
+		    android:layout_width="match_parent"
+		    android:layout_height="100dip" 
+		    android:orientation="vertical"
+		    android:layout_marginLeft="2dip"
+		    android:layout_marginRight="2dip"
+		    android:gravity="center">
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="해당 서비스는 로그인이 필요합니다. \n로그인 하시겠습니까?"
+		        android:textSize="15dip"
+		        android:textColor="#000000"/>
+		</LinearLayout>
+    	<LinearLayout 
+	        android:layout_width="wrap_content"    
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="8dip"
+            android:layout_marginBottom="8dip"
+	        android:layout_gravity="center_horizontal"
+	        android:orientation="horizontal" >
+           
+	        <ImageView
+	            android:id="@+id/popup_modify_myalbum_btn_cancel"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@xml/btn_popup_cancel"/>
+	        <ImageView
+	            android:id="@+id/popup_modify_myalbum_btn_confirm"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="16dip"
+	            android:background="@xml/btn_popup_confirm"/>
+           
+    	</LinearLayout>
+	
+   	</LinearLayout>
+   	
+    <!-- 
+	<FrameLayout 
+		android:layout_width="wrap_content"    
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center"
+	    android:orientation="vertical"
+	    android:background="@drawable/bg_popup_01" >
+        
+        <TextView
+            android:layout_width="wrap_content"    
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dip"
+            android:text="앨범명 변경하기"
+            android:textSize="17sp"
+            android:textColor="#FFFFFF"
+            android:typeface="sans"
+            android:background="@drawable/bg_popup_head"/>
+	    
+		<ImageView 
+			android:id="@+id/popup_modify_myalbum_btn_close"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="right"
+			android:background="@drawable/btn_popup_close"/> 
+	    
+	</FrameLayout>
+	
+    <LinearLayout 
+        android:layout_width="wrap_content"    
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/bg_popup_02" >
+        
+        <LinearLayout
+            android:layout_width="280dip"    
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:layout_gravity="center_horizontal">
+            
+            <TextView
+                android:layout_width="wrap_content"    
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="현재 앨범명 : "
+                android:textSize="14dp"
+                android:textColor="#333333"
+                android:typeface="sans"/>
+            
+            <TextView
+                android:id="@+id/popup_modify_myalbum_current_name"
+                android:layout_width="wrap_content"    
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="14dp"
+                android:textColor="#459299"
+                android:typeface="sans"
+                android:singleLine="true"
+                android:text=""/>
+
+        </LinearLayout>
+        
+        <EditText
+                android:id="@+id/popup_modify_myalbum_edit_name"
+                android:layout_width="280dip"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:typeface="sans"
+                android:textSize="12sp"
+                android:layout_marginTop="20dip"
+                android:hint="앨범명을 입력하세요."
+                android:singleLine="true"
+                android:paddingLeft="5dip"
+                android:paddingRight="5dip"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/textbox_612b"/>
+        
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dip">
+            
+            <ImageView
+                android:id="@+id/popup_modify_myalbum_btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@xml/btn_popup_cancel"/>
+            
+            <ImageView
+                android:id="@+id/popup_modify_myalbum_btn_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dip"
+                android:background="@xml/btn_popup_confirm"/>
+            
+        </LinearLayout>
+
+    </LinearLayout>
+    -->
+    
+</LinearLayout>

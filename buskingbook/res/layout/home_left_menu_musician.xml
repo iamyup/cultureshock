@@ -118,6 +118,15 @@
 		          android:textColor="#00ffff"
 		          />
 		  </LinearLayout>
+		  
+		  
+		 
+		</LinearLayout>
+		<LinearLayout
+		    android:id="@+id/musician_join"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical">
 		  <LinearLayout
 			    android:layout_width="match_parent"
 			    android:layout_height="1dip"
@@ -132,7 +141,7 @@
 		          android:id="@+id/image_message_partner"
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
-		          android:background="@drawable/findb_btn"
+		          android:background="@drawable/findb_btn_w"
 		          android:layout_marginLeft="20dip"
 		          android:layout_marginRight="20dip"/>
 		      <TextView
@@ -142,7 +151,7 @@
 		          android:textSize="15dip"
 		          android:textStyle="bold"
 		          android:layout_toRightOf="@+id/image_message_partner"
-		          android:textColor="#00ffff"/>
+		          android:textColor="#ffffff"/>
 		      <ImageView
 		          android:id="@+id/message_check"
 		          android:layout_width="wrap_content"
@@ -151,13 +160,6 @@
 		          android:layout_marginRight="25dip"
 		          android:background="@drawable/contact_ic_o_w"/>
 		  </RelativeLayout>
-		 
-		</LinearLayout>
-		<LinearLayout
-		    android:id="@+id/musician_join"
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:orientation="vertical">
 		   <LinearLayout
 			    android:layout_width="match_parent"
 			    android:layout_height="1dip"

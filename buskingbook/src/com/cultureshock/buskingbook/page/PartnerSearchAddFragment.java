@@ -73,7 +73,6 @@ public class PartnerSearchAddFragment extends Fragment implements View.OnClickLi
         mImg = (ImageView)getActivity().findViewById(R.id.search_partner_img);
 		mTeamname = (TextView) getActivity().findViewById(R.id.search_partner_text_name_teamname);
 		mComent = (EditText) getActivity().findViewById(R.id.partner_add_edittext);
-		
 		mComent.setSelection(0);
 		btnGo = (LinearLayout)getActivity().findViewById(R.id.btn_partner_search_add);
         btnGo.setOnClickListener(this);
@@ -114,7 +113,7 @@ public class PartnerSearchAddFragment extends Fragment implements View.OnClickLi
         case R.id.btn_partner_search_add:
         	if(mComent.getText().toString().equals(""))
         	{
-        		Toast.makeText(mContext, "자기소개글을 써주세요", Toast.LENGTH_SHORT).show();
+        		Toast.makeText(mContext, "글을 써주세요", Toast.LENGTH_SHORT).show();
         	}
         	else
         	{
@@ -146,6 +145,7 @@ public class PartnerSearchAddFragment extends Fragment implements View.OnClickLi
 		loginParams.add(new Params("coment", mComent.getText().toString()));
 		loginParams.add(new Params("img", LoginInfoObject.getInstance().getMyImg()));
 		loginParams.add(new Params("times", date));
+		loginParams.add(new Params("regId", ""));
 		loginService.setParam(loginParams);
 		loginService.doAsyncExecute(this);
 		MainActivity.getInstance().startProgressDialog();

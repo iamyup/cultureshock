@@ -7,7 +7,7 @@
     <LinearLayout
             android:id="@+id/issue_best_team"
 		    android:layout_width="match_parent"
-		    android:layout_height="225dip"
+		    android:layout_height="wrap_content"
 		    android:orientation="vertical">
 		<RelativeLayout
 		    android:layout_width="match_parent"
@@ -75,6 +75,10 @@
 		    </RelativeLayout>
 		    </LinearLayout>
 		    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="1dip"
+	        android:background="#e3e2de"/>
+		    <LinearLayout
 	        android:id="@+id/item_lineup_bottom"
 	        android:layout_width="match_parent"
 	        android:layout_height="45dip"
@@ -130,6 +134,10 @@
         </LinearLayout>
   		  </LinearLayout>
   		  </RelativeLayout>
+  		  <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="1dip"
+		        android:background="#a5a3a4"/>
     </LinearLayout>
     
     

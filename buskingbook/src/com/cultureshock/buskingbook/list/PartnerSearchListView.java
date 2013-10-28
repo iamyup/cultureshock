@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoginAlertPopup;
+import com.cultureshock.buskingbook.component.SendMessagePopup;
 import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.list.LineUpListView.IntromTeamListAdapter;
 import com.cultureshock.buskingbook.main.MainActivity;
@@ -100,7 +101,7 @@ public class PartnerSearchListView extends ListView implements HttpClientNet.OnR
 		private TextView mTime;
 		private LinearLayout mSend;
 		private LinearLayout mTeamInfo;
-		
+		private LinearLayout mSh;
 	    private List<WeakReference<View>> mRecycleList = new ArrayList<WeakReference<View>>();
 		
 		public void recycle() {
@@ -124,11 +125,12 @@ public class PartnerSearchListView extends ListView implements HttpClientNet.OnR
 				mTeamname = (TextView) convertView.findViewById(R.id.search_partner_text_name_teamname);
 				mComent = (TextView) convertView.findViewById(R.id.search_partner_coment);
 				mTime = (TextView) convertView.findViewById(R.id.search_partner_text_date);
-				
+				mSh = (LinearLayout)convertView.findViewById(R.id.sh_item);
 				mSend = (LinearLayout) convertView.findViewById(R.id.partner_busker_message_send);
 				mTeamInfo = (LinearLayout) convertView.findViewById(R.id.partner_busker_page);
 				holder = new ViewHolder();
 				holder.img = mImg;
+				holder.sh= mSh;
 				holder.teamname = mTeamname;
 				holder.send = mSend;
 				holder.coment = mComent;
@@ -146,7 +148,14 @@ public class PartnerSearchListView extends ListView implements HttpClientNet.OnR
 			holder.send.setTag(R.id.imageId, position);
 			holder.teamInfo.setTag(R.id.imageId, position);
 			PartnerSearchObject itemObject = getItem(position);
-			
+			if(position ==0)
+			{
+				holder.sh.setVisibility(View.VISIBLE);
+			}
+			else
+			{
+				holder.sh.setVisibility(View.GONE);
+			}
 			Drawable default1 = null;
 	    	default1 =  mContext.getResources().getDrawable(R.drawable.default_pf);
 	    	m_oAsyncImageLoader.setImageDrawableAsync(holder.img,itemObject.getImg(),default1,default1,mContext);
@@ -159,9 +168,16 @@ public class PartnerSearchListView extends ListView implements HttpClientNet.OnR
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					int pos = (Integer) v.getTag(R.id.imageId);
-					Bundle o = new Bundle();
-					o.putString("object", getItem(pos).getTeamName());
-					MainActivity.getInstance().replaceFragment(TeamPageFragment.class, o, true);
+					if(!getItem(pos).getTeamName().equals(""))
+					{
+						Bundle o = new Bundle();
+						o.putString("object", getItem(pos).getTeamName());
+						MainActivity.getInstance().replaceFragment(TeamPageFragment.class, o, true);
+					}
+					else
+					{
+						Toast.makeText(mContext, "팀페이지가 없습니다", Toast.LENGTH_SHORT).show();
+					}
 				}
 			});
 			holder.send.setOnClickListener(new OnClickListener() {
@@ -172,6 +188,9 @@ public class PartnerSearchListView extends ListView implements HttpClientNet.OnR
 					if(LoginInfoObject.getInstance().isLogin())
 					{
 						int pos = (Integer) v.getTag(R.id.imageId);
+						PartnerSearchObject itemObject = getItem(pos);
+						SendMessagePopup o = new SendMessagePopup(mContext, itemObject);
+						
 					}
 				}
 			});
@@ -190,6 +209,7 @@ public class PartnerSearchListView extends ListView implements HttpClientNet.OnR
 		private TextView time;
 		private LinearLayout send;
 		private TextView coment;
+		private LinearLayout sh;
 		
 	}
 

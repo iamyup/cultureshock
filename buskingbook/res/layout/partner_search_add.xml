@@ -147,12 +147,14 @@
 		    android:layout_height="200dip"
 		    android:layout_marginLeft="15dip"
 		    android:layout_marginRight="15dip"
-		    android:layout_marginTop="20dip"
+		    android:layout_marginTop="10dip"
 		    android:background="#ffffff">
 		    <EditText
 		        android:id="@+id/partner_add_edittext"
 		        android:layout_width="match_parent"
-		        android:layout_height="250dip"
+		        android:layout_height="200dip"
+		        android:paddingLeft="5dip"
+		        android:paddingTop="5dip"
 		        android:hint="사는지역/담당파트/자기PR"
 		        android:maxLines="6"
 		        android:gravity="top"
@@ -160,8 +162,7 @@
 		        android:textSize="14dip"
 		        android:textColor="#000000"/>
 	 </LinearLayout>
-	</LinearLayout>
-	<LinearLayout
+	 <LinearLayout
 	    android:id="@+id/btn_partner_search_add"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
@@ -169,7 +170,9 @@
 	    android:layout_centerHorizontal="true"
 	    android:layout_marginBottom="15dip"
 	    android:background="@drawable/btn"
-	    android:gravity="center">
+	    android:layout_gravity="center"
+	    android:gravity="center"
+	    android:layout_marginTop="15dip">
 	    <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
@@ -177,6 +180,8 @@
 	        android:textColor="#ffffff"
 	        android:text="등록하기"/>
 	</LinearLayout>
+	</LinearLayout>
+	
 	    
 	
 </RelativeLayout>

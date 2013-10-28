@@ -43,8 +43,8 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
         m_oBtnList.setOnClickListener(this);
         setPager();
 
-        ImageButton paper_btn = (ImageButton) getActivity().findViewById(R.id.paper_btn);
-        paper_btn.setOnClickListener(this);
+//        ImageButton paper_btn = (ImageButton) getActivity().findViewById(R.id.paper_btn);
+//        paper_btn.setOnClickListener(this);
     }
 
     public void setTitle(String txt)
@@ -103,10 +103,10 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
         case R.id.title_btn_menu:
             MainActivity.getInstance().showMenu();
             break;
-        case R.id.paper_btn:
+//        case R.id.paper_btn:
         	
 //            MainActivity.getInstance().replaceFragment(PaperEditFragment.class, null, false);
-            break;
+//            break;
         }
     }
 }

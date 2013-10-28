@@ -157,7 +157,7 @@ public class LikeTeamListView extends ListView implements HttpClientNet.OnRespon
 			TeamObject itemObject = getItem(position);
 			
 			Drawable default1 = null;
-	    	default1 =  mContext.getResources().getDrawable(R.drawable.default_busker);
+	    	default1 =  mContext.getResources().getDrawable(R.drawable.loading_new_2);
 	    	m_oAsyncImageLoader.setImageDrawableAsync(holder.img,itemObject.getTeamThum(),default1,default1,mContext);
 	    	holder.ranking.setText("TOP"+(rankings.get(position)+1));
 			holder.likeCount.setText(itemObject.getLikeCount()+"");

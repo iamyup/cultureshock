@@ -64,8 +64,11 @@ public class GCMIntentService extends GCMBaseIntentService {
 	//	     }
 		    NotificationManager nm = (NotificationManager) context.getSystemService( Context.NOTIFICATION_SERVICE );
 		    Notification notification = new Notification(R.drawable.ic_stat_36, value, System.currentTimeMillis());
-		 
-		    PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent( context, FirstStartActivity.class ), 0);
+		    PendingIntent pendingIntent = null;
+		    
+		    pendingIntent = PendingIntent.getActivity(context, 0, new Intent( context, FirstStartActivity.class ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET), PendingIntent.FLAG_UPDATE_CURRENT);
+		   
+		    
 		    notification.setLatestEventInfo(context, "버스킹알림!", value, pendingIntent);
 		    //해당 메세지 선택시 상태바 아이콘 삭제
 		    notification.flags = Notification.FLAG_AUTO_CANCEL;

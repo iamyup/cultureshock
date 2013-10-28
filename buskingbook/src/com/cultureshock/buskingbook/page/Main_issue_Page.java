@@ -202,7 +202,7 @@ public class Main_issue_Page extends LinearLayout implements View.OnClickListene
 				}
 			}
 	    	Drawable default1 = null;
-	    	default1 =  mContext.getResources().getDrawable(R.drawable.default_busker);
+	    	default1 =  mContext.getResources().getDrawable(R.drawable.loading_3);
 	    	m_oAsyncImageLoader.setImageDrawableAsync(mImg,bestTeam.getTeamThum(),default1,default1,mContext);
 	    	mTeamname.setText(bestTeam.getTeamName());
 	    	mRanking.setText("TOP " + 1);
