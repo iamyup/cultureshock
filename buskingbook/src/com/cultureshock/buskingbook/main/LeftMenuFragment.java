@@ -24,6 +24,7 @@ import com.cultureshock.buskingbook.GCMIntentService;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.page.BuskerJoinFragment;
+import com.cultureshock.buskingbook.page.BuskerSearchFragment;
 import com.cultureshock.buskingbook.page.PartnerSearchFragment;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.page.TeamPageFragment;
@@ -279,6 +280,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
 	    	}
 	    	case R.id.musician_busker_search:
 	    	{
+	    		MainActivity.getInstance().replaceFragment(BuskerSearchFragment.class, null, false);
 	    		break;
 	    	}
 	    	case R.id.musician_like_search:

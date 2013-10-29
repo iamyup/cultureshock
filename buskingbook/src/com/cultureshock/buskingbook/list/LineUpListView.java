@@ -47,9 +47,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-public class LineUpListView extends ListView implements HttpClientNet.OnResponseListener
-{
+public class LineUpListView extends ListView implements
+		HttpClientNet.OnResponseListener {
 	private Context mContext;
 	private IntromTeamListAdapter listAdapter;
 	ViewHolder holder;
@@ -57,10 +56,11 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 	private ArrayList<LineUpObject> lineUpArr = new ArrayList<LineUpObject>();
 	private TeamObject m_oSelectTeam;
 	private boolean checkToday = false;
-	private int year ;
-	private int month ;
+	private int year;
+	private int month;
 	private int day;
 	private String week;
+
 	public LineUpListView(Context context) {
 		super(context);
 		mContext = context;
@@ -70,56 +70,49 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 	public LineUpListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		mContext = context;
-		
+
 		initListView();
 	}
-	public void checkToday()
-	{
+
+	public void checkToday() {
 		GregorianCalendar calendar = new GregorianCalendar();
 		year = calendar.get(Calendar.YEAR);
-		month = calendar.get(Calendar.MONTH) +1;
+		month = calendar.get(Calendar.MONTH) + 1;
 		day = calendar.get(Calendar.DATE);
 		int wod = calendar.get(Calendar.DAY_OF_WEEK) - 1;
-		String[] weeks ={"일", "월", "화", "수", "목", "금", "토"};
+		String[] weeks = { "일", "월", "화", "수", "목", "금", "토" };
 		week = weeks[wod];
-		for( int i = 0 ; i<lineUpArr.size() ; i++)
-		{
-			if(year == Integer.parseInt(lineUpArr.get(i).getYear())&&
-					month == Integer.parseInt(lineUpArr.get(i).getMonth())&&
-					day == Integer.parseInt(lineUpArr.get(i).getDay()))
-			{
+		for (int i = 0; i < lineUpArr.size(); i++) {
+			if (year == Integer.parseInt(lineUpArr.get(i).getYear())
+					&& month == Integer.parseInt(lineUpArr.get(i).getMonth())
+					&& day == Integer.parseInt(lineUpArr.get(i).getDay())) {
 				checkToday = true;
 			}
 		}
-		
+
 	}
-	
-		
-	public void initListView()
-	{
-        setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-                        LayoutParams.MATCH_PARENT));
-        setFadingEdgeLength(0);
-        setDividerHeight(0);
-        
+
+	public void initListView() {
+		setLayoutParams(new LinearLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+		setFadingEdgeLength(0);
+		setDividerHeight(0);
+
 	}
-	public void setListData(ArrayList<LineUpObject> arrayData) 
-	{
+
+	public void setListData(ArrayList<LineUpObject> arrayData) {
 		this.lineUpArr = arrayData;
 		checkToday();
 		listAdapter = new IntromTeamListAdapter(lineUpArr);
 		setAdapter(listAdapter);
 	}
 
-	
-	public void recycle() 
-	{
+	public void recycle() {
 		if (listAdapter != null)
 			listAdapter.recycle();
-    }
+	}
 
-	class IntromTeamListAdapter extends ArrayAdapter<LineUpObject> 
-	{
+	class IntromTeamListAdapter extends ArrayAdapter<LineUpObject> {
 		private LinearLayout mLayoutCalendar;
 		private TextView mCalendar;
 		private TextView mCalendarWeek;
@@ -133,48 +126,63 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 		private TextView mLikeCount;
 		private LinearLayout mTeamInfo;
 		private TextView mFirstCalendar;
-		//private TextView mFirstCalendarWeek;
-		
+		// private TextView mFirstCalendarWeek;
+
 		private RelativeLayout mNoDataLayout;
 		private LinearLayout mDataLayout;
 		private LinearLayout mBottomLayout;
 		private LinearLayout mTodayLayout;
-	    private List<WeakReference<View>> mRecycleList = new ArrayList<WeakReference<View>>();
-		
+		private List<WeakReference<View>> mRecycleList = new ArrayList<WeakReference<View>>();
+
 		public void recycle() {
-	        for (WeakReference<View> ref : mRecycleList) {
-	            Util.recursiveRecycle(ref.get());
-	        }
-	    }
+			for (WeakReference<View> ref : mRecycleList) {
+				Util.recursiveRecycle(ref.get());
+			}
+		}
 
 		public IntromTeamListAdapter(List<LineUpObject> objects) {
 			super(mContext, 0, objects);
 		}
-		
-		
-		
+
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView == null) {
 				LayoutInflater inflater = LayoutInflater.from(mContext);
 				convertView = inflater.inflate(R.layout.item_main_lineup, null);
-				mLayoutCalendar = (LinearLayout)convertView.findViewById(R.id.item_lineup_calendar_layout);
-				mCalendar = (TextView)convertView.findViewById(R.id.item_lineup_calendar);
-				mCalendarWeek = (TextView)convertView.findViewById(R.id.item_lineup_calendar_day_of_week);
-				mImg = (ImageView)convertView.findViewById(R.id.item_lineup_image);
-				mTeamname = (TextView) convertView.findViewById(R.id.item_lineup_teamname);
-				mTime = (TextView) convertView.findViewById(R.id.item_lineup_time);
-				mPlace = (TextView) convertView.findViewById(R.id.item_lineup_place);
-				mRanking = (TextView) convertView.findViewById(R.id.item_lineup_bottom_ranking);
-				mLike = (LinearLayout) convertView.findViewById(R.id.like_select);
-				mLikeImg = (ImageView) convertView.findViewById(R.id.item_lineup_bottom_likecount_img);
-				mLikeCount= (TextView) convertView.findViewById(R.id.item_lineup_bottom_likecount);
-				mTeamInfo = (LinearLayout) convertView.findViewById(R.id.team_page);
-				mBottomLayout = (LinearLayout)convertView.findViewById(R.id.item_lineup_bottom);
-				mNoDataLayout = (RelativeLayout)convertView.findViewById(R.id.item_lineup_nolineup);
-				mDataLayout = (LinearLayout)convertView.findViewById(R.id.item_lineup_time_layout);
-				mFirstCalendar = (TextView)convertView.findViewById(R.id.item_lineup_calendar_2);
-				mTodayLayout = (LinearLayout)convertView.findViewById(R.id.today_layout_real);
-				
+				mLayoutCalendar = (LinearLayout) convertView
+						.findViewById(R.id.item_lineup_calendar_layout);
+				mCalendar = (TextView) convertView
+						.findViewById(R.id.item_lineup_calendar);
+				mCalendarWeek = (TextView) convertView
+						.findViewById(R.id.item_lineup_calendar_day_of_week);
+				mImg = (ImageView) convertView
+						.findViewById(R.id.item_lineup_image);
+				mTeamname = (TextView) convertView
+						.findViewById(R.id.item_lineup_teamname);
+				mTime = (TextView) convertView
+						.findViewById(R.id.item_lineup_time);
+				mPlace = (TextView) convertView
+						.findViewById(R.id.item_lineup_place);
+				mRanking = (TextView) convertView
+						.findViewById(R.id.item_lineup_bottom_ranking);
+				mLike = (LinearLayout) convertView
+						.findViewById(R.id.like_select);
+				mLikeImg = (ImageView) convertView
+						.findViewById(R.id.item_lineup_bottom_likecount_img);
+				mLikeCount = (TextView) convertView
+						.findViewById(R.id.item_lineup_bottom_likecount);
+				mTeamInfo = (LinearLayout) convertView
+						.findViewById(R.id.team_page);
+				mBottomLayout = (LinearLayout) convertView
+						.findViewById(R.id.item_lineup_bottom);
+				mNoDataLayout = (RelativeLayout) convertView
+						.findViewById(R.id.item_lineup_nolineup);
+				mDataLayout = (LinearLayout) convertView
+						.findViewById(R.id.item_lineup_time_layout);
+				mFirstCalendar = (TextView) convertView
+						.findViewById(R.id.item_lineup_calendar_2);
+				mTodayLayout = (LinearLayout) convertView
+						.findViewById(R.id.today_layout_real);
+
 				holder = new ViewHolder();
 				holder.firstCalendar = mFirstCalendar;
 				holder.layoutCalendar = mLayoutCalendar;
@@ -183,7 +191,7 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 				holder.calendar = mCalendar;
 				holder.img = mImg;
 				holder.teamname = mTeamname;
-				holder.time= mTime;
+				holder.time = mTime;
 				holder.place = mPlace;
 				holder.like = mLike;
 				holder.ranking = mRanking;
@@ -194,160 +202,153 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 				holder.dataLayout = mDataLayout;
 				holder.bottomLayout = mBottomLayout;
 				convertView.setTag(holder);
-				
-		        mRecycleList.add(new WeakReference<View>(convertView));
+
+				mRecycleList.add(new WeakReference<View>(convertView));
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-				convertView.setTag(R.id.imageId, position);
-				holder.like.setTag(R.id.imageId, position);
-				holder.teamInfo.setTag(R.id.imageId, position);
-				LineUpObject itemObject = getItem(position);
-				convertView.setTag(R.id.imageId, position);
-				if(position == 0 )
-				{
-					if(checkToday)
-					{
-						holder.firstLayout.setBackgroundResource(R.drawable.lineup_back);
-						
-						holder.dataLayout.setVisibility(View.VISIBLE);
-						holder.bottomLayout.setVisibility(View.VISIBLE);
-						holder.noDataLayout.setVisibility(View.GONE);
-						holder.layoutCalendar.setVisibility(View.VISIBLE);
-						holder.calendar.setText("오늘의공연");
-						holder.calendar.setTextColor(0xff01d0d2);
-						holder.calendarWeek.setVisibility(View.GONE);
-						holder.calendarWeek.setText("");
-					}
-					else
-					{
-						holder.firstLayout.setBackgroundColor(0xffffffff);
-						
-						
-//						holder.firstCalendar.setText(year+"."+month+"."+day+" ");
-						holder.layoutCalendar.setVisibility(View.VISIBLE);
-						holder.noDataLayout.setVisibility(View.VISIBLE);
-						holder.dataLayout.setVisibility(View.VISIBLE);
-						holder.bottomLayout.setVisibility(View.VISIBLE);
-						holder.calendar.setText(itemObject.getYear()+"."+itemObject.getMonth()+"."+itemObject.getDay()+" ");
-						holder.calendarWeek.setVisibility(View.VISIBLE);
-						holder.calendarWeek.setText(itemObject.getDayOfweek());
-						
-						holder.calendar.setTextColor(0xff000000);
-					}
-					
-				}
-				else
-				{
-//					holder.firstLayout.setBackgroundResource(R.drawable.lineup_back);
-					holder.firstLayout.setBackgroundColor(0xffffffff);
-//					holder.calendar.setTextColor(0xff01d0d2);
-					holder.calendar.setTextColor(0xff000000);
-					
+			convertView.setTag(R.id.imageId, position);
+			holder.like.setTag(R.id.imageId, position);
+			holder.teamInfo.setTag(R.id.imageId, position);
+			LineUpObject itemObject = getItem(position);
+			convertView.setTag(R.id.imageId, position);
+			if (position == 0) {
+				if (checkToday) {
+					holder.firstLayout
+							.setBackgroundResource(R.drawable.lineup_back);
+
+					holder.dataLayout.setVisibility(View.VISIBLE);
+					holder.bottomLayout.setVisibility(View.VISIBLE);
 					holder.noDataLayout.setVisibility(View.GONE);
+					holder.layoutCalendar.setVisibility(View.VISIBLE);
+					holder.calendar.setText("오늘의공연");
+					holder.calendar.setTextColor(0xff01d0d2);
+					holder.calendarWeek.setVisibility(View.GONE);
+					holder.calendarWeek.setText("");
+				} else {
+					holder.firstLayout.setBackgroundColor(0xffffffff);
+
+					// holder.firstCalendar.setText(year+"."+month+"."+day+" ");
+					holder.layoutCalendar.setVisibility(View.VISIBLE);
+					holder.noDataLayout.setVisibility(View.VISIBLE);
+					holder.dataLayout.setVisibility(View.VISIBLE);
+					holder.bottomLayout.setVisibility(View.VISIBLE);
+					holder.calendar.setText(itemObject.getYear() + "."
+							+ itemObject.getMonth() + "." + itemObject.getDay()
+							+ " ");
 					holder.calendarWeek.setVisibility(View.VISIBLE);
-					holder.calendarWeek.setTextColor(0xff000000);
-					LineUpObject beforeObject = getItem(position-1);
-					
-					if(itemObject.getYear().equals(beforeObject.getYear()) &&
-							itemObject.getMonth().equals(beforeObject.getMonth()) &&
-							itemObject.getDay().equals(beforeObject.getDay()))
-					{
-						holder.layoutCalendar.setVisibility(View.GONE);
-					}
-					else
-					{
-						holder.layoutCalendar.setVisibility(View.VISIBLE);
-						holder.calendar.setText(itemObject.getYear()+"."+itemObject.getMonth()+"."+itemObject.getDay()+" ");
-						holder.calendarWeek.setText(itemObject.getDayOfweek());
-					}
+					holder.calendarWeek.setText(itemObject.getDayOfweek());
+
+					holder.calendar.setTextColor(0xff000000);
 				}
-				Drawable default1 = null;
-		    	default1 =  mContext.getResources().getDrawable(R.drawable.loading_new_2);
-				
-		    	
-				holder.teamname.setText(itemObject.getTeamName());
-				holder.time.setText(itemObject.getTime());
-				holder.place.setText(itemObject.getPlace());
-				
-				
-				for(int i = 0 ; i < BaseActivity.getTeamObject().size() ; i++)
-				{
-					if(itemObject.getTeamName().equals(BaseActivity.getTeamObject().get(i).getTeamName()))
-					{
-						m_oAsyncImageLoader.setImageDrawableAsync(holder.img,BaseActivity.getTeamObject().get(i).getTeamThum(),default1,default1,mContext);
-						holder.ranking.setText("TOP"+(i+1));
-						holder.likeCount.setText(BaseActivity.getTeamObject().get(i).getLikeCount()+"");
-						break;
-					}
+
+			} else {
+				// holder.firstLayout.setBackgroundResource(R.drawable.lineup_back);
+				holder.firstLayout.setBackgroundColor(0xffffffff);
+				// holder.calendar.setTextColor(0xff01d0d2);
+				holder.calendar.setTextColor(0xff000000);
+
+				holder.noDataLayout.setVisibility(View.GONE);
+				holder.calendarWeek.setVisibility(View.VISIBLE);
+				holder.calendarWeek.setTextColor(0xff000000);
+				LineUpObject beforeObject = getItem(position - 1);
+
+				if (itemObject.getYear().equals(beforeObject.getYear())
+						&& itemObject.getMonth()
+								.equals(beforeObject.getMonth())
+						&& itemObject.getDay().equals(beforeObject.getDay())) {
+					holder.layoutCalendar.setVisibility(View.GONE);
+				} else {
+					holder.layoutCalendar.setVisibility(View.VISIBLE);
+					holder.calendar.setText(itemObject.getYear() + "."
+							+ itemObject.getMonth() + "." + itemObject.getDay()
+							+ " ");
+					holder.calendarWeek.setText(itemObject.getDayOfweek());
 				}
-				for(int i = 0 ; i< LoginInfoObject.getInstance().getLikeTeamList().size() ; i++)
-				{
-					if(LoginInfoObject.getInstance().getLikeTeamList().get(i).equals(itemObject.getTeamName()))
-					{
-						holder.likeImg.setBackgroundResource(R.drawable.heart_o);
-						break;
-					}
+			}
+			Drawable default1 = null;
+			default1 = mContext.getResources().getDrawable(
+					R.drawable.loading_new_2);
+
+			holder.teamname.setText(itemObject.getTeamName());
+			holder.time.setText(itemObject.getTime());
+			holder.place.setText(itemObject.getPlace());
+
+			for (int i = 0; i < BaseActivity.getTeamObject().size(); i++) {
+				if (itemObject.getTeamName().equals(
+						BaseActivity.getTeamObject().get(i).getTeamName())) {
+					m_oAsyncImageLoader.setImageDrawableAsync(holder.img,
+							BaseActivity.getTeamObject().get(i).getTeamThum(),
+							default1, default1, mContext);
+					holder.ranking.setText("TOP" + (i + 1));
+					holder.likeCount.setText(BaseActivity.getTeamObject()
+							.get(i).getLikeCount()
+							+ "");
+					break;
 				}
-				holder.teamInfo.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
+			}
+			for (int i = 0; i < LoginInfoObject.getInstance().getLikeTeamList()
+					.size(); i++) {
+				if (LoginInfoObject.getInstance().getLikeTeamList().get(i)
+						.equals(itemObject.getTeamName())) {
+					holder.likeImg.setBackgroundResource(R.drawable.heart_o);
+					break;
+				}
+			}
+			holder.teamInfo.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					int pos = (Integer) v.getTag(R.id.imageId);
+					Bundle o = new Bundle();
+					o.putString("object", getItem(pos).getTeamName());
+					MainActivity.getInstance().replaceFragment(
+							TeamPageFragment.class, o, true);
+				}
+			});
+			holder.like.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					if (LoginInfoObject.getInstance().isLogin()) {
 						int pos = (Integer) v.getTag(R.id.imageId);
-						Bundle o = new Bundle();
-						o.putString("object", getItem(pos).getTeamName());
-						MainActivity.getInstance().replaceFragment(TeamPageFragment.class, o, true);
-					}
-				});
-				holder.like.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						if(LoginInfoObject.getInstance().isLogin())
-						{
-							int pos = (Integer) v.getTag(R.id.imageId);
-							TeamObject itemObject = null;
-							if(BaseActivity.searchTeam(getItem(pos).getTeamName()) != null)
-							{
-								 itemObject = BaseActivity.searchTeam(getItem(pos).getTeamName());
-								 int check = 0;
-								 for(int i = 0 ; i< itemObject.getLikeMans().size() ; i++)
-								 {
-										if(itemObject.getLikeMans().get(i).equals(LoginInfoObject.getInstance().getId()))
-										{
-											Toast.makeText(mContext, "이미 좋아하는 팀입니다.", Toast.LENGTH_SHORT).show();
-											check = 1;
-											break;
-										}
-								 }
-							 	 if(check != 1)
-							 	 { 
-									//통신이후 좋아요 카운트 하나 늘리면됨 
-									m_oSelectTeam = itemObject;
-									requestTeamLikeUp();
-								 }
+						TeamObject itemObject = null;
+						if (BaseActivity.searchTeam(getItem(pos).getTeamName()) != null) {
+							itemObject = BaseActivity.searchTeam(getItem(pos)
+									.getTeamName());
+							int check = 0;
+							for (int i = 0; i < itemObject.getLikeMans().size(); i++) {
+								if (itemObject
+										.getLikeMans()
+										.get(i)
+										.equals(LoginInfoObject.getInstance()
+												.getId())) {
+									Toast.makeText(mContext, "이미 좋아하는 팀입니다.",
+											Toast.LENGTH_SHORT).show();
+									check = 1;
+									break;
+								}
 							}
-							else
-							{
-								//팀이 없습니다 
+							if (check != 1) {
+								// 통신이후 좋아요 카운트 하나 늘리면됨
+								m_oSelectTeam = itemObject;
+								requestTeamLikeUp();
 							}
+						} else {
+							// 팀이 없습니다
 						}
-						else
-						{
-							new LoginAlertPopup(mContext);
-						}
+					} else {
+						new LoginAlertPopup(mContext);
 					}
-				});
-			
-			
+				}
+			});
+
 			return convertView;
 		}
 	}
-	
 
-	class ViewHolder 
-	{
+	class ViewHolder {
 		private LinearLayout layoutCalendar;
 		private TextView calendar;
 		private TextView calendarWeek;
@@ -360,7 +361,7 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 		private ImageView likeImg;
 		private TextView likeCount;
 		private LinearLayout teamInfo;
-		
+
 		private LinearLayout bottomLayout;
 		private RelativeLayout noDataLayout;
 		private LinearLayout dataLayout;
@@ -368,107 +369,108 @@ public class LineUpListView extends ListView implements HttpClientNet.OnResponse
 		private TextView firstCalendar;
 	}
 
-	public void notifyData()
-	{
-		listAdapter.notifyDataSetChanged(); 
+	public void notifyData() {
+		listAdapter.notifyDataSetChanged();
 	}
 
 	@Override
 	public void onResponseReceived(String resContent) {
 		// TODO Auto-generated method stub
-		try{
+		try {
 			Object o = resContent;
 			JSONObject object = new JSONObject(resContent);
-			if(object.getJSONObject("result").optString("type").equals("ServiceType.MSG_TEAM_LIKE_UP"))
-			{
-				String result = object.getJSONObject("data").optString("result","");
-				if(result.equals("true"))
-				{
-					Toast.makeText(mContext, "좋아요", Toast.LENGTH_LONG).show(); 
-					//개인데이터에 내가 좋아요 눌른 팀 체크
-					LoginInfoObject.getInstance().getLikeTeamList().add(m_oSelectTeam.getTeamName());
-					//로컬 카운트 + 1 , 그 팀 이 직접가지고 있는 라이크 눌른 인원들에 대한 아이디 추가
-					for(int i = 0 ; i < BaseActivity.getTeamObject().size() ; i++)
-					{
-						if(m_oSelectTeam.getTeamName().equals(BaseActivity.getTeamObject().get(i).getTeamName()))
-						{
-							BaseActivity.getTeamObject().get(i).setLikeCount(BaseActivity.getTeamObject().get(i).getLikeCount()+1);
-							BaseActivity.getTeamObject().get(i).getLikeMans().add(LoginInfoObject.getInstance().getId());
+			if (object.getJSONObject("result").optString("type")
+					.equals("ServiceType.MSG_TEAM_LIKE_UP")) {
+				String result = object.getJSONObject("data").optString(
+						"result", "");
+				if (result.equals("true")) {
+					Toast.makeText(mContext, "좋아요", Toast.LENGTH_LONG).show();
+					// 개인데이터에 내가 좋아요 눌른 팀 체크
+					LoginInfoObject.getInstance().getLikeTeamList()
+							.add(m_oSelectTeam.getTeamName());
+					// 로컬 카운트 + 1 , 그 팀 이 직접가지고 있는 라이크 눌른 인원들에 대한 아이디 추가
+					for (int i = 0; i < BaseActivity.getTeamObject().size(); i++) {
+						if (m_oSelectTeam.getTeamName().equals(
+								BaseActivity.getTeamObject().get(i)
+										.getTeamName())) {
+							BaseActivity
+									.getTeamObject()
+									.get(i)
+									.setLikeCount(
+											BaseActivity.getTeamObject().get(i)
+													.getLikeCount() + 1);
+							BaseActivity.getTeamObject().get(i).getLikeMans()
+									.add(LoginInfoObject.getInstance().getId());
 							notifyData();
 							break;
-							
+
 						}
 					}
-					
-				}
-				else
-				{
-					Toast.makeText(mContext, "좋아요 실패했습니다", Toast.LENGTH_LONG).show();
+
+				} else {
+					Toast.makeText(mContext, "좋아요 실패했습니다", Toast.LENGTH_LONG)
+							.show();
 				}
 			}
-		}
-		catch(Exception e )
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		finally
-		{
-			((MainActivity)mContext).stopProgressDialog() ;
+		} finally {
+			((MainActivity) mContext).stopProgressDialog();
 		}
 	}
-	public String setLikeTeam()
-	{
+
+	public String setLikeTeam() {
 		String likeTeam = "";
-		for( int i  = 0 ; i <= LoginInfoObject.getInstance().getLikeTeamList().size() ; i++)
-		{
-			if(LoginInfoObject.getInstance().getLikeTeamList().size() == 0 )
-			{
+		for (int i = 0; i <= LoginInfoObject.getInstance().getLikeTeamList()
+				.size(); i++) {
+			if (LoginInfoObject.getInstance().getLikeTeamList().size() == 0) {
 				likeTeam = m_oSelectTeam.getTeamName();
 				break;
 			}
-			if( i == LoginInfoObject.getInstance().getLikeTeamList().size() -1 )
-			{
-				likeTeam += LoginInfoObject.getInstance().getLikeTeamList().get(i) + ","+m_oSelectTeam.getTeamName();
+			if (i == LoginInfoObject.getInstance().getLikeTeamList().size() - 1) {
+				likeTeam += LoginInfoObject.getInstance().getLikeTeamList()
+						.get(i)
+						+ "," + m_oSelectTeam.getTeamName();
 				break;
 			}
-			likeTeam += LoginInfoObject.getInstance().getLikeTeamList().get(i)+",";
+			likeTeam += LoginInfoObject.getInstance().getLikeTeamList().get(i)
+					+ ",";
 		}
 		return likeTeam;
 	}
-	public String setLikeMan()
-	{
+
+	public String setLikeMan() {
 		String str = "";
-		for( int i = 0 ; i <= m_oSelectTeam.getLikeMans().size() ; i++)
-		{
-			if(m_oSelectTeam.getLikeMans().size() == 0 )
-			{
+		for (int i = 0; i <= m_oSelectTeam.getLikeMans().size(); i++) {
+			if (m_oSelectTeam.getLikeMans().size() == 0) {
 				str = LoginInfoObject.getInstance().getId();
 				break;
 			}
-			if( i == m_oSelectTeam.getLikeMans().size() -1)
-			{
-				str += m_oSelectTeam.getLikeMans().get(i)+","+LoginInfoObject.getInstance().getId();
+			if (i == m_oSelectTeam.getLikeMans().size() - 1) {
+				str += m_oSelectTeam.getLikeMans().get(i) + ","
+						+ LoginInfoObject.getInstance().getId();
 				break;
 			}
-			str += m_oSelectTeam.getLikeMans().get(i)+",";
+			str += m_oSelectTeam.getLikeMans().get(i) + ",";
 		}
 		return str;
 	}
-	public void requestTeamLikeUp()
-	{
+
+	public void requestTeamLikeUp() {
 		GregorianCalendar calendar = new GregorianCalendar();
-		HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_TEAM_LIKE_UP);
+		HttpClientNet loginService = new HttpClientNet(
+				ServiceType.MSG_TEAM_LIKE_UP);
 		ArrayList<Params> loginParams = new ArrayList<Params>();
 		loginParams.add(new Params("teamname", m_oSelectTeam.getTeamName()));
-		loginParams.add(new Params("likecount", (m_oSelectTeam.getLikeCount() + 1)+""));
-		loginParams.add(new Params("id", LoginInfoObject.getInstance().getId()));
-		loginParams.add(new Params("liketeam",setLikeTeam()));
+		loginParams.add(new Params("likecount",
+				(m_oSelectTeam.getLikeCount() + 1) + ""));
+		loginParams
+				.add(new Params("id", LoginInfoObject.getInstance().getId()));
+		loginParams.add(new Params("liketeam", setLikeTeam()));
 		loginParams.add(new Params("likeman", setLikeMan()));
 		loginService.setParam(loginParams);
 		loginService.doAsyncExecute(this);
-		((MainActivity)mContext).startProgressDialog();
+		((MainActivity) mContext).startProgressDialog();
 	}
-	
-	
 
 }

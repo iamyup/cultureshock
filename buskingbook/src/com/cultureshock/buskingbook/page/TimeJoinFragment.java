@@ -294,6 +294,27 @@ private LinearLayout m_oBtnConfirm;
 				year[0] = year[0].trim();
 				month[0] = month[0].trim();
 				today[0] = today[0].trim();
+				if(this.today.get(Calendar.YEAR) > Integer.parseInt(year[0]))
+				{
+					Toast.makeText(mContext, "지난날짜는 등록이 안됩니다.", Toast.LENGTH_SHORT ).show();
+					break;
+				}
+				else if(this.today.get(Calendar.YEAR) == Integer.parseInt(year[0]))
+				{
+					if(this.today.get(Calendar.MONTH)+1 > Integer.parseInt(month[0]))
+					{
+						Toast.makeText(mContext, "지난날짜는 등록이 안됩니다.", Toast.LENGTH_SHORT ).show();
+						break;
+					}
+					else if(this.today.get(Calendar.MONTH)+1 == Integer.parseInt(month[0]))
+					{
+						if(this.today.get(Calendar.DATE) > Integer.parseInt(today[0]))
+						{
+							Toast.makeText(mContext, "지난날짜는 등록이 안됩니다.", Toast.LENGTH_SHORT ).show();
+							break;
+						}
+					}
+				}
 				GregorianCalendar calendar = new GregorianCalendar(Integer.parseInt(year[0]),Integer.parseInt(month[0]),Integer.parseInt(today[0])); //해당 월 의 첫날 
 				int dayOfweek = calendar.get(Calendar.DAY_OF_WEEK) - 1; // 첫날의 요일 결정
 				requestAddCalendar(year[0],month[0],today[0],hour+":"+min+" "+ampm,week[dayOfweek],place,LoginInfoObject.getInstance().getMyteam() );

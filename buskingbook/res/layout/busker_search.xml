@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+    
+
+    <!-- 타이틀 -->
+     <FrameLayout 
+         android:id="@+id/title"
+         android:layout_width="match_parent"
+         android:layout_height="40dip"
+         android:background="#01d0d2">
+		<ImageView
+            android:id="@+id/title_btn_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@xml/menu"
+            android:layout_marginLeft="5dip"
+            android:layout_gravity="center_vertical|left"/>
+		<TextView
+	       android:id="@+id/test_main"
+	       android:layout_gravity="center"
+	       android:text="버스커 찾기"
+	       android:layout_width="wrap_content" 
+	       android:layout_height="wrap_content"
+	       android:textColor="#ffffff"/>
+		
+	</FrameLayout>
+	<LinearLayout
+	    android:id="@+id/busker_search_layout"
+	    android:layout_width="match_parent"
+	    android:layout_height="60dip"
+	    android:layout_below="@+id/title"
+	    android:gravity="center">
+	    <EditText
+	        android:id="@+id/busker_search_edittext"
+	        android:layout_width="250dip"
+			android:layout_height="40dip"
+			android:textSize="12dip"
+			android:paddingLeft="5dip"
+			android:background="#f2f2f2"
+			android:textColor="#000000"/>
+	    <LinearLayout
+	        android:id="@+id/busker_search_btn"
+	        android:layout_width="50dip"
+	        android:layout_height="40dip"
+	        android:background="#f2f2f2"
+	        android:gravity="center">
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/find_btn_o_b"/>
+	    </LinearLayout>
+	</LinearLayout>
+	<LinearLayout
+	    android:id="@+id/line"
+	    android:layout_width="match_parent"
+	    android:layout_height="1dip"
+	    android:background="#f2f2f2"
+	    android:layout_below="@+id/busker_search_layout"/>
+	<LinearLayout
+	    android:id="@+id/list_view"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:layout_below="@+id/line"/>
+	<LinearLayout
+	    android:id="@+id/list_view_no"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:visibility="gone"
+	    android:gravity="center"
+	    android:layout_below="@+id/line">
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="검색결과가 없습니다"
+	        android:textSize="15dip"
+	        android:textColor="#000000"/>
+	    </LinearLayout>
+</RelativeLayout>

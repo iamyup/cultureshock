@@ -10,33 +10,33 @@ import android.view.ViewGroup;
 
 import com.cultureshock.buskingbook.R;
 
-public class PaperDisplayFragment extends Fragment implements OnClickListener{
-    private FragmentActivity mContext;
-    private static PaperDisplayFragment mInstance;
+public class PaperDisplayFragment extends Fragment implements OnClickListener {
+	private FragmentActivity mContext;
+	private static PaperDisplayFragment mInstance;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_paper_display, container, false);
-    }
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		return inflater.inflate(R.layout.main_paper_display, container, false);
+	}
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mContext = getActivity();
-        mInstance = this;
-    }
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		mContext = getActivity();
+		mInstance = this;
+	}
 
-    public static PaperDisplayFragment getInstance() {
-        return mInstance;
-    }
+	public static PaperDisplayFragment getInstance() {
+		return mInstance;
+	}
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+	}
 
-    @Override
-    public synchronized void onClick(View v) {
-    }
+	@Override
+	public synchronized void onClick(View v) {
+	}
 }

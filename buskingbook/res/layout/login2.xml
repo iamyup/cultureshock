@@ -44,6 +44,7 @@
                android:layout_height="50dip"
                android:hint="이메일"
                android:textSize="15dip"
+               android:inputType="textEmailAddress"
                android:singleLine="true"
                android:paddingLeft="5dip"
                android:background="#ffffff"
