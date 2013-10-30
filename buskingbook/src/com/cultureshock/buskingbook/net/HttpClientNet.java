@@ -1,6 +1,7 @@
 package com.cultureshock.buskingbook.net;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -244,5 +245,70 @@ public class HttpClientNet {
 			this.resContent = resContent;
 		}
 	}
+/*
+	public void HttpFileUpload(String urlString, String params, String fileName) {
+	    try {
 
+	        mFileInputStream = new FileInputStream(fileName);
+	        connectUrl = new URL(urlString);
+	        Log.d("Test", "mFileInputStream  is " + mFileInputStream);
+
+	        // open connection 
+	        HttpURLConnection conn = (HttpURLConnection)connectUrl.openConnection();   
+	        conn.setDoInput(true);
+	        conn.setDoOutput(true);
+	        conn.setUseCaches(false);
+	        conn.setRequestMethod("POST");
+	        conn.setRequestProperty("Connection", "Keep-Alive");
+	        conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+
+	        // write data
+	        DataOutputStream dos = new DataOutputStream(conn.getOutputStream());
+	        dos.writeBytes(twoHyphens + boundary + lineEnd);
+	        dos.writeBytes("Content-Disposition: form-data; name=\"uploadedfile\";filename=\"" + fileName+"\"" + lineEnd);
+	        dos.writeBytes(lineEnd);
+
+	        int bytesAvailable = mFileInputStream.available();
+	        int maxBufferSize = 1024;
+	        int bufferSize = Math.min(bytesAvailable, maxBufferSize);
+
+	        byte[] buffer = new byte[bufferSize];
+	        int bytesRead = mFileInputStream.read(buffer, 0, bufferSize);
+
+	        Log.d("Test", "image byte is " + bytesRead);
+
+	        // read image
+	        while (bytesRead > 0) {
+	            dos.write(buffer, 0, bufferSize);
+	            bytesAvailable = mFileInputStream.available();
+	            bufferSize = Math.min(bytesAvailable, maxBufferSize);
+	            bytesRead = mFileInputStream.read(buffer, 0, bufferSize);
+	        } 
+
+	        dos.writeBytes(lineEnd);
+	        dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+
+	        // close streams
+	        Log.e("Test" , "File is written");
+	        mFileInputStream.close();
+	        dos.flush(); // finish upload...   
+
+	        // get response
+	        int ch;
+	        InputStream is = conn.getInputStream();
+	        StringBuffer b =new StringBuffer();
+	        while( ( ch = is.read() ) != -1 ){
+	            b.append( (char)ch );
+	        }
+	        String s=b.toString(); 
+	        Log.e("Test", "result = " + s);
+	        mEdityEntry.setText(s);
+	        dos.close();   
+
+	    } catch (Exception e) {
+	        Log.d("Test", "exception " + e.getMessage());
+	        // TODO: handle exception
+	    }  
+	}
+*/
 }
