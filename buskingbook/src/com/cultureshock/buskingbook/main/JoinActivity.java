@@ -298,12 +298,15 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
             if (resultCode == RESULT_OK) {
                 if (data != null) {
                     Bitmap bitmap;
+                    String fileName = Environment.getExternalStorageDirectory() + "/" + TEMP_PHOTO_FILE;
                     try {
-                        bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + "/" + TEMP_PHOTO_FILE);
+                        bitmap = BitmapFactory.decodeFile(fileName);
                         m_oImage.setImageBitmap(bitmap);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
+                    
                 }
             }
             break;
