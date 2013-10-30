@@ -12,13 +12,19 @@
          android:layout_width="match_parent"
          android:layout_height="40dip"
          android:background="#01d0d2">
-		<ImageView
-            android:id="@+id/title_btn_menu"
+         <LinearLayout
+             android:id="@+id/title_btn_menu"
+             android:layout_width="35dip"
+             android:layout_height="40dip"
+             android:gravity="center">
+             <ImageView
+            
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@xml/menu"
-            android:layout_marginLeft="5dip"
             android:layout_gravity="center_vertical|left"/>
+         </LinearLayout>
+		
 		<TextView
 	       android:id="@+id/test_main"
 	       android:layout_gravity="center"

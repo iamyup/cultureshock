@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cultureshock.buskingbook.R;
@@ -21,7 +22,7 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
     private FragmentActivity mContext;
     private static MainHomeFragment mInstance;
     private TextView m_oBtnTest;
-    private ImageView m_oBtnList;
+    private LinearLayout m_oBtnList;
     private ViewPager m_oViewPager;
 
     @Override
@@ -38,7 +39,7 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
 
         m_oBtnTest = (TextView) getActivity().findViewById(R.id.test_main);
         m_oBtnTest.setOnClickListener(this);
-        m_oBtnList = (ImageView) getActivity()
+        m_oBtnList = (LinearLayout) getActivity()
                 .findViewById(R.id.title_btn_menu);
         m_oBtnList.setOnClickListener(this);
         setPager();

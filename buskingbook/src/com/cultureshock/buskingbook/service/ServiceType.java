@@ -25,6 +25,7 @@ public class ServiceType {
     public static final int MSG_MESSAGE_ADD= 17;
     public static final int MSG_MESSAGE_READ= 18;
     public static final int MSG_MESSAGE_DELETE= 19;
+    public static final int MSG_TEAM_DATA_CHANGE= 20;
 
     private static final String URL_LOGIN 				 = 	 ROOT_DOMAIN + "login.php";
     private static final String URL_TOP12				 =	 ROOT_DOMAIN + "top12.php";
@@ -45,6 +46,7 @@ public class ServiceType {
     private static final String URL_MESSAGE_ADD		 	 = 	 ROOT_DOMAIN + "message_add.php";
     private static final String URL_MESSAGE_READ		 = 	 ROOT_DOMAIN + "message_read.php";
     private static final String URL_MESSAGE_DELETE		 = 	 ROOT_DOMAIN + "message_delete.php";
+    private static final String URL_TEAM_DATA_CHANGE	 = 	 ROOT_DOMAIN + "team_data_change.php";
 
     private Hashtable<Integer, String> msgURLTbl = new Hashtable<Integer, String>();
 
@@ -70,6 +72,7 @@ public class ServiceType {
         msgURLTbl.put(new Integer(MSG_MESSAGE_ADD), URL_MESSAGE_ADD);
         msgURLTbl.put(new Integer(MSG_MESSAGE_READ), URL_MESSAGE_READ);
         msgURLTbl.put(new Integer(MSG_MESSAGE_DELETE), URL_MESSAGE_DELETE);
+        msgURLTbl.put(new Integer(MSG_TEAM_DATA_CHANGE), URL_TEAM_DATA_CHANGE);
     }
 
     public static ServiceType getInstance() {

@@ -137,6 +137,7 @@ public class FirstStartActivity extends Activity implements
 					String teamSong = jsonObject.optString("teamsong");
 					String teamMember = jsonObject.optString("teammember");
 					String likeman = jsonObject.optString("likeman");
+					String notice = jsonObject.optString("notice");
 					String[] p = likeman.split(",");
 					ArrayList<String> likeMans = new ArrayList<String>();
 					if (!p[0].equals("")) {
@@ -146,7 +147,7 @@ public class FirstStartActivity extends Activity implements
 					}
 					BaseActivity.getTeamObject().add(
 							new TeamObject(teamName, teamMember, teamThum,
-									likeCount, teamComent, teamSong, likeMans));
+									likeCount, teamComent, teamSong, likeMans,notice));
 				}
 				for (int i = 0; i < BaseActivity.getTeamObject().size() - 1; i++) {
 					for (int j = i + 1; j < BaseActivity.getTeamObject().size(); j++) {

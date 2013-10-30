@@ -57,7 +57,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     private LinearLayout m_BtnBuskerRegister;
     private RelativeLayout m_BtnLogout;
     private ImageView m_oImgAutoLogin;
-    private boolean autoLogin = false;
+    public boolean autoLogin = false;
     private ImageView m_oImgAlarm;
 
     public static LeftMenuFragment getInstance() {
@@ -97,6 +97,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     	m_oLayoutLogin = (LinearLayout)getActivity().findViewById(R.id.left_menu_login);
     	m_BtnLogout = (RelativeLayout)getActivity().findViewById(R.id.logout_layout);
     	m_oLayoutNoLogin.setOnClickListener(this);
+    	try{
     	if(LoginInfoObject.getInstance().getId().equals(""))
     	{
     		m_oLayoutNoLogin.setVisibility(View.VISIBLE);
@@ -177,6 +178,14 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
             {
             	m_oImgAlarm.setBackgroundResource(R.drawable.off_btn);
             }
+    	}
+    	}
+    	catch(Exception e)
+    	{
+    		MainActivity.getInstance().finish();
+    		Intent intent =  new Intent(mActivity.getApplicationContext(), FirstStartActivity.class);
+			startActivity(intent);
+    		
     	}
     	
         

@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -28,6 +29,9 @@ import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.page.BuskerJoinFragment;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.page.PaperEditFragment;
+import com.cultureshock.buskingbook.page.PartnerSearchFragment;
+import com.cultureshock.buskingbook.page.TeamPageFragment;
+import com.cultureshock.buskingbook.page.TeamPageSettingFragment;
 import com.cultureshock.buskingbook.service.ServiceType;
 import com.google.android.gcm.server.Message;
 import com.google.android.gcm.server.Result;
@@ -135,10 +139,36 @@ public class MainActivity extends BaseActivity implements HttpClientNet.OnRespon
     	Log.d("sf",getCurFragment().getClass().getName());
     	if(getCurFragment().getClass().getName().equals("com.cultureshock.buskingbook.page.MainHomeFragment"))
     	{
+    		if(!LeftMenuFragment.getInstance().autoLogin)
+			{
+				SharedPreferences sp = getSharedPreferences("autologin", MODE_PRIVATE);
+				SharedPreferences.Editor editer = sp.edit();
+				editer.putBoolean("autologinboolean", true);
+				editer.putString("id", LoginInfoObject.getInstance().getId());
+				editer.putString("pwd", LoginInfoObject.getInstance().getPwd());
+				editer.commit();
+			}
+			else
+			{
+				SharedPreferences sp = getSharedPreferences("autologin", MODE_PRIVATE);
+				SharedPreferences.Editor editer = sp.edit();
+				editer.putBoolean("autologinboolean", false);
+				editer.remove("id");
+				editer.remove("pwd");
+				editer.commit();
+			}
     		finish();
    		 	BaseActivity.getTeamObject().clear();
    		 	System.exit(0);
     	}
+    	else if(getCurFragment().getClass().getName().equals("com.cultureshock.buskingbook.page.PartnerSearchAddFragment"))
+		{
+    		MainActivity.getInstance().replaceFragment(PartnerSearchFragment.class, null, false);
+		}
+    	else if(getCurFragment().getClass().getName().equals("com.cultureshock.buskingbook.page.TeamPageSettingFragment"))
+		{
+    		TeamPageSettingFragment.getInstance().back();
+		}
     	else
     	{
     		MainActivity.getInstance().replaceFragment(MainHomeFragment.class, null, false);

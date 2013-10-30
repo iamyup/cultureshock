@@ -60,13 +60,15 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
 	private LinearLayout mLike;
 	private TextView mRanking;
 	private ImageView mLikeImg;
+	private ImageView mBungeAlarm;
 	private TextView mLikeCount;
 	private int check ;
 	private TextView mTimeInfo;
-	
-	private LinearLayout mListTime;
+	private String time="";
+	private RelativeLayout mListTime;
 	private LinearLayout mListFacebook;
 	private boolean checkTeamHost = false;
+	private TextView m_oNotice;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -113,9 +115,11 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
 		mLikeImg = (ImageView) getActivity().findViewById(R.id.item_lineup_bottom_likecount_img);
 		mLikeCount = (TextView) getActivity().findViewById(R.id.item_lineup_bottom_likecount);
 		mTimeInfo  = (TextView) getActivity().findViewById(R.id.team_time_info);
-		
-		mListTime = (LinearLayout) getActivity().findViewById(R.id.team_time_list);
+		mBungeAlarm = (ImageView)getActivity().findViewById(R.id.team_time_bunge);
+		mBungeAlarm.setOnClickListener(this);
+		mListTime = (RelativeLayout) getActivity().findViewById(R.id.team_time_list);
 		mListFacebook = (LinearLayout) getActivity().findViewById(R.id.team_facebook_table);
+		m_oNotice = (TextView)getActivity().findViewById(R.id.notice);
 		dataUiset();
     }
     public void dataUiset()
@@ -136,6 +140,7 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
     	mTeamInfo.setText(selectMyTeam.getTeamComent());
     	mRanking.setText("TOP " + ranking);
     	mLikeCount.setText(selectMyTeam.getLikeCount()+"");
+    	m_oNotice.setText(selectMyTeam.getNotice());
     	if(checkTeamHost)
     	{
     		m_oBtnSettingTeam.setVisibility(View.VISIBLE);
@@ -162,11 +167,43 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
     public void onDestroy() {
         super.onDestroy();
     }
+    public void requestGcm()
+	{
+		GregorianCalendar calendar = new GregorianCalendar();
+		HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_GCM_GO_EVENT);
+		ArrayList<Params> loginParams = new ArrayList<Params>();
+		loginParams.add(new Params("teamname", LoginInfoObject.getInstance().getMyteam()));
+		loginParams.add(new Params("time", time));
+		loginParams.add(new Params("place", ""));
+		loginService.setParam(loginParams);
+		loginService.doAsyncExecute(this);
+		MainActivity.getInstance().startProgressDialog();
+	}	
     @Override
     public synchronized void onClick(View v) 
     {
         switch (v.getId()) 
         {
+	        case R.id.team_time_bunge:
+	        {
+	        	if(LoginInfoObject.getInstance().getMyteam().equals(teamName))
+	        	{
+	        		if(time.equals(""))
+		        	{
+		        		Toast.makeText(mContext, "등록된 공연이 없습니다", Toast.LENGTH_SHORT).show();
+		        	}
+		        	else
+		        	{
+		        		requestGcm();
+		        	}
+	        	}
+	        	else
+	        	{
+	        	}
+	        	
+	        	
+	            break;
+	        }
 	        case R.id.title_btn_menu:
 	        {
 	            MainActivity.getInstance().showMenu();
@@ -317,9 +354,9 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
 				}
 				if(lineUpObject.size() != 0)
 		    	{
-		    		String str = lineUpObject.get(0).getMonth()+"/"+lineUpObject.get(0).getDay()+" "+lineUpObject.get(0).getDayOfweek() 
-		    				+" " +lineUpObject.get(0).getTime()+"     @"+lineUpObject.get(0).getPlace();
-		    		mTimeInfo.setText(str);
+					time = lineUpObject.get(0).getMonth()+"/"+lineUpObject.get(0).getDay()+" "+lineUpObject.get(0).getDayOfweek() 
+		    				+" " +lineUpObject.get(0).getTime()+" @"+lineUpObject.get(0).getPlace();
+		    		mTimeInfo.setText(time);
 		    	}
 		    	else
 		    	{

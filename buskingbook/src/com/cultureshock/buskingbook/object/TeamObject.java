@@ -11,6 +11,7 @@ public class TeamObject {
 	private String teamSong;
 	private String teamMembers;
 	private ArrayList<String> likeMans;
+	private String notice;
 
 	public TeamObject() {
 
@@ -79,7 +80,20 @@ public class TeamObject {
 		this.likeMans = likeMans;
 		setList();
 	}
-
+	public TeamObject(String teamName, String teamMembers, String teamThum,
+			int likeCount, String teamComent, String teamSong,
+			ArrayList<String> likeMans,String notice) {
+		super();
+		this.teamName = teamName;
+		this.teamMembers = teamMembers;
+		this.teamThum = teamThum;
+		this.likeCount = likeCount;
+		this.teamComent = teamComent;
+		this.teamSong = teamSong;
+		this.likeMans = likeMans;
+		this.notice = notice;
+		setList();
+	}
 	public TeamObject(String teamName, ArrayList<TeamMemberObject> teamMember) {
 		super();
 		this.teamName = teamName;
@@ -246,4 +260,12 @@ public class TeamObject {
 		}
 	}
 
+	public String getNotice() {
+		return notice;
+	}
+
+	public void setNotice(String notice) {
+		this.notice = notice;
+	}
+	
 }

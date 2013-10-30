@@ -84,6 +84,7 @@
 		    android:textColor="#5cc8ca"
 		    android:layout_marginRight="10dip"
 		    android:textSize="15dip"
+		    android:visibility="gone"
 		    android:textStyle="bold"/>
 	</RelativeLayout>
 	<LinearLayout

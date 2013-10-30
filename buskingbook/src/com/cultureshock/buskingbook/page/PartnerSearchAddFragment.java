@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cultureshock.buskingbook.R;
+import com.cultureshock.buskingbook.component.ReadMessagePopup;
 import com.cultureshock.buskingbook.component.ViewPagerAdapter;
 import com.cultureshock.buskingbook.list.LineUpListView;
 import com.cultureshock.buskingbook.list.PartnerSearchListView;
@@ -34,6 +35,7 @@ import com.cultureshock.buskingbook.net.HttpClientNet;
 import com.cultureshock.buskingbook.net.Params;
 import com.cultureshock.buskingbook.object.LineUpObject;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
+import com.cultureshock.buskingbook.object.MessageObject;
 import com.cultureshock.buskingbook.object.PartnerSearchObject;
 import com.cultureshock.buskingbook.service.ServiceType;
 import com.cultureshock.buskingbook.util.AsyncImageLoader;
@@ -101,11 +103,20 @@ public class PartnerSearchAddFragment extends Fragment implements View.OnClickLi
     public void onDestroy() {
         super.onDestroy();
     }
-
+    public void requestReadMessage()
+   	{
+   		HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_MESSAGE_READ);
+   		ArrayList<Params> loginParams = new ArrayList<Params>();
+   		loginParams.add(new Params("id", LoginInfoObject.getInstance().getId()));
+   		loginService.setParam(loginParams);
+   		loginService.doAsyncExecute(this);
+   		MainActivity.getInstance().startProgressDialog();
+   	}
     @Override
     public synchronized void onClick(View v) {
         switch (v.getId()) {
         case R.id.firend_search_top:
+        	requestReadMessage();
         	break;
         case R.id.title_btn_menu:
             MainActivity.getInstance().showMenu();
@@ -161,6 +172,31 @@ public class PartnerSearchAddFragment extends Fragment implements View.OnClickLi
 			{
 				Toast.makeText(mContext, "등록되었습니다!", Toast.LENGTH_SHORT).show();
 				MainActivity.getInstance().replaceFragment(PartnerSearchFragment.class, null, false);
+			}
+			else if(object.getJSONObject("result").optString("type").equals("ServiceType.MSG_MESSGAE_READ"))
+			{
+				try{
+				JSONArray todayTime = object.getJSONArray("data");
+				ArrayList<MessageObject> k = new ArrayList<MessageObject>();
+				for(int i=0; i<todayTime.length(); i++)
+				{
+					JSONObject jsonObject = todayTime.getJSONObject(i);
+					String id = jsonObject.optString("id");
+					String name = jsonObject.optString("name");
+					String sendname = jsonObject.optString("sendname");
+					String sendid = jsonObject.optString("sendid");
+					String sendphone = jsonObject.optString("sendphone");
+					String coment = jsonObject.optString("coment");
+					String times = jsonObject.optString("times");
+					k.add(new MessageObject(id,name,sendid,sendname,sendphone,coment,times));
+				}
+				new ReadMessagePopup(mContext, k);
+				}
+				catch(Exception e)
+				{
+					Toast.makeText(mContext, "메세지가 없습니다", Toast.LENGTH_LONG).show();
+					e.printStackTrace();
+				}
 			}
 		}
 		catch(Exception e )

@@ -53,7 +53,7 @@
 	            android:textSize="15dip"
 	            android:textColor="#000000"
 	            android:text="팀이름"
-	            android:layout_marginLeft="30dip"/>
+	            android:layout_marginLeft="15dip"/>
 	    </LinearLayout>
 	    <LinearLayout
 	        android:layout_width="match_parent"
@@ -73,7 +73,8 @@
 	            android:background="#ffffff"
 	            android:hint="버스커소개 30자이내"
 	            android:maxLength="30"
-	            android:layout_marginLeft="30dip"/>
+	            android:layout_marginLeft="15dip"
+	            android:layout_marginRight="15dip"/>
 	    </LinearLayout>
 	    <LinearLayout
 	        android:layout_width="match_parent"
@@ -87,13 +88,15 @@
 	        <EditText
 	            android:id="@+id/team_page_team_notice"
 	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content"
+	            android:layout_height="150dip"
 	            android:textSize="15dip"
 	            android:textColor="#000000"
 	            android:background="#ffffff"
 	            android:hint="공지글 100자이내"
 	            android:maxLength="100"
-	            android:layout_marginLeft="30dip"/>
+	            android:gravity="top"
+	            android:layout_marginLeft="15dip"
+	            android:layout_marginRight="15dip"/>
 	    </LinearLayout>
 	    <LinearLayout
 	        android:layout_width="match_parent"
@@ -109,6 +112,23 @@
 	    android:orientation="vertical"
 	    android:layout_marginBottom="10dip"/>
 	<LinearLayout
+	    android:id="@+id/team_page_change_data"
+	    android:layout_width="match_parent"
+	    android:layout_height="50dip"
+	    android:layout_alignParentBottom="true"
+	    android:layout_marginLeft="30dip"
+	    android:layout_marginRight="30dip"
+	    android:background="#f2f2f2"
+	    android:gravity="center"
+	    android:layout_marginBottom="30dip">
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="변경하기"
+	        android:textSize="12dip"
+	        android:textColor="#000000"/>
+	</LinearLayout>
+	<LinearLayout
 	    android:id="@+id/team_page_team_out"
 	    android:layout_width="match_parent"
 	    android:layout_height="50dip"
@@ -117,6 +137,7 @@
 	    android:layout_marginRight="30dip"
 	    android:background="#f2f2f2"
 	    android:gravity="center"
+	    android:visibility="gone"
 	    android:layout_marginBottom="30dip">
 	    <TextView
 	        android:layout_width="wrap_content"

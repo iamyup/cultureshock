@@ -37,13 +37,13 @@
 		    <RelativeLayout 
 		        android:id="@+id/busker_join_img_add"
 		        android:layout_width="match_parent"
-		        android:layout_height="180dip"
+		        android:layout_height="150dip"
 		        android:orientation="vertical"
 		        android:background="#e6e7e9">
 		        <ImageView
 		            android:id="@+id/busker_join_img_imageview"
 		            android:layout_width="match_parent"
-		            android:layout_height="180dip"
+		            android:layout_height="150dip"
 		            android:scaleType="fitXY"/>
 		        <ImageView
 		              android:id="@+id/busker_btn_img_add"
@@ -66,22 +66,32 @@
 		        android:id="@+id/busker_join_name"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:gravity="center"
-		        android:background="#e6e7e9"
+		        android:background="#ffffff"
 		        android:layout_marginLeft="15dip"
 		        android:layout_marginRight="15dip"
 		        android:layout_marginTop="30dip">
 		        <EditText
 		            android:id="@+id/busker_join_name_text"
-		            android:layout_width="match_parent"
+		            android:layout_width="280dip"
 		            android:layout_height="50dip"
-		            android:hint="버스커이름" 
+		            android:hint="팀이름" 
+		            android:singleLine="true"
 		            android:paddingLeft="10dip"
 		            android:textSize="15dip"
 		            android:textColor="#818284"
-		            android:background="#e6e7e9"/>
-		        
+		            android:background="#ffffff"/>
+		        <ImageView
+               android:id="@+id/double_check_img"
+               android:layout_width="wrap_content"
+               android:layout_gravity="center_vertical"
+               android:layout_height="wrap_content"/>
 		    </LinearLayout>
+		     <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="1dip"
+               android:layout_marginLeft="15dip"
+		        android:layout_marginRight="15dip"
+               android:background="#ededed"/>
 		    <LinearLayout 
 		        android:id="@+id/busker_join_info"
 		        android:layout_width="match_parent"
@@ -99,9 +109,15 @@
 		            android:paddingLeft="10dip"
 		            android:textSize="15dip"
 		            android:textColor="#818284"
-		            android:background="#e6e7e9"/>
+		            android:background="#ffffff"/>
 		        
 		    </LinearLayout>
+		     <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="1dip"
+               android:layout_marginLeft="15dip"
+		        android:layout_marginRight="15dip"
+               android:background="#ededed"/>
 		    <LinearLayout 
 		        android:id="@+id/busker_join_genre"
 		        android:layout_width="match_parent"
@@ -119,24 +135,29 @@
 		            android:paddingLeft="10dip"
 		            android:textSize="15dip"
 		            android:textColor="#818284"
-		            android:background="#e6e7e9"/>
+		            android:background="#ffffff"/>
 		        
 		    </LinearLayout>
-		    
+		     <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="1dip"
+               android:layout_marginLeft="15dip"
+		        android:layout_marginRight="15dip"
+               android:background="#ededed"/>
 		</LinearLayout>
 		<LinearLayout
 		    android:id="@+id/busker_btn_join"
 		    android:layout_width="match_parent"
-		    android:layout_height="80dip"
-		    android:background="#e6e7e9"
+		    android:layout_height="60dip"
+		    android:background="#01d0d2"
 		    android:layout_alignParentBottom="true"
 		    android:gravity="center">
 		    <TextView
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:text="다음단계"
+		        android:text="등록하기"
 		        android:textSize="15dip"
-		        android:textColor="#01d0d2"/>
+		        android:textColor="#ffffff"/>
 		</LinearLayout>
 	</RelativeLayout>
 	 <RelativeLayout

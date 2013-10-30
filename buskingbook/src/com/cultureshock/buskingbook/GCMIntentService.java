@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.cultureshock.buskingbook.main.GCMPopupActivity;
 import com.cultureshock.buskingbook.main.MainActivity;
+import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.page.BuskerJoinFragment;
 import com.google.android.gcm.GCMBaseIntentService;
 
@@ -45,7 +46,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 			// Log.d(tag, "onMessage. "+key+" : "+value);
 			// }
 			Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-			long milliseconds = 1000;
+			long milliseconds = 1500;
 			vibrator.vibrate(milliseconds);
 
 			PowerManager powerManager = (PowerManager) context
@@ -56,7 +57,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 							| PowerManager.ACQUIRE_CAUSES_WAKEUP, "TEST_1");
 
 			/* 10초 동안 화면 및 cpu 활성화 */
-			wakeLock.acquire(10000);
+			wakeLock.acquire(15000);
 
 			// 상태바 공지
 
@@ -72,9 +73,8 @@ public class GCMIntentService extends GCMBaseIntentService {
 			Notification notification = new Notification(R.drawable.ic_stat_36,
 					value, System.currentTimeMillis());
 			PendingIntent pendingIntent = null;
-
 			pendingIntent = PendingIntent.getActivity(context, 0, new Intent(
-					context, FirstStartActivity.class)
+					context, MainActivity.class)
 					.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
 							| Intent.FLAG_ACTIVITY_CLEAR_TOP
 							| Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET),
@@ -82,6 +82,51 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 			notification.setLatestEventInfo(context, "버스킹알림!", value,
 					pendingIntent);
+//			if(LoginInfoObject.getInstance() != null)
+//			{
+//				if(LoginInfoObject.getInstance().getId() == null)
+//				{
+//					pendingIntent = PendingIntent.getActivity(context, 0, new Intent(
+//							context, FirstStartActivity.class)
+//							.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//									| Intent.FLAG_ACTIVITY_CLEAR_TOP
+//									| Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET),
+//							PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//					notification.setLatestEventInfo(context, "버스킹알림!", value,
+//							pendingIntent);
+//				}
+//				if(LoginInfoObject.getInstance().isLogin())
+//				{
+//					
+//				}
+//				else
+//				{
+//					pendingIntent = PendingIntent.getActivity(context, 0, new Intent(
+//							context, FirstStartActivity.class)
+//							.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//									| Intent.FLAG_ACTIVITY_CLEAR_TOP
+//									| Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET),
+//							PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//					notification.setLatestEventInfo(context, "버스킹알림!", value,
+//							pendingIntent);
+//				}
+//			}
+//			else
+//			{
+//				pendingIntent = PendingIntent.getActivity(context, 0, new Intent(
+//						context, FirstStartActivity.class)
+//						.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//								| Intent.FLAG_ACTIVITY_CLEAR_TOP
+//								| Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET),
+//						PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//				notification.setLatestEventInfo(context, "버스킹알림!", value,
+//						pendingIntent);
+//			}
+			
+			
 			// 해당 메세지 선택시 상태바 아이콘 삭제
 			notification.flags = Notification.FLAG_AUTO_CANCEL;
 			nm.cancel(0);

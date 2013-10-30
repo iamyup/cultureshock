@@ -328,7 +328,12 @@
 		    android:textSize="15dip"
 		    android:text="로그아웃"
 		    android:textColor="#ffffff" />
+		
 	</RelativeLayout>
+	<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="1dip"
+			    android:background="#3c3c3c"/>
 		</LinearLayout>
 	</LinearLayout>
 	</RelativeLayout>

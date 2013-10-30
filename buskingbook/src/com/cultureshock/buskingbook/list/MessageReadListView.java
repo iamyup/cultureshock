@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoginAlertPopup;
+import com.cultureshock.buskingbook.component.MessageDeleteAlertPopup;
 import com.cultureshock.buskingbook.component.SendMessagePopup;
 import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.list.LineUpListView.IntromTeamListAdapter;
@@ -57,10 +58,12 @@ import android.widget.Toast;
 
 public class MessageReadListView extends ListView implements HttpClientNet.OnResponseListener
 {
+	public static int DELETE_MESSGE_S = 123;
 	private Context mContext;
 	private MessageAdapter listAdapter;
-	
+	private Handler m_oHandler;
 	ViewHolder holder;
+	private MessageObject currentObject;
 	private ArrayList<MessageObject> partnerObject = new ArrayList<MessageObject>();
 	
 	public MessageReadListView(Context context) {
@@ -73,6 +76,13 @@ public class MessageReadListView extends ListView implements HttpClientNet.OnRes
 		this.partnerObject = (ArrayList<MessageObject>) list;
 		listAdapter = new MessageAdapter(partnerObject);
 		setAdapter(listAdapter);
+		if(m_oHandler == null)
+			m_oHandler = new Handler(){
+			public void handleMessage(Message msg)
+			{
+				requestDeleteMessage(LoginInfoObject.getInstance().getId(), currentObject.getSendid(), currentObject.getTimes());
+			};
+		};
 	}
 	public MessageReadListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -166,8 +176,8 @@ public class MessageReadListView extends ListView implements HttpClientNet.OnRes
 					// TODO Auto-generated method stub
 					int pos = (Integer) v.getTag(R.id.imageId);
 					//데이터 삭제
-					MessageObject itemObject = getItem(pos);
-					requestDeleteMessage(LoginInfoObject.getInstance().getId(), itemObject.getSendid(), itemObject.getTimes());
+					currentObject = getItem(pos);
+					new MessageDeleteAlertPopup(mContext,m_oHandler);
 				}
 			});
 	    	holder.addBtn.setOnClickListener(new OnClickListener() {

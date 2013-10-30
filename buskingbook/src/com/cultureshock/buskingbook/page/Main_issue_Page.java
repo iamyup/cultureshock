@@ -199,7 +199,7 @@ public class Main_issue_Page extends LinearLayout implements
 			}
 		}
 		Drawable default1 = null;
-		default1 = mContext.getResources().getDrawable(R.drawable.loading_3);
+		default1 = mContext.getResources().getDrawable(R.drawable.loading_new_2);
 		m_oAsyncImageLoader.setImageDrawableAsync(mImg, bestTeam.getTeamThum(),
 				default1, default1, mContext);
 		mTeamname.setText(bestTeam.getTeamName());

@@ -37,7 +37,7 @@
 	<ScrollView
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
-	    android:background="#eaeaea"
+	    android:background="#ffffff"
 	    android:layout_below="@+id/title">
 	<LinearLayout
 	    android:layout_width="match_parent"
@@ -45,8 +45,7 @@
 	    android:orientation="vertical">
 		<RelativeLayout
 		    android:layout_width="match_parent"
-		    android:layout_height="match_parent"
-		    android:layout_below="@+id/busker_title">
+		    android:layout_height="match_parent">
 		    <LinearLayout 
 		        android:id="@+id/busker_join_img_add_2"
 		        android:layout_width="match_parent"
@@ -123,15 +122,17 @@
 		    </RelativeLayout>
 		    </LinearLayout>
 		    <LinearLayout
+		        android:id="@+id/line_ab"
 		    android:layout_width="match_parent"
 		    android:layout_height="1dip"
+		    android:layout_below="@+id/busker_join_img_add_2"
 		    android:background="#f2f2f2"/>
 		    <LinearLayout
 	        android:id="@+id/item_lineup_bottom"
 	        android:layout_width="match_parent"
 	        android:layout_height="45dip"
 	        android:gravity="center_vertical"
-	        android:layout_below="@+id/busker_join_img_add_2"
+	        android:layout_below="@+id/line_ab"
 	        android:background="#eaeaea">
 		     <LinearLayout
 		         android:id="@+id/like_select"
@@ -163,55 +164,93 @@
 	        
   		  </LinearLayout>
   		  <LinearLayout
+  		      android:id="@+id/line_sf"
 		    android:layout_width="match_parent"
 		    android:layout_height="1dip"
+		    android:layout_below="@+id/item_lineup_bottom"
 		    android:background="#f2f2f2"/>
-  		  <LinearLayout
+  		  <RelativeLayout
   		      android:id="@+id/team_time_list"
   		      android:layout_width="match_parent"
-  		      android:layout_below="@+id/item_lineup_bottom"
+  		      android:layout_below="@+id/line_sf"
   		      android:layout_height="50dip"
-  		      android:background="#ffffff"
-  		      android:gravity="center_vertical">
+  		      android:background="#ffffff">
 		      <TextView
+		            android:id="@+id/text_info_e"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:text="공연소식"
 		            android:textSize="15dip"
+		            android:layout_centerVertical="true"
 		            android:textColor="#01d0d2"
 		            android:layout_marginLeft="15dip"/>
 		      <TextView
 		          	android:id="@+id/team_time_info"
-		            android:layout_width="230dip"
+		            android:layout_width="180dip"
+		            android:layout_toRightOf="@+id/text_info_e"
 		            android:layout_height="wrap_content"
 		            android:text=""
 		            android:singleLine="true"
 		            android:ellipsize="end"
+		            android:layout_centerVertical="true"
 		            android:textSize="15dip"
 		            android:textColor="#000000"
-		            android:layout_marginLeft="15dip"/>
+		            android:layout_marginLeft="10dip"/>
 		      <ImageView
 		          android:id="@+id/team_time_place_info"
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content"
 		          android:background="@drawable/red_pin"
-		          android:layout_marginLeft="15dip"/>
+		          android:layout_centerVertical="true"
+		          android:layout_toRightOf="@+id/team_time_info"/>
+		      <ImageView
+		          android:id="@+id/team_time_bunge"
+		          android:layout_width="wrap_content"
+		          android:layout_height="wrap_content"
+		          android:layout_alignParentRight="true"
+		          android:layout_centerVertical="true"
+		          android:background="@drawable/bunge_alram"
+		          android:layout_marginRight="10dip"/>
   		      
-  		  </LinearLayout>
+  		  </RelativeLayout>
   		  <LinearLayout
+  		      android:id="@+id/up_linewer"
 		    android:layout_width="match_parent"
 		    android:layout_height="1dip"
+		    android:layout_below="@+id/team_time_list"
 		    android:background="#f2f2f2"/>
+  		  
+  		  </RelativeLayout>
   		  <LinearLayout
   		      android:id="@+id/team_facebook_table"
   		      android:layout_width="match_parent"
   		      android:layout_height="match_parent"
-  		      android:layout_below="@+id/team_time_list"
-  		      android:background="#eaeaea"
+  		      android:background="#ffffff"
   		      android:orientation="vertical">
+		      <TextView
+		          android:layout_marginTop="15dip"
+		          android:layout_marginLeft="15dip"
+		          android:layout_marginRight="15dip"
+		          android:layout_width="wrap_content"
+		          android:layout_height="wrap_content"
+		          android:text="공지사항"
+		          android:textSize="15dip"
+		          android:textStyle="bold"
+		          android:textColor="#000000"
+		          android:maxLines="15"/>
+		      <TextView
+		          android:id="@+id/notice"
+		          android:layout_marginTop="15dip"
+		          android:layout_marginLeft="15dip"
+		          android:layout_marginRight="15dip"
+		          android:layout_width="wrap_content"
+		          android:layout_height="wrap_content"
+		          android:text="공지사항이 없습니다"
+		          android:textSize="12dip"
+		          android:textColor="#000000"
+		          android:maxLines="15"/>
   		      
   		  </LinearLayout>
-  		  </RelativeLayout>
     </LinearLayout>
     </ScrollView>
 </RelativeLayout>
