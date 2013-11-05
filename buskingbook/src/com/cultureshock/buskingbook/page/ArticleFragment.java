@@ -24,7 +24,6 @@ import android.widget.Toast;
 
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.ViewPagerAdapter;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.list.IssueNewListView;
 import com.cultureshock.buskingbook.list.LikeTeamListView;
 import com.cultureshock.buskingbook.main.LeftMenuFragment;
@@ -39,7 +38,6 @@ import com.cultureshock.buskingbook.util.AsyncImageLoader;
 
 public class ArticleFragment extends Fragment implements View.OnClickListener, HttpClientNet.OnResponseListener{
     private FragmentActivity mContext;
-    private static ArticleFragment mInstance;
     private ImageView m_oBtnList;
     private String teamname; //아티클 팀네임 이름
     private ImageView m_oTitleImge;
@@ -70,7 +68,6 @@ public class ArticleFragment extends Fragment implements View.OnClickListener, H
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-        mInstance = this;
         
         
         Bundle bundle = getArguments();
@@ -102,9 +99,6 @@ public class ArticleFragment extends Fragment implements View.OnClickListener, H
         m_oA5 = (TextView)getActivity().findViewById(R.id.main_article_a5);
         
         requestAricle();
-    }
-    public static ArticleFragment getInstance() {
-        return mInstance;
     }
 
     public void setDataUI() {

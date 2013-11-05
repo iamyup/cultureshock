@@ -562,7 +562,10 @@ public class AsyncImageLoader
 				return null;
 
 			final int	content_length = urlConnection.getContentLength();
-			//if(content_length > 204800)
+			if(content_length > 204800)
+			{
+				return null;
+			}
 			/**
 			 * 용량 제한 일단 풀어놓음 !
 			 */

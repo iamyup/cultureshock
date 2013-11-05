@@ -31,7 +31,6 @@ import android.widget.Toast;
 
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoadingPopup;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
 import com.cultureshock.buskingbook.net.Params;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
@@ -42,7 +41,6 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
     private static final String TEMP_PHOTO_FILE = "tmp_profile.jpg";
 
     private Context mContext;
-    private static JoinActivity mInstance;
     
     private LinearLayout m_oImageUpload;
     private ImageView m_oImage;
@@ -68,7 +66,6 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.join);
         mContext = this;
-        mInstance = this;
         setUi();
        
     }
@@ -107,11 +104,6 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
     	m_oImageUpload.setOnClickListener(this);
     	m_oBtnConfirm.setOnClickListener(this);
     }
-    public static JoinActivity getInstance() {
-        return mInstance;
-    }
-
-  
     @Override
     protected void onResume() {
         super.onResume();

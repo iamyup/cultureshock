@@ -12,7 +12,6 @@ import com.cultureshock.buskingbook.R;
 
 public class PaperDisplayFragment extends Fragment implements OnClickListener {
 	private FragmentActivity mContext;
-	private static PaperDisplayFragment mInstance;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -24,13 +23,7 @@ public class PaperDisplayFragment extends Fragment implements OnClickListener {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		mContext = getActivity();
-		mInstance = this;
 	}
-
-	public static PaperDisplayFragment getInstance() {
-		return mInstance;
-	}
-
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

@@ -17,7 +17,6 @@ import com.cultureshock.buskingbook.main.MainActivity;
 
 public class PaperStickerFragment extends Fragment implements OnClickListener {
     private FragmentActivity mContext;
-    private static PaperStickerFragment mInstance;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,7 +28,6 @@ public class PaperStickerFragment extends Fragment implements OnClickListener {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-        mInstance = this;
 
         mContext.findViewById(R.id.paper_menu).setOnClickListener(new OnClickListener() {
             @Override
@@ -62,10 +60,6 @@ public class PaperStickerFragment extends Fragment implements OnClickListener {
         String string = bundle.getString("input");
         TextView textView = (TextView) mContext.findViewById(R.id.paper_string);
         textView.setText(string);
-    }
-
-    public static PaperStickerFragment getInstance() {
-        return mInstance;
     }
 
     @Override

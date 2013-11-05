@@ -23,7 +23,6 @@ import android.widget.Toast;
 
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.ViewPagerAdapter;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.main.JoinActivity;
 import com.cultureshock.buskingbook.main.LeftMenuFragment;
 import com.cultureshock.buskingbook.main.MainActivity;
@@ -36,7 +35,6 @@ import com.cultureshock.buskingbook.service.ServiceType;
 
 public class BuskerJoinFragment extends Fragment implements View.OnClickListener, HttpClientNet.OnResponseListener{
     private FragmentActivity mContext;
-    private static BuskerJoinFragment mInstance;
     /*
      * version 1
      */
@@ -79,7 +77,6 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-        mInstance = this;
         setUi();
     }
 
@@ -133,9 +130,6 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
     	 m_oBtnNext.setOnClickListener(this);
     }
    
-    public static BuskerJoinFragment getInstance() {
-        return mInstance;
-    }
 
     public void setDataUI() {
         if (getView() == null) {
@@ -320,7 +314,7 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
 					checkNet = false;
 					Toast.makeText(mContext, "팀 등록되었습니다.", Toast.LENGTH_SHORT).show();
 					LoginInfoObject.getInstance().setMyteam(m_oTeamName);
-					BaseActivity.getTeamObject().add(new TeamObject(m_oTeamName,teamMember,m_oTeamMember,m_oGenre,m_oTeamInfo,m_oTeamImgStr));
+					MainActivity.getTeamObject().add(new TeamObject(m_oTeamName,teamMember,m_oTeamMember,m_oGenre,m_oTeamInfo,m_oTeamImgStr));
 					MainActivity.getInstance().replaceFragment(MainHomeFragment.class, null, false);
 					LeftMenuFragment.getInstance().loginSatatus();
 					

@@ -9,7 +9,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.cultureshock.buskingbook.R;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
 import com.cultureshock.buskingbook.net.Params;

@@ -34,7 +34,6 @@ import android.widget.Toast;
 import com.cultureshock.buskingbook.FirstStartActivity;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoadingPopup;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
 import com.cultureshock.buskingbook.net.Params;
 import com.cultureshock.buskingbook.page.MainHomeFragment;

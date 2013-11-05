@@ -14,7 +14,6 @@ import org.json.JSONObject;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoginAlertPopup;
 import com.cultureshock.buskingbook.component.SendMessagePopup;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.list.LineUpListView.IntromTeamListAdapter;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;

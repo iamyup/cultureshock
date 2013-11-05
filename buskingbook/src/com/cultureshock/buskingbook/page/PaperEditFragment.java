@@ -20,7 +20,6 @@ import com.cultureshock.buskingbook.main.MainActivity;
 
 public class PaperEditFragment extends Fragment {
     private FragmentActivity mContext;
-    private static PaperEditFragment mInstance;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,7 +31,6 @@ public class PaperEditFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-        mInstance = this;
 
         mContext.findViewById(R.id.paper_menu).setOnClickListener(new OnClickListener() {
             @Override
@@ -57,9 +55,6 @@ public class PaperEditFragment extends Fragment {
         });
     }
 
-    public static PaperEditFragment getInstance() {
-        return mInstance;
-    }
 
     @Override
     public void onDestroy() {

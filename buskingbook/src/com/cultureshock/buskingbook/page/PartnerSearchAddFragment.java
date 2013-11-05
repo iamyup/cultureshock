@@ -42,7 +42,6 @@ import com.cultureshock.buskingbook.util.AsyncImageLoader;
 
 public class PartnerSearchAddFragment extends Fragment implements View.OnClickListener, HttpClientNet.OnResponseListener{
     private FragmentActivity mContext;
-    private static PartnerSearchAddFragment mInstance;
     private TextView m_oBtnTest;
     private ImageView m_oBtnList;
     private RelativeLayout m_oBtnMessage;
@@ -63,7 +62,6 @@ public class PartnerSearchAddFragment extends Fragment implements View.OnClickLi
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-        mInstance = this;
 
         m_oBtnTest = (TextView) getActivity().findViewById(R.id.test_main);
         m_oBtnTest.setOnClickListener(this);
@@ -89,9 +87,6 @@ public class PartnerSearchAddFragment extends Fragment implements View.OnClickLi
     	m_oBtnTest.setText(txt);
     }
    
-    public static PartnerSearchAddFragment getInstance() {
-        return mInstance;
-    }
 
     public void setDataUI() {
         if (getView() == null) {

@@ -23,7 +23,6 @@ import android.widget.Toast;
 
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoadingPopup;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
 import com.cultureshock.buskingbook.net.Params;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
@@ -33,7 +32,6 @@ import com.cultureshock.buskingbook.service.ServiceType;
 
 public class LoginActivity extends Activity implements View.OnClickListener, HttpClientNet.OnResponseListener {
     private Context mContext;
-    private static LoginActivity mInstance;
     private LoadingPopup loading;
     private EditText m_oEmail;
     private EditText m_oPassword;
@@ -54,7 +52,6 @@ public class LoginActivity extends Activity implements View.OnClickListener, Htt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login2);
         mContext = this;
-        mInstance = this;
         setUi();
        
     }
@@ -70,10 +67,6 @@ public class LoginActivity extends Activity implements View.OnClickListener, Htt
     	m_oBtnFacebookConfirm.setOnClickListener(this);
     	m_oBtnConfirm.setOnClickListener(this);
     }
-    public static LoginActivity getInstance() {
-        return mInstance;
-    }
-
   
     @Override
     protected void onResume() {
@@ -196,7 +189,7 @@ public class LoginActivity extends Activity implements View.OnClickListener, Htt
 				startActivity(intent);
 				LoginJoinActivity.getInstance().finish();
 				finish();
-				ArrayList<TeamObject> obj = BaseActivity.getTeamObject();
+				ArrayList<TeamObject> obj = MainActivity.getTeamObject();
 				if(checkAutoLogin)
 				{
 					SharedPreferences sp = getSharedPreferences("autologin", MODE_PRIVATE);

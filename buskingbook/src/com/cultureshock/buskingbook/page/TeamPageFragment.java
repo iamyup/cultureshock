@@ -28,7 +28,6 @@ import android.widget.Toast;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoginAlertPopup;
 import com.cultureshock.buskingbook.component.ViewPagerAdapter;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.list.LineUpListView;
 import com.cultureshock.buskingbook.main.LeftMenuFragment;
 import com.cultureshock.buskingbook.main.MainActivity;
@@ -44,7 +43,6 @@ import com.cultureshock.buskingbook.util.AsyncImageLoader;
 public class TeamPageFragment extends Fragment implements View.OnClickListener, HttpClientNet.OnResponseListener{
     private FragmentActivity mContext;
     private AsyncImageLoader m_oAsyncImageLoader = new AsyncImageLoader();
-    private static TeamPageFragment mInstance;
     private ArrayList<LineUpObject> lineUpObject = new ArrayList<LineUpObject>();
     private String teamName;
     private String ranking;
@@ -79,7 +77,6 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-        mInstance = this;
         requestTimeTable();
         Bundle bundle = getArguments();
         teamName = bundle.getString("object");
@@ -87,11 +84,11 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
         {
         	checkTeamHost = true;
         }
-        for(int i = 0 ; i < BaseActivity.getTeamObject().size() ; i++)
+        for(int i = 0 ; i < MainActivity.getTeamObject().size() ; i++)
 		{
-			if(teamName.equals(BaseActivity.getTeamObject().get(i).getTeamName()))
+			if(teamName.equals(MainActivity.getTeamObject().get(i).getTeamName()))
 			{
-				selectMyTeam = BaseActivity.getTeamObject().get(i);
+				selectMyTeam = MainActivity.getTeamObject().get(i);
 				ranking = (i+1)+"";
 				break;
 			}
@@ -124,6 +121,7 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
     }
     public void dataUiset()
     {
+    	try{
     	for(int i = 0 ; i< LoginInfoObject.getInstance().getLikeTeamList().size() ; i++)
 		{
 			if(LoginInfoObject.getInstance().getLikeTeamList().get(i).equals(selectMyTeam.getTeamName()))
@@ -132,6 +130,11 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
 				break;
 			}
 		}
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
     	Drawable default1 = null;
     	default1 =  mContext.getResources().getDrawable(R.drawable.loading_new_2);
     	m_oAsyncImageLoader.setImageDrawableAsync(mImg,selectMyTeam.getTeamThum(),default1,default1,mContext);
@@ -153,10 +156,6 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
     	
     }
    
-    public static TeamPageFragment getInstance() {
-        return mInstance;
-    }
-
     public void setDataUI() {
         if (getView() == null) {
             return;
@@ -315,12 +314,12 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
 					//개인데이터에 내가 좋아요 눌른 팀 체크
 					LoginInfoObject.getInstance().getLikeTeamList().add(selectMyTeam.getTeamName());
 					//로컬 카운트 + 1 , 그 팀 이 직접가지고 있는 라이크 눌른 인원들에 대한 아이디 추가
-					for(int i = 0 ; i < BaseActivity.getTeamObject().size() ; i++)
+					for(int i = 0 ; i < MainActivity.getTeamObject().size() ; i++)
 					{
-						if(selectMyTeam.getTeamName().equals(BaseActivity.getTeamObject().get(i).getTeamName()))
+						if(selectMyTeam.getTeamName().equals(MainActivity.getTeamObject().get(i).getTeamName()))
 						{
-							BaseActivity.getTeamObject().get(i).setLikeCount(BaseActivity.getTeamObject().get(i).getLikeCount()+1);
-							BaseActivity.getTeamObject().get(i).getLikeMans().add(LoginInfoObject.getInstance().getId());
+							MainActivity.getTeamObject().get(i).setLikeCount(MainActivity.getTeamObject().get(i).getLikeCount()+1);
+							MainActivity.getTeamObject().get(i).getLikeMans().add(LoginInfoObject.getInstance().getId());
 							dataUiset();
 							break;
 							

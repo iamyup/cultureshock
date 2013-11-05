@@ -39,7 +39,6 @@ import com.cultureshock.buskingbook.service.ServiceType;
 
 public class PartnerSearchFragment extends Fragment implements View.OnClickListener, HttpClientNet.OnResponseListener{
     private FragmentActivity mContext;
-    private static PartnerSearchFragment mInstance;
     private TextView m_oBtnTest;
     private ImageView m_oBtnList;
     private ImageButton m_oBtnWriter;
@@ -58,7 +57,6 @@ public class PartnerSearchFragment extends Fragment implements View.OnClickListe
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-        mInstance = this;
 
         m_oBtnTest = (TextView) getActivity().findViewById(R.id.test_main);
         m_oBtnTest.setOnClickListener(this);
@@ -81,9 +79,6 @@ public class PartnerSearchFragment extends Fragment implements View.OnClickListe
     	m_oBtnTest.setText(txt);
     }
    
-    public static PartnerSearchFragment getInstance() {
-        return mInstance;
-    }
 
     public void setDataUI() {
         if (getView() == null) {

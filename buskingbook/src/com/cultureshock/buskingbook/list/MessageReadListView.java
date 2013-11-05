@@ -15,7 +15,6 @@ import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoginAlertPopup;
 import com.cultureshock.buskingbook.component.MessageDeleteAlertPopup;
 import com.cultureshock.buskingbook.component.SendMessagePopup;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.list.LineUpListView.IntromTeamListAdapter;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
@@ -40,6 +39,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Contacts;
 import android.provider.Contacts.Intents;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -186,14 +186,14 @@ public class MessageReadListView extends ListView implements HttpClientNet.OnRes
 					// TODO Auto-generated method stub
 					int pos = (Integer) v.getTag(R.id.imageId);
 					//전화번호 등록하도록
-					Intent intent = new Intent(Intent.ACTION_INSERT);
-					ComponentName insertComponentName = new ComponentName(
-					               "com.android.contacts", "com.android.contacts.ui.EditContactActivity");
-					intent.setComponent(insertComponentName);
+					Intent intent = new Intent(Contacts.Intents.Insert.ACTION,Contacts.People.CONTENT_URI);
+//					ComponentName insertComponentName = new ComponentName(
+//					               "com.android.contacts", "com.android.contacts.ui.EditContactActivity");
+//					intent.setComponent(insertComponentName);
 					MessageObject itemObject = getItem(pos);
 					Bundle bundle = new Bundle();
 					bundle.putString(Intents.Insert.PHONE, itemObject.getSendphone());
-					bundle.putString(Intents.Insert.NAME, itemObject.getName());
+					bundle.putString(Intents.Insert.NAME, itemObject.getSendname());
 					intent.putExtras(bundle);
 					mContext.startActivity(intent);
 				}

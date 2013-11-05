@@ -29,7 +29,6 @@ import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.ViewPagerAdapter;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.main.LeftMenuFragment;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
@@ -42,7 +41,6 @@ import com.cultureshock.buskingbook.service.ServiceType;
 
 public class TimeJoinFragment extends Fragment implements View.OnClickListener, HttpClientNet.OnResponseListener{
     private FragmentActivity mContext;
-    private static TimeJoinFragment mInstance;
     /*
      * version 1
      */
@@ -107,7 +105,6 @@ private LinearLayout m_oBtnConfirm;
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-        mInstance = this;
         setUi();
         setValue();
     }
@@ -247,9 +244,6 @@ private LinearLayout m_oBtnConfirm;
 
         }
     };
-    public static TimeJoinFragment getInstance() {
-        return mInstance;
-    }
 
     public void setDataUI() {
         if (getView() == null) {

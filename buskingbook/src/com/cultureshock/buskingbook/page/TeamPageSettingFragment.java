@@ -27,7 +27,6 @@ import android.widget.Toast;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoginAlertPopup;
 import com.cultureshock.buskingbook.component.ViewPagerAdapter;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.list.LineUpListView;
 import com.cultureshock.buskingbook.list.MemberListView;
 import com.cultureshock.buskingbook.main.LeftMenuFragment;

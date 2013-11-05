@@ -70,7 +70,6 @@ public class Main_LineUp_Page extends LinearLayout implements
 		// TODO Auto-generated constructor stub
 		super(context);
 		mContext = context;
-		MainHomeFragment.getInstance().setTitle("라인 UP");
 		initView();
 		requestTimeTable();
 	}
@@ -113,7 +112,6 @@ public class Main_LineUp_Page extends LinearLayout implements
 		m_oBtnPlace3.setOnClickListener(this);
 		m_oBtnPlace4.setOnClickListener(this);
 
-		MainHomeFragment.getInstance().setTitle("Line Up");
 
 	}
 

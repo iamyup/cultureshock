@@ -13,7 +13,6 @@ import org.json.JSONObject;
 
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoginAlertPopup;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.list.LineUpListView.IntromTeamListAdapter;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
@@ -196,7 +195,7 @@ public class IssueNewListView extends ListView implements
 					if (LoginInfoObject.getInstance().isLogin()) {
 						int pos = (Integer) v.getTag(R.id.imageId);
 						TeamObject itemObject = null;
-						if (BaseActivity.searchTeam(getItem(pos).getTeamName()) != null) {
+						if (MainActivity.searchTeam(getItem(pos).getTeamName()) != null) {
 							itemObject = getItem(pos);
 							int check = 0;
 							for (int i = 0; i < itemObject.getLikeMans().size(); i++) {
@@ -263,17 +262,17 @@ public class IssueNewListView extends ListView implements
 					LoginInfoObject.getInstance().getLikeTeamList()
 							.add(m_oSelectTeam.getTeamName());
 					// 로컬 카운트 + 1 , 그 팀 이 직접가지고 있는 라이크 눌른 인원들에 대한 아이디 추가
-					for (int i = 0; i < BaseActivity.getTeamObject().size(); i++) {
+					for (int i = 0; i < MainActivity.getTeamObject().size(); i++) {
 						if (m_oSelectTeam.getTeamName().equals(
-								BaseActivity.getTeamObject().get(i)
+								MainActivity.getTeamObject().get(i)
 										.getTeamName())) {
-							BaseActivity
+							MainActivity
 									.getTeamObject()
 									.get(i)
 									.setLikeCount(
-											BaseActivity.getTeamObject().get(i)
+											MainActivity.getTeamObject().get(i)
 													.getLikeCount() + 1);
-							BaseActivity.getTeamObject().get(i).getLikeMans()
+							MainActivity.getTeamObject().get(i).getLikeMans()
 									.add(LoginInfoObject.getInstance().getId());
 							notifyData();
 							break;

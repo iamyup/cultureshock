@@ -51,10 +51,8 @@ public class ViewPagerAdapter extends PagerAdapter implements
         final int pos = position;
         if (position == 0) {
             v = new Main_LineUp_Page(m_Context); 
-           MainHomeFragment.getInstance().setTitle("라인 UP");
         } else if (position == 1) {
             v = new Main_issue_Page(m_Context);
-            MainHomeFragment.getInstance().setTitle("라인 UP");
         }
         ((ViewPager) pager).addView(v, 0);
         return v;

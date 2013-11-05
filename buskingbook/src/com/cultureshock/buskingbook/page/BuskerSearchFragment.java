@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.cultureshock.buskingbook.R;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.list.BuskerSearchListView;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.object.TeamObject;
@@ -25,7 +24,6 @@ import com.cultureshock.buskingbook.object.TeamObject;
 public class BuskerSearchFragment extends Fragment implements
 		View.OnClickListener{
 	private FragmentActivity mContext;
-	private static BuskerSearchFragment mInstance;
 	private LinearLayout mImg;
 	private LinearLayout mListLayout;
 	private LinearLayout mNoDataLayout;
@@ -43,7 +41,6 @@ public class BuskerSearchFragment extends Fragment implements
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		mContext = getActivity();
-		mInstance = this;
 		setUi();
 	}
 
@@ -73,11 +70,11 @@ public class BuskerSearchFragment extends Fragment implements
 				ArrayList<TeamObject> o = new ArrayList<TeamObject>();
 				
 				String data = s.toString();
-				for(int i = 0 ; i <BaseActivity.getTeamObject().size() ; i++)
+				for(int i = 0 ; i <MainActivity.getTeamObject().size() ; i++)
 				{
-					if(BaseActivity.getTeamObject().get(i).getTeamName().contains(data))
+					if(MainActivity.getTeamObject().get(i).getTeamName().contains(data))
 					{
-						o.add(BaseActivity.getTeamObject().get(i));
+						o.add(MainActivity.getTeamObject().get(i));
 					}
 				}
 				if(o.size()==0)
@@ -103,14 +100,9 @@ public class BuskerSearchFragment extends Fragment implements
 		if(m_oListTeamView == null)
 		{
 			m_oListTeamView = new BuskerSearchListView(mContext);
-			m_oListTeamView.setListData(BaseActivity.getTeamObject());
+			m_oListTeamView.setListData(MainActivity.getTeamObject());
 		}
 		mListLayout.addView(m_oListTeamView);
-	}
-
-
-	public static BuskerSearchFragment getInstance() {
-		return mInstance;
 	}
 
 	public void setDataUI() {
@@ -143,15 +135,15 @@ public class BuskerSearchFragment extends Fragment implements
 			String data = m_oEditTextSearch.getText().toString();
 			if(data.equals(""))
 			{
-				m_oListTeamView.setListData(BaseActivity.getTeamObject());
+				m_oListTeamView.setListData(MainActivity.getTeamObject());
 				m_oListTeamView.notifyData();
 				break;
 			}
-			for(int i = 0 ; i <BaseActivity.getTeamObject().size() ; i++)
+			for(int i = 0 ; i <MainActivity.getTeamObject().size() ; i++)
 			{
-				if(BaseActivity.getTeamObject().get(i).getTeamName().contains(data))
+				if(MainActivity.getTeamObject().get(i).getTeamName().contains(data))
 				{
-					o.add(BaseActivity.getTeamObject().get(i));
+					o.add(MainActivity.getTeamObject().get(i));
 				}
 			}
 			if(o.size()==0)

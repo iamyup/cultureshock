@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.ViewPagerAdapter;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.list.IssueNewListView;
 import com.cultureshock.buskingbook.list.LikeTeamListView;
 import com.cultureshock.buskingbook.main.MainActivity;
@@ -27,7 +26,6 @@ import com.cultureshock.buskingbook.object.TeamObject;
 
 public class LikeTeamFragment extends Fragment implements OnClickListener{
     private FragmentActivity mContext;
-    private static LikeTeamFragment mInstance;
     private TextView m_oBtnTest;
     private ImageView m_oBtnList;
     private ViewPager m_oViewPager;
@@ -47,7 +45,6 @@ public class LikeTeamFragment extends Fragment implements OnClickListener{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-        mInstance = this;
 
         m_oBtnTest = (TextView) getActivity().findViewById(R.id.test_main);
         m_oBtnTest.setOnClickListener(this);
@@ -80,11 +77,11 @@ public class LikeTeamFragment extends Fragment implements OnClickListener{
     	ArrayList<String> likeTeam = LoginInfoObject.getInstance().getLikeTeamList();
     	for(int i = 0 ; i<likeTeam.size() ; i++)
     	{
-    		for(int j = 0 ;j<BaseActivity.getTeamObject().size();j++)
+    		for(int j = 0 ;j<MainActivity.getTeamObject().size();j++)
     		{
-    			if(likeTeam.get(i).equals(BaseActivity.getTeamObject().get(j).getTeamName()))
+    			if(likeTeam.get(i).equals(MainActivity.getTeamObject().get(j).getTeamName()))
     			{
-    				m_oLikeTeamObject.add(BaseActivity.getTeamObject().get(j));
+    				m_oLikeTeamObject.add(MainActivity.getTeamObject().get(j));
     				ranking.add(j);
     				break;
     			}
@@ -96,10 +93,6 @@ public class LikeTeamFragment extends Fragment implements OnClickListener{
     	m_oBtnTest.setText(txt);
     }
     
-
-    public static LikeTeamFragment getInstance() {
-        return mInstance;
-    }
 
     public void setDataUI() {
         if (getView() == null) {

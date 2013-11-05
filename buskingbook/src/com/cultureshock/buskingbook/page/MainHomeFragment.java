@@ -20,7 +20,6 @@ import com.cultureshock.buskingbook.main.MainActivity;
 
 public class MainHomeFragment extends Fragment implements OnClickListener{
     private FragmentActivity mContext;
-    private static MainHomeFragment mInstance;
     private TextView m_oBtnTest;
     private LinearLayout m_oBtnList;
     private ViewPager m_oViewPager;
@@ -35,7 +34,6 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-        mInstance = this;
 
         m_oBtnTest = (TextView) getActivity().findViewById(R.id.test_main);
         m_oBtnTest.setOnClickListener(this);
@@ -44,8 +42,6 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
         m_oBtnList.setOnClickListener(this);
         setPager();
 
-//        ImageButton paper_btn = (ImageButton) getActivity().findViewById(R.id.paper_btn);
-//        paper_btn.setOnClickListener(this);
     }
 
     public void setTitle(String txt)
@@ -83,9 +79,6 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
         });
     }
 
-    public static MainHomeFragment getInstance() {
-        return mInstance;
-    }
 
     public void setDataUI() {
         if (getView() == null) {
@@ -104,10 +97,6 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
         case R.id.title_btn_menu:
             MainActivity.getInstance().showMenu();
             break;
-//        case R.id.paper_btn:
-        	
-//            MainActivity.getInstance().replaceFragment(PaperEditFragment.class, null, false);
-//            break;
         }
     }
 }

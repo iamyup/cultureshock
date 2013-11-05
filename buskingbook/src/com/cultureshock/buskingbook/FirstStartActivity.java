@@ -24,7 +24,6 @@ import android.widget.Toast;
 
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoadingPopup;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.main.LoginJoinActivity;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
@@ -38,7 +37,6 @@ import com.google.android.gcm.GCMRegistrar;
 public class FirstStartActivity extends Activity implements
 		View.OnClickListener, HttpClientNet.OnResponseListener {
 	private Context mContext;
-	private static FirstStartActivity mInstance;
 	public static String regId;
 	private boolean netCheck = false;
 	private LoadingPopup loading;
@@ -56,7 +54,6 @@ public class FirstStartActivity extends Activity implements
 		setContentView(R.layout.first_start);
 		registGCM();
 		mContext = this;
-		mInstance = this;
 		setUi();
 		requestTeam();
 
@@ -84,10 +81,6 @@ public class FirstStartActivity extends Activity implements
 
 	public void setUi() {
 
-	}
-
-	public static FirstStartActivity getInstance() {
-		return mInstance;
 	}
 
 	@Override
@@ -145,19 +138,19 @@ public class FirstStartActivity extends Activity implements
 							likeMans.add(p[j]);
 						}
 					}
-					BaseActivity.getTeamObject().add(
+					MainActivity.getTeamObject().add(
 							new TeamObject(teamName, teamMember, teamThum,
 									likeCount, teamComent, teamSong, likeMans,notice));
 				}
-				for (int i = 0; i < BaseActivity.getTeamObject().size() - 1; i++) {
-					for (int j = i + 1; j < BaseActivity.getTeamObject().size(); j++) {
-						if (BaseActivity.getTeamObject().get(i).getLikeCount() < BaseActivity
+				for (int i = 0; i < MainActivity.getTeamObject().size() - 1; i++) {
+					for (int j = i + 1; j < MainActivity.getTeamObject().size(); j++) {
+						if (MainActivity.getTeamObject().get(i).getLikeCount() < MainActivity
 								.getTeamObject().get(j).getLikeCount()) {
-							TeamObject tempobejct = BaseActivity
+							TeamObject tempobejct = MainActivity
 									.getTeamObject().get(i);
-							BaseActivity.getTeamObject().set(i,
-									BaseActivity.getTeamObject().get(j));
-							BaseActivity.getTeamObject().set(j, tempobejct);
+							MainActivity.getTeamObject().set(i,
+									MainActivity.getTeamObject().get(j));
+							MainActivity.getTeamObject().set(j, tempobejct);
 						}
 					}
 				}

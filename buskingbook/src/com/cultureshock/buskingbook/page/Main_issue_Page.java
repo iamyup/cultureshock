@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.cultureshock.buskingbook.FirstStartActivity;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoginAlertPopup;
-import com.cultureshock.buskingbook.framework.BaseActivity;
 import com.cultureshock.buskingbook.list.IssueNewListView;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
@@ -83,8 +82,7 @@ public class Main_issue_Page extends LinearLayout implements
 		// TODO Auto-generated constructor stub
 		super(context);
 		mContext = context;
-		// MainHomeFragment.getInstance().setTitle("이슈 UP");
-		int teamallSize = BaseActivity.getTeamObject().size();
+		int teamallSize = MainActivity.getTeamObject().size();
 		try {
 			Random random = new Random();
 			issuecount = random.nextInt(teamallSize);
@@ -92,11 +90,11 @@ public class Main_issue_Page extends LinearLayout implements
 			e.printStackTrace();
 			issuecount = 1;
 		}
-		if (BaseActivity.getTeamObject().size() == 0) {
+		if (MainActivity.getTeamObject().size() == 0) {
 
 		} else {
-			bestTeam = BaseActivity.getTeamObject().get(0);
-			issueTeam = BaseActivity.getTeamObject().get(issuecount);
+			bestTeam = MainActivity.getTeamObject().get(0);
+			issueTeam = MainActivity.getTeamObject().get(issuecount);
 		}
 		initView();
 
@@ -440,17 +438,17 @@ public class Main_issue_Page extends LinearLayout implements
 						LoginInfoObject.getInstance().getLikeTeamList()
 								.add(issueTeam.getTeamName());
 						// 로컬 카운트 + 1 , 그 팀 이 직접가지고 있는 라이크 눌른 인원들에 대한 아이디 추가
-						for (int i = 0; i < BaseActivity.getTeamObject().size(); i++) {
+						for (int i = 0; i < MainActivity.getTeamObject().size(); i++) {
 							if (issueTeam.getTeamName().equals(
-									BaseActivity.getTeamObject().get(i)
+									MainActivity.getTeamObject().get(i)
 											.getTeamName())) {
-								BaseActivity
+								MainActivity
 										.getTeamObject()
 										.get(i)
 										.setLikeCount(
-												BaseActivity.getTeamObject()
+												MainActivity.getTeamObject()
 														.get(i).getLikeCount() + 1);
-								BaseActivity
+								MainActivity
 										.getTeamObject()
 										.get(i)
 										.getLikeMans()
@@ -465,17 +463,17 @@ public class Main_issue_Page extends LinearLayout implements
 						LoginInfoObject.getInstance().getLikeTeamList()
 								.add(bestTeam.getTeamName());
 						// 로컬 카운트 + 1 , 그 팀 이 직접가지고 있는 라이크 눌른 인원들에 대한 아이디 추가
-						for (int i = 0; i < BaseActivity.getTeamObject().size(); i++) {
+						for (int i = 0; i < MainActivity.getTeamObject().size(); i++) {
 							if (bestTeam.getTeamName().equals(
-									BaseActivity.getTeamObject().get(i)
+									MainActivity.getTeamObject().get(i)
 											.getTeamName())) {
-								BaseActivity
+								MainActivity
 										.getTeamObject()
 										.get(i)
 										.setLikeCount(
-												BaseActivity.getTeamObject()
+												MainActivity.getTeamObject()
 														.get(i).getLikeCount() + 1);
-								BaseActivity
+								MainActivity
 										.getTeamObject()
 										.get(i)
 										.getLikeMans()

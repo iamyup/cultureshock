@@ -1,61 +1,62 @@
+
 package com.cultureshock.buskingbook.main;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import com.cultureshock.buskingbook.FirstStartActivity;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoadingPopup;
-import com.cultureshock.buskingbook.framework.BaseActivity;
+import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
 import com.cultureshock.buskingbook.net.Params;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
-import com.cultureshock.buskingbook.page.BuskerJoinFragment;
+import com.cultureshock.buskingbook.object.TeamObject;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.page.PaperEditFragment;
 import com.cultureshock.buskingbook.page.PartnerSearchFragment;
-import com.cultureshock.buskingbook.page.TeamPageFragment;
 import com.cultureshock.buskingbook.page.TeamPageSettingFragment;
 import com.cultureshock.buskingbook.service.ServiceType;
-import com.google.android.gcm.server.Message;
-import com.google.android.gcm.server.Result;
-import com.google.android.gcm.server.Sender;
 
-public class MainActivity extends BaseActivity implements HttpClientNet.OnResponseListener {
-    private Context mContext;
+
+public class MainActivity extends BuskingMainActivity implements HttpClientNet.OnResponseListener {
+	
+	private static ArrayList<TeamObject> teamObject = new ArrayList<TeamObject>();
+	private Context mContext;
     private static MainActivity mInstance;
     private LoadingPopup loading;
-    
-    @Override
-    public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
-        return super.onCreateView(parent, name, context, attrs);
-    }
-
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        mContext = this;
-        mInstance = this;
-        requestRegId();
-        
+    	 super.onCreate(savedInstanceState);
+         setContentView(R.layout.main);
+         mContext = this;
+         mInstance = this;
+         requestRegId();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+    public static MainActivity getInstance() {
+        return mInstance;
     }
     public void requestRegId()
     {
@@ -67,64 +68,25 @@ public class MainActivity extends BaseActivity implements HttpClientNet.OnRespon
 		loginService.doAsyncExecute(this);
 		startProgressDialog();
     }
+	public static ArrayList<TeamObject> getTeamObject() {
+		return teamObject;
+	}
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-       
-        super.onNewIntent(intent);
-
-    }
-
-   
-    public static MainActivity getInstance() {
-        return mInstance;
-    }
-
-  
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
-    protected void onPause() {
-        // TODO Auto-generated method stub
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-       
-        super.onDestroy();
-    }
-    public void replaceFragment(Class<?> clss, Bundle bundle, boolean isAddStack) {
-        Fragment fragment = Fragment.instantiate(this, clss.getName(), bundle);
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame, fragment);
-        if ( isAddStack ) {
-            ft.addToBackStack(null);
-        }
-        ft.commitAllowingStateLoss();
-        MainActivity.getInstance().showContent();
-    }
-
-    public Fragment getCurFragment() {
-        Fragment frg = getSupportFragmentManager().findFragmentById(R.id.content_frame);
-        return frg;
-    }
-    public  void goHomeFragment(Context context) {
-        if ( context instanceof MainActivity ) {
-            FragmentManager fm = ((FragmentActivity) context).getSupportFragmentManager();
-            fm.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            Fragment frg = fm.findFragmentById(R.id.content_frame);
-            if ( frg.getClass() != MainHomeFragment.class ) {
-                replaceFragment(MainHomeFragment.class, null, false);
-            }
-        }
-    }
-
-    public void startProgressDialog() 
+	public static void setTeamObject(ArrayList<TeamObject> teamObject) {
+		MainActivity.teamObject = teamObject;
+	}
+	public static TeamObject searchTeam(String teamName)
+	{
+		for(int i = 0 ; i < teamObject.size() ; i++)
+		{
+			if(teamObject.get(i).getTeamName().equals(teamName))
+			{
+				return teamObject.get(i);
+			}
+		}
+		return null;
+	}
+	public void startProgressDialog() 
 	{
 		if( loading == null )
 		{
@@ -158,7 +120,7 @@ public class MainActivity extends BaseActivity implements HttpClientNet.OnRespon
 				editer.commit();
 			}
     		finish();
-   		 	BaseActivity.getTeamObject().clear();
+   		 	MainActivity.getTeamObject().clear();
    		 	System.exit(0);
     	}
     	else if(getCurFragment().getClass().getName().equals("com.cultureshock.buskingbook.page.PartnerSearchAddFragment"))
@@ -223,6 +185,31 @@ public class MainActivity extends BaseActivity implements HttpClientNet.OnRespon
 			stopProgressDialog() ;
 		}
 
-	}
-	
+	}	
+	public void replaceFragment(Class<?> clss, Bundle bundle, boolean isAddStack) {
+        Fragment fragment = Fragment.instantiate(this, clss.getName(), bundle);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, fragment);
+        if ( isAddStack ) {
+            ft.addToBackStack(null);
+        }
+        ft.commitAllowingStateLoss();
+        MainActivity.getInstance().showContent();
+    }
+
+    public Fragment getCurFragment() {
+        Fragment frg = getSupportFragmentManager().findFragmentById(R.id.content_frame);
+        return frg;
+    }
+    public  void goHomeFragment(Context context) {
+        if ( context instanceof MainActivity ) {
+            FragmentManager fm = ((FragmentActivity) context).getSupportFragmentManager();
+            fm.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            Fragment frg = fm.findFragmentById(R.id.content_frame);
+            if ( frg.getClass() != MainHomeFragment.class ) {
+                replaceFragment(MainHomeFragment.class, null, false);
+            }
+        }
+    }
+  
 }
