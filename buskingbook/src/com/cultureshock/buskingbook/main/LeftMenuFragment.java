@@ -47,11 +47,8 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     private TextView m_oTxtMyTeam;
     private ImageView m_oImgMy;
     private LinearLayout m_LayoutMusician;
-    private LinearLayout m_BtnBuskerPage;
     private LinearLayout m_BtnBuskerJoin;
-    private RelativeLayout m_BtnPartnerSearch;
     private LinearLayout m_BtnBuskerSearch;
-    private LinearLayout m_BtnLikeSearh;
     private RelativeLayout m_BtnAlarm;
     private RelativeLayout m_BtnInfo;
     private LinearLayout m_BtnBuskerRegister;
@@ -126,22 +123,16 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
         	
         	m_LayoutMusician = (LinearLayout)getActivity().findViewById(R.id.musician_join);
         	
-            m_BtnBuskerPage = (LinearLayout)getActivity().findViewById(R.id.musician_page);
             m_BtnBuskerJoin = (LinearLayout)getActivity().findViewById(R.id.musician_busking_join);
-            m_BtnPartnerSearch = (RelativeLayout)getActivity().findViewById(R.id.musician_partner);
             
             m_BtnBuskerSearch = (LinearLayout)getActivity().findViewById(R.id.musician_busker_search); 
-            m_BtnLikeSearh = (LinearLayout)getActivity().findViewById(R.id.musician_like_search);
             m_BtnAlarm = (RelativeLayout)getActivity().findViewById(R.id.musician_alarm);
             m_BtnInfo = (RelativeLayout)getActivity().findViewById(R.id.musician_info);
             m_BtnBuskerRegister = (LinearLayout)getActivity().findViewById(R.id.busker_join_btn);
             m_oImgAutoLogin = (ImageView)getActivity().findViewById(R.id.musician_privacy_auto_two);
             m_oImgAlarm = (ImageView)getActivity().findViewById(R.id.busker_alarm_img_two);
-            m_BtnBuskerPage.setOnClickListener(this);
             m_BtnBuskerJoin.setOnClickListener(this);
-            m_BtnPartnerSearch.setOnClickListener(this);
             m_BtnBuskerSearch.setOnClickListener(this);
-            m_BtnLikeSearh.setOnClickListener(this);
             m_BtnAlarm.setOnClickListener(this);
             m_BtnInfo.setOnClickListener(this);
             m_BtnBuskerRegister.setOnClickListener(this);
@@ -270,33 +261,34 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
     	switch(v.getId())
     	{
-	    	case R.id.musician_page:
-	    	{
-	    		Bundle o = new Bundle();
-	    		o.putString("object", LoginInfoObject.getInstance().getMyteam());
-	    		MainActivity.getInstance().replaceFragment(TeamPageFragment.class, o, true);
-	    		break;
-	    	}
+//	    	case R.id.musician_page:
+//	    	{
+//	    		Bundle o = new Bundle();
+//	    		o.putString("object", LoginInfoObject.getInstance().getMyteam());
+//	    		MainActivity.getInstance().replaceFragment(TeamPageFragment.class, o, true);
+//	    		break;
+//	    	}
 	    	case R.id.musician_busking_join:
 	    	{
 	    		MainActivity.getInstance().replaceFragment(TimeJoinFragment.class, null, false);
 	    		break;
 	    	}
-	    	case R.id.musician_partner:
-	    	{
-	    		MainActivity.getInstance().replaceFragment(PartnerSearchFragment.class, null, false);
-	    		break;
-	    	}
+//	    	case R.id.musician_partner:
+//	    	{
+//	    		MainActivity.getInstance().replaceFragment(PartnerSearchFragment.class, null, false);
+//	    		break;
+//	    	}
 	    	case R.id.musician_busker_search:
 	    	{
+	    		
 	    		MainActivity.getInstance().replaceFragment(BuskerSearchFragment.class, null, false);
 	    		break;
 	    	}
-	    	case R.id.musician_like_search:
-	    	{
-	    		MainActivity.getInstance().replaceFragment(LikeTeamFragment.class, null, false);
-	    		break;
-	    	}
+//	    	case R.id.musician_like_search:
+//	    	{
+//	    		MainActivity.getInstance().replaceFragment(LikeTeamFragment.class, null, false);
+//	    		break;
+//	    	}
 	    	case R.id.musician_alarm:
 	    	{
 	    		if(GCMIntentService.isPopup)

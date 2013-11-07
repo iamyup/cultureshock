@@ -69,14 +69,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_above="@+id/lineup_bottom"
-        android:layout_below="@+id/top_search"/>
+        android:layout_below="@+id/top_search"
+        android:layout_marginBottom="60dip"/>
     <LinearLayout
         android:id="@+id/lineup_list_no"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_above="@+id/lineup_bottom"
         android:layout_below="@+id/top_search"
         android:gravity="center"
         android:visibility="gone">
@@ -204,40 +203,5 @@
 	            android:layout_alignParentBottom="true"/>
     	</RelativeLayout>
     </LinearLayout>
-    <LinearLayout 
-        android:id="@+id/lineup_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:layout_alignParentBottom="true">
-        <LinearLayout
-            android:id="@+id/select_all"
-            android:layout_width="0dip"
-            android:layout_height="50dip"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:background="#01d0d2">
-            <TextView
-                android:id="@+id/select_all_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="모두보기"
-                android:textSize="15dip"
-                android:textColor="#ffffff"/> 
-        </LinearLayout>
-         <LinearLayout
-            android:id="@+id/select_like"
-            android:layout_width="0dip"
-            android:layout_height="50dip"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:background="#eaeaea">
-            <TextView
-                android:id="@+id/select_like_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="즐겨찾기"
-                android:textSize="15dip"
-                android:textColor="#01d0d2"/> 
-        </LinearLayout>
-    </LinearLayout>
+    
 </RelativeLayout>

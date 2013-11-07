@@ -14,29 +14,55 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cultureshock.buskingbook.FirstStartActivity;
 import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoadingPopup;
+import com.cultureshock.buskingbook.component.LoginAlertPopup;
+import com.cultureshock.buskingbook.list.LineUpListView;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.net.HttpClientNet;
 import com.cultureshock.buskingbook.net.Params;
+import com.cultureshock.buskingbook.object.LineUpObject;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.object.TeamObject;
+import com.cultureshock.buskingbook.page.LikeTeamFragment;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.page.PaperEditFragment;
 import com.cultureshock.buskingbook.page.PartnerSearchFragment;
+import com.cultureshock.buskingbook.page.TeamPageFragment;
 import com.cultureshock.buskingbook.page.TeamPageSettingFragment;
 import com.cultureshock.buskingbook.service.ServiceType;
 
 
-public class MainActivity extends BuskingMainActivity implements HttpClientNet.OnResponseListener {
+public class MainActivity extends BuskingMainActivity implements OnClickListener,HttpClientNet.OnResponseListener {
 	
 	private static ArrayList<TeamObject> teamObject = new ArrayList<TeamObject>();
 	private Context mContext;
     private static MainActivity mInstance;
     private LoadingPopup loading;
+    
+    private LinearLayout m_oBtnBottom;
+    private LinearLayout m_oBtnSearchHome;
+	private LinearLayout m_oBtnSearchFriend;
+	private LinearLayout m_oBtnSearchLike;
+	private LinearLayout m_oBtnSearchTeam;
+	
+	private ImageView m_oImgSearchHome;
+	private ImageView m_oImgSearchFriend;
+	private ImageView m_oImgSearchLike;
+	private ImageView m_oImgSearchTeam;
+	
+	private TextView m_oTxtSelectHome;
+	private TextView m_oTxtSelectFriend;
+	private TextView m_oTxtSelectLike;
+	private TextView m_oTxtSelectTeam;
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	 super.onCreate(savedInstanceState);
@@ -44,6 +70,31 @@ public class MainActivity extends BuskingMainActivity implements HttpClientNet.O
          mContext = this;
          mInstance = this;
          requestRegId();
+         setUi();
+    }
+    public void setUi()
+    {
+    	m_oTxtSelectHome = (TextView) findViewById(R.id.select_all_home_text);
+		m_oTxtSelectFriend = (TextView) findViewById(R.id.select_all_friend_text);
+		m_oTxtSelectLike = (TextView) findViewById(R.id.select_all_like_text);
+		m_oTxtSelectTeam = (TextView) findViewById(R.id.select_all_team_text);
+		
+		
+		m_oBtnBottom= (LinearLayout) findViewById(R.id.lineup_bottom);
+		
+		m_oBtnSearchHome = (LinearLayout) findViewById(R.id.select_home_layout);
+		m_oBtnSearchHome.setOnClickListener(this);
+		m_oBtnSearchFriend = (LinearLayout) findViewById(R.id.select_friend_layout);
+		m_oBtnSearchFriend.setOnClickListener(this);
+		m_oBtnSearchLike = (LinearLayout) findViewById(R.id.select_like_layout);
+		m_oBtnSearchLike.setOnClickListener(this);
+		m_oBtnSearchTeam = (LinearLayout) findViewById(R.id.select_team_layout);
+		m_oBtnSearchTeam.setOnClickListener(this);
+		
+		m_oImgSearchHome = (ImageView) findViewById(R.id.select_home_img);
+		m_oImgSearchFriend= (ImageView) findViewById(R.id.select_friend_img);
+		m_oImgSearchLike= (ImageView) findViewById(R.id.select_like_img);
+		m_oImgSearchTeam= (ImageView) findViewById(R.id.select_team_img);
     }
 
     @Override
@@ -57,6 +108,14 @@ public class MainActivity extends BuskingMainActivity implements HttpClientNet.O
     }
     public static MainActivity getInstance() {
         return mInstance;
+    }
+    public void offBottom()
+    {
+    	m_oBtnBottom.setVisibility(View.GONE);
+    }
+    public void onBottom()
+    {
+    	m_oBtnBottom.setVisibility(View.VISIBLE);
     }
     public void requestRegId()
     {
@@ -211,5 +270,117 @@ public class MainActivity extends BuskingMainActivity implements HttpClientNet.O
             }
         }
     }
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		onBottom();
+		switch(v.getId())
+		{
+			
+			case R.id.select_home_layout: {
+	
+				m_oBtnSearchHome.setBackgroundColor(0xff01d0d2);
+				m_oBtnSearchFriend.setBackgroundColor(0xffffffff);
+				m_oBtnSearchLike.setBackgroundColor(0xffffffff);
+				m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
+	
+				m_oTxtSelectHome.setTextColor(0xffffffff);
+				m_oTxtSelectFriend.setTextColor(0xff01d0d2);
+				m_oTxtSelectLike.setTextColor(0xff01d0d2);
+				m_oTxtSelectTeam.setTextColor(0xff01d0d2);
+				
+				m_oImgSearchHome.setBackgroundResource(R.drawable.busker_page_btn_w);
+				m_oImgSearchFriend.setBackgroundResource(R.drawable.findb_btn);
+				m_oImgSearchLike.setBackgroundResource(R.drawable.like_btn_m);
+				m_oImgSearchTeam.setBackgroundResource(R.drawable.busker_page_btn);
+				MainActivity.getInstance().replaceFragment(MainHomeFragment.class, null, false);
+				break;
+			}
+			case R.id.select_friend_layout: {
+				if (LoginInfoObject.getInstance().isLogin()) 
+				{
+					m_oBtnSearchHome.setBackgroundColor(0xffffffff);
+					m_oBtnSearchFriend.setBackgroundColor(0xff01d0d2);
+					m_oBtnSearchLike.setBackgroundColor(0xffffffff);
+					m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
+		
+					m_oTxtSelectHome.setTextColor(0xff01d0d2);
+					m_oTxtSelectFriend.setTextColor(0xffffffff);
+					m_oTxtSelectLike.setTextColor(0xff01d0d2);
+					m_oTxtSelectTeam.setTextColor(0xff01d0d2);
+					
+					m_oImgSearchHome.setBackgroundResource(R.drawable.busker_page_btn);
+					m_oImgSearchFriend.setBackgroundResource(R.drawable.findb_btn_w);
+					m_oImgSearchLike.setBackgroundResource(R.drawable.like_btn_m);
+					m_oImgSearchTeam.setBackgroundResource(R.drawable.busker_page_btn);
+					MainActivity.getInstance().replaceFragment(PartnerSearchFragment.class, null, false);
+				}
+				else
+				{
+					new LoginAlertPopup(mContext);
+				}
+				break;
+			}
+			
+			case R.id.select_like_layout: {
+				if (LoginInfoObject.getInstance().isLogin()) 
+				{
+					m_oBtnSearchHome.setBackgroundColor(0xffffffff);
+					m_oBtnSearchFriend.setBackgroundColor(0xffffffff);
+					m_oBtnSearchLike.setBackgroundColor(0xff01d0d2);
+					m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
+		
+					m_oTxtSelectHome.setTextColor(0xff01d0d2);
+					m_oTxtSelectFriend.setTextColor(0xff01d0d2);
+					m_oTxtSelectLike.setTextColor(0xffffffff);
+					m_oTxtSelectTeam.setTextColor(0xff01d0d2);
+					
+					m_oImgSearchHome.setBackgroundResource(R.drawable.busker_page_btn);
+					m_oImgSearchFriend.setBackgroundResource(R.drawable.findb_btn);
+					m_oImgSearchLike.setBackgroundResource(R.drawable.like_btn_w);
+					m_oImgSearchTeam.setBackgroundResource(R.drawable.busker_page_btn);
+		
+					MainActivity.getInstance().replaceFragment(LikeTeamFragment.class, null, false);
+				}
+				else
+				{
+					new LoginAlertPopup(mContext);
+				}
+				break;
+			}
+			case R.id.select_team_layout: {
+				if (LoginInfoObject.getInstance().isLogin()) 
+				{
+					if(!LoginInfoObject.getInstance().getMyteam().equals(""))
+					{
+						m_oBtnSearchHome.setBackgroundColor(0xffffffff);
+						m_oBtnSearchFriend.setBackgroundColor(0xffffffff);
+						m_oBtnSearchLike.setBackgroundColor(0xffffffff);
+						m_oBtnSearchTeam.setBackgroundColor(0xff01d0d2);
+			
+						m_oTxtSelectHome.setTextColor(0xff01d0d2);
+						m_oTxtSelectFriend.setTextColor(0xff01d0d2);
+						m_oTxtSelectLike.setTextColor(0xff01d0d2);
+						m_oTxtSelectTeam.setTextColor(0xffffffff);
+						
+						m_oImgSearchHome.setBackgroundResource(R.drawable.busker_page_btn);
+						m_oImgSearchFriend.setBackgroundResource(R.drawable.findb_btn);
+						m_oImgSearchLike.setBackgroundResource(R.drawable.like_btn_m);
+						m_oImgSearchTeam.setBackgroundResource(R.drawable.busker_page_btn_w);
+			
+						Bundle o = new Bundle();
+			    		o.putString("object", LoginInfoObject.getInstance().getMyteam());
+			    		MainActivity.getInstance().replaceFragment(TeamPageFragment.class, o, true);
+					}
+				}
+				else
+				{
+					new LoginAlertPopup(mContext);
+				}
+				break;
+			}
+		}
+		
+	}
   
 }

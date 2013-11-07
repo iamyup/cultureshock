@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -47,8 +48,7 @@ public class Main_LineUp_Page extends LinearLayout implements
 	private LinearLayout m_oLayoutListView;
 	private LineUpListView lineUpListView;
 	private TextView m_oTxtPlace;
-	private TextView m_oTxtSelectAll;
-	private TextView m_oTxtSelectLike;
+	
 	private RelativeLayout m_oBtnSearch;
 
 	private LinearLayout m_oBtnSearchPlaceLayout;
@@ -57,10 +57,9 @@ public class Main_LineUp_Page extends LinearLayout implements
 	private RelativeLayout m_oBtnPlace3;
 	private RelativeLayout m_oBtnPlace4;
 
-	// bottom
-	private LinearLayout m_oBtnSearchAll;
-	private LinearLayout m_oBtnSearchLike;
 	private LinearLayout m_oNoBusker;
+	// bottom
+	
 
 	private boolean checkPlace = false;
 
@@ -91,15 +90,11 @@ public class Main_LineUp_Page extends LinearLayout implements
 		this.addView(v);
 
 		m_oLayoutListView = (LinearLayout) v.findViewById(R.id.lineup_list);
-		m_oTxtSelectAll = (TextView) v.findViewById(R.id.select_all_text);
-		m_oTxtSelectLike = (TextView) v.findViewById(R.id.select_like_text);
+		
 		m_oTxtPlace = (TextView) v.findViewById(R.id.top_search_place);
 		m_oBtnSearch = (RelativeLayout) v.findViewById(R.id.top_search);
 		m_oBtnSearch.setOnClickListener(this);
-		m_oBtnSearchAll = (LinearLayout) v.findViewById(R.id.select_all);
-		m_oBtnSearchAll.setOnClickListener(this);
-		m_oBtnSearchLike = (LinearLayout) v.findViewById(R.id.select_like);
-		m_oBtnSearchLike.setOnClickListener(this);
+		
 		m_oBtnSearchPlaceLayout = (LinearLayout) v
 				.findViewById(R.id.top_search_place_layout);
 		m_oBtnPlace1 = (RelativeLayout) v.findViewById(R.id.top_place_1);
@@ -107,6 +102,7 @@ public class Main_LineUp_Page extends LinearLayout implements
 		m_oBtnPlace3 = (RelativeLayout) v.findViewById(R.id.top_place_3);
 		m_oBtnPlace4 = (RelativeLayout) v.findViewById(R.id.top_place_4);
 		m_oNoBusker = (LinearLayout) v.findViewById(R.id.lineup_list_no);
+		
 		m_oBtnPlace1.setOnClickListener(this);
 		m_oBtnPlace2.setOnClickListener(this);
 		m_oBtnPlace3.setOnClickListener(this);
@@ -271,56 +267,7 @@ public class Main_LineUp_Page extends LinearLayout implements
 			lineUpListView.notifyData();
 			break;
 		}
-		case R.id.select_all: {
-
-			m_oTxtPlace.setText("모두보기");
-			m_oBtnSearchAll.setBackgroundColor(0xff01d0d2);
-			m_oBtnSearchLike.setBackgroundColor(0xffeaeaea);
-
-			m_oTxtSelectAll.setTextColor(0xffffffff);
-			m_oTxtSelectLike.setTextColor(0xff01d0d2);
-
-			if (lineUpArr.size() == 0) {
-				m_oNoBusker.setVisibility(View.VISIBLE);
-			} else {
-				m_oNoBusker.setVisibility(View.GONE);
-			}
-
-			lineUpListView.setListData(lineUpArr);
-			lineUpListView.notifyData();
-			break;
-		}
-		case R.id.select_like: {
-			m_oTxtPlace.setText("즐겨찾기");
-			m_oBtnSearchAll.setBackgroundColor(0xffeaeaea);
-			m_oBtnSearchLike.setBackgroundColor(0xff01d0d2);
-
-			m_oTxtSelectAll.setTextColor(0xff01d0d2);
-			m_oTxtSelectLike.setTextColor(0xffffffff);
-
-			if (lineUpListView == null) {
-				lineUpListView = new LineUpListView(mContext);
-			}
-			ArrayList<LineUpObject> likelineUpArr = new ArrayList<LineUpObject>();
-			for (int i = 0; i < lineUpArr.size(); i++) {
-				for (int j = 0; j < LoginInfoObject.getInstance()
-						.getLikeTeamList().size(); j++) {
-					if (LoginInfoObject.getInstance().getLikeTeamList().get(j)
-							.equals(lineUpArr.get(i).getTeamName())) {
-						likelineUpArr.add(lineUpArr.get(i));
-					}
-				}
-			}
-			if (likelineUpArr.size() == 0) {
-				m_oNoBusker.setVisibility(View.VISIBLE);
-			} else {
-				m_oNoBusker.setVisibility(View.GONE);
-			}
-
-			lineUpListView.setListData(likelineUpArr);
-			lineUpListView.notifyData();
-			break;
-		}
+		
 		}
 
 	}

@@ -45,7 +45,7 @@ public class LikeTeamFragment extends Fragment implements OnClickListener{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-
+        MainActivity.getInstance().onBottom();
         m_oBtnTest = (TextView) getActivity().findViewById(R.id.test_main);
         m_oBtnTest.setOnClickListener(this);
         m_oBtnList = (ImageView) getActivity()

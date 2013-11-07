@@ -8,19 +8,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.cultureshock.buskingbook.page.Buskers_Page;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.page.Main_LineUp_Page;
 import com.cultureshock.buskingbook.page.Main_issue_Page;
 
 public class ViewPagerAdapter extends PagerAdapter implements
         View.OnClickListener {
-    // private AsyncImageLoader m_oAsyncImageLoader = new AsyncImageLoader();
-    public static final int NUM_ITEMS = 2;
+    public static final int NUM_ITEMS = 3;
     private Context m_Context = null;
     private LayoutInflater inflater = null;
     private View v = null;
-
-    // public ArrayList<TeamObject> m_oTeamObject = null;
 
     public ViewPagerAdapter() {
         super();
@@ -49,10 +47,18 @@ public class ViewPagerAdapter extends PagerAdapter implements
     public Object instantiateItem(View pager, int position) {
         // TODO Auto-generated method stub
         final int pos = position;
-        if (position == 0) {
-            v = new Main_LineUp_Page(m_Context); 
-        } else if (position == 1) {
-            v = new Main_issue_Page(m_Context);
+//        viewpagerNum = position;
+        if(position == 0)
+        {
+        	 v = new Main_LineUp_Page(m_Context); 
+        }
+        else if(position == 1)
+        {
+        	v = new Main_issue_Page(m_Context);
+        }
+        else
+        {
+        	 v = new Buskers_Page(m_Context);
         }
         ((ViewPager) pager).addView(v, 0);
         return v;

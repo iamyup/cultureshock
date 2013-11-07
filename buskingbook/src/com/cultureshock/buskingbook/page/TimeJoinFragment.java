@@ -107,6 +107,7 @@ private LinearLayout m_oBtnConfirm;
         mContext = getActivity();
         setUi();
         setValue();
+        MainActivity.getInstance().offBottom();
     }
     public void setValue()
 	{
@@ -556,7 +557,8 @@ private LinearLayout m_oBtnConfirm;
 			{
 				Toast.makeText(mContext, "일정을 등록하였습니다", Toast.LENGTH_SHORT );
 				requestGcm();
-				MainActivity.getInstance().replaceFragment(MainHomeFragment.class, null, false);
+				
+				MainActivity.getInstance().onBackPressed();
 				LeftMenuFragment.getInstance().loginSatatus();
 			}
 		}

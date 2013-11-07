@@ -41,6 +41,7 @@ public class BuskerSearchFragment extends Fragment implements
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		mContext = getActivity();
+		MainActivity.getInstance().offBottom();
 		setUi();
 	}
 

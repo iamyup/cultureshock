@@ -77,6 +77,7 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
+        MainActivity.getInstance().onBottom();
         requestTimeTable();
         Bundle bundle = getArguments();
         teamName = bundle.getString("object");

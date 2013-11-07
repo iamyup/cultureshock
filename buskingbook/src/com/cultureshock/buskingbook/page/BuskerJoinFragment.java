@@ -38,6 +38,7 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
     /*
      * version 1
      */
+    private ImageView m_oBtnList;
     private ImageView m_oDoubleCheckImg;
     private RelativeLayout m_oLayout1;
     private RelativeLayout m_oBtnImg;
@@ -77,11 +78,15 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
+        MainActivity.getInstance().offBottom();
         setUi();
     }
 
     public void setUi()
     {
+    	m_oBtnList = (ImageView) getActivity()
+				.findViewById(R.id.busker_title_btn_menu);
+		m_oBtnList.setOnClickListener(this);
     	 m_oDoubleCheckImg = (ImageView)getActivity().findViewById(R.id.double_check_img);
     	 m_oLayout1 = (RelativeLayout)getActivity().findViewById(R.id.step_1);
     	 m_oLayout2 = (RelativeLayout)getActivity().findViewById(R.id.step_2);
@@ -188,6 +193,10 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
     {
         switch (v.getId()) 
         {
+	        case R.id.busker_title_btn_menu: {
+				MainActivity.getInstance().showMenu();
+				break;
+			}
 	        case R.id.busker_join_img_add:
 	        {
 	        	//버젼1 그림추가버튼 
@@ -315,7 +324,7 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
 					Toast.makeText(mContext, "팀 등록되었습니다.", Toast.LENGTH_SHORT).show();
 					LoginInfoObject.getInstance().setMyteam(m_oTeamName);
 					MainActivity.getTeamObject().add(new TeamObject(m_oTeamName,teamMember,m_oTeamMember,m_oGenre,m_oTeamInfo,m_oTeamImgStr));
-					MainActivity.getInstance().replaceFragment(MainHomeFragment.class, null, false);
+					MainActivity.getInstance().onBackPressed();
 					LeftMenuFragment.getInstance().loginSatatus();
 					
 				}
