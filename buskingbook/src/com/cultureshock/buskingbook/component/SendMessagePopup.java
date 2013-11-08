@@ -136,6 +136,18 @@ public class SendMessagePopup extends LinearLayout implements HttpClientNet.OnRe
 		loginService.doAsyncExecute(this);
 		MainActivity.getInstance().startProgressDialog();
 	}	
+	public void requestGcm()
+	{
+		GregorianCalendar calendar = new GregorianCalendar();
+		HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_GCM_GO_MESSAGE);
+		ArrayList<Params> loginParams = new ArrayList<Params>();
+		loginParams.add(new Params("name", object.getName()));
+		loginParams.add(new Params("id", object.getId()));
+		loginParams.add(new Params("sendname", object.getName()));
+		loginService.setParam(loginParams);
+		loginService.doAsyncExecute(this);
+		MainActivity.getInstance().startProgressDialog();
+	}	
 	@Override
 	public void onResponseReceived(String resContent) {
 		// TODO Auto-generated method stub
@@ -146,8 +158,9 @@ public class SendMessagePopup extends LinearLayout implements HttpClientNet.OnRe
 			
 			if(object.getJSONObject("result").optString("type").equals("ServiceType.MSG_MESSAGE_ADD"))
 			{
-				dismissPopup();
 				Toast.makeText(mContext, "메세지를 보냈습니다.", Toast.LENGTH_SHORT).show();
+				dismissPopup();
+				requestGcm();
 			}
 			
 		}
@@ -158,6 +171,7 @@ public class SendMessagePopup extends LinearLayout implements HttpClientNet.OnRe
 		finally
 		{
 			MainActivity.getInstance().stopProgressDialog() ;
+			
 		}
 	}
 
