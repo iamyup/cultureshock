@@ -95,6 +95,14 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 		m_oImgSearchFriend= (ImageView) findViewById(R.id.select_friend_img);
 		m_oImgSearchLike= (ImageView) findViewById(R.id.select_like_img);
 		m_oImgSearchTeam= (ImageView) findViewById(R.id.select_team_img);
+//		if(LoginInfoObject.getInstance().getMyteam().equals(""))
+//		{
+//			m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_ic_o);	
+//		}
+//		else
+//		{
+//			m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_ic_o);	
+//		}
     }
 
     @Override
@@ -289,10 +297,10 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 				m_oTxtSelectLike.setTextColor(0xff01d0d2);
 				m_oTxtSelectTeam.setTextColor(0xff01d0d2);
 				
-				m_oImgSearchHome.setBackgroundResource(R.drawable.busker_page_btn_w);
-				m_oImgSearchFriend.setBackgroundResource(R.drawable.findb_btn);
-				m_oImgSearchLike.setBackgroundResource(R.drawable.like_btn_m);
-				m_oImgSearchTeam.setBackgroundResource(R.drawable.busker_page_btn);
+				m_oImgSearchHome.setBackgroundResource(R.drawable.explore_btn_o);
+				m_oImgSearchFriend.setBackgroundResource(R.drawable.friends_btn);
+				m_oImgSearchLike.setBackgroundResource(R.drawable.love_btn);
+				m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);
 				MainActivity.getInstance().replaceFragment(MainHomeFragment.class, null, false);
 				break;
 			}
@@ -309,10 +317,10 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 					m_oTxtSelectLike.setTextColor(0xff01d0d2);
 					m_oTxtSelectTeam.setTextColor(0xff01d0d2);
 					
-					m_oImgSearchHome.setBackgroundResource(R.drawable.busker_page_btn);
-					m_oImgSearchFriend.setBackgroundResource(R.drawable.findb_btn_w);
-					m_oImgSearchLike.setBackgroundResource(R.drawable.like_btn_m);
-					m_oImgSearchTeam.setBackgroundResource(R.drawable.busker_page_btn);
+					m_oImgSearchHome.setBackgroundResource(R.drawable.explore_btn);
+					m_oImgSearchFriend.setBackgroundResource(R.drawable.friends_btn_o);
+					m_oImgSearchLike.setBackgroundResource(R.drawable.love_btn);
+					m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);
 					MainActivity.getInstance().replaceFragment(PartnerSearchFragment.class, null, false);
 				}
 				else
@@ -335,10 +343,10 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 					m_oTxtSelectLike.setTextColor(0xffffffff);
 					m_oTxtSelectTeam.setTextColor(0xff01d0d2);
 					
-					m_oImgSearchHome.setBackgroundResource(R.drawable.busker_page_btn);
-					m_oImgSearchFriend.setBackgroundResource(R.drawable.findb_btn);
-					m_oImgSearchLike.setBackgroundResource(R.drawable.like_btn_w);
-					m_oImgSearchTeam.setBackgroundResource(R.drawable.busker_page_btn);
+					m_oImgSearchHome.setBackgroundResource(R.drawable.explore_btn);
+					m_oImgSearchFriend.setBackgroundResource(R.drawable.friends_btn);
+					m_oImgSearchLike.setBackgroundResource(R.drawable.love_btn_o);
+					m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);
 		
 					MainActivity.getInstance().replaceFragment(LikeTeamFragment.class, null, false);
 				}
@@ -363,10 +371,10 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 						m_oTxtSelectLike.setTextColor(0xff01d0d2);
 						m_oTxtSelectTeam.setTextColor(0xffffffff);
 						
-						m_oImgSearchHome.setBackgroundResource(R.drawable.busker_page_btn);
-						m_oImgSearchFriend.setBackgroundResource(R.drawable.findb_btn);
-						m_oImgSearchLike.setBackgroundResource(R.drawable.like_btn_m);
-						m_oImgSearchTeam.setBackgroundResource(R.drawable.busker_page_btn_w);
+						m_oImgSearchHome.setBackgroundResource(R.drawable.explore_btn);
+						m_oImgSearchFriend.setBackgroundResource(R.drawable.friends_btn);
+						m_oImgSearchLike.setBackgroundResource(R.drawable.love_btn);
+						m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn_o);
 			
 						Bundle o = new Bundle();
 			    		o.putString("object", LoginInfoObject.getInstance().getMyteam());

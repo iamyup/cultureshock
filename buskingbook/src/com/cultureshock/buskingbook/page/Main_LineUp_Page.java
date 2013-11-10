@@ -11,7 +11,6 @@ import org.json.JSONObject;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -40,7 +39,9 @@ public class Main_LineUp_Page extends LinearLayout implements
 	public static final String TIME_TABLE_TODAY = "2";
 	public static final String TIME_TABLE_PLACE = "3";
 	public static final String TIME_TABLE_TEAM = "4";
-
+	
+	public static final int POSITION_ONE = 114434;
+	public static final int POSITION_ANOTHER = 1144344;
 	private Context mContext;
 	private View v = null;
 	private ArrayList<LineUpObject> lineUpArr = new ArrayList<LineUpObject>();
@@ -58,6 +59,8 @@ public class Main_LineUp_Page extends LinearLayout implements
 	private RelativeLayout m_oBtnPlace4;
 
 	private LinearLayout m_oNoBusker;
+	
+	private Handler m_oHandler;
 	// bottom
 	
 
@@ -107,8 +110,22 @@ public class Main_LineUp_Page extends LinearLayout implements
 		m_oBtnPlace2.setOnClickListener(this);
 		m_oBtnPlace3.setOnClickListener(this);
 		m_oBtnPlace4.setOnClickListener(this);
-
-
+		  m_oHandler = new Handler() {
+			  
+		  public void handleMessage(android.os.Message msg) {
+			 switch(msg.what)
+			 {
+				 case POSITION_ONE :
+				 {
+					 m_oBtnSearch.setVisibility(View.VISIBLE);
+					 break;
+				 }
+				 case POSITION_ANOTHER :
+					 m_oBtnSearch.setVisibility(View.GONE);
+					 break;
+			 }
+		  };
+		  };
 	}
 
 	@Override
@@ -149,6 +166,7 @@ public class Main_LineUp_Page extends LinearLayout implements
 
 				}
 				lineUpListView.setListData(lineUpArr);
+				lineUpListView.setHandler(m_oHandler);
 				m_oLayoutListView.addView(lineUpListView);
 				if (lineUpArr.size() == 0) {
 					m_oNoBusker.setVisibility(View.VISIBLE);

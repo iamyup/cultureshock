@@ -22,7 +22,9 @@
 		<TextView
 	       android:id="@+id/test_main"
 	       android:layout_gravity="center"
-	       android:text="동료찾기"
+	       android:text="Friends"
+	       android:textSize="18dip"
+	       android:textStyle="bold"
 	       android:layout_width="wrap_content" 
 	       android:layout_height="wrap_content"
 	       android:textColor="#ffffff"/>
@@ -56,11 +58,11 @@
 		    android:layout_height="wrap_content"
 		    android:layout_marginLeft="15dip"
 		    android:layout_centerVertical="true"
-		    android:background="@drawable/messege_box_ic"/>
+		    android:background="@drawable/bunge_alram"/>
 		<TextView
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:text="메세지함"
+		    android:text="텔레파시 보관함"
 		    android:layout_centerVertical="true"
 		    android:layout_toRightOf="@+id/top_img"
 		    android:textColor="#5cc8ca"

@@ -2,15 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#bcbcbc"
     android:orientation="vertical" >
     <ScrollView 
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip">
         <LinearLayout 
             android:id="@+id/issue_acticle"
             android:layout_width="match_parent"
@@ -164,7 +167,7 @@
 		        <TextView
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:text="Like it"
+		            android:text="Love it"
 		            android:textSize="15dip"
 		            android:layout_marginLeft="5dip"
 		            android:textColor="#838383"/>
@@ -187,12 +190,12 @@
 	            android:id="@+id/item_lineup_bottom_likecount_img_o"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:background="@drawable/home"/>
+	            android:background="@drawable/planet_ic"/>
 	        <TextView
 	            android:id="@+id/item_lineup_bottom_likecount"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="Team Page"
+	            android:text="Planet"
 	            android:textSize="15dip"
 	            android:layout_marginLeft="5dip"
 	            android:textColor="#838383"/>
@@ -309,7 +312,7 @@
 		        <TextView
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:text="Like it"
+		            android:text="Love it"
 		            android:textSize="15dip"
 		            android:layout_marginLeft="5dip"
 		            android:textColor="#838383"/>
@@ -332,12 +335,12 @@
 	            android:id="@+id/item_lineup_bottom_likecount_img_o_3"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:background="@drawable/home"/>
+	            android:background="@drawable/planet_ic"/>
 	        <TextView
 	            android:id="@+id/item_lineup_bottom_likecount_3"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="Team Page"
+	            android:text="Planet"
 	            android:textSize="15dip"
 	            android:layout_marginLeft="5dip"
 	            android:textColor="#838383"/>

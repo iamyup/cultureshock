@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:layout_marginLeft="10dip"
+    android:layout_marginRight="10dip" >
     
     <RelativeLayout
         android:id="@+id/item_lineup_nolineup"
@@ -15,6 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="15dip"
+	        android:background="#bcbcbc"/>
         <LinearLayout
         
         android:layout_width="match_parent"
@@ -75,6 +81,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="15dip"
+	        android:background="#bcbcbc"/>
 	    <LinearLayout
 	        android:id="@+id/today_layout_real"
 			        android:layout_width="match_parent"
@@ -230,7 +240,7 @@
 		        <TextView
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:text="Like it"
+		            android:text="Love it"
 		            android:textSize="15dip"
 		            android:layout_marginLeft="5dip"
 		            android:textColor="#838383"/>
@@ -249,17 +259,17 @@
 	            android:layout_width="120dip"
 	            android:layout_height="40dip"
 	            android:gravity="center"
-	            android:layout_marginLeft="60dip">
+	            android:layout_marginLeft="40dip">
 		        <ImageView
 		            android:id="@+id/item_lineup_bottom_likecount_img_o"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:background="@drawable/home_o"/>
+		            android:background="@drawable/planet_ic"/>
 		        <TextView
 		            android:id="@+id/item_lineup_bottom_likecount"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:text="Team Page"
+		            android:text="Planet"
 		            android:textSize="15dip"
 		            android:layout_marginLeft="5dip"
 		            android:textColor="#838383"/>

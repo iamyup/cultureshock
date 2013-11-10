@@ -13,11 +13,22 @@
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-	<LinearLayout 
+    <LinearLayout
         android:id="@+id/lineup_bottom"
         android:layout_width="match_parent"
-        android:layout_height="60dip"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lineup_bottom"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shadow22"/>
+        <LinearLayout 
+        
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        >
         <LinearLayout
             android:id="@+id/select_home_layout"
             android:layout_width="0dip"
@@ -30,14 +41,14 @@
 	             android:id="@+id/select_home_img"
 	             android:layout_width="wrap_content"
 	             android:layout_height="wrap_content"
-	             android:background="@drawable/busker_page_btn_w"
+	             android:background="@drawable/explore_btn_o"
 	             android:layout_marginTop="2dip"
 	             android:layout_marginBottom="2dip"/>
             <TextView
                 android:id="@+id/select_all_home_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="홈"
+                android:text="Explore"
                 android:textSize="12dip"
                 android:textColor="#ffffff"/> 
         </LinearLayout>
@@ -53,14 +64,14 @@
 	             android:id="@+id/select_friend_img"
 	             android:layout_width="wrap_content"
 	             android:layout_height="wrap_content"
-	             android:background="@drawable/findb_btn"
+	             android:background="@drawable/friends_btn"
 	             android:layout_marginTop="2dip"
 	             android:layout_marginBottom="2dip"/>
             <TextView
                 android:id="@+id/select_all_friend_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="동료찾기"
+                android:text="Friends"
                 android:textSize="12dip"
                 android:textColor="#01d0d2"/> 
         </LinearLayout>
@@ -76,14 +87,14 @@
 	             android:id="@+id/select_like_img"
 	             android:layout_width="wrap_content"
 	             android:layout_height="wrap_content"
-	             android:background="@drawable/like_btn_m"
+	             android:background="@drawable/love_btn"
 	             android:layout_marginTop="2dip"
 	             android:layout_marginBottom="2dip"/>
             <TextView
                 android:id="@+id/select_all_like_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="즐겨찾기"
+                android:text="Love it"
                 android:textSize="12dip"
                 android:textColor="#01d0d2"/> 
         </LinearLayout>
@@ -99,16 +110,18 @@
 	             android:id="@+id/select_team_img"
 	             android:layout_width="wrap_content"
 	             android:layout_height="wrap_content"
-	             android:background="@drawable/busker_page_btn"
+	             android:background="@drawable/planet_btn"
 	             android:layout_marginTop="2dip"
 	             android:layout_marginBottom="2dip"/>
             <TextView
                 android:id="@+id/select_all_team_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="팀페이지"
+                android:text="Planet"
                 android:textSize="12dip"
                 android:textColor="#01d0d2"/> 
         </LinearLayout>
     </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
+	

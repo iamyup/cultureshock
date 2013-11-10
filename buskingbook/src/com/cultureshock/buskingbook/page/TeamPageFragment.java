@@ -131,11 +131,7 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
 				break;
 			}
 		}
-    	}
-    	catch(Exception e)
-    	{
-    		e.printStackTrace();
-    	}
+    	
     	Drawable default1 = null;
     	default1 =  mContext.getResources().getDrawable(R.drawable.loading_new_2);
     	m_oAsyncImageLoader.setImageDrawableAsync(mImg,selectMyTeam.getTeamThum(),default1,default1,mContext);
@@ -154,7 +150,11 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
     		m_oBtnSettingTeam.setVisibility(View.GONE);
     	}
     	
-    	
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
     }
    
     public void setDataUI() {

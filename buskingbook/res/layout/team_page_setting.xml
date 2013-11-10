@@ -23,6 +23,8 @@
 	       android:id="@+id/test_main"
 	       android:layout_gravity="center"
 	       android:text="설정"
+	       android:textSize="18dip"
+	       android:textStyle="bold"
 	       android:layout_width="wrap_content" 
 	       android:layout_height="wrap_content"
 	       android:textColor="#ffffff"/>

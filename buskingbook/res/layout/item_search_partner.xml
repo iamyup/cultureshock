@@ -66,17 +66,19 @@
  	        android:layout_width="150dip"
  	        android:layout_height="30dip"
  	        android:layout_alignParentBottom="true"
- 	        android:layout_marginLeft="15dip"
+ 	        android:layout_alignParentRight="true"
+ 	        android:layout_marginRight="15dip"
+ 	        
  	        android:gravity="center"
  	        android:layout_marginBottom="10dip">
  	        <ImageView
  	            android:layout_width="wrap_content"
  	            android:layout_height="wrap_content"
- 	            android:background="@drawable/busker_page_btn_o"/>
+ 	            android:background="@drawable/planet_ic"/>
  	        <TextView
  	            android:layout_width="wrap_content"
  	            android:layout_height="wrap_content"
- 	            android:text="버스커 페이지"
+ 	            android:text="Planet"
  	            android:layout_marginLeft="10dip"
  	            android:textSize="14dip"
  	            android:textColor="#717171"/>
@@ -86,18 +88,18 @@
  	        android:layout_width="150dip"
  	        android:layout_height="30dip"
  	        android:layout_alignParentBottom="true"
- 	       	android:layout_alignParentRight="true"
- 	        android:layout_marginRight="15dip"
+ 	        
+ 	        android:layout_marginLeft="15dip"
  	        android:gravity="center"
  	        android:layout_marginBottom="10dip">
  	        <ImageView
  	            android:layout_width="wrap_content"
  	            android:layout_height="wrap_content"
- 	            android:background="@drawable/contact_ic_o"/>
+ 	            android:background="@drawable/bunge_alram"/>
  	        <TextView
  	            android:layout_width="wrap_content"
  	            android:layout_height="wrap_content"
- 	            android:text="메세지 보내기"
+ 	            android:text="Send Telepathy"
  	            android:layout_marginLeft="10dip"
  	            android:textSize="14dip"
  	            android:textColor="#717171"/>

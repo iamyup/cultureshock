@@ -19,6 +19,7 @@ import com.cultureshock.buskingbook.net.Params;
 import com.cultureshock.buskingbook.object.LineUpObject;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.object.TeamObject;
+import com.cultureshock.buskingbook.page.Main_LineUp_Page;
 import com.cultureshock.buskingbook.page.TeamPageFragment;
 import com.cultureshock.buskingbook.service.ServiceType;
 import com.cultureshock.buskingbook.util.AsyncImageLoader;
@@ -59,7 +60,7 @@ public class LineUpListView extends ListView implements
 	private int month;
 	private int day;
 	private String week;
-
+	private Handler m_oHandler ;
 	public LineUpListView(Context context) {
 		super(context);
 		mContext = context;
@@ -73,6 +74,10 @@ public class LineUpListView extends ListView implements
 		initListView();
 	}
 
+	public void setHandler(Handler handler)
+	{
+		this.m_oHandler = handler;
+	}
 	public void checkToday() {
 		GregorianCalendar calendar = new GregorianCalendar();
 		year = calendar.get(Calendar.YEAR);
@@ -212,6 +217,7 @@ public class LineUpListView extends ListView implements
 			LineUpObject itemObject = getItem(position);
 			convertView.setTag(R.id.imageId, position);
 			if (position == 0) {
+				
 				if (checkToday) {
 					holder.firstLayout
 							.setBackgroundResource(R.drawable.lineup_back);
@@ -242,7 +248,9 @@ public class LineUpListView extends ListView implements
 				}
 
 			} else {
-				// holder.firstLayout.setBackgroundResource(R.drawable.lineup_back);
+//				m_oHandler.sendMessage(
+//				m_oHandler.obtainMessage(Main_LineUp_Page.POSITION_ANOTHER));
+//				// holder.firstLayout.setBackgroundResource(R.drawable.lineup_back);
 				holder.firstLayout.setBackgroundColor(0xffffffff);
 				// holder.calendar.setTextColor(0xff01d0d2);
 				holder.calendar.setTextColor(0xff000000);

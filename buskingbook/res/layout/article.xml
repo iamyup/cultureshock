@@ -22,9 +22,11 @@
 		<TextView
 	       android:id="@+id/test_main"
 	       android:layout_gravity="center"
-	       android:text="이슈 UP"
+	       android:text="인터뷰"
 	       android:layout_width="wrap_content" 
 	       android:layout_height="wrap_content"
+	       android:textSize="18dip"
+	       android:textStyle="bold"
 	       android:textColor="#ffffff"/>
 		
 		<LinearLayout

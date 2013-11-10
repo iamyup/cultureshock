@@ -22,10 +22,12 @@
 		<TextView
 	       android:id="@+id/test_main"
 	       android:layout_gravity="center"
-	       android:text="동료찾기"
+	       android:text="Friends"
 	       android:layout_width="wrap_content" 
 	       android:layout_height="wrap_content"
-	       android:textColor="#ffffff"/>
+	       android:textColor="#ffffff"
+	       android:textSize="18dip"
+	       android:textStyle="bold"/>
 		<ImageButton
 		    android:id="@+id/write_search"
 		    android:layout_width="wrap_content"
@@ -63,11 +65,11 @@
 		    android:layout_height="wrap_content"
 		    android:layout_marginLeft="15dip"
 		    android:layout_centerVertical="true"
-		    android:background="@drawable/messege_box_ic"/>
+		    android:background="@drawable/bunge_alram"/>
 		<TextView
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:text="메세지함"
+		    android:text="텔레파시 보관함"
 		    android:layout_centerVertical="true"
 		    android:layout_toRightOf="@+id/top_img"
 		    android:textColor="#5cc8ca"
@@ -78,7 +80,7 @@
 		    android:id="@+id/top_message_new_o"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:text="새로운 메세지가 있습니다"
+		    android:text="새로운 텔레파시가 있습니다"
 		    android:layout_centerVertical="true"
 		    android:layout_alignParentRight="true"
 		    android:textColor="#5cc8ca"

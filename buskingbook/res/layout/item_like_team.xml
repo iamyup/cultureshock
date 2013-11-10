@@ -101,7 +101,7 @@
 		        <TextView
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:text="Like it"
+		            android:text="Love it"
 		            android:textSize="15dip"
 		            android:layout_marginLeft="5dip"
 		            android:textColor="#838383"/>
@@ -124,12 +124,12 @@
 	            android:id="@+id/item_lineup_bottom_likecount_img_o"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:background="@drawable/home_o"/>
+	            android:background="@drawable/planet_ic"/>
 	        <TextView
 	            android:id="@+id/item_lineup_bottom_likecount"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:text="Team Page"
+	            android:text="Planet"
 	            android:textSize="15dip"
 	            android:layout_marginLeft="5dip"
 	            android:textColor="#838383"/>
