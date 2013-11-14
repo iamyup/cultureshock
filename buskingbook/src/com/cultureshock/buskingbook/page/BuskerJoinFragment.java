@@ -325,6 +325,7 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
 					LoginInfoObject.getInstance().setMyteam(m_oTeamName);
 					MainActivity.getTeamObject().add(new TeamObject(m_oTeamName,teamMember,m_oTeamMember,m_oGenre,m_oTeamInfo,m_oTeamImgStr));
 					MainActivity.getInstance().onBackPressed();
+					MainActivity.getInstance().checkDim();
 					LeftMenuFragment.getInstance().loginSatatus();
 					
 				}

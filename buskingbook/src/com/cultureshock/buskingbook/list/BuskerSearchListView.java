@@ -120,7 +120,7 @@ public class BuskerSearchListView extends ListView implements HttpClientNet.OnRe
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView == null) {
 				LayoutInflater inflater = LayoutInflater.from(mContext);
-				convertView = inflater.inflate(R.layout.item_like_team, null);
+				convertView = inflater.inflate(R.layout.item_team_ranking, null);
 			
 				mImg = (ImageView)convertView.findViewById(R.id.busker_join_image_2);
 				mTeamname = (TextView) convertView.findViewById(R.id.busker_join_teamname_2);

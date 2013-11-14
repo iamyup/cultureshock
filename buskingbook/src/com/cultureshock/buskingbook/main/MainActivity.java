@@ -95,14 +95,18 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 		m_oImgSearchFriend= (ImageView) findViewById(R.id.select_friend_img);
 		m_oImgSearchLike= (ImageView) findViewById(R.id.select_like_img);
 		m_oImgSearchTeam= (ImageView) findViewById(R.id.select_team_img);
-//		if(LoginInfoObject.getInstance().getMyteam().equals(""))
-//		{
-//			m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_ic_o);	
-//		}
-//		else
-//		{
-//			m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_ic_o);	
-//		}
+		if(LoginInfoObject.getInstance().getMyteam().equals(""))
+		{
+			m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_ic_o);	
+			m_oBtnSearchTeam.setBackgroundColor(0xffe6e7e9);
+			m_oTxtSelectTeam.setTextColor(0xffbcbdbf);
+		}
+		else
+		{
+			m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);	
+			m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
+			m_oTxtSelectTeam.setTextColor(0xff01d0d2);
+		}
     }
 
     @Override
@@ -198,6 +202,34 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 		{
     		TeamPageSettingFragment.getInstance().back();
 		}
+    	else if(getCurFragment().getClass().getName().equals("com.cultureshock.buskingbook.page.TeamPageFragment"))
+		{
+			MainActivity.getInstance().replaceFragment(MainHomeFragment.class, null, false);
+			m_oBtnSearchHome.setBackgroundColor(0xff01d0d2);
+			m_oBtnSearchFriend.setBackgroundColor(0xffffffff);
+			m_oBtnSearchLike.setBackgroundColor(0xffffffff);
+
+			m_oTxtSelectHome.setTextColor(0xffffffff);
+			m_oTxtSelectFriend.setTextColor(0xff01d0d2);
+			m_oTxtSelectLike.setTextColor(0xff01d0d2);
+			
+			
+			m_oImgSearchHome.setBackgroundResource(R.drawable.explore_btn_o);
+			m_oImgSearchFriend.setBackgroundResource(R.drawable.friends_btn);
+			m_oImgSearchLike.setBackgroundResource(R.drawable.love_btn);
+			if(LoginInfoObject.getInstance().getMyteam().equals(""))
+			{
+				m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_ic_o);	
+				m_oBtnSearchTeam.setBackgroundColor(0xffe6e7e9);
+				m_oTxtSelectTeam.setTextColor(0xffbcbdbf);
+			}
+			else
+			{
+				m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);	
+				m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
+				m_oTxtSelectTeam.setTextColor(0xff01d0d2);
+			}
+		}
     	else
     	{
     		MainActivity.getInstance().replaceFragment(MainHomeFragment.class, null, false);
@@ -290,17 +322,27 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 				m_oBtnSearchHome.setBackgroundColor(0xff01d0d2);
 				m_oBtnSearchFriend.setBackgroundColor(0xffffffff);
 				m_oBtnSearchLike.setBackgroundColor(0xffffffff);
-				m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
 	
 				m_oTxtSelectHome.setTextColor(0xffffffff);
 				m_oTxtSelectFriend.setTextColor(0xff01d0d2);
 				m_oTxtSelectLike.setTextColor(0xff01d0d2);
-				m_oTxtSelectTeam.setTextColor(0xff01d0d2);
+				
 				
 				m_oImgSearchHome.setBackgroundResource(R.drawable.explore_btn_o);
 				m_oImgSearchFriend.setBackgroundResource(R.drawable.friends_btn);
 				m_oImgSearchLike.setBackgroundResource(R.drawable.love_btn);
-				m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);
+				if(LoginInfoObject.getInstance().getMyteam().equals(""))
+				{
+					m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_ic_o);	
+					m_oBtnSearchTeam.setBackgroundColor(0xffe6e7e9);
+					m_oTxtSelectTeam.setTextColor(0xffbcbdbf);
+				}
+				else
+				{
+					m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);	
+					m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
+					m_oTxtSelectTeam.setTextColor(0xff01d0d2);
+				}
 				MainActivity.getInstance().replaceFragment(MainHomeFragment.class, null, false);
 				break;
 			}
@@ -310,17 +352,26 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 					m_oBtnSearchHome.setBackgroundColor(0xffffffff);
 					m_oBtnSearchFriend.setBackgroundColor(0xff01d0d2);
 					m_oBtnSearchLike.setBackgroundColor(0xffffffff);
-					m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
 		
 					m_oTxtSelectHome.setTextColor(0xff01d0d2);
 					m_oTxtSelectFriend.setTextColor(0xffffffff);
 					m_oTxtSelectLike.setTextColor(0xff01d0d2);
-					m_oTxtSelectTeam.setTextColor(0xff01d0d2);
 					
 					m_oImgSearchHome.setBackgroundResource(R.drawable.explore_btn);
 					m_oImgSearchFriend.setBackgroundResource(R.drawable.friends_btn_o);
 					m_oImgSearchLike.setBackgroundResource(R.drawable.love_btn);
-					m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);
+					if(LoginInfoObject.getInstance().getMyteam().equals(""))
+					{
+						m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_ic_o);	
+						m_oBtnSearchTeam.setBackgroundColor(0xffe6e7e9);
+						m_oTxtSelectTeam.setTextColor(0xffbcbdbf);
+					}
+					else
+					{
+						m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);	
+						m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
+						m_oTxtSelectTeam.setTextColor(0xff01d0d2);
+					}
 					MainActivity.getInstance().replaceFragment(PartnerSearchFragment.class, null, false);
 				}
 				else
@@ -336,17 +387,26 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 					m_oBtnSearchHome.setBackgroundColor(0xffffffff);
 					m_oBtnSearchFriend.setBackgroundColor(0xffffffff);
 					m_oBtnSearchLike.setBackgroundColor(0xff01d0d2);
-					m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
 		
 					m_oTxtSelectHome.setTextColor(0xff01d0d2);
 					m_oTxtSelectFriend.setTextColor(0xff01d0d2);
 					m_oTxtSelectLike.setTextColor(0xffffffff);
-					m_oTxtSelectTeam.setTextColor(0xff01d0d2);
 					
 					m_oImgSearchHome.setBackgroundResource(R.drawable.explore_btn);
 					m_oImgSearchFriend.setBackgroundResource(R.drawable.friends_btn);
 					m_oImgSearchLike.setBackgroundResource(R.drawable.love_btn_o);
-					m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);
+					if(LoginInfoObject.getInstance().getMyteam().equals(""))
+					{
+						m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_ic_o);	
+						m_oBtnSearchTeam.setBackgroundColor(0xffe6e7e9);
+						m_oTxtSelectTeam.setTextColor(0xffbcbdbf);
+					}
+					else
+					{
+						m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);	
+						m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
+						m_oTxtSelectTeam.setTextColor(0xff01d0d2);
+					}
 		
 					MainActivity.getInstance().replaceFragment(LikeTeamFragment.class, null, false);
 				}
@@ -364,17 +424,26 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 						m_oBtnSearchHome.setBackgroundColor(0xffffffff);
 						m_oBtnSearchFriend.setBackgroundColor(0xffffffff);
 						m_oBtnSearchLike.setBackgroundColor(0xffffffff);
-						m_oBtnSearchTeam.setBackgroundColor(0xff01d0d2);
 			
 						m_oTxtSelectHome.setTextColor(0xff01d0d2);
 						m_oTxtSelectFriend.setTextColor(0xff01d0d2);
 						m_oTxtSelectLike.setTextColor(0xff01d0d2);
-						m_oTxtSelectTeam.setTextColor(0xffffffff);
 						
 						m_oImgSearchHome.setBackgroundResource(R.drawable.explore_btn);
 						m_oImgSearchFriend.setBackgroundResource(R.drawable.friends_btn);
 						m_oImgSearchLike.setBackgroundResource(R.drawable.love_btn);
-						m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn_o);
+						if(LoginInfoObject.getInstance().getMyteam().equals(""))
+						{
+							m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_ic_o);	
+							m_oBtnSearchTeam.setBackgroundColor(0xffe6e7e9);
+							m_oTxtSelectTeam.setTextColor(0xffbcbdbf);
+						}
+						else
+						{
+							m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn_o);	
+							m_oBtnSearchTeam.setBackgroundColor(0xff01d0d2);
+							m_oTxtSelectTeam.setTextColor(0xffffffff);
+						}
 			
 						Bundle o = new Bundle();
 			    		o.putString("object", LoginInfoObject.getInstance().getMyteam());
@@ -389,6 +458,21 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 			}
 		}
 		
+	}
+	public void checkDim()
+	{
+		if(LoginInfoObject.getInstance().getMyteam().equals(""))
+		{
+			m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_ic_o);	
+			m_oBtnSearchTeam.setBackgroundColor(0xffe6e7e9);
+			m_oTxtSelectTeam.setTextColor(0xffbcbdbf);
+		}
+		else
+		{
+			m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);	
+			m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
+			m_oTxtSelectTeam.setTextColor(0xff01d0d2);
+		}
 	}
   
 }

@@ -18,7 +18,8 @@
             android:id="@+id/issue_acticle"
             android:layout_width="match_parent"
             android:layout_height="200dip"
-            android:visibility="visible">
+            android:visibility="visible"
+            android:layout_marginTop="15dip">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -185,7 +186,7 @@
             android:layout_width="120dip"
             android:layout_height="40dip"
             android:gravity="center"
-            android:layout_marginLeft="60dip">
+            android:layout_marginLeft="50dip">
 	        <ImageView
 	            android:id="@+id/item_lineup_bottom_likecount_img_o"
 	            android:layout_width="wrap_content"
@@ -213,7 +214,7 @@
 		    android:layout_height="225dip"
 		    android:orientation="vertical"
 		    android:visibility="visible"
-		    android:layout_marginBottom="60dip">
+		    android:layout_marginBottom="50dip">
 		<RelativeLayout
 		    android:layout_width="match_parent"
 		    android:layout_height="match_parent"

@@ -194,6 +194,7 @@ public class TeamPageFragment extends Fragment implements View.OnClickListener, 
 		        	}
 		        	else
 		        	{
+		        		Toast.makeText(mContext, "번개 알림!!", Toast.LENGTH_SHORT).show();
 		        		requestGcm();
 		        	}
 	        	}
