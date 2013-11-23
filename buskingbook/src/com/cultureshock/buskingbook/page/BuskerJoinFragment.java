@@ -1,10 +1,18 @@
 package com.cultureshock.buskingbook.page;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONObject;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -32,9 +40,15 @@ import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.object.TeamMemberObject;
 import com.cultureshock.buskingbook.object.TeamObject;
 import com.cultureshock.buskingbook.service.ServiceType;
+import com.cultureshock.buskingbook.util.Util;
 
 public class BuskerJoinFragment extends Fragment implements View.OnClickListener, HttpClientNet.OnResponseListener{
-    private FragmentActivity mContext;
+    private static BuskerJoinFragment m_instance = new BuskerJoinFragment();
+    public static BuskerJoinFragment getInstace()
+    {
+    	return m_instance;
+    }
+	private FragmentActivity mContext;
     /*
      * version 1
      */
@@ -53,6 +67,9 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
     private String m_oGenre;
     private String m_oTeamImgStr;
     private String m_oTeamMember;
+    public static final String TEMP_PHOTO_FILE = "tmp_team.jpg";
+    public static Uri m_oImageCropUri;
+    public static final int REQ_PICK_IMAGE_BUSKER = 12341;
     /*
      * version 2
      */
@@ -157,12 +174,19 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
 	{
 		//회원가입 요청
 		HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_TEAM_JOIN);
+		loginService.setCheck(true);
 		ArrayList<Params> loginParams = new ArrayList<Params>();
+		loginParams.add(new Params("id", LoginInfoObject.getInstance().getId()));
 		loginParams.add(new Params("name", m_oTeamName));
 		loginParams.add(new Params("mans", m_oTeamMember));
 		loginParams.add(new Params("song", m_oGenre));
 		loginParams.add(new Params("coment", m_oTeamInfo));
-		loginParams.add(new Params("thum", m_oTeamImgStr));
+		
+		if(m_oImageCropUri != null)
+		{
+			
+			loginParams.add(new Params("thum", m_oImageCropUri.getPath()));
+		}
 		loginService.setParam(loginParams);
 		loginService.doAsyncExecute(this);
 		MainActivity.getInstance().startProgressDialog();
@@ -181,13 +205,16 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
    	{
    		//회원가입 요청
    		HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_MYTEAM_UP);
+   		
    		ArrayList<Params> loginParams = new ArrayList<Params>();
    		loginParams.add(new Params("name", LoginInfoObject.getInstance().getName()));
    		loginParams.add(new Params("myteam", m_oTeamName));
+   		
    		loginService.setParam(loginParams);
    		loginService.doAsyncExecute(this);
    		MainActivity.getInstance().startProgressDialog();
    	}
+    
     @Override
     public synchronized void onClick(View v) 
     {
@@ -200,6 +227,7 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
 	        case R.id.busker_join_img_add:
 	        {
 	        	//버젼1 그림추가버튼 
+//	        	MainActivity.getInstance().teamImageSetting();
 	            break;
 	        }
 	        case R.id.busker_btn_join: 
@@ -344,6 +372,55 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
 		}
 
 	}
-
+	@Override
+    public void onDestroyView() {
+        // TODO Auto-generated method stub
+        super.onDestroyView();
+        clearUiResource();
+        if(getActivity() != null)
+        {
+	        Util.recursiveRecycle(((ViewGroup) getActivity().findViewById(R.id.content_frame)), false);
+			Util.unbindDrawables(((ViewGroup) getActivity().findViewById(R.id.content_frame)));
+	        ((ViewGroup) getActivity().findViewById(R.id.content_frame)).removeAllViews();
+        }
+		System.gc();
+    }
+    public void clearUiResource()
+    {
+    	m_oBtnList = null;
+    	 m_oDoubleCheckImg  = null;
+    	 m_oLayout1  = null;
+    	 m_oLayout2  = null;
+    	 m_oBtnImg  = null;
+    	 m_oImgVersion1  = null;
+    	 m_oEditTextTeamname  = null;
+    	 
+    	 m_oEditTextTeamInfo  = null;
+    	 m_oEditTextGenre  = null;
+    	 m_oBtnNext  = null;
+    	 m_oImgVersion2  = null;
+    	 m_oTxtTeamName = null;
+    	 m_oTxtGenre  = null;
+    	 m_oTxtTeamInfo  = null;
+    	 m_oTxtTeamMember  = null;
+    	 m_oBtnTeamMemberAdd  = null;
+    	 m_oBtnBefore  = null;
+    	 m_oBtnConfirm = null;
+    	 m_oEditTextTeamMember = null;
+    }
+//    public void imageSet()
+//    {
+//            Bitmap bitmap;
+//            String fileName = Environment.getExternalStorageDirectory() + "/" + TEMP_PHOTO_FILE;
+//            File outFile = new File(fileName);
+//			m_oImageCropUri = Uri.fromFile(outFile);
+//            try {
+//                bitmap = BitmapFactory.decodeFile(fileName);
+//                m_oImgVersion1.setImageBitmap(bitmap);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//    }
 
 }

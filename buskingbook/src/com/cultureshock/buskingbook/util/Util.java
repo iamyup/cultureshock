@@ -150,5 +150,53 @@ public class Util {
 
 		return;
 	}
+	public static void unbindDrawables(View view)
+    {
+        if ( view != null )
+        {
+            if ( view.getBackground() != null )
+            {
+                view.getBackground().setCallback(null);
+            }
+            if ( view instanceof ViewGroup )
+            {
+                for ( int i = 0; i < ((ViewGroup) view).getChildCount(); i++ )
+                {
+                    unbindDrawables(((ViewGroup) view).getChildAt(i));
+                }
+                try
+                {
+                	((ViewGroup) view).removeAllViews();
+                }
+                catch( Exception e)
+                {
+                	e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+	public static void recursiveRecycle(View root, boolean setNull) {
+        if (root == null)
+            return;
+        root.setBackgroundDrawable(null);
+        if (root instanceof ViewGroup) {
+            ViewGroup group = (ViewGroup)root;
+            int count = group.getChildCount();
+            for (int i = 0; i < count; i++) {
+                recursiveRecycle(group.getChildAt(i));
+            }
+        }
+       
+        if (root instanceof ImageView) {
+
+    		((ImageView)root).setImageDrawable(null);
+        }
+        
+        if(setNull)
+        	root = null;
+ 
+        return;
+    }
 
 }

@@ -39,6 +39,8 @@ import com.cultureshock.buskingbook.service.ServiceType;
 public class JoinActivity extends Activity implements View.OnClickListener , HttpClientNet.OnResponseListener{
     private static final int REQ_PICK_IMAGE = 0;
     private static final String TEMP_PHOTO_FILE = "tmp_profile.jpg";
+    
+    private static Uri m_oImageCropUri;
 
     private Context mContext;
     
@@ -120,6 +122,15 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
     protected void onDestroy() {
        
         super.onDestroy();
+        m_oImageUpload = null;
+    	m_oImage = null;
+    	m_oUserName = null;
+    	m_oEmail = null;
+    	m_oPassword = null;
+    	m_oPasswordConfirm = null;
+    	m_oBtnConfirm  = null;
+    	m_oImgDoubleCheck = null;
+    	m_oEmail = null;
     }
     public void reqeustDoubleId()
 	{
@@ -135,16 +146,22 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
 	{
 		//회원가입 요청
 		HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_JOIN);
+		loginService.setCheck(true);
 		ArrayList<Params> loginParams = new ArrayList<Params>();
 		loginParams.add(new Params("id", m_oEmail.getText().toString()));
 		loginParams.add(new Params("pwd", m_oPassword.getText().toString()));
 		loginParams.add(new Params("name", m_oUserName.getText().toString()));
 		loginParams.add(new Params("phone", ""));
-		loginParams.add(new Params("thum", m_oStrImgThum));
+		if(m_oImageCropUri != null)
+		{
+			
+			loginParams.add(new Params("thum", m_oImageCropUri.getPath()));
+		}
 		loginService.setParam(loginParams);
 		loginService.doAsyncExecute(this);
 		startProgressDialog();
 	}
+   
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
@@ -156,6 +173,7 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
 			    intent.setType("image/*");
 			    intent.putExtra("crop", "true");
 			    intent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
+			    intent.putExtra("output", m_oImageCropUri);
 			    intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
 			    startActivityForResult(intent, REQ_PICK_IMAGE);
 			    break;
@@ -172,9 +190,9 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
 					Toast.makeText(this, "비밀번호를 입력하세요", Toast.LENGTH_SHORT).show();
 					//비밀번호 입력하세요
 				}
-				else if(m_oPassword.getText().toString().length() < 8)
+				else if(m_oPassword.getText().toString().length() < 4)
 				{
-					Toast.makeText(this, "비밀번호는 8자리 이상 입력해주세요", Toast.LENGTH_SHORT).show();
+					Toast.makeText(this, "비밀번호는 4자리 이상 입력해주세요", Toast.LENGTH_SHORT).show();
 					//비밀번호는 8자리이상
 				}
 				else if(!m_oPassword.getText().toString().equals(m_oPasswordConfirm.getText().toString()))
@@ -289,8 +307,11 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
         case REQ_PICK_IMAGE:
             if (resultCode == RESULT_OK) {
                 if (data != null) {
+                	
                     Bitmap bitmap;
                     String fileName = Environment.getExternalStorageDirectory() + "/" + TEMP_PHOTO_FILE;
+                    File outFile = new File(fileName);
+    				m_oImageCropUri = Uri.fromFile(outFile);
                     try {
                         bitmap = BitmapFactory.decodeFile(fileName);
                         m_oImage.setImageBitmap(bitmap);

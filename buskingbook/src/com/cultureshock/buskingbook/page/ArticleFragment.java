@@ -35,6 +35,7 @@ import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.object.TeamObject;
 import com.cultureshock.buskingbook.service.ServiceType;
 import com.cultureshock.buskingbook.util.AsyncImageLoader;
+import com.cultureshock.buskingbook.util.Util;
 
 public class ArticleFragment extends Fragment implements View.OnClickListener, HttpClientNet.OnResponseListener{
     private FragmentActivity mContext;
@@ -121,6 +122,39 @@ public class ArticleFragment extends Fragment implements View.OnClickListener, H
 		loginService.doAsyncExecute(this);
 		MainActivity.getInstance().startProgressDialog();
 	}
+    @Override
+    public void onDestroyView() {
+        // TODO Auto-generated method stub
+        super.onDestroyView();
+        clearUiResource();
+        if(getActivity() != null)
+        {
+	        Util.recursiveRecycle(((ViewGroup) getActivity().findViewById(R.id.content_frame)), false);
+			Util.unbindDrawables(((ViewGroup) getActivity().findViewById(R.id.content_frame)));
+	        ((ViewGroup) getActivity().findViewById(R.id.content_frame)).removeAllViews();
+        }
+		System.gc();
+    }
+    public void clearUiResource()
+    {
+    	m_oBtnList = null;
+        m_oTitleImge = null;
+        m_oTitle = null;
+        m_oTitleCalendar = null;
+        m_oSubTitle = null;
+        m_oIntroQ = null;
+        m_oQ1 = null;
+        m_oQ2 = null;
+        m_oQ3 = null;
+        m_oQ4 = null;
+        m_oQ5 = null;
+        m_oIntroA = null;
+        m_oA1 = null;
+        m_oA2 = null;
+        m_oA3 = null;
+        m_oA4 = null;
+        m_oA5 = null;
+    }
     @Override
     public synchronized void onClick(View v) {
         switch (v.getId()) {

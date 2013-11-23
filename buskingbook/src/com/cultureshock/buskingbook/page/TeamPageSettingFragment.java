@@ -39,6 +39,7 @@ import com.cultureshock.buskingbook.object.TeamMemberObject;
 import com.cultureshock.buskingbook.object.TeamObject;
 import com.cultureshock.buskingbook.service.ServiceType;
 import com.cultureshock.buskingbook.util.AsyncImageLoader;
+import com.cultureshock.buskingbook.util.Util;
 
 public class TeamPageSettingFragment extends Fragment implements View.OnClickListener, HttpClientNet.OnResponseListener{
     private FragmentActivity mContext;
@@ -240,5 +241,32 @@ public class TeamPageSettingFragment extends Fragment implements View.OnClickLis
 		}
 
 	}
-	
+	@Override
+    public void onDestroyView() {
+        // TODO Auto-generated method stub
+        super.onDestroyView();
+        clearUiResource();
+        if(getActivity() != null)
+        {
+	        Util.recursiveRecycle(((ViewGroup) getActivity().findViewById(R.id.content_frame)), false);
+			Util.unbindDrawables(((ViewGroup) getActivity().findViewById(R.id.content_frame)));
+	        ((ViewGroup) getActivity().findViewById(R.id.content_frame)).removeAllViews();
+        }
+		System.gc();
+    }
+    public void clearUiResource()
+    {
+    	m_oBtnList = null;
+    	m_oBtnHome = null;
+    	mTeamOut = null;
+		mTeamname= null;
+		mTeamChangeData = null;
+		mTeamInfo = null;
+		mTeamMemberList= null;
+		mTeamname = null;
+		mTeamNotice = null;
+		mTeamInfo = null;
+		if(listView !=null)
+			listView.recycle();
+    }
 }

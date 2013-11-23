@@ -3,6 +3,7 @@ package com.cultureshock.buskingbook.main;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -66,6 +67,9 @@ public class LoginJoinActivity extends Activity implements View.OnClickListener 
     protected void onDestroy() {
 
         super.onDestroy();
+        m_oBtnJoinFacefook = null;
+        m_oBtnJoinEmail = null;
+        m_oBtnLogin = null;
     }
 
     @Override
@@ -83,6 +87,8 @@ public class LoginJoinActivity extends Activity implements View.OnClickListener 
                       Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
                         @Override
                         public void onCompleted(GraphUser user, Response response) {
+                        	
+        					
                         }
                     });
                   } else {

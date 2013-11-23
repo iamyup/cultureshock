@@ -20,6 +20,7 @@ import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.list.BuskerSearchListView;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.object.TeamObject;
+import com.cultureshock.buskingbook.util.Util;
 
 public class BuskerSearchFragment extends Fragment implements
 		View.OnClickListener{
@@ -166,7 +167,28 @@ public class BuskerSearchFragment extends Fragment implements
 		}
 
 	}
-
+	@Override
+    public void onDestroyView() {
+        // TODO Auto-generated method stub
+        super.onDestroyView();
+        clearUiResource();
+        if(getActivity() != null)
+        {
+	        Util.recursiveRecycle(((ViewGroup) getActivity().findViewById(R.id.content_frame)), false);
+			Util.unbindDrawables(((ViewGroup) getActivity().findViewById(R.id.content_frame)));
+	        ((ViewGroup) getActivity().findViewById(R.id.content_frame)).removeAllViews();
+        }
+		System.gc();
+    }
+    public void clearUiResource()
+    {
+    	m_oBtnList = null;
+    	m_oEditTextSearch  = null;
+    	mImg  = null;
+    	mNoDataLayout  = null;
+    	if(m_oListTeamView !=null)
+    		m_oListTeamView.recycle();
+    }
 	
 
 }

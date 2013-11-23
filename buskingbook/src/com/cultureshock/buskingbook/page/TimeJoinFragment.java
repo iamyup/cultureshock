@@ -38,6 +38,7 @@ import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.object.TeamMemberObject;
 import com.cultureshock.buskingbook.object.TeamObject;
 import com.cultureshock.buskingbook.service.ServiceType;
+import com.cultureshock.buskingbook.util.Util;
 
 public class TimeJoinFragment extends Fragment implements View.OnClickListener, HttpClientNet.OnResponseListener{
     private FragmentActivity mContext;
@@ -584,5 +585,28 @@ private LinearLayout m_oBtnConfirm;
 		loginService.doAsyncExecute(this);
 		MainActivity.getInstance().startProgressDialog();
 	}	
-
+	@Override
+    public void onDestroyView() {
+        // TODO Auto-generated method stub
+        super.onDestroyView();
+        clearUiResource();
+        if(getActivity() != null)
+        {
+	        Util.recursiveRecycle(((ViewGroup) getActivity().findViewById(R.id.content_frame)), false);
+			Util.unbindDrawables(((ViewGroup) getActivity().findViewById(R.id.content_frame)));
+	        ((ViewGroup) getActivity().findViewById(R.id.content_frame)).removeAllViews();
+        }
+		System.gc();
+    }
+    public void clearUiResource()
+    {
+    	m_oBtnList = null;
+    	m_oBtnConfirm = null;
+    	m_oTimeYear = null;
+    	m_oTimeMonth= null;
+    	m_oBtnPrev = null;
+    	m_oBtnNext = null;
+    	m_oEditTextDay= null;
+    	m_oEditTextHour = null;
+    }
 }

@@ -18,6 +18,7 @@ import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.ViewPagerAdapter;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
+import com.cultureshock.buskingbook.util.Util;
 
 public class MainHomeFragment extends Fragment implements OnClickListener{
     private FragmentActivity mContext;
@@ -203,4 +204,36 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
             break;
         }
     }
+    @Override
+    public void onDestroyView() {
+        // TODO Auto-generated method stub
+        super.onDestroyView();
+        clearUiResource();
+        if(getActivity() != null)
+        {
+	        Util.recursiveRecycle(((ViewGroup) getActivity().findViewById(R.id.content_frame)), false);
+			Util.unbindDrawables(((ViewGroup) getActivity().findViewById(R.id.content_frame)));
+	        ((ViewGroup) getActivity().findViewById(R.id.content_frame)).removeAllViews();
+        }
+		System.gc();
+    }
+    public void clearUiResource()
+    {
+    	m_oBtnList = null;
+    	m_oBtnTest  = null;
+    	 
+         m_oBtnTimejoin = null;
+         m_oBtnLineUp = null;
+         m_oBtnIssueUp = null;
+         m_oBtnBuskers = null;
+         
+         m_oTxtLineUp = null;
+         m_oTxtIssueUp= null;
+         m_oTxtBuskers = null;
+         
+         m_oLineLineUp = null;
+         m_oLineIssueUp= null;
+         m_oLineBuskers = null;
+    }
+    
 }

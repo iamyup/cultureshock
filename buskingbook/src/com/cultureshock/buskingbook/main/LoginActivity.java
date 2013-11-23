@@ -84,6 +84,13 @@ public class LoginActivity extends Activity implements View.OnClickListener, Htt
     protected void onDestroy() {
        
         super.onDestroy();
+        m_oEmail = null;
+    	m_oPassword = null;
+    	m_oBtnConfirm = null;
+    	m_oBtnFacebookConfirm = null;
+    	m_oBtnAutoLogin  = null;
+    	m_oImgAutoLogin = null;
+    	m_oBtnConfirm = null;
     }
     public void requestLogin()
 	{

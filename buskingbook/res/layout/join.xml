@@ -116,7 +116,7 @@
                android:id="@+id/join_password"
                android:layout_width="250dip"
                android:layout_height="wrap_content"
-               android:hint="비밀번호는 8자리 이상"
+               android:hint="비밀번호는 4자리 이상"
                android:singleLine="true"
                android:textSize="15dip"
                android:paddingLeft="5dip"

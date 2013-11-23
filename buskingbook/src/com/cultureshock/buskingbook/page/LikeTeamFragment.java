@@ -23,6 +23,7 @@ import com.cultureshock.buskingbook.list.LikeTeamListView;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.object.TeamObject;
+import com.cultureshock.buskingbook.util.Util;
 
 public class LikeTeamFragment extends Fragment implements OnClickListener{
     private FragmentActivity mContext;
@@ -120,5 +121,25 @@ public class LikeTeamFragment extends Fragment implements OnClickListener{
             MainActivity.getInstance().showMenu();
             break;
         }
+    }
+    @Override
+    public void onDestroyView() {
+        // TODO Auto-generated method stub
+        super.onDestroyView();
+        clearUiResource();
+        if(getActivity() != null)
+        {
+	        Util.recursiveRecycle(((ViewGroup) getActivity().findViewById(R.id.content_frame)), false);
+			Util.unbindDrawables(((ViewGroup) getActivity().findViewById(R.id.content_frame)));
+	        ((ViewGroup) getActivity().findViewById(R.id.content_frame)).removeAllViews();
+        }
+		System.gc();
+    }
+    public void clearUiResource()
+    {
+    	m_oBtnList = null;
+    	m_oBtnTest  = null;
+    	m_oLayoutList  = null;
+    	m_oLayoutNo  = null;
     }
 }

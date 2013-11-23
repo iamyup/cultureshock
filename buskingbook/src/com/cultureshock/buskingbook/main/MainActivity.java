@@ -2,13 +2,21 @@
 package com.cultureshock.buskingbook.main;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -32,6 +40,7 @@ import com.cultureshock.buskingbook.net.Params;
 import com.cultureshock.buskingbook.object.LineUpObject;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.object.TeamObject;
+import com.cultureshock.buskingbook.page.BuskerJoinFragment;
 import com.cultureshock.buskingbook.page.LikeTeamFragment;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.page.PaperEditFragment;
@@ -95,6 +104,7 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 		m_oImgSearchFriend= (ImageView) findViewById(R.id.select_friend_img);
 		m_oImgSearchLike= (ImageView) findViewById(R.id.select_like_img);
 		m_oImgSearchTeam= (ImageView) findViewById(R.id.select_team_img);
+		try{
 		if(LoginInfoObject.getInstance().getMyteam().equals(""))
 		{
 			m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_ic_o);	
@@ -106,6 +116,11 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 			m_oImgSearchTeam.setBackgroundResource(R.drawable.planet_btn);	
 			m_oBtnSearchTeam.setBackgroundColor(0xffffffff);
 			m_oTxtSelectTeam.setTextColor(0xff01d0d2);
+		}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
 		}
     }
 
@@ -474,5 +489,41 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 			m_oTxtSelectTeam.setTextColor(0xff01d0d2);
 		}
 	}
+	private Uri getTempUri() {
+	    return Uri.fromFile(getProfileImage());
+	}
+
+	private File getProfileImage() {
+	    File file = new File(Environment.getExternalStorageDirectory(), BuskerJoinFragment.TEMP_PHOTO_FILE);
+	    try {
+	        file.createNewFile();
+	    } catch (IOException e) {
+	        
+	    }
+	    return file;
+	}
+//	public void teamImageSetting()
+//	{
+//		Intent intent = new Intent(Intent.ACTION_PICK);
+//	    intent.setType("image/*");
+//	    intent.putExtra("crop", "true");
+//	    intent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
+//	    intent.putExtra("output", BuskerJoinFragment.m_oImageCropUri);
+//	    intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+//	    startActivityForResult(intent, BuskerJoinFragment.REQ_PICK_IMAGE_BUSKER);
+//	}
+//	@Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        switch(requestCode) {
+//        case BuskerJoinFragment.REQ_PICK_IMAGE_BUSKER:
+//            if (resultCode == RESULT_OK) {
+//            	if (data != null) {
+//            		BuskerJoinFragment.getInstace().imageSet();
+//                }
+//            }
+//            break;
+//        }
+//        super.onActivityResult(requestCode, resultCode, data);
+//    }
   
 }
