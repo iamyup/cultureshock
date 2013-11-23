@@ -4,7 +4,16 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ *private static Session openActiveSession(Context context, boolean allowLoginUI, OpenRequest openRequest, StatusCallback callback) {
+        Session session = new Builder(context).build();
+        if (SessionState.CREATED_TOKEN_LOADED.equals(session.getState()) || allowLoginUI) {
+            setActiveSession(session);
+            session.openForPublish(openRequest.setCallback(callback).setPermissions(Arrays.asList("read_stream", "email", "publish_stream")));
+            return session;
+        }
+        return null;
+    }
+
  *    http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -828,6 +837,19 @@ public class Session implements Serializable {
     public static Session openActiveSession(Activity activity, boolean allowLoginUI,
             StatusCallback callback) {
         return openActiveSession(activity, allowLoginUI, new OpenRequest(activity).setCallback(callback));
+    }
+    public static Session openActiveSession2(Activity activity, boolean allowLoginUI,
+            StatusCallback callback) {
+        return openActiveSession(activity, allowLoginUI, new OpenRequest(activity).setLoginBehavior(SessionLoginBehavior.SUPPRESS_SSO).setCallback(callback), callback);
+    }
+    private static Session openActiveSession(Context context, boolean allowLoginUI, OpenRequest openRequest, StatusCallback callback) {
+        Session session = new Builder(context).build();
+        if (SessionState.CREATED_TOKEN_LOADED.equals(session.getState()) || allowLoginUI) {
+            setActiveSession(session);
+            session.openForPublish(openRequest.setCallback(callback).setPermissions(Arrays.asList("read_stream", "email", "publish_stream")));
+            return session;
+        }
+        return null;
     }
 
     /**

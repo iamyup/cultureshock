@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -33,6 +34,8 @@ import com.cultureshock.buskingbook.R;
 import com.cultureshock.buskingbook.component.LoadingPopup;
 import com.cultureshock.buskingbook.net.HttpClientNet;
 import com.cultureshock.buskingbook.net.Params;
+import com.cultureshock.buskingbook.object.LoginInfoObject;
+import com.cultureshock.buskingbook.object.TeamObject;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.service.ServiceType;
 
@@ -257,6 +260,7 @@ public class JoinActivity extends Activity implements View.OnClickListener , Htt
 					finish();
 				}
 			}
+			
 		}
 		catch(Exception e )
 		{

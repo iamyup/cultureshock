@@ -241,6 +241,9 @@ public class FirstStartActivity extends Activity implements
 	public void requestLogin(String id, String pwd) {
 		HttpClientNet loginService = new HttpClientNet(ServiceType.MSG_LOGIN);
 		ArrayList<Params> loginParams = new ArrayList<Params>();
+		SharedPreferences sp = getSharedPreferences("autologin", MODE_PRIVATE);
+		SharedPreferences.Editor editer = sp.edit();
+		loginParams.add(new Params("facebook", sp.getBoolean("facebook", false)+""));
 		loginParams.add(new Params("id", id));
 		loginParams.add(new Params("pwd", pwd));
 		loginService.setParam(loginParams);
