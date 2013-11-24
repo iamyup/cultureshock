@@ -226,8 +226,13 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
 			}
 	        case R.id.busker_join_img_add:
 	        {
-	        	//버젼1 그림추가버튼 
-//	        	MainActivity.getInstance().teamImageSetting();
+                    Intent intent = new Intent(Intent.ACTION_PICK);
+                    intent.setType("image/*");
+                    intent.putExtra("crop", "true");
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
+                    intent.putExtra("output", m_oImageCropUri);
+                    intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+                    getActivity().startActivityForResult(intent, REQ_PICK_IMAGE_BUSKER);
 	            break;
 	        }
 	        case R.id.busker_btn_join: 
@@ -422,5 +427,18 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
 //            }
 //
 //    }
+    private Uri getTempUri() {
+        return Uri.fromFile(getProfileImage());
+    }
+
+    private File getProfileImage() {
+        File file = new File(Environment.getExternalStorageDirectory(), TEMP_PHOTO_FILE);
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            
+        }
+        return file;
+    }
 
 }

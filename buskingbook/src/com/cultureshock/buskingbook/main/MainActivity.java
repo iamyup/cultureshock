@@ -512,18 +512,19 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 //	    intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
 //	    startActivityForResult(intent, BuskerJoinFragment.REQ_PICK_IMAGE_BUSKER);
 //	}
-//	@Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        switch(requestCode) {
-//        case BuskerJoinFragment.REQ_PICK_IMAGE_BUSKER:
-//            if (resultCode == RESULT_OK) {
-//            	if (data != null) {
-//            		BuskerJoinFragment.getInstace().imageSet();
-//                }
-//            }
-//            break;
-//        }
-//        super.onActivityResult(requestCode, resultCode, data);
-//    }
-  
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("DEBUG", "onActivityResult");
+        switch (requestCode) {
+        case BuskerJoinFragment.REQ_PICK_IMAGE_BUSKER:
+            if (resultCode == RESULT_OK) {
+                if (data != null) {
+                    Log.d("DEBUG", "OK");
+                }
+            }
+            break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }
