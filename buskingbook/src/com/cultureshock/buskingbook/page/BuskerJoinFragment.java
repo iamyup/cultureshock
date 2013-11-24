@@ -43,7 +43,7 @@ import com.cultureshock.buskingbook.service.ServiceType;
 import com.cultureshock.buskingbook.util.Util;
 
 public class BuskerJoinFragment extends Fragment implements View.OnClickListener, HttpClientNet.OnResponseListener{
-    private static BuskerJoinFragment m_instance = new BuskerJoinFragment();
+    private static BuskerJoinFragment m_instance ;
     public static BuskerJoinFragment getInstace()
     {
     	return m_instance;
@@ -56,7 +56,7 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
     private ImageView m_oDoubleCheckImg;
     private RelativeLayout m_oLayout1;
     private RelativeLayout m_oBtnImg;
-    private ImageView m_oImgVersion1;
+    public ImageView m_oImgVersion1;
     private EditText m_oEditTextTeamname;
     private EditText m_oEditTextTeamInfo;
     private EditText m_oEditTextGenre;
@@ -67,7 +67,7 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
     private String m_oGenre;
     private String m_oTeamImgStr;
     private String m_oTeamMember;
-    public static final String TEMP_PHOTO_FILE = "tmp_team.jpg";
+    public static final String TEMP_PHOTO_FILE = "tmp_team1.jpg";
     public static Uri m_oImageCropUri;
     public static final int REQ_PICK_IMAGE_BUSKER = 12341;
     /*
@@ -95,6 +95,7 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
+        m_instance = this;
         MainActivity.getInstance().offBottom();
         setUi();
     }
@@ -226,13 +227,14 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
 			}
 	        case R.id.busker_join_img_add:
 	        {
-                    Intent intent = new Intent(Intent.ACTION_PICK);
-                    intent.setType("image/*");
-                    intent.putExtra("crop", "true");
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
-                    intent.putExtra("output", m_oImageCropUri);
-                    intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-                    getActivity().startActivityForResult(intent, REQ_PICK_IMAGE_BUSKER);
+	        	
+	        	Intent intent = new Intent(Intent.ACTION_PICK);
+			    intent.setType("image/*");
+			    intent.putExtra("crop", "true");
+			    intent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
+			    intent.putExtra("output", m_oImageCropUri);
+			    intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+			    getActivity().startActivityForResult(intent, REQ_PICK_IMAGE_BUSKER);
 	            break;
 	        }
 	        case R.id.busker_btn_join: 
@@ -413,20 +415,11 @@ public class BuskerJoinFragment extends Fragment implements View.OnClickListener
     	 m_oBtnConfirm = null;
     	 m_oEditTextTeamMember = null;
     }
-//    public void imageSet()
-//    {
-//            Bitmap bitmap;
-//            String fileName = Environment.getExternalStorageDirectory() + "/" + TEMP_PHOTO_FILE;
-//            File outFile = new File(fileName);
-//			m_oImageCropUri = Uri.fromFile(outFile);
-//            try {
-//                bitmap = BitmapFactory.decodeFile(fileName);
-//                m_oImgVersion1.setImageBitmap(bitmap);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//
-//    }
+    public void imageSet(Bitmap bitmap)
+    {
+         m_oImgVersion1.setImageBitmap(bitmap);
+
+    }
     private Uri getTempUri() {
         return Uri.fromFile(getProfileImage());
     }

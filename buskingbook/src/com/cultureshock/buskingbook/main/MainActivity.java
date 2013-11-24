@@ -502,29 +502,31 @@ public class MainActivity extends BuskingMainActivity implements OnClickListener
 	    }
 	    return file;
 	}
-//	public void teamImageSetting()
-//	{
-//		Intent intent = new Intent(Intent.ACTION_PICK);
-//	    intent.setType("image/*");
-//	    intent.putExtra("crop", "true");
-//	    intent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
-//	    intent.putExtra("output", BuskerJoinFragment.m_oImageCropUri);
-//	    intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-//	    startActivityForResult(intent, BuskerJoinFragment.REQ_PICK_IMAGE_BUSKER);
-//	}
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	super.onActivityResult(requestCode, resultCode, data);
         Log.d("DEBUG", "onActivityResult");
         switch (requestCode) {
         case BuskerJoinFragment.REQ_PICK_IMAGE_BUSKER:
             if (resultCode == RESULT_OK) {
                 if (data != null) {
-                    Log.d("DEBUG", "OK");
+                	
+                	  Bitmap bitmap;
+                      String fileName = Environment.getExternalStorageDirectory() + "/" + BuskerJoinFragment.TEMP_PHOTO_FILE;
+                      File outFile = new File(fileName);
+      				  BuskerJoinFragment.m_oImageCropUri = Uri.fromFile(outFile);
+                      try {
+                          bitmap = BitmapFactory.decodeFile(fileName);
+                          BuskerJoinFragment.getInstace().imageSet(bitmap);
+                      } catch (Exception e) {
+                          e.printStackTrace();
+                      }
+//                    BuskerJoinFragment.getInstace().imageSet();
                 }
             }
             break;
         }
-        super.onActivityResult(requestCode, resultCode, data);
+        
     }
 }
