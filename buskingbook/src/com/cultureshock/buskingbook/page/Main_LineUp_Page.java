@@ -79,7 +79,23 @@ public class Main_LineUp_Page extends LinearLayout implements
 	public void show() {
 		dialog.show();
 	}
-
+	public void recycleResoure ()
+	{
+		if(lineUpListView !=null)
+		{
+			lineUpListView.recycle();
+			m_oLayoutListView = null;
+			m_oTxtPlace = null;
+			m_oBtnSearch = null;
+			m_oBtnSearchPlaceLayout = null;
+			m_oBtnPlace1 = null;
+			m_oBtnPlace2 = null;
+			m_oBtnPlace3 = null;
+			m_oBtnPlace4 = null;
+			m_oNoBusker = null;
+		}
+		
+	}
 	public void dismissPopup() {
 		dialog.dismiss();
 	}

@@ -53,7 +53,14 @@ public class Buskers_Page extends LinearLayout {
 		mContext = context;
 		initView();
 	}
-
+	public void recycleResoure ()
+	{
+		mListLayout = null;
+		if(m_oListTeamView != null)
+			m_oListTeamView.recycle();
+		
+		
+	}
 	public void show() {
 		dialog.show();
 	}

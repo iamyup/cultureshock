@@ -122,7 +122,33 @@ public class Main_issue_Page extends LinearLayout implements
 		// dialog.setCanceledOnTouchOutside(false);
 		setui();
 	}
-
+	public void recycleResoure ()
+	{
+		mGoteamPage = null;
+		mImg = null;
+		mTeamname = null;
+		mLike = null;
+		mRanking = null;
+		mLikeImg = null;
+		mLikeCount = null;
+		mTime = null;
+		mGoteamPage2 = null;
+		mImg2 = null;
+		mTeamname2 = null;
+		mLike2 = null;
+		mRanking2 = null;
+		mLikeImg2 = null;
+		mLikeCount2 = null;
+		mTime2 = null;
+		m_oLayoutNew = null;
+		m_oLayoutArticle = null;
+		m_oImgArticle = null;
+		m_oTxtArticle = null;
+		if(listView != null)
+			listView.recycle();
+		
+		
+	}
 	public void setui() {
 		mImg = (ImageView) v.findViewById(R.id.busker_join_image_2);
 		mTeamname = (TextView) v.findViewById(R.id.busker_join_teamname_2);
