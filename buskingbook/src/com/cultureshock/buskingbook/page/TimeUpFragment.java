@@ -15,17 +15,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cultureshock.buskingbook.R;
+import com.cultureshock.buskingbook.component.TimeViewPagerAdapter;
 import com.cultureshock.buskingbook.component.ViewPagerAdapter;
 import com.cultureshock.buskingbook.main.MainActivity;
 import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.util.Util;
 
-public class MainHomeFragment extends Fragment implements OnClickListener{
+public class TimeUpFragment extends Fragment implements OnClickListener{
+	private static TimeUpFragment mInstance;
     private FragmentActivity mContext;
     private TextView m_oBtnTest;
     private LinearLayout m_oBtnList;
     private ViewPager m_oViewPager;
-    private LinearLayout m_oBtnTimejoin;
     
     private LinearLayout m_oBtnLineUp;
     private LinearLayout m_oBtnIssueUp;
@@ -39,29 +40,33 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
     private LinearLayout m_oLineIssueUp;
     private LinearLayout m_oLineBuskers;
     
-
+    private String year;
+    private String mon;
+    private String day;
+    private String week;
+    private String ampm;
+    private String hour;
+    private String min;
+    private String place;
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_home, container, false);
+        return inflater.inflate(R.layout.time_menu_top, container, false);
         
     }
     @Override
 	public void onResume() {
         super.onResume();
-        if(LoginInfoObject.getInstance().getMyteam().equals(""))
-        {
-        	 m_oBtnTimejoin.setVisibility(View.GONE);	
-        }
-        else
-        {
-        	 m_oBtnTimejoin.setVisibility(View.VISIBLE);	
-        }
+    }
+    public static TimeUpFragment getInstance() {
+        return mInstance;
     }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
+        mInstance = this;
         MainActivity.getInstance().onBottom();
         m_oBtnTest = (TextView) getActivity().findViewById(R.id.test_main);
         m_oBtnTest.setOnClickListener(this);
@@ -69,8 +74,6 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
                 .findViewById(R.id.title_btn_menu);
         m_oBtnList.setOnClickListener(this);
         
-        m_oBtnTimejoin = (LinearLayout) getActivity().findViewById(R.id.times_join_btn);
-        m_oBtnTimejoin.setOnClickListener(this);
         m_oBtnLineUp = (LinearLayout) getActivity().findViewById(R.id.top_menu1);
         m_oBtnIssueUp = (LinearLayout) getActivity().findViewById(R.id.top_menu2);
         m_oBtnBuskers = (LinearLayout) getActivity().findViewById(R.id.top_menu3);
@@ -95,7 +98,7 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
     }
     public void setPager() {
         m_oViewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity());
+        TimeViewPagerAdapter adapter = new TimeViewPagerAdapter(getActivity());
         m_oViewPager.setAdapter(adapter);
         m_oViewPager.setOnPageChangeListener(new OnPageChangeListener() {
 
@@ -222,7 +225,6 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
     	m_oBtnList = null;
     	m_oBtnTest  = null;
     	 
-         m_oBtnTimejoin = null;
          m_oBtnLineUp = null;
          m_oBtnIssueUp = null;
          m_oBtnBuskers = null;
@@ -234,6 +236,26 @@ public class MainHomeFragment extends Fragment implements OnClickListener{
          m_oLineLineUp = null;
          m_oLineIssueUp= null;
          m_oLineBuskers = null;
+    }
+    public void setTime(String year, String mon, String day,String week, String ampm, String hour,String min)
+    {
+    	this.year= year;
+    	this.mon = mon;
+    	this.day = day;
+    	this.week = week;
+    	this.ampm = ampm;
+    	this.hour = hour;
+    	this.min = min;
+    }
+    public void twoStep()
+    {
+    	m_oTxtLineUp.setTextColor(0xffb2b2b2);
+        m_oTxtIssueUp.setTextColor(0xff01d0d2);
+        m_oTxtBuskers.setTextColor(0xffb2b2b2);
+        m_oLineLineUp.setBackgroundColor(0xffffffff);
+        m_oLineIssueUp.setBackgroundColor(0xff01d0d2);
+        m_oLineBuskers.setBackgroundColor(0xffffffff);
+        setCurrentInflateItem(1);
     }
     
 }

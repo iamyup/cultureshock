@@ -4,31 +4,8 @@
     android:layout_height="match_parent"
     android:background="#f2f2f2"
     android:orientation="vertical" >
-    
-
     <!-- 타이틀 -->
-     <FrameLayout 
-         android:id="@+id/title"
-         android:layout_width="match_parent"
-         android:layout_height="40dip"
-         android:background="#01d0d2">
-		<ImageView
-            android:id="@+id/title_btn_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@xml/menu"
-            android:layout_marginLeft="5dip"
-            android:layout_gravity="center_vertical|left"/>
-		<TextView
-	       android:id="@+id/test_main"
-	       android:layout_gravity="center"
-	       android:text="공연등록"
-	       android:layout_width="wrap_content" 
-	       android:layout_height="wrap_content"
-	       android:textSize="18dip"
-	       android:textStyle="bold"
-	       android:textColor="#ffffff"/>
-	</FrameLayout>
+     
 	<ScrollView
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
@@ -867,100 +844,153 @@
 		    <LinearLayout
 		        android:layout_width="match_parent"
 		        android:layout_height="30dip"
-		        android:layout_marginBottom="15dip"
 		        android:layout_marginTop="10dip">
 	        <TextView 
-			        android:layout_width="wrap_content"
+			        android:layout_width="80dip"
 			        android:layout_height="wrap_content"
 			        android:layout_marginLeft="30dip"
-			        android:text="날       짜  :  "
+			        android:text="    날       짜  :"
 			        android:textSize="15dip"
 			        android:textColor="#000000"
 			        android:layout_marginRight="15dip"/>
 			    <EditText
 			        android:id="@+id/time_join_calendar"
-			        android:layout_width="180dip"
+			        android:layout_width="210dip"
 			        android:layout_height="25dip"
 			        android:text=""
 			        android:enabled="false"
 			        android:textSize="12dip"
 			        android:paddingLeft="10dip"
-			        android:background="#ffffff"
+			        android:background="@drawable/input2"
 			        android:textColor="#000000"/>
 	        </LinearLayout>
-	        <LinearLayout
+	        <RelativeLayout
 	            android:layout_width="match_parent"
-	            android:layout_height="30dip"
-	            android:layout_marginBottom="15dip" >
-			    <TextView 
+	            android:layout_height="100dip">
+			    <LinearLayout
+			        android:id="@+id/si_up"
+			        android:layout_width="90dip"
+			        android:layout_height="30dip"
+			        android:layout_alignLeft="@+id/time_join_time_hour"
+			        android:layout_above="@+id/time_join_time_hour"
+			        android:gravity="center">
+	            	<ImageView
+	            	    android:layout_width="60dip"
+	            	    android:layout_height="30dip"
+	            	    android:background="@drawable/up"
+	            	    android:layout_gravity="center"/>
+	            </LinearLayout>
+			    <LinearLayout
+			        android:id="@+id/min_up"
+			        android:layout_width="90dip"
+			        android:layout_height="30dip"
+			        android:layout_alignLeft="@+id/time_join_time_min"
+			        android:layout_above="@+id/time_join_time_min"
+			        android:gravity="center">
+	            	<ImageView
+	            	    android:layout_width="60dip"
+	            	    android:layout_height="30dip"
+	            	    android:background="@drawable/up"
+	            	    android:layout_gravity="center"/>
+	            </LinearLayout>
+			    <LinearLayout
+			        android:id="@+id/si_down"
+			        android:layout_width="90dip"
+			        android:layout_height="30dip"
+			        android:layout_alignLeft="@+id/time_join_time_hour"
+			        android:layout_below="@+id/time_join_time_hour"
+			        android:gravity="center">
+	            	<ImageView
+	            	    android:layout_width="60dip"
+	            	    android:layout_height="30dip"
+	            	    android:background="@drawable/down"
+	            	    android:layout_gravity="center"/>
+	            </LinearLayout>
+			    <LinearLayout
+			        android:id="@+id/min_down"
+			        android:layout_width="90dip"
+			        android:layout_height="30dip"
+			        android:layout_alignLeft="@+id/time_join_time_min"
+			        android:layout_below="@+id/time_join_time_min"
+			        android:gravity="center">
+	            	<ImageView
+	            	    android:layout_width="60dip"
+	            	    android:layout_height="30dip"
+	            	    android:background="@drawable/down"
+	            	    android:layout_gravity="center"/>
+	            </LinearLayout>
+	            
+			    <LinearLayout
+			        android:id="@+id/text_time_p"
 			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:layout_marginLeft="30dip"
-			        android:text="시       간  :  "
-			        android:textSize="15dip"
-			        android:textColor="#000000"
-			        android:layout_marginRight="15dip"/>
-			    <Spinner
+			        android:layout_height="50dip"
+			        android:gravity="center"
+			        android:layout_centerVertical="true">
+
+			        <LinearLayout
+			            android:id="@+id/text_ampm"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_marginLeft="30dip"
+			            android:layout_marginRight="15dip"
+			            android:textColor="#000000"
+			            android:background="@drawable/pm2"
+			            android:textSize="15dip" />
+
+			    </LinearLayout>
+			    <EditText
 	                android:id="@+id/time_join_time_hour"
-	                android:layout_width="70dip"
-	                android:layout_height="25dip"
+	                android:layout_width="90dip"
+	                android:layout_height="50dip"
 	                android:singleLine="true"
 	      			android:hint=""
-	      			android:layout_gravity="center"
-	      			android:background="@drawable/inputbox_290b"
+	      			android:layout_toRightOf="@+id/text_time_p"
+	      			android:layout_centerVertical="true"
+	      			android:inputType="number"
 	                android:textColor="#000000"
-	                android:paddingLeft="5dip"
-	                android:textSize="12dip"/>
-	            <TextView 
+	                android:gravity="center"
+	                android:background="@drawable/input"
+	                android:paddingRight="5dip"
+	                android:maxLength="2"
+	                android:textSize="20dip"/>
+	            <TextView
+	                android:id="@+id/text_si" 
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:text="시"
 			        android:textSize="15dip"
+			        android:layout_centerVertical="true"
+			        android:layout_toRightOf="@+id/time_join_time_hour"
 			        android:layout_marginLeft="5dip"
 			        android:layout_marginRight="10dip"
 			        android:textColor="#000000"/>
 	            
-	             <Spinner
+	             <EditText
 	                android:id="@+id/time_join_time_min"
-	                android:layout_width="70dip"
-	                android:layout_height="25dip"
+	                android:layout_width="90dip"
+	                android:layout_height="50dip"
 	                android:singleLine="true"
 	      			android:hint=""
+	      			android:inputType="number"
 	      			android:layout_gravity="center"
-	      			android:background="@drawable/inputbox_290b"
+	      			android:layout_alignTop="@+id/time_join_time_hour"
+			        android:layout_toRightOf="@+id/text_si"
+			        android:background="@drawable/input"
 	                android:textColor="#000000"
-	                android:paddingLeft="5dip"
-	                android:textSize="12dip"/>
+	                android:paddingRight="5dip"
+	                android:maxLength="2"
+	                android:gravity="center"
+	                android:textSize="20dip"/>
 	            <TextView 
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="15dip"
+			        android:layout_toRightOf="@+id/time_join_time_min"
 			        android:textColor="#000000"
 			        android:layout_marginLeft="5dip"
+			        android:layout_centerVertical="true"
 			        android:text="분"/>
-	        </LinearLayout>
-	         <LinearLayout
-	            android:layout_width="match_parent"
-	            android:layout_height="30dip"
-	            android:layout_marginBottom="30dip">
-			    <TextView 
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:text="공연장소  :  "
-			        android:textSize="15dip"
-			        android:textColor="#000000"
-			        android:layout_marginLeft="30dip"
-			        android:layout_marginRight="14dip"/>
-			    <Spinner
-	                android:id="@+id/time_join_place"
-	                android:layout_width="180dip"
-	                android:layout_height="25dip"
-	                android:singleLine="true"
-	      			android:hint="선택해주세요"
-	      			android:background="@drawable/inputbox_290b"
-	                android:textColor="#000000"
-	                android:textSize="12dip"/>
-	        </LinearLayout>
+	        </RelativeLayout>
 	        
 	</LinearLayout>
 	<LinearLayout
@@ -973,7 +1003,7 @@
 	            <TextView
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
-	                android:text="등록하기"
+	                android:text="다음단계"
 	                android:textSize="15dip"
 	                android:textColor="#ffffff"/>
 	        </LinearLayout>

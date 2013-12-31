@@ -28,8 +28,8 @@ import com.cultureshock.buskingbook.page.BuskerSearchFragment;
 import com.cultureshock.buskingbook.page.PartnerSearchFragment;
 import com.cultureshock.buskingbook.page.MainHomeFragment;
 import com.cultureshock.buskingbook.page.TeamPageFragment;
-import com.cultureshock.buskingbook.page.TimeJoinFragment;
 import com.cultureshock.buskingbook.page.LikeTeamFragment;
+import com.cultureshock.buskingbook.page.TimeUpFragment;
 import com.cultureshock.buskingbook.util.AsyncImageLoader;
 
 public class LeftMenuFragment extends Fragment implements View.OnClickListener {
@@ -270,7 +270,7 @@ public class LeftMenuFragment extends Fragment implements View.OnClickListener {
 //	    	}
 	    	case R.id.musician_busking_join:
 	    	{
-	    		MainActivity.getInstance().replaceFragment(TimeJoinFragment.class, null, false);
+	    		MainActivity.getInstance().replaceFragment(TimeUpFragment.class, null, false);
 	    		break;
 	    	}
 //	    	case R.id.musician_partner:
