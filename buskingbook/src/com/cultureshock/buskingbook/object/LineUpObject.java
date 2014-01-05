@@ -11,6 +11,10 @@ public class LineUpObject {
 	private String joinCount;
 	private String ranking;
 	private String imgAddress;
+	private String mapX;
+	private String mapY;
+	private String title;
+	private String content;
 
 	public LineUpObject() {
 
@@ -39,6 +43,22 @@ public class LineUpObject {
 		this.place = place;
 		this.teamName = teamName;
 		this.joinCount = joinCount;
+	}
+	public LineUpObject(String year, String month, String day, String time,
+			String dayOfweek, String place, String teamName, String joinCount,String mapX,String mapY,String title,String content) {
+		super();
+		this.year = year;
+		this.month = month;
+		this.day = day;
+		this.time = time;
+		this.dayOfweek = dayOfweek;
+		this.place = place;
+		this.teamName = teamName;
+		this.joinCount = joinCount;
+		this.mapX = mapX;
+		this.mapY = mapY;
+		this.title = title;
+		this.content = content;
 	}
 
 	public LineUpObject(String year, String month, String day, String time,
@@ -152,4 +172,36 @@ public class LineUpObject {
 		this.imgAddress = imgAddress;
 	}
 
+	public String getMapX() {
+		return mapX;
+	}
+
+	public void setMapX(String mapX) {
+		this.mapX = mapX;
+	}
+
+	public String getMapY() {
+		return mapY;
+	}
+
+	public void setMapY(String mapY) {
+		this.mapY = mapY;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
 }

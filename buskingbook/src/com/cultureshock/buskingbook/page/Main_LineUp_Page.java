@@ -164,6 +164,10 @@ public class Main_LineUp_Page extends LinearLayout implements
 					String place = jsonObject.optString("place");
 					String teamname = jsonObject.optString("teamname");
 					String joincount = jsonObject.optString("joincount");
+					String mapX = jsonObject.optString("mapX");
+					String mapY = jsonObject.optString("mapY");
+					String title = jsonObject.optString("title");
+					String content = jsonObject.optString("content");
 					if (Integer.parseInt(year) == calendar.get(Calendar.YEAR)) {
 						if (Integer.parseInt(month) == calendar
 								.get(Calendar.MONTH) + 1) {
@@ -171,7 +175,7 @@ public class Main_LineUp_Page extends LinearLayout implements
 									.get(Calendar.DATE)) {
 								lineUpArr.add(new LineUpObject(year, month,
 										day, time, dayOfweek, place, teamname,
-										joincount));
+										joincount,mapX,mapY,title,content));
 							}
 						}
 					}
@@ -198,6 +202,13 @@ public class Main_LineUp_Page extends LinearLayout implements
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			if (lineUpArr.size() == 0) {
+				m_oNoBusker.setVisibility(View.VISIBLE);
+
+			} else {
+				m_oNoBusker.setVisibility(View.GONE);
+
+			}
 		} finally {
 			MainActivity.getInstance().stopProgressDialog();
 		}
@@ -236,18 +247,19 @@ public class Main_LineUp_Page extends LinearLayout implements
 		switch (v.getId()) {
 		case R.id.top_search: {
 			// 여기서 검색
-			if (checkPlace == false) {
-				m_oBtnSearchPlaceLayout.setVisibility(View.VISIBLE);
-				checkPlace = true;
-			} else {
-				m_oBtnSearchPlaceLayout.setVisibility(View.GONE);
-				checkPlace = false;
-			}
+			MainActivity.getInstance().replaceFragment(MyPlaceSearchFragment.class, null, false);
+//			if (checkPlace == false) {
+//				m_oBtnSearchPlaceLayout.setVisibility(View.VISIBLE);
+//				checkPlace = true;
+//			} else {
+//				m_oBtnSearchPlaceLayout.setVisibility(View.GONE);
+//				checkPlace = false;
+//			}
 
 			break;
 		}
 		case R.id.top_place_1: {
-
+			try{
 			m_oTxtPlace.setText("홍대");
 			m_oBtnSearchPlaceLayout.setVisibility(View.GONE);
 			if (sortPlaceLineUp("홍대").size() == 0) {
@@ -258,24 +270,35 @@ public class Main_LineUp_Page extends LinearLayout implements
 			}
 			lineUpListView.setListData(sortPlaceLineUp("홍대"));
 			lineUpListView.notifyData();
-
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 			break;
 		}
 		case R.id.top_place_2: {
-			ArrayList<LineUpObject> lineUpArrp1 = new ArrayList<LineUpObject>();
-			m_oTxtPlace.setText("청계천");
-			m_oBtnSearchPlaceLayout.setVisibility(View.GONE);
-			if (sortPlaceLineUp("청계천").size() == 0) {
-				m_oNoBusker.setVisibility(View.VISIBLE);
-			} else {
-				m_oNoBusker.setVisibility(View.GONE);
+			try{
+				ArrayList<LineUpObject> lineUpArrp1 = new ArrayList<LineUpObject>();
+				m_oTxtPlace.setText("청계천");
+				m_oBtnSearchPlaceLayout.setVisibility(View.GONE);
+				if (sortPlaceLineUp("청계천").size() == 0) {
+					m_oNoBusker.setVisibility(View.VISIBLE);
+				} else {
+					m_oNoBusker.setVisibility(View.GONE);
+				}
+	
+				lineUpListView.setListData(sortPlaceLineUp("청계천"));
+				lineUpListView.notifyData();
 			}
-
-			lineUpListView.setListData(sortPlaceLineUp("청계천"));
-			lineUpListView.notifyData();
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 			break;
 		}
 		case R.id.top_place_3: {
+			try{
 			m_oTxtPlace.setText("여의도 한강 시민 공원");
 			m_oBtnSearchPlaceLayout.setVisibility(View.GONE);
 			if (sortPlaceLineUp("여의도 한강 시민 공원").size() == 0) {
@@ -286,9 +309,15 @@ public class Main_LineUp_Page extends LinearLayout implements
 
 			lineUpListView.setListData(sortPlaceLineUp("여의도 한강 시민 공원"));
 			lineUpListView.notifyData();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 			break;
 		}
 		case R.id.top_place_4: {
+			try{
 			m_oTxtPlace.setText("이태원");
 			m_oBtnSearchPlaceLayout.setVisibility(View.GONE);
 			if (sortPlaceLineUp("이태원").size() == 0) {
@@ -299,6 +328,11 @@ public class Main_LineUp_Page extends LinearLayout implements
 
 			lineUpListView.setListData(sortPlaceLineUp("이태원"));
 			lineUpListView.notifyData();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 			break;
 		}
 		

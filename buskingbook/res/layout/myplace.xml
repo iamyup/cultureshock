@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+    
+
+    <!-- 타이틀 -->
+     <FrameLayout 
+         android:id="@+id/title"
+         android:layout_width="match_parent"
+         android:layout_height="40dip"
+         android:background="#01d0d2">
+		<ImageView
+            android:id="@+id/title_btn_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@xml/menu"
+            android:layout_marginLeft="5dip"
+            android:layout_gravity="center_vertical|left"/>
+		<TextView
+	       android:id="@+id/test_main"
+	       android:layout_gravity="center"
+	       android:text="공연검색"
+	       android:layout_width="wrap_content" 
+	       android:layout_height="wrap_content"
+	       android:textSize="18dip"
+	       android:textStyle="bold"
+	       android:textColor="#ffffff"/>
+		
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dip"
+		    android:background="#0ea7a5"
+		    android:gravity="bottom"
+		    android:layout_marginBottom="1dip"/>
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dip"
+		    android:background="#376263"
+		    android:gravity="bottom"/>
+	</FrameLayout>
+	<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_below="@+id/title">
+		 <FrameLayout
+	      android:id="@+id/map"
+	      android:layout_width="match_parent"
+	      android:layout_height="match_parent"
+	      android:layout_centerHorizontal="true"
+	      android:layout_centerVertical="true" />
+	</RelativeLayout>
+</RelativeLayout>

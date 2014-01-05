@@ -21,6 +21,7 @@ import com.cultureshock.buskingbook.object.LoginInfoObject;
 import com.cultureshock.buskingbook.object.TeamObject;
 import com.cultureshock.buskingbook.page.Main_LineUp_Page;
 import com.cultureshock.buskingbook.page.TeamPageFragment;
+import com.cultureshock.buskingbook.page.TimePosterFragment;
 import com.cultureshock.buskingbook.service.ServiceType;
 import com.cultureshock.buskingbook.util.AsyncImageLoader;
 import com.cultureshock.buskingbook.util.Util;
@@ -212,6 +213,7 @@ public class LineUpListView extends ListView implements
 				holder = (ViewHolder) convertView.getTag();
 			}
 			convertView.setTag(R.id.imageId, position);
+			holder.img.setTag(R.id.imageId, position);
 			holder.like.setTag(R.id.imageId, position);
 			holder.teamInfo.setTag(R.id.imageId, position);
 			LineUpObject itemObject = getItem(position);
@@ -311,6 +313,27 @@ public class LineUpListView extends ListView implements
 					o.putString("object", getItem(pos).getTeamName());
 					MainActivity.getInstance().replaceFragment(
 							TeamPageFragment.class, o, true);
+				}
+			});
+			holder.img.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					int pos = (Integer) v.getTag(R.id.imageId);
+					TeamObject itemObject = null;
+					Bundle o = new Bundle();
+					o.putString("object", getItem(pos).getTeamName());
+					o.putString("year", getItem(pos).getYear());
+					o.putString("month", getItem(pos).getMonth());
+					o.putString("day", getItem(pos).getDay());
+					o.putString("week", getItem(pos).getDayOfweek());
+					o.putString("mapX", getItem(pos).getMapX());
+					o.putString("mapY", getItem(pos).getMapY());
+					o.putString("time", getItem(pos).getTime());
+					o.putString("title", getItem(pos).getTitle());
+					o.putString("content", getItem(pos).getContent());
+					MainActivity.getInstance().replaceFragment(
+							TimePosterFragment.class, o, true);
 				}
 			});
 			holder.like.setOnClickListener(new OnClickListener() {
